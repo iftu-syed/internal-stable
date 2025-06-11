@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Staff</title>
+    <link rel="stylesheet" href="<%= basePath %>/styles/styles.css">
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900&display=swap" rel='stylesheet'>
+    <link rel="stylesheet" href="<%= basePath %>/css/introjs.min.css">
+</head>
+<style>
+    .edit-btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9rem;
+    }
+
+    .edit-btn {
+        background-color: #f0ad4e;
+        color: #fff;
+        width: 100%;
+    }
+
+    .introjs-tooltipbuttons {
+    text-align: right; /* Align buttons to the right */
+
+}
+body[dir="rtl"] {
+      direction: rtl;
+      text-align: right;
+      font-family: "Arial", sans-serif;
+    }
+
+    body[dir="ltr"] {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .language-selector {
+      text-align: right;
+    }
+
+    .language-selector a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: #007BFF;
+    }
+
+    .language-selector a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .language-selector img {
+      margin-right: 5px;
+      width: 20px;
+      height: auto;
+      vertical-align: bottom;
+    }
+.help-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.help-btn:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+}
+
+
+.help-button-container {
+    position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #12171e;
+  padding: 12px 0;
+  transition: all 0.5s ease;
+}
+
+/* Ensure the button aligns well with sidebar's active state */
+.sidebar.active .help-btn {
+    color: #fff;
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%;
+    animation: modalAppear 0.3s ease-out;
+    overflow: hidden;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    background-color: #12171e;
+    color: white;
+    padding: 15px 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.modal-body {
+    padding: 20px;
+    color: #333;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid #eee;
+}
+
+.modal-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.cancel-btn {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.cancel-btn:hover {
+    background-color: #e1e1e1;
+}
+
+.confirm-btn {
+    background-color: #CBFCC6;
+    color: black;
+}
+
+.confirm-btn:hover {
+    background-color: #218838;
+    color:#fff
+}
+
+/* Back Button Styles */
+#backButton {
+    background-color: #f0ad4e;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;   
+    transition: background-color 0.3s;
+}
+
+#backButton:hover {
+    background-color: #f0ad4e;
+}
+
+/* Disabled button styles */
+button:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
+/* RTL Support */
+[dir="rtl"] .modal-footer {
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+}
+
+/* Prevent page scrolling when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+</style>
+<body>
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+
+        <div class="user">
+            <div>
+                <!-- <p class="bold">Hospital Admin</p> -->
+                <p class="bold" id="adminRole">Admin</p>
+                <p class="bold"><%= hospitalName %></p>
+                <p class="bold"><%= site_code %></p>
+                <hr class="spacer">
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a href="http://localhost/hospitaladmin/admin-dashboard">
+                    <i class="bx bxs-grid-alt"></i>
+                    <span class="nav-item" id="dashboardLabel">Admin Dashboard</span>
+                </a>
+                <span class="tooltip" id="dashboardTooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="<%= basePath %>/doctors">
+                    <i class='bx bx-group'></i>
+                    <span class="nav-item" id="manageProviders">Manage Providers</span>
+                </a>
+                <span class="tooltip" id="allProviders">All Providers</span>
+            </li>
+            <li>
+                <a href="http://localhost/surveyapp/">
+                    <i class='bx bx-book-content'></i>
+                    <span class="nav-item" id="manageSurveys">Manage Surveys</span>
+                </a>
+                <span class="tooltip" id="allSurveys">All Surveys</span>
+            </li>
+            <li>
+                <a href="http://localhost/surveyapp/add">
+                    <i class='bx bx-folder-plus'></i>
+                    <span class="nav-item" id="addSpecialty">Add New Specialty</span>
+                </a>
+                <span class="tooltip" id="newSpecialty">New Specialty</span>
+            </li>
+            <li>
+                <a href="http://localhost/hospitaladmin/perf-dashboard">
+                    <i class='bx bxs-report'></i>
+                    <span class="nav-item" id="viewReports">View Reports</span>
+                </a>
+                <span class="tooltip" id="reports">Reports</span>
+            </li>
+            <li>
+                <a href="http://localhost/hospitaladmin/">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item" id="logoutLabel">Logout</span>
+                </a>
+                <span class="tooltip" id="logoutTooltip">Logout</span>
+            </li>
+        </ul>
+        <div class="help-button-container">
+            <button id="helpButton" class="help-btn">
+                <span class="nav-item" id="helpLabel">Help </span>
+                <i class='bx bx-help-circle'></i>
+            </button>
+            
+        
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+            <!-- <h2 id="welcomeAdmin" style="color: #333333;">Welcome, Hospital Admin</h2> -->
+            <h2 style="color: #333333;">
+                <%= lng === 'ar' 
+                    ? `مرحباً , ${firstName} ${lastName}` 
+                    : `Welcome, ${firstName} ${lastName}` 
+                %>
+            </h2>
+        </div>
+
+        <hr style="opacity: 0.5;">
+        <div class="language-selector" style="text-align: right; padding: 10px; background-color: #f5f6fa;">
+            <a href="?lng=en" class="<%= lng === 'en' ? 'active' : '' %>">
+                <img src="<%= basePath %>/assets/usa.png" alt="English Flag">English
+            </a> |
+            <a href="?lng=ar" class="<%= lng === 'ar' ? 'active' : '' %>">
+                <img src="<%= basePath %>/assets/flag.png" alt="Arabic Flag">العربية
+            </a>
+          </div>
+        <br><h2 id="editStaffHeader" style="color: #333333;">Edit Staff</h2><br>
+
+        <form action="<%= basePath %>/staff/edit/<%= staffMember._id %>" method="POST" class="addAdmin" style="text-align: left;" data-title="Edit Staff" data-intro="This form is for editing the staff of your clinic." dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+            <input type="text" id="firstName" name="firstName" placeholder="First Name" value="<%= staffMember.firstName %>" required>
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name" value="<%= staffMember.lastName %>" required>
+        
+            <!-- Checkbox for Reset Password -->
+            <div style="display: flex; justify-content:space-evenly; margin-top: 10px; margin-bottom: -20px;" data-title="Reset Password / Lock Account" data-intro="Here you can reset password/lock their account.">
+                <input style="margin-right:-15px;" type="checkbox" id="resetPassword" name="resetPassword" value="true">
+                <label id="resetPasswordLabel" for="resetPassword">Reset Password</label>
+        
+                <!-- Checkbox for Account Locked -->
+                <input style="margin-right:-15px;" type="checkbox" id="isLocked" name="isLocked" value="true" <%= staffMember.isLocked ? 'checked' : '' %>>
+                <label id="accountLockedLabel" for="isLocked">Account Locked</label>
+            </div>
+        
+            <br>
+            <button id="saveChangesButton" type="submit" data-title="Save" data-intro="Save changes and proceed.">Save Changes</button>
+            <a href="<%= basePath %>/doctors"><button id="cancelButton" type="button" class="edit-btn"><i class='bx bx-edit-alt'></i> Cancel</button></a>
+        </form>
+        
+
+    </div>
+
+    <!-- External scripts -->
+    <script src="<%= basePath %>/js/intro.min.js"></script>
+    <script>
+        document.getElementById('helpButton').addEventListener('click', function () {
+    // Determine the current language (default to English)
+    const lang = new URLSearchParams(window.location.search).get('lng') || getCookie('lng') || 'en';
+
+    // Define translations for the steps
+    const translations = {
+        en: {
+            step1: "This form is for editing the staff of your clinic.",
+            step2: "Here you can reset the password or lock their account.",
+            step3: "Save changes and proceed."
+        },
+        ar: {
+            step1: "هذا النموذج مخصص لتحرير موظف عيادتك.",
+            step2: "هنا يمكنك إعادة تعيين كلمة المرور أو قفل حسابهم.",
+            step3: "احفظ التغييرات واستمر."
+        }
+    };
+
+    // Define the steps for Intro.js
+    const introSteps = [
+        {
+            element: 'form.addAdmin', // Form for editing staff
+            intro: translations[lang].step1
+        },
+        {
+            element: 'div[data-title="Reset Password / Lock Account"]', // Reset password/lock account section
+            intro: translations[lang].step2
+        },
+        {
+            element: '#saveChangesButton', // Save changes button
+            intro: translations[lang].step3
+        }
+    ];
+
+    // Initialize and start Intro.js with dynamic labels for buttons
+    introJs()
+        .setOptions({
+            steps: introSteps,
+            rtl: lang === 'ar', // Enable RTL if the language is Arabic
+            nextLabel: lang === 'ar' ? 'التالي' : 'Next',
+            prevLabel: lang === 'ar' ? 'السابق' : 'Back',
+            doneLabel: lang === 'ar' ? 'تم' : 'Done'
+        })
+        .start();
+});
+
+// Helper function to retrieve a cookie value by name
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+        
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  };
+  const params = new URLSearchParams(window.location.search);
+  let currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+
+  // Set the language cookie
+  document.cookie = `lng=${currentLanguage}; path=/`;
+          const fetchUrl = `/manageproviders/doctors/locales/${currentLanguage}/translation.json`;
+
+      
+          // Set the `lang` and `dir` attributes for the HTML document
+        //   document.documentElement.lang = currentLanguage;
+        //   document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+      
+          fetch(fetchUrl)
+            .then(response => {
+              if (!response.ok) {
+                console.warn(`Translation file not found for language: ${currentLanguage}. Falling back to English.`);
+                return fetch(`/hospitaladmin/locales/en/translation.json`);
+              }
+              return response.json();
+            })
+            .then(translations => {
+              console.log('Loaded translations:', translations);
+      
+              // Update the elements based on translation keys
+              Object.keys(translations).forEach(id => {
+                const element = document.getElementById(id);
+      
+                if (element) {
+                    const translationValue = translations[id];
+
+                    if (typeof translationValue === 'string') {
+                        // Update regular text or HTML content
+                        element.innerHTML = translationValue;
+                    }
+                      if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+
+                        // Update placeholders for input elements
+
+                        console.log(`Updating placeholder for ${id}:`, translationValue);
+
+                        element.placeholder = translationValue;
+
+                      }
+                    else if (typeof translationValue === 'object') {
+                                            // Handle nested object (e.g., lists)
+                                            element.innerHTML = ''; // Clear existing content
+                                            Object.values(translationValue).forEach(item => {
+                                                const listItem = document.createElement('li');
+                                                listItem.textContent = item;
+                                                element.appendChild(listItem);
+                                            });
+                    } else {
+                        console.warn(`Unexpected translation value type for "${id}":`, translationValue);
+                    }
+                }
+              });
+            })
+            .catch(error => console.error('Error loading translations:', error));
+        });
+      </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstNameField = document.getElementById('firstName');
+            const lastNameField = document.getElementById('lastName');
+            const usernameField = document.getElementById('username');
+            const siteCode = "<%= site_code %>";
+
+            function generateUsername() {
+                const firstName = firstNameField.value.trim().charAt(0).toLowerCase();
+                const lastName = lastNameField.value.trim().toLowerCase();
+                usernameField.value = `${siteCode}_${firstName}_${lastName}`;
+            }
+
+            firstNameField.addEventListener('input', generateUsername);
+            lastNameField.addEventListener('input', generateUsername);
+
+            // Initialize the username on page load
+            generateUsername();
+        });
+    </script>
+
+    <script src="<%= basePath %>/script/script.js"></script>
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+
+            function removeCurrentPageClasses() {
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('CurrentPage');
+                });
+            }
+
+            function setCurrentPageLink(path) {
+                removeCurrentPageClasses();
+                console.log(`Setting CurrentPage link for path: ${path}`);
+                const currentPageLink = Array.from(sidebarLinks).find(link => {
+                    const linkPath = new URL(link.href).pathname;
+                    return linkPath === path;
+                });
+                if (currentPageLink) {
+                    console.log(`CurrentPage link found: ${currentPageLink.href}`);
+                    currentPageLink.classList.add('CurrentPage');
+                } else {
+                    console.log(`No CurrentPage link found for path: ${path}`);
+                }
+            }
+
+            // Check the URL path and set the current page link on page load
+            const currentPath = window.location.pathname;
+            console.log(`Current path: ${currentPath}`);
+            setCurrentPageLink(currentPath);
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const targetPath = new URL(link.href).pathname;
+                    console.log(`Navigating to: ${targetPath}`);
+                    setCurrentPageLink(targetPath);
+                });
+            });
+        });
+    </script>
+
+<div id="customConfirmModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="confirmTitle">Confirm Changes</h3>
+        </div>
+        <div class="modal-body">
+            <p id="confirmMessage">Are you sure you want to save these changes?</p>
+        </div>
+        <div class="modal-footer">
+            <button id="confirmCancel" class="modal-btn cancel-btn">Cancel</button>
+            <button id="confirmOk" class="modal-btn confirm-btn">Save</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get form and buttons
+        const form = document.querySelector('form.addAdmin');
+        const saveButton = document.getElementById('saveChangesButton');
+        const cancelButton = document.getElementById('cancelButton');
+        
+        // Get modal elements
+        const modal = document.getElementById('customConfirmModal');
+        const confirmTitle = document.getElementById('confirmTitle');
+        const confirmMessage = document.getElementById('confirmMessage');
+        const confirmOk = document.getElementById('confirmOk');
+        const confirmCancel = document.getElementById('confirmCancel');
+        
+        // Store original form values
+        const originalValues = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            isLocked: document.getElementById('isLocked').checked,
+            resetPassword: document.getElementById('resetPassword').checked
+        };
+        
+        // Create back button (to replace Cancel button when needed)
+        const backButton = document.createElement('button');
+        backButton.id = 'backButton';
+        backButton.type = 'button';
+        backButton.className = 'edit-btn';
+        backButton.innerHTML = '<i class="bx bx-arrow-back"></i> <span id="backButtonLabel">Back</span>';
+        
+        // Add event listener to back button
+        backButton.addEventListener('click', function() {
+            // Navigate back to the staff list page
+            window.location.href = cancelButton.parentElement.getAttribute('href');
+        });
+        
+        // Function to check if form has changes
+        function hasFormChanged() {
+            if (document.getElementById('firstName').value !== originalValues.firstName) return true;
+            if (document.getElementById('lastName').value !== originalValues.lastName) return true;
+            if (document.getElementById('isLocked').checked !== originalValues.isLocked) return true;
+            if (document.getElementById('resetPassword').checked !== originalValues.resetPassword) return true;
+            return false;
+        }
+        
+        // Function to update UI based on form state
+        function updateUIState() {
+            const hasChanges = hasFormChanged();
+            
+            // Enable/disable save button based on changes
+            saveButton.disabled = !hasChanges;
+            
+            // Replace cancel button with back button when no changes
+            const cancelButtonParent = cancelButton.parentElement;
+            if (!hasChanges && cancelButtonParent.contains(cancelButton)) {
+                cancelButtonParent.replaceChild(backButton, cancelButton);
+            } else if (hasChanges && cancelButtonParent.contains(backButton)) {
+                cancelButtonParent.replaceChild(cancelButton, backButton);
+            }
+            
+            // Update Back button language if needed
+            updateBackButtonLanguage();
+        }
+        
+        // Function to update Back button language
+        function updateBackButtonLanguage() {
+            const backButtonLabel = document.getElementById('backButtonLabel');
+            if (backButtonLabel) {
+                const params = new URLSearchParams(window.location.search);
+                const currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+                
+                if (currentLanguage === 'ar') {
+                    backButtonLabel.textContent = 'رجوع';
+                } else {
+                    backButtonLabel.textContent = 'Back';
+                }
+            }
+        }
+        
+        // Function to show the modal
+        function showModal() {
+            updateModalLanguage();
+            modal.style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+        
+        // Function to hide the modal
+        function hideModal() {
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+        
+        // Function to update modal language based on current language
+        function updateModalLanguage() {
+            const params = new URLSearchParams(window.location.search);
+            const currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+            
+            if (currentLanguage === 'ar') {
+                confirmTitle.textContent = 'تأكيد التغييرات';
+                confirmMessage.textContent = 'هل أنت متأكد أنك تريد حفظ هذه التغييرات؟';
+                confirmCancel.textContent = 'إلغاء';
+                confirmOk.textContent = 'حفظ';
+                modal.setAttribute('dir', 'rtl');
+            } else {
+                confirmTitle.textContent = 'Confirm Changes';
+                confirmMessage.textContent = 'Are you sure you want to save these changes?';
+                confirmCancel.textContent = 'Cancel';
+                confirmOk.textContent = 'Save';
+                modal.setAttribute('dir', 'ltr');
+            }
+        }
+        
+        // Add event listeners to all form inputs
+        const formInputs = form.querySelectorAll('input, select');
+        formInputs.forEach(input => {
+            input.addEventListener('change', updateUIState);
+            input.addEventListener('input', updateUIState);
+        });
+        
+        // Handle form submission
+        form.addEventListener('submit', function(event) {
+            if (hasFormChanged()) {
+                // If form has changes, show confirmation modal
+                event.preventDefault();
+                showModal();
+            } else {
+                // If no changes, prevent form submission
+                event.preventDefault();
+            }
+        });
+        
+        // Handle confirmation modal buttons
+        confirmOk.addEventListener('click', function() {
+            hideModal();
+            // Submit the form programmatically
+            form.submit();
+        });
+        
+        confirmCancel.addEventListener('click', function() {
+            hideModal();
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                hideModal();
+            }
+        });
+        
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal.style.display === 'flex') {
+                hideModal();
+            }
+        });
+        
+        // Initialize UI state on page load
+        updateUIState();
+    });
+    </script>
+</body>
+</html>

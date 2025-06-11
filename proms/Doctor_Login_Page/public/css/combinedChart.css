@@ -1,0 +1,38 @@
+/* Container styling for the combined donut and bar chart */
+.combined-chart-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(75, 87, 249, 0.05); /* Very light blue background */
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* height: 500px; Adjust height to fit both donut and bar chart */
+}
+
+.donut-text {
+    font-size: 24px;
+    fill: #333;
+    font-weight: bold;
+}
+
+/* Bar styling */
+.bar {
+    fill: rgba(45, 158, 105, 0.3); /* Very light green */;
+    transition: fill 0.3s ease, height 0.3s ease;
+}
+
+.bar:hover {
+    fill: #2D9E69; /* Slightly darker shade for hover state */
+}
+
+/* Arc fill for donut chart - this overrides the inline fill in the JS */
+path.donut-arc {
+    fill: #2D9E69;
+}
+
+path.donut-arc-background {
+    fill: #ccc;
+}

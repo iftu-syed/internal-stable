@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Survey</title>
+    <link rel="stylesheet" href="<%= basePath %>/styles/styles.css">
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<%= basePath %>/css/introjs.min.css">
+    <style>
+        .survey-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .survey-column {
+            width: 100%; /* Adjust the width as necessary */
+            background-color: #f9f9f9;
+            padding: 18px;
+            border-radius: 8px;
+            height: 500px;
+            overflow: auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .checkbox {
+            margin-top: 10px;
+        }
+
+        .submit-button {
+            margin-top: 20px;
+            background-color: #CBFCC6;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        .submit-button i {
+            margin-right: 5px;
+        }
+
+        .introjs-tooltipbuttons {
+            text-align: right; /* Align buttons to the right */
+        }
+
+        body[dir="rtl"] {
+            direction: rtl;
+            text-align: right;
+            font-family: "Arial", sans-serif;
+        }
+
+        body[dir="ltr"] {
+            direction: ltr;
+            text-align: left;
+        }
+
+        .language-selector {
+        text-align: right;
+        }
+
+        .language-selector a {
+        text-decoration: none;
+        margin: 0 10px;
+        color: #007BFF;
+        }
+
+        .language-selector a.active {
+        font-weight: bold;
+        text-decoration: underline;
+        }
+        .language-selector img {
+        margin-right: 5px;
+        width: 20px;
+        height: auto;
+        vertical-align: bottom;
+        }
+        .help-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .help-btn:hover {
+            background-color: #0056b3; /* Slightly darker blue on hover */
+        }
+
+
+        .help-button-container {
+            position: fixed;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #12171e;
+        padding: 12px 0;
+        transition: all 0.5s ease;
+        }
+
+        /* Ensure the button aligns well with sidebar's active state */
+        .sidebar.active .help-btn {
+            color: #fff;
+            display: flex;
+            width: 100%;
+            gap: 5px;
+            align-items: center;
+            text-decoration: none;
+            border-radius: 0.8rem;
+        }
+
+        #selectedSurveysContainer {
+            display: none; /* hidden by default, shown in JS */
+            width: 65%;
+            background-color: #f9f9f9;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            }
+
+    
+        button, input[type="submit"] {
+        cursor: pointer;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        color: black;
+        border-radius: 4px;
+        background: #CBFCC6;
+        }
+        button:hover {
+        background-color: #4CAF50;
+        color: white;
+        }
+        #addButton {
+        background-color: #CBFCC6;
+        color: rgb(0, 0, 0);
+        transition: background-color 0.3s;
+        border: none;
+        width: 100%;
+        }
+        #addButton:hover {
+        background-color: #45a049;
+        color:#fff
+        }
+
+        /* Survey title */
+        .survey-title {
+        font-size: 1.25rem; /* text-xl */
+        font-weight: 600;   /* font-semibold */
+        color: #2d3748;     /* tailwind's text-gray-800 */
+        margin-bottom: 8px;
+        }
+
+        /* Optional description text */
+        .desc-text {
+        color: #4a5568; /* text-gray-600 */
+        margin-top: 8px;/* mt-2 */
+        }
+
+        /* "Selected Months" label */
+        .selected-months-label {
+        color: #4a5568; /* text-gray-700 */
+        margin-bottom: 8px; /* mb-2 */
+        font-weight: normal;
+        }
+
+        /* The container wrapping each timeline */
+        .timeline-container {
+        margin-top: 24px; /* mt-6 */
+        }
+
+        /* The line behind markers */
+        .marker-line {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 2rem; /* matches h-8 in Tailwind */
+        margin-bottom: 8px; /* a bit of space under the line */
+        }
+        .timeline-line {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: #e2e8f0; /* tailwind's bg-gray-300 */
+        }
+
+        /* The wrapper that holds all the button markers */
+        .markers-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        z-index: 10;
+        /* If you want a white border under each marker:
+            border: 8px solid #fff;
+        */
+        }
+
+        /* Each clickable marker button */
+        .marker-button {
+        background-color: #e2e8f0; /* tailwind's bg-gray-300 */
+        width: 2rem;        /* w-8 */
+        height: 2rem;       /* h-8 */
+        border-radius: 9999px; /* rounded-full */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #fff; /* border-white */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* shadow-md */
+        outline: none;
+        transition: background-color 0.2s ease;
+        }
+        .marker-button:hover {
+        background-color: #cbd5e0; /* slight hover effect */
+        }
+
+        /* Text inside the marker button */
+        .marker-button span {
+        font-size: 0.875rem; /* text-sm */
+        color: #4a5568;      /* text-gray-700 */
+        }
+
+        /* Container for the labels under each marker */
+        .label-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 8px; /* mt-2 */
+        }
+        .label-container span {
+        font-size: 0.875rem; /* text-sm */
+        font-weight: 600;    /* font-semibold */
+        color: #4a5568;      /* text-gray-700 */
+        text-align: center;
+        }
+
+        @keyframes tickFadeIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .green-tick {
+            background-color: #4CAF50 !important;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        .green-tick::after {
+            content: '\2713'; /* Unicode checkmark */
+            font-size: 16px;
+            animation: tickFadeIn 0.3s ease-in-out;
+        }
+        /* Container for sparks */
+        .spark-container {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: -10px;
+            left: -10px;
+            pointer-events: none;
+        }
+
+
+        /* Spark animation */
+        .spark {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #e1e1e1;
+            border-radius: 50%;
+            opacity: 0;
+            animation: spark-animation 0.5s ease-out forwards;
+        }
+
+        /* Sparks move outward */
+        @keyframes spark-animation {
+            0% { opacity: 1; transform: scale(1) translate(0, 0); }
+            100% { opacity: 0; transform: scale(1.5) translate(var(--x), var(--y)); }
+        }
+
+        /* Rotating light effect */
+        @keyframes rotate-light {
+            0% { box-shadow: 0px 0px 5px rgba(255, 215, 0, 0.5); }
+            25% { box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.7); }
+            50% { box-shadow: 0px 0px 15px rgba(255, 215, 0, 1); }
+            75% { box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.7); }
+            100% { box-shadow: 0px 0px 5px rgba(255, 215, 0, 0.5); }
+        }
+
+        /* Scale up effect */
+        @keyframes scale-up {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+
+        /* Final glowing effect */
+        .glow {
+            animation: rotate-light 1.5s infinite ease-in-out;
+        }
+
+        /* Scaling effect when selected */
+        .scale-up {
+            animation: scale-up 0.3s forwards;
+        }
+
+
+        .extra-container {
+            width: 35%; /* Adjust width as needed */
+            background-color: #e8f0fe;
+            padding: 15px;
+            border-radius: 8px;
+            min-height: 150px;
+        }
+
+        .month-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .month-list li {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 0;
+            font-size: 14px;
+        }
+
+        .month-list li i {
+            font-size: 16px;
+        }
+        .survey-row {
+            display: flex;
+            gap: 1rem; /* space between the card and extra container */
+            margin-bottom: 1rem; /* some spacing between rows */
+            }
+
+            .survey-card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 1rem; /* replicate p-4 */
+            flex: 1;       /* take up remaining width if you want a 2-column layout */
+            }
+
+   
+        .survey-title {
+        font-size: 1.25rem; /* similar to text-xl */
+        font-weight: 600;   /* similar to font-semibold */
+        color: #2d3748;     /* “text-gray-800” tone */
+        margin-bottom: 0.5rem;
+        }
+
+        .survey-desc {
+        color: #4a5568;      /* “text-gray-600” tone */
+        margin-top: 0.5rem;  /* replicate mt-2 */
+        margin-bottom: 1rem; /* optional spacing */
+        }
+
+        .selected-months-label {
+        color: #4a5568; /* “text-gray-700” tone */
+        margin-bottom: 0.5rem; /* replicate mb-2 */
+        font-weight: normal;
+        }
+
+        .highlighted-months {
+        color: #3182ce; /* “text-blue-600” */
+        font-weight: bold;
+        }
+
+   
+        .timeline-container {
+        margin-top: 1.5rem; /* replicate mt-6 */
+        }
+
+        .marker-line {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 2rem; /* replicate h-8 */
+        margin-bottom: 0.5rem;
+        }
+
+        .markers-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        z-index: 10;
+        font-weight: 700;       /* replicate “font-bold” if desired */
+        border: 8px solid #fff; /* replicate “border-8 border-white” */
+        }
+        .month-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(80px, 1fr)); /* Three columns */
+        gap: 6px;
+        padding: 8px;
+            }
+
+        .marker-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #4a5568; /* Tailwind's text-gray-700 */
+            text-align: center;
+        }
+
+
+        .month-item {
+            font-size: 14px;
+            color: #333;
+            background: #f1f8ff;
+            padding: 6px 10px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        .month-item i {
+            font-size: 16px;
+            color: #007BFF;
+        }
+
+
+        .timeline-marker {
+        background-color: #e2e8f0; /* “bg-gray-300” color */
+        width: 2rem;              /* replicate w-8 */
+        height: 2rem;             /* replicate h-8 */
+        border-radius: 9999px;    /* replicate rounded-full */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #fff;   /* replicate border-2 border-white */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* replicate shadow-md */
+        cursor: pointer;
+        margin: 0; /* remove default button margin */
+        outline: none;
+        transition: background-color 0.2s ease;
+        }
+
+        .timeline-marker:hover {
+        background-color: #cbd5e0; /* slightly darker on hover */
+        }
+
+        .timeline-marker span {
+        font-size: 0.875rem; /* replicate text-sm */
+        color: #4a5568;      /* replicate text-gray-700 */
+        }
+
+    
+        .green-tick {
+        background-color: #4caf50 !important;
+        color: white;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+        }
+        .green-tick::after {
+        content: "✓"; /* checkmark */
+        font-size: 1rem;
+        animation: tickFadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes tickFadeIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        }
+
+        .extra-container {
+        background-color: #f8f8f8;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 1rem;
+        flex: 0.4; /* for a narrower right column */
+        }
+        .extra-container h3 {
+        margin-top: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 0.5rem;
+        }
+        .extra-container p {
+        color: #4a5568;
+        margin-bottom: 0.5rem;
+        }
+        .selected-months-list {
+        color: #4a5568; /* optional styling */
+        }
+
+        /* SUCCESS POPUP STYLES */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-overlay.show {
+    display: flex;
+}
+
+.popup-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.popup-overlay.show .popup-container {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.popup-header {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.popup-header.error {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+}
+
+.popup-header.warning {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+}
+
+.popup-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+    display: block;
+    animation: iconBounce 0.6s ease-in-out;
+    padding-top: 10px;
+}
+
+.popup-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.popup-body {
+    padding: 30px;
+    text-align: center;
+}
+
+.popup-message {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.popup-details {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-left: 4px solid #4CAF50;
+}
+
+.popup-details.error {
+    border-left-color: #f44336;
+    background: #fef5f5;
+}
+
+.popup-details .detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.popup-details .detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.popup-details .detail-label {
+    font-weight: 600;
+    color: #555;
+}
+
+.popup-details .detail-value {
+    color: #333;
+    font-weight: 500;
+}
+
+.popup-footer {
+    padding: 10px 30px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+    border-radius: 0 0 12px 12px;
+}
+
+.popup-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
+}
+
+.popup-btn:hover {
+    background: linear-gradient(135deg, #45a049, #388e3c);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+}
+
+.popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.popup-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes iconBounce {
+    0%, 20%, 60%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    80% { transform: translateY(-5px); }
+}
+
+@media (max-width: 480px) {
+    .popup-container {
+        width: 95%;
+        margin: 20px;
+    }
+    
+    .popup-header, .popup-body, .popup-footer {
+        padding: 20px;
+    }
+}
+
+/* Add this to your existing CSS */
+.popup-btn.error {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    box-shadow: 0 2px 4px rgba(244, 67, 54, 0.3);
+}
+
+.popup-btn.error:hover {
+    background: linear-gradient(135deg, #d32f2f, #c62828);
+    box-shadow: 0 4px 8px rgba(244, 67, 54, 0.4);
+}
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+
+        <div class="user">
+            <div>
+                <p class="bold" id="adminRole">Admin</p>
+                <p class="bold"><%= hospitalName %></p>
+                <p class="bold"><%= site_code %></p>
+                <hr class="spacer">
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a href="http://localhost/hospitaladmin/admin-dashboard">
+                    <i class="bx bxs-grid-alt"></i>
+                    <span class="nav-item" id="dashboardLabel">Admin Dashboard</span>
+                </a>
+                <span class="tooltip" id="dashboardTooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="http://localhost/manageproviders">
+                    <i class='bx bx-group'></i>
+                    <span class="nav-item" id="manageProviders">Manage Providers</span>
+                </a>
+                <span class="tooltip" id="allProviders">All Providers</span>
+            </li>
+            <li>
+                <a href="<%= basePath %>/">
+                    <i class='bx bx-book-content'></i>
+                    <span class="nav-item" id="manageSurveys">Manage Surveys</span>
+                </a>
+                <span class="tooltip" id="allSurveys">All Surveys</span>
+            </li>
+            <li>
+                <a href="<%= basePath %>/add">
+                    <i class='bx bx-folder-plus'></i>
+                    <span class="nav-item" id="addSpecialty">Add New Specialty</span>
+                </a>
+                <span class="tooltip" id="newSpecialty">New Specialty</span>
+            </li>
+            <li>
+                <a href="http://localhost/hospitaladmin/perf-dashboard">
+                    <i class='bx bxs-report'></i>
+                    <span class="nav-item" id="viewReports">View Reports</span>
+                </a>
+                <span class="tooltip" id="reports">Reports</span>
+            </li>
+            <li>
+                <a href="http://localhost/hospitaladmin/">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item" id="logoutLabel">Logout</span>
+                </a>
+                <span class="tooltip" id="logoutTooltip">Logout</span>
+            </li>
+        </ul>
+        <div class="help-button-container">
+            <button id="helpButton" class="help-btn">
+                <span class="nav-item" id="helpLabel">Help </span>
+                <i class='bx bx-help-circle'></i>
+            </button>
+            
+        
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+            <!-- <h2 id="welcomeAdmin" style="color: #333333;">Welcome, <%= firstName %> <%= lastName %></h2> -->
+            <h2 style="color: #333333;">
+                <%= lng === 'ar' 
+                    ? `مرحباً , ${firstName} ${lastName}` 
+                    : `Welcome, ${firstName} ${lastName}` 
+                %>
+            </h2>
+        </div>
+
+        <hr style="opacity: 0.5;">
+        <div class="language-selector" style="text-align: right; padding: 10px;">
+            <a href="?lng=en" class="<%= lng === 'en' ? 'active' : '' %>">
+                <img src="<%= basePath %>/assets/usa.png" alt="English Flag">English
+            </a> |
+            <a href="?lng=ar" class="<%= lng === 'ar' ? 'active' : '' %>">
+                <img src="<%= basePath %>/assets/flag.png" alt="Arabic Flag">العربية
+            </a>
+          </div>
+        <br><h2 dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>" id="addSpecialtyHeader" style="color: #333333;">Add Specialty and Assign PROMS Survey : </h2><br>
+        <!-- <% if (successMessage) { %>
+            <div class="alert alert-success" id="flash-message" style="color: green;">
+                <%= successMessage %>
+            </div>
+        <% } %> -->
+        <% if (errorMessage) { %>
+            <div class="alert alert-danger" id="flash-message" style="color: red;">
+                <%= errorMessage %>
+            </div>
+        <% } %>
+
+        <div class="form-container">
+            <form id="surveyForm" action="<%= basePath %>/add" method="POST" >
+                <div class="form-group" data-title="Speciality" data-intro="Enter name">
+                    <input type="text" id="specialty" name="specialty" placeholder="Enter the name of New Specialty" required dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+                </div>
+
+                <!-- Hidden inputs for hospital_code and site_code -->
+                <input type="hidden" name="hospital_code" value="<%= hospital_code %>">
+                <input type="hidden" name="site_code" value="<%= site_code %>">
+
+                <!-- Surveys section with two columns -->
+                <div class="survey-container">
+                    <!-- API Survey Column -->
+
+                    <div class="survey-column" id="apiSurveyGroup" style="display: none;">
+                        <input type="text" id="apiSurveySearch" onkeyup="filterSurveys('apiSurveySearch', 'apiSurveyGroup')" placeholder="Search API Surveys..." dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>"><hr class="spacer">
+                        <h3 id="selectApiSurveysHeader" data-title="Selection" data-intro="If you want to assign API Survey, check the boxes below">Select API Surveys:</h3>
+                        <% apiSurveys.forEach(survey => { %>
+                            <div class="checkbox">
+                                <input type="checkbox" id="apiSurvey_<%= survey.form_id %>" name="apiSurvey" value="<%= survey.form_id %>">
+                                <label for="apiSurvey_<%= survey.form_id %>"><%= survey.survey_name %></label>
+                            </div>
+                        <% }); %>
+                    </div>
+
+                    <!-- Custom Survey Column -->
+
+                    <div class="survey-column" id="customSurveyGroup">
+                        <input style="display: none;" type="text" id="customSurveySearch" onkeyup="filterSurveys('customSurveySearch', 'customSurveyGroup')" plcaeholder="Search Custom Surveys..." dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>"><hr class="spacer">
+                        <h3 id="selectCustomSurveysHeader" data-title="Selection" data-intro="If you want to assign Custom Surveys, check the boxes below">Select Custom Surveys:</h3>
+                        <%         
+               const sortedSurveys = customSurveys.sort((a, b) => {
+                                // Sorting based on surveyName in alphabetical order (case-insensitive)
+                                return a.surveyName.toLowerCase().localeCompare(b.surveyName.toLowerCase());
+                            });
+                            
+                            sortedSurveys.forEach(survey => { 
+                        %>
+                            <div class="checkbox">
+                                <input type="checkbox" id="customSurvey_<%= survey.surveyName %>" name="customSurvey" value="<%= survey.surveyName %>">
+                                <label for="customSurvey_<%= survey.surveyName %>"><%= survey.surveyName %></label>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+
+                <!-- Hidden fields to store selected data -->
+                <input type="hidden" name="apiSurveyData" id="apiSurveyData"> <!-- Will store API data -->
+                <input type="hidden" name="customSurveyData" id="customSurveyData"> <!-- Will store custom data -->
+                <input type="hidden" name="surveyData" id="surveyData"> <!-- Stores selected months -->
+
+                <div class="form-group">
+                    <button id="addButton" type="button" class="submit-button" data-title="Add" data-intro="Click here after selecting the surveys you want to assign"><i class='bx bx-book-add' ></i> Add</button>
+                </div>
+                <a href="<%= basePath %>/"><button id="cancelButton" type="cancel-button" class="edit-btn"><i class='bx bx-edit-alt'></i> Cancel</button></a>
+            </form>
+        </div>
+        <div id="selectedSurveysContainer">
+            <h3 class="text-2xl font-bold mb-4">Selected Surveys</h3>
+            <div id="selectedSurveysList"></div>
+            <div class="action-buttons">
+                <button onclick="goBack()" class="submit-button" style="background: #bbb; color: black;">Back</button>
+                <button onclick="submitSelectedSurveys()" class="submit-button">Submit</button>  
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <script src="<%= basePath %>/public/script/script.js"></script>
+    <script src="<%= basePath %>/js/intro.min.js"></script>
+    <script>
+        document.getElementById('helpButton').addEventListener('click', function () {
+    // Determine the current language (default to English)
+    const lang = new URLSearchParams(window.location.search).get('lng') || getCookie('lng') || 'en';
+
+    // Define translations for the steps
+    const translations = {
+        en: {
+            step1: "Enter the name of the new specialty.",
+            step2: "If you want to assign API Survey, check the boxes below.",
+            step3: "If you want to assign Custom Surveys, check the boxes below.",
+            step4: "Click here after selecting the surveys you want to assign."
+        },
+        ar: {
+            step1: "أدخل اسم التخصص الجديد.",
+            step2: "إذا كنت ترغب في تعيين استبيان API، قم بتحديد المربعات أدناه.",
+            step3: "إذا كنت ترغب في تعيين استبيانات مخصصة، قم بتحديد المربعات أدناه.",
+            step4: "انقر هنا بعد تحديد الاستبيانات التي تريد تعيينها."
+        }
+    };
+
+    // Define the steps for Intro.js
+    const introSteps = [
+        {
+            element: '#specialty', // Input field for specialty
+            intro: translations[lang].step1
+        },
+        {
+            element: '#selectApiSurveysHeader', // API Surveys header
+            intro: translations[lang].step2
+        },
+        {
+            element: '#selectCustomSurveysHeader', // Custom Surveys header
+            intro: translations[lang].step3
+        },
+        {
+            element: '#addButton', // Add button
+            intro: translations[lang].step4
+        }
+    ];
+
+    // Initialize and start Intro.js with dynamic labels for buttons
+    introJs()
+        .setOptions({
+            steps: introSteps,
+            rtl: lang === 'ar', // Enable RTL if the language is Arabic
+            nextLabel: lang === 'ar' ? 'التالي' : 'Next',
+            prevLabel: lang === 'ar' ? 'السابق' : 'Back',
+            doneLabel: lang === 'ar' ? 'تم' : 'Done'
+        })
+        .start();
+});
+
+// Helper function to retrieve a cookie value by name
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+        
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  };
+  const params = new URLSearchParams(window.location.search);
+  let currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+
+  // Set the language cookie
+  document.cookie = `lng=${currentLanguage}; path=/`;
+          const fetchUrl = `/surveyapp/locales/${currentLanguage}/translation.json`;
+
+      
+          // Set the `lang` and `dir` attributes for the HTML document
+        //   document.documentElement.lang = currentLanguage;
+        //   document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+      
+          fetch(fetchUrl)
+            .then(response => {
+              if (!response.ok) {
+                console.warn(`Translation file not found for language: ${currentLanguage}. Falling back to English.`);
+                return fetch(`/hospitaladmin/locales/en/translation.json`);
+              }
+              return response.json();
+            })
+            .then(translations => {
+              console.log('Loaded translations:', translations);
+      
+              // Update the elements based on translation keys
+              Object.keys(translations).forEach(id => {
+                const element = document.getElementById(id);
+      
+                if (element) {
+                    const translationValue = translations[id];
+
+                    if (typeof translationValue === 'string') {
+                        // Update regular text or HTML content
+                        element.innerHTML = translationValue;
+                    }
+                      if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+
+                        // Update placeholders for input elements
+
+                        console.log(`Updating placeholder for ${id}:`, translationValue);
+
+                        element.placeholder = translationValue;
+
+                      }
+                    else if (typeof translationValue === 'object') {
+                                            // Handle nested object (e.g., lists)
+                                            element.innerHTML = ''; // Clear existing content
+                                            Object.values(translationValue).forEach(item => {
+                                                const listItem = document.createElement('li');
+                                                listItem.textContent = item;
+                                                element.appendChild(listItem);
+                                            });
+                    } else {
+                        console.warn(`Unexpected translation value type for "${id}":`, translationValue);
+                    }
+                }
+              });
+            })
+            .catch(error => console.error('Error loading translations:', error));
+        });
+      </script>
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+    <script>
+        
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+
+            function removeCurrentPageClasses() {
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('CurrentPage');
+                });
+            }
+
+            function setCurrentPageLink(path) {
+                removeCurrentPageClasses();
+                const currentPageLink = Array.from(sidebarLinks).find(link => {
+                    const linkPath = new URL(link.href).pathname;
+                    return linkPath === path;
+                });
+                if (currentPageLink) {
+                    currentPageLink.classList.add('CurrentPage');
+                }
+            }
+
+            const currentPath = window.location.pathname;
+            setCurrentPageLink(currentPath);
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const targetPath = new URL(link.href).pathname;
+                    setCurrentPageLink(targetPath);
+                });
+            });
+        });
+    const addButton = document.getElementById('addButton');
+    addButton.addEventListener('click', function(event) {
+      const apiSelected = getSelectedCheckboxes('apiSurvey');
+      const customSelected = getSelectedCheckboxes('customSurvey');
+
+      if (apiSelected.length === 0 && customSelected.length === 0) {
+        alert("Please select at least one survey.");
+        return;
+      }
+
+
+      document.querySelector('.form-container').style.display = 'none';
+      const container = document.getElementById('selectedSurveysContainer');
+      container.style.display = 'block';
+
+        const selectedSurveysList = document.getElementById('selectedSurveysList');
+        selectedSurveysList.innerHTML = ''; 
+
+        const months = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+        const allSurveys = [...apiSelected, ...customSelected]; 
+
+        allSurveys.forEach(s => {
+            // Wrap them side-by-side in .survey-row
+            const surveyRow = document.createElement('div');
+            surveyRow.className = 'survey-row';
+
+            // ---- LEFT: The Survey Card ----
+            const card = document.createElement('div');
+            // we’ll unify “survey-card p-4” into just .survey-card
+            card.className = 'survey-card';
+
+            const surveyTitle = document.createElement('h2');
+            surveyTitle.className = 'survey-title';
+            const surveyName = (typeof s === 'object') ? s.name : s;
+            surveyTitle.innerText = surveyName;
+
+            const desc = document.createElement('p');
+            desc.className = 'survey-desc';
+            desc.innerHTML = `Select month(s) to send <strong>${surveyName}</strong> survey.`;
+
+            // Sample “Selected Months” label (not appended in this example)
+            const selectedMonthsLabel = document.createElement('p');
+            selectedMonthsLabel.className = 'selected-months-label';
+            selectedMonthsLabel.innerHTML = `<strong>Selected Months:</strong> 
+            <span class="highlighted-months">None</span>`;
+
+            // Timeline container
+            const timelineContainer = document.createElement('div');
+            timelineContainer.className = 'timeline-container';
+
+            const markerLine = document.createElement('div');
+            markerLine.className = 'marker-line';
+
+            const markersWrapper = document.createElement('div');
+            markersWrapper.className = 'markers-wrapper';
+
+            
+            months.forEach(m => {
+                const markerWrapper = document.createElement('div');
+                markerWrapper.style.display = 'flex';
+                markerWrapper.style.flexDirection = 'column';
+                markerWrapper.style.alignItems = 'center';
+
+                const markerBtn = document.createElement('button');
+                markerBtn.className = 'timeline-marker';
+                markerBtn.setAttribute('data-months', m);
+                markerBtn.innerHTML = `<span>${m}</span>`; 
+
+                markerBtn.addEventListener('click', function(e) {
+                    toggleMarker(e, selectedMonthsLabel);
+                });
+
+                // Add label below marker
+                const label = document.createElement('span');
+                label.className = 'marker-label';
+                label.innerText = m === 0 ? 'Baseline' : `${m} months`;
+                label.style.marginTop = '5px'; // Adjust spacing
+
+                markerWrapper.appendChild(markerBtn);
+                markerWrapper.appendChild(label);
+                markersWrapper.appendChild(markerWrapper);
+            });
+
+
+            markerLine.appendChild(markersWrapper);
+            timelineContainer.appendChild(markerLine);
+            // Optionally append selectedMonthsLabel if you want it inside card
+            // timelineContainer.appendChild(selectedMonthsLabel);
+
+            card.appendChild(surveyTitle);
+            card.appendChild(desc);
+            card.appendChild(timelineContainer);
+
+            // Tag the card with data attributes
+            card.dataset.surveyId = (typeof s === 'object') ? s.id : 'custom';
+            card.dataset.surveyName = surveyName;
+
+            // ---- RIGHT: Extra Container ----
+            const detailsContainer = document.createElement('div');
+            detailsContainer.className = 'extra-container';
+            detailsContainer.innerHTML = `
+            <h3>Survey Details</h3>
+            <p>Selected months for <strong>${surveyName}</strong>:</p>
+            <div class="selected-months-list"></div>
+            `;
+
+            // Append card + container to .survey-row
+            surveyRow.appendChild(card);
+            surveyRow.appendChild(detailsContainer);
+
+            // Finally, add the row to #selectedSurveysList
+            selectedSurveysList.appendChild(surveyRow);
+        });
+    });
+
+
+       
+function toggleMarker(event, selectedMonthsLabel) {
+    const marker = event.currentTarget;
+    const surveyCard = marker.closest('.survey-card');
+    const surveyRow = surveyCard.closest('.survey-row'); 
+    const detailsContainer = surveyRow.querySelector('.extra-container .selected-months-list');
+
+    // Toggle Selection
+    if (marker.classList.contains('green-tick')) {
+        marker.classList.remove('green-tick', 'scale-up', 'glow');
+        marker.innerHTML = `<span>${marker.getAttribute('data-months')}</span>`;
+    } else {
+        marker.classList.add('green-tick', 'scale-up');
+        marker.innerHTML = ''; 
+        createSparks(marker);
+        setTimeout(() => marker.classList.add('glow'), 500);
+    }
+
+    // Update the selected months in the UI
+    const selectedMarkers = surveyCard.querySelectorAll('.green-tick');
+    const months = Array.from(selectedMarkers).map(btn => parseInt(btn.getAttribute('data-months')));
+    months.sort((a, b) => a - b);
+
+    selectedMonthsLabel.textContent = months.length
+        ? months.join(' months, ') + ' months'
+        : 'None';
+
+    updateExtraContainerList(detailsContainer, months);
+}
+
+
+
+function updateExtraContainerList(container, months) {
+    container.innerHTML = ""; // Clear previous content
+
+    if (months.length === 0) {
+        container.innerHTML = "<p style='color: gray; text-align: center;'>No months selected.</p>";
+        return;
+    }
+
+    const grid = document.createElement('div');
+    grid.className = "month-grid"; // Apply CSS grid layout
+
+    months.forEach(month => {
+        const div = document.createElement('div');
+        div.className = "month-item";
+        div.innerHTML = `<i class='bx bx-check-circle'></i> ${month} months`;
+        grid.appendChild(div);
+    });
+
+    container.appendChild(grid);
+}
+
+
+
+function createSparks(marker) {
+    // Remove old sparks if any
+    const oldSparks = marker.querySelector('.spark-container');
+    if (oldSparks) oldSparks.remove();
+
+    // Create new spark container
+    const sparkContainer = document.createElement('div');
+    sparkContainer.className = 'spark-container';
+    marker.appendChild(sparkContainer);
+
+    for (let i = 0; i < 10; i++) {
+        const spark = document.createElement('div');
+        spark.className = 'spark';
+
+        // Random position and movement
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 20 + 5;
+        spark.style.setProperty('--x', `${Math.cos(angle) * distance}px`);
+        spark.style.setProperty('--y', `${Math.sin(angle) * distance}px`);
+
+        sparkContainer.appendChild(spark);
+    }
+
+    // Remove sparks after animation
+    setTimeout(() => sparkContainer.remove(), 500);
+}
+        function getSelectedCheckboxes(checkboxName) {
+            const checkboxes = document.querySelectorAll(`input[name="${checkboxName}"]:checked`);
+            const selected = [];
+            checkboxes.forEach(checkbox => {
+                const label = document.querySelector(`label[for="${checkbox.id}"]`);
+
+                if (checkboxName === 'apiSurvey') {
+                    selected.push({
+                        name: label.innerText,
+                        id: checkbox.value
+                    });
+                } else {
+                    selected.push(label.innerText);
+                }
+            });
+            return selected;
+        }
+
+        function goBack() {
+            document.getElementById('selectedSurveysContainer').style.display = 'none';
+            document.querySelector('.form-container').style.display = 'block';
+                }
+
+                function submitSelectedSurveys() {
+    const cards = document.querySelectorAll('#selectedSurveysList .survey-card');
+
+    const apiData = [];
+    const customData = [];
+    const surveyDataArray = [];
+
+    cards.forEach(card => {
+        const surveyName = card.dataset.surveyName;
+        const surveyId = card.dataset.surveyId;
+
+        const selectedMarkers = card.querySelectorAll('.green-tick');
+        const months = Array.from(selectedMarkers).map(btn => parseInt(btn.getAttribute('data-months')));
+        months.sort((a, b) => a - b);
+
+        // Convert months to human-readable format
+        const formattedMonths = months.map(month => month === 0 ? "0 months" : `${month} months`);
+
+        // Construct surveyData entry
+        surveyDataArray.push({
+            survey_name: surveyName,
+            selected_months: formattedMonths
+        });
+
+        if (surveyId === 'custom') {
+            customData.push(surveyName); // Only push name for custom surveys
+        } else {
+            apiData.push({
+                name: surveyName,
+                id: surveyId
+            });
+        }
+    });
+
+    // Set hidden input values
+    document.getElementById('apiSurveyData').value = JSON.stringify(apiData);
+    document.getElementById('customSurveyData').value = JSON.stringify(customData);
+    document.getElementById('surveyData').value = JSON.stringify(surveyDataArray);
+
+    // Submit form
+    document.getElementById('surveyForm').submit();
+}
+
+        function filterSurveys(searchInputId, surveyGroupId) {
+            const input = document.getElementById(searchInputId);
+            const filter = input.value.toLowerCase();
+            const surveyGroup = document.getElementById(surveyGroupId);
+            const checkboxes = surveyGroup.getElementsByClassName('checkbox');
+
+            for (let i = 0; i < checkboxes.length; i++) {
+                const label = checkboxes[i].getElementsByTagName('label')[0];
+                const textValue = label.textContent || label.innerText;
+                
+                if (textValue.toLowerCase().indexOf(filter) > -1) {
+                    checkboxes[i].style.display = "";
+                } else {
+                    checkboxes[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+    <script>
+        // Automatically hide flash message after 3 seconds
+        setTimeout(function() {
+            const flashMessage = document.getElementById('flash-message');
+            if (flashMessage) {
+                flashMessage.style.display = 'none';
+            }
+        }, 3000);  // 3 seconds
+    </script>
+
+<script>
+    // Disable the Add button by default
+    document.addEventListener('DOMContentLoaded', function() {
+        // Disable the Add button by default
+        const addButton = document.getElementById('addButton');
+        addButton.disabled = true;
+        addButton.style.backgroundColor = '#e0e0e0';
+        addButton.style.color = '#888';
+        addButton.style.cursor = 'not-allowed';
+        
+        // Get specialty input element
+        const specialtyInput = document.getElementById('specialty');
+        
+        // Get all survey checkboxes (both API and Custom)
+        const apiSurveyCheckboxes = document.querySelectorAll('input[name="apiSurvey"]');
+        const customSurveyCheckboxes = document.querySelectorAll('input[name="customSurvey"]');
+        
+        // Function to validate the specialty name (only alphabets and spaces)
+        function isValidSpecialty(specialty) {
+            return specialty.trim() !== '' && /^[A-Za-z\s]+$/.test(specialty);
+        }
+        
+        // Function to check if any survey is selected
+        function isAnySurveySelected() {
+            const apiSelected = Array.from(apiSurveyCheckboxes).some(checkbox => checkbox.checked);
+            const customSelected = Array.from(customSurveyCheckboxes).some(checkbox => checkbox.checked);
+            return apiSelected || customSelected;
+        }
+        
+        // Function to update button state based on validations
+        function updateAddButton() {
+            const isSpecialtyValid = isValidSpecialty(specialtyInput.value);
+            const isSurveySelected = isAnySurveySelected();
+            
+            if (isSpecialtyValid && isSurveySelected) {
+                // Enable button
+                addButton.disabled = false;
+                addButton.style.backgroundColor = '#CBFCC6';
+                addButton.style.color = 'rgb(0, 0, 0)';
+                addButton.style.cursor = 'pointer';
+                
+                // Add hover effect back
+                addButton.onmouseover = function() {
+                    this.style.backgroundColor = '#45a049';
+                    this.style.color = '#fff';
+                };
+                addButton.onmouseout = function() {
+                    this.style.backgroundColor = '#CBFCC6';
+                    this.style.color = 'rgb(0, 0, 0)';
+                };
+            } else {
+                // Disable button
+                addButton.disabled = true;
+                addButton.style.backgroundColor = '#e0e0e0';
+                addButton.style.color = '#888';
+                addButton.style.cursor = 'not-allowed';
+                
+                // Remove hover effect
+                addButton.onmouseover = null;
+                addButton.onmouseout = null;
+            }
+        }
+        
+        // Error message for invalid specialty
+        const specialtyErrorDiv = document.createElement('div');
+        specialtyErrorDiv.id = 'specialty-error';
+        specialtyErrorDiv.style.color = '#dc3545';
+        specialtyErrorDiv.style.fontSize = '12px';
+        specialtyErrorDiv.style.marginTop = '5px';
+        specialtyErrorDiv.style.display = 'none';
+        specialtyErrorDiv.textContent = 'Specialty name should contain only letters and spaces';
+        
+        // Insert error message after specialty input
+        specialtyInput.parentNode.appendChild(specialtyErrorDiv);
+        
+        // Add input event listener to specialty input
+        specialtyInput.addEventListener('input', function() {
+            // Show/hide error message
+            if (this.value.trim() !== '' && !isValidSpecialty(this.value)) {
+                specialtyErrorDiv.style.display = 'block';
+                this.style.borderColor = '#dc3545';
+            } else {
+                specialtyErrorDiv.style.display = 'none';
+                this.style.borderColor = '';
+            }
+            
+            // Update button state
+            updateAddButton();
+        });
+        
+        // Add change event listeners to all checkboxes
+        apiSurveyCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateAddButton);
+        });
+        
+        customSurveyCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateAddButton);
+        });
+        
+        // Initial button state update
+        updateAddButton();
+    });
+    </script>
+
+    <!-- Add this script at the end of your HTML, before the closing </body> tag -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the specialty input field
+        const specialtyInput = document.getElementById('specialty');
+        
+        // Create error message element for specialty availability
+        const availabilityMessage = document.createElement('div');
+        availabilityMessage.id = 'specialty-availability';
+        availabilityMessage.style.marginTop = '5px';
+        availabilityMessage.style.fontSize = '12px';
+        
+        // Insert the message element after the specialty input
+        specialtyInput.parentNode.appendChild(availabilityMessage);
+        
+        // Debounce function to limit API calls
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+        
+        // Function to check specialty availability
+        const checkSpecialtyAvailability = debounce(async function(specialtyName) {
+            // Don't check if specialty name is empty or invalid
+            if (!specialtyName || !specialtyName.trim() || !/^[A-Za-z\s]+$/.test(specialtyName)) {
+                availabilityMessage.textContent = '';
+                availabilityMessage.style.display = 'none';
+                return;
+            }
+            
+            try {
+                // Get hospital_code and site_code values from hidden inputs
+                const hospitalCode = document.querySelector('input[name="hospital_code"]').value;
+                const siteCode = document.querySelector('input[name="site_code"]').value;
+                
+                // Call the API endpoint to check availability
+                const response = await fetch(`/surveyapp/check-specialty?specialty=${encodeURIComponent(specialtyName)}&hospital_code=${encodeURIComponent(hospitalCode)}&site_code=${encodeURIComponent(siteCode)}`);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to check specialty availability');
+                }
+                
+                const data = await response.json();
+                
+                if (data.exists) {
+                    // Specialty already exists
+                    availabilityMessage.textContent = `"${data.formatted}" already exists.`;
+                    availabilityMessage.style.color = '#dc3545'; // Red color for error
+                    availabilityMessage.style.display = 'block';
+                    
+                    // Disable the Add button
+                    const addButton = document.getElementById('addButton');
+                    if (addButton) {
+                        addButton.disabled = true;
+                        addButton.style.backgroundColor = '#e0e0e0';
+                        addButton.style.color = '#888';
+                        addButton.style.cursor = 'not-allowed';
+                        addButton.onmouseover = null;
+                        addButton.onmouseout = null;
+                    }
+                } else {
+                    // Specialty is available
+                    availabilityMessage.textContent = `"${data.formatted}" is available.`;
+                    availabilityMessage.style.color = '#28a745'; // Green color for success
+                    availabilityMessage.style.display = 'block';
+                    
+                    // Re-enable the Add button if other conditions are met
+                    updateAddButton();
+                }
+            } catch (error) {
+                console.error('Error checking specialty availability:', error);
+                availabilityMessage.textContent = '';
+                availabilityMessage.style.display = 'none';
+            }
+        }, 500); // Wait 500ms after typing stops before checking
+        
+        // Add input event listener to check availability as user types
+        specialtyInput.addEventListener('input', function() {
+            // Show loading indicator
+            availabilityMessage.textContent = 'Checking...';
+            availabilityMessage.style.color = '#6c757d'; // Gray color for loading
+            availabilityMessage.style.display = 'block';
+            
+            // Check availability
+            checkSpecialtyAvailability(this.value);
+        });
+    });
+</script>
+
+<script>
+    // Automatically hide flash message after 3 seconds
+    setTimeout(function() {
+        const successMessage = document.querySelector('.alert-success');
+        const errorMessage = document.querySelector('.alert-danger');
+
+        if (successMessage) {
+            successMessage.style.display = 'none';
+        }
+
+        if (errorMessage) {
+            errorMessage.style.display = 'none';
+        }
+    }, 3000);  // 3 seconds
+</script>
+<!-- PROFESSIONAL POPUP -->
+<div class="popup-overlay" id="professionalPopup">
+    <div class="popup-container">
+        <div class="popup-header" id="popupHeader">
+            <!-- <button class="popup-close" onclick="hidePopup()">
+                <i class="bx bx-x"></i>
+            </button> -->
+            <i class="popup-icon" id="popupIcon"></i>
+            <h3 class="popup-title" id="popupTitle">Success</h3>
+        </div>
+        <div class="popup-body">
+            <p class="popup-message" id="popupMessage">Operation completed successfully</p>
+            <div class="popup-details" id="popupDetails" style="display: none;"></div>
+        </div>
+        <div class="popup-footer">
+            <button class="popup-btn" onclick="hidePopup()">
+              OK
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+// POPUP FUNCTIONS
+// function showPopup(title, message, type = 'success', details = null, onConfirm = null) {
+//     document.getElementById('popupTitle').textContent = title;
+//     document.getElementById('popupMessage').textContent = message;
+    
+//     const header = document.getElementById('popupHeader');
+//     const icon = document.getElementById('popupIcon');
+    
+//     // Reset classes
+//     header.className = 'popup-header';
+    
+//     // Set type-specific styling
+//     switch(type) {
+//         case 'success':
+//             icon.className = 'popup-icon bx bx-check-circle';
+//             break;
+//         case 'error':
+//             header.classList.add('error');
+//             icon.className = 'popup-icon bx bx-error-circle';
+//             break;
+//         case 'warning':
+//             header.classList.add('warning');
+//             icon.className = 'popup-icon bx bx-error';
+//             break;
+//     }
+
+//     // Handle details
+//     const detailsDiv = document.getElementById('popupDetails');
+//     if (details && Object.keys(details).length > 0) {
+//         detailsDiv.innerHTML = '';
+//         Object.entries(details).forEach(([key, value]) => {
+//             detailsDiv.innerHTML += `
+//                 <div class="detail-item">
+//                     <span class="detail-label">${key}:</span>
+//                     <span class="detail-value">${value}</span>
+//                 </div>`;
+//         });
+//         detailsDiv.style.display = 'block';
+//         detailsDiv.className = `popup-details ${type}`;
+//     } else {
+//         detailsDiv.style.display = 'none';
+//     }
+
+//     // Set up confirm button
+//     const confirmBtn = document.querySelector('.popup-btn');
+//     confirmBtn.onclick = () => {
+//         if (onConfirm) onConfirm();
+//         hidePopup();
+//     };
+
+//     // Show popup
+//     document.getElementById('professionalPopup').classList.add('show');
+// }
+
+function showPopup(title, message, type = 'success', details = null, onConfirm = null) {
+    document.getElementById('popupTitle').textContent = title;
+    document.getElementById('popupMessage').textContent = message;
+    
+    const header = document.getElementById('popupHeader');
+    const icon = document.getElementById('popupIcon');
+    const confirmBtn = document.querySelector('.popup-btn');
+    
+    // Reset classes
+    header.className = 'popup-header';
+    confirmBtn.className = 'popup-btn'; // Reset button classes
+    
+    // Set type-specific styling
+    switch(type) {
+        case 'success':
+            icon.className = 'popup-icon bx bx-check-circle';
+            break;
+        case 'error':
+            header.classList.add('error');
+            icon.className = 'popup-icon bx bx-error-circle';
+            confirmBtn.classList.add('error'); // Add error class to button
+            break;
+        case 'warning':
+            header.classList.add('warning');
+            icon.className = 'popup-icon bx bx-error';
+            break;
+    }
+
+    // Handle details
+    const detailsDiv = document.getElementById('popupDetails');
+    if (details && Object.keys(details).length > 0) {
+        detailsDiv.innerHTML = '';
+        Object.entries(details).forEach(([key, value]) => {
+            detailsDiv.innerHTML += `
+                <div class="detail-item">
+                    <span class="detail-label">${key}:</span>
+                    <span class="detail-value">${value}</span>
+                </div>`;
+        });
+        detailsDiv.style.display = 'block';
+        detailsDiv.className = `popup-details ${type}`;
+    } else {
+        detailsDiv.style.display = 'none';
+    }
+
+    // Set up confirm button
+    confirmBtn.onclick = () => {
+        if (onConfirm) onConfirm();
+        hidePopup();
+    };
+
+    // Show popup
+    document.getElementById('professionalPopup').classList.add('show');
+}
+
+function hidePopup() {
+    document.getElementById('professionalPopup').classList.remove('show');
+}
+
+// Check for cookie messages on page load
+document.addEventListener("DOMContentLoaded", () => {
+    const success = getCookie('successMessage');
+    const error = getCookie('errorMessage');
+
+    if (success) {
+        // Properly decode the URL-encoded message
+        let decodedSuccess;
+        try {
+            decodedSuccess = decodeURIComponent(success);
+        } catch (e) {
+            // If decoding fails, use the original message
+            decodedSuccess = success;
+        }
+        
+        // Extract specialty name from success message if available
+        const specialtyMatch = decodedSuccess.match(/Specialty "([^"]+)" added successfully/);
+        const specialty = specialtyMatch ? specialtyMatch[1] : null;
+        
+        showPopup(
+            'Success!',
+            decodedSuccess,
+            'success',
+            specialty ? {
+                // 'Specialty': specialty,
+                // 'Status': 'Successfully Added',
+                // 'Time': new Date().toLocaleString()
+            } : null,
+            () => {
+                console.log('Success acknowledged');
+            }
+        );
+        
+        // Clear the cookie
+        document.cookie = "successMessage=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    }
+
+    if (error) {
+        // Properly decode the URL-encoded message
+        let decodedError;
+        try {
+            decodedError = decodeURIComponent(error);
+        } catch (e) {
+            decodedError = error;
+        }
+        
+        showPopup(
+            'Error',
+            decodedError,
+            'error',
+            // {
+            //     'Error Type': 'Validation Error',
+            //     'Time': new Date().toLocaleString(),
+            //     'Action': 'Please try again'
+            // }
+        );
+        
+        // Clear the cookie
+        document.cookie = "errorMessage=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    }
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+});
+
+// Close popup when clicking outside
+document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('professionalPopup');
+    if (popup) {
+        popup.addEventListener('click', function(e) {
+            if (e.target === this) {
+                hidePopup();
+            }
+        });
+    }
+});
+
+// Close popup with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        hidePopup();
+    }
+});
+</script>
+</body>
+</html>

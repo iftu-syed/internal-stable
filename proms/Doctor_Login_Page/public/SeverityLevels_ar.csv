@@ -1,0 +1,53 @@
+Scale,Severity,Color,Chart_Range_Min,Chart_Range_Max,Actual_Range_Min,Actual_Range_Max
+Global-Health Physical,ممتاز,#00ff00,58,68,59,67.7
+Global-Health Physical,جيد جداً,#7fff00,50,58,51,58
+Global-Health Physical,جيد,#ffff00,42,50,43,50
+Global-Health Physical,متوسط,#ff7f00,35,42,36,42
+Global-Health Physical,ضعيف,#ff0000,16,35,16.2,35
+Global-Health Mental,ممتاز,#00ff00,56,68,57,67.7
+Global-Health Mental,جيد جداً,#7fff00,48,56,49,56
+Global-Health Mental,جيد,#ffff00,40,48,41,48
+Global-Health Mental,متوسط,#ff7f00,29,40,30,40
+Global-Health Mental,ضعيف,#ff0000,21,29,21.2,29
+WEXNER,خفيف,#00ff00,0,5,0,4
+WEXNER,معتدل,#ffff00,5,9,5,8
+WEXNER,شديد,#ff0000,9,20,9,+
+EPDS,لا شيء - حد أدنى,#00ff00,0,10,0,9
+EPDS,خفيف,#7fff00,10,13,10,12
+EPDS,متوسط,#ff7f00,13,15,13,15
+EPDS,شديد,#ff0000,15,30,16,+
+ICIQ_UI SF,طفيف,#7fff00,0,5,0,5
+ICIQ_UI SF,معتدل,#ffff00,5,12,6,12
+ICIQ_UI SF,شديد,#ff7f00,12,18,13,18
+ICIQ_UI SF,شديد جدًا,#ff0000,18,21,19,21
+PAID,ضيق منخفض,#ffff00,0,16,0,16
+PAID,ضيق معتدل,#ff7f00,16,39,17,39
+PAID,ضيق شديد,#ff0000,39,100,40,+
+PAID-5,ضائقة بسيطة,#ffff00,0,8,0,7
+PAID-5,احتمال وجود ضائقة,#ff0000,8,25,8,+
+PROMIS Bank v1.1 - Pain Interference,ضمن الحدود الطبيعية,#00ff00,20,50,20,49
+PROMIS Bank v1.1 - Pain Interference,خفيف,#7fff00,50,60,50,59
+PROMIS Bank v1.1 - Pain Interference,متوسط,#ff7f00,60,70,60,69
+PROMIS Bank v1.1 - Pain Interference,شديد,#ff0000,70,80,70,+
+PROMIS SF v1.0 - Fatigue-OA-Knee 8a,ضمن الحدود الطبيعية,#00ff00,20,50,20,49
+PROMIS SF v1.0 - Fatigue-OA-Knee 8a,خفيف,#7fff00,50,60,50,59
+PROMIS SF v1.0 - Fatigue-OA-Knee 8a,متوسط,#ff7f00,60,70,60,69
+PROMIS SF v1.0 - Fatigue-OA-Knee 8a,شديد,#ff0000,70,80,70,+
+PROMIS SF v1.0 - Depression-OA-Knee 4a,ضمن الحدود الطبيعية,#00ff00,20,50,20,49
+PROMIS SF v1.0 - Depression-OA-Knee 4a,خفيف,#7fff00,50,60,50,59
+PROMIS SF v1.0 - Depression-OA-Knee 4a,متوسط,#ff7f00,60,70,60,69
+PROMIS SF v1.0 - Depression-OA-Knee 4a,شديد,#ff0000,70,80,70,+
+Pain-Interference,شديد,#ff0000,70,80,70,80
+Pain-Interference,متوسط,#ff7f00,60,70,60,69
+Pain-Interference,خفيف,#7fff00,50,60,50,59
+Pain-Interference,ضمن الحدود الطبيعية,#00ff00,20,50,20,49
+Physical-Function,شديد,#ff0000,20,30,20,29
+Physical-Function,متوسط,#ff7f00,30,40,30,39
+Physical-Function,خفيف,#7fff00,40,50,40,49
+Physical-Function,ضمن الحدود الطبيعية,#00ff00,50,80,50,80
+EQ-5D,جيد جدًا,#00FF00,0.7,1.0,0.700,1.000
+EQ-5D,متوسط,#FFFF00,0.4,0.7,0.400,0.699
+EQ-5D,ضعيف,#FF7F00,0.0,0.4,0.000,0.399
+EQ-5D,سيء للغاية,#FF0000,-0.594,0.0,-0.594,-0.001
+PHQ-2,خفيف أو لا يوجد اكتئاب,#00ff00,0,3,0,2
+PHQ-2,إيجابي للمتابعة,#ff0000,3,6,3,6

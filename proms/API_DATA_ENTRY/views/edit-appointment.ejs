@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Entry Form</title>
+    <link rel="stylesheet" href="<%= basePath %>/styles.css"> <!-- Correct the path to your CSS file -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <link rel="stylesheet" href="<%= basePath %>/css/introjs.min.css">
+
+    <style>
+
+.language-selector {
+      text-align: right;
+      /* margin: 10px; */
+    }
+
+    .required {
+  color: red;
+  margin-left: 2px;
+}
+
+    .language-selector a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: #007BFF;
+    }
+
+    .language-selector a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .language-selector img {
+      margin-right: 5px;
+      margin-left: 5px;
+      width: 20px;
+      margin-left: 5px;
+      height: auto;
+      vertical-align: bottom;
+    }
+
+        .middle-section{padding-left: 2.5%;}
+        .optional-text {
+            font-size: smaller; /* Adjust the size as needed */
+            color: gray;       /* Optional: Change color for more distinction */
+        }
+
+        button[type="submit"] {
+    background: #CBFCC6;
+    border-radius: 5px;
+    border: 0px;
+        color: rgb(0, 0, 0);
+        padding: 5px 20px 8px 10px ;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      
+  button[type="submit"]:hover {
+        background-color: #45a049; /* Darker green */
+        color:#fff;
+      }
+
+        .flash-message {
+            display: flex;
+            justify-content: center;
+              margin: 10px 0;
+              padding: 10px;
+              border-radius: 5px;
+          }
+  
+          .flash-message.error {
+              background-color: #f8d7da;
+              color: #721c24;
+          }
+  
+          .flash-message.success {
+              color: green;
+          }
+
+          .cancel-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+          .cancel-btn {
+    background-color: #d9534f;
+    color: #fff;
+  }
+
+  .s-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+          .s-btn {
+    background-color: #CBFCC6;
+    color: #fff;
+  }
+
+  .introjs-tooltipbuttons {
+    text-align: right; /* Align buttons to the right */
+
+}
+
+.help-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0px !important;
+    transition: background-color 0.3s ease;
+}
+
+.help-btn:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+}
+
+
+.help-button-container {
+    position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #12171e;
+  padding: 12px 0;
+  transition: all 0.5s ease;
+}
+
+/* Ensure the button aligns well with sidebar's active state */
+.sidebar.active .help-btn {
+    color: #fff;
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+}
+        
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="top">
+             <div class="logo">
+            <img src="<%= basePath %>/assets/images/logo_white.png" alt="WeHealthify">
+             </div>
+             <i class="bx bx-menu" id="btn"></i>
+        </div>
+        <br>
+        <div class="sidebar-footer">
+            <p id="staffLabel" class="bold">Staff</p>
+            <p class="bold"><%= doctor.hospitalName %></p><!-- Updated here -->
+            <p class="bold"><%= doctor.site_code %></p>   <!-- Updated here -->
+        </div>
+    
+        
+        
+        <ul>
+            <li>
+                <a href="<%= basePath %>/home">
+                    <i class="bx bxs-grid-alt"></i>
+                    <span class="nav-item" id="dashboardLabel">Dashboard</span>
+                </a>
+                <span class="tooltip" id="dashboardTooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="<%= basePath %>/data-entry">
+                    <i class='bx bx-plus-circle'></i>
+                    <span class="nav-item" id="addAppointmentLabel">Add Appointment</span>
+                </a>
+                <span class="tooltip" id="addAppointmentTooltip">Add Appointment</span>
+            </li>            
+            <li>
+                <a href="<%= basePath %>/logout">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item" id="logoutLabel">Logout</span>
+                </a>
+                <span class="tooltip" id="logoutTooltip">Logout</span>
+            </li>            
+        </ul>
+        <div class="help-button-container">
+            <button id="helpButton" class="help-btn">
+                <span class="nav-item" id="helpLabel">Help </span>
+                <i class='bx bx-help-circle'></i>
+            </button>
+            
+        
+        </div>
+    </div>
+    
+    <div class="main-content" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+        <div class="topbar">
+            <h2 id="editAppointmentTitle" style="color: #333333;">Edit Appointment</h2>
+            
+        </div>
+        <hr style="opacity: 0.5;">
+        <!-- <div class="language-selector" style="text-align: right; padding: 10px; background-color: #f6f5fa;">
+            <a href="?lng=en" class="<%= lng === 'en' ? 'active' : '' %>">
+                <img src="<%= basePath %>/assets/usa.png" alt="English Flag">English
+            </a> |
+            <a href="?lng=ar" class="<%= lng === 'ar' ? 'active' : '' %>">
+                <img src="<%= basePath %>/assets/flag.png" alt="Arabic Flag">العربية
+            </a>
+          </div>    -->
+
+    <div class="csv-upload-container">
+
+
+        <div class="main-container" data-title="Form" data-intro="Edit details of existing patient">
+            <div class="topContainer">
+           <br><br>      <h2 id="dataEntryFormTitle" style="text-align: center; margin-bottom: 20px; color: #333333;">Data Entry Form</h2>
+            </div>
+            
+            <!-- image -->
+            <div class="container" data-title="Edit" data-intro="Edit the respective inputs of the patient">
+                
+                <div class="middle-section">
+                    <br>
+                    <br>
+                    <form id="dataForm" method="POST" action="<%= basePath %>/api-edit">
+                        <div class="form-group">
+                            <label for="Mr_no" class="form-label">MR Number<span class="required">*</label>
+                            <input type="text" id="Mr_no" class="form-input" name="mrNo" readonly required value="<%= patient.mrNo %>">
+                        </div>
+                        <div class="form-group">
+                            <label id="firstNameLabel" for="firstName" class="form-label">First Name:<span class="required">*</label>
+                            <input type="text" class="form-input" id="firstName" name="firstName" required value="<%= patient.firstName %>">
+                        </div>
+                        <div class="form-group">
+                            <label id="middleNameLabel" for="middleName" class="form-label">Middle Name (Optional):</label>
+                            <input type="text" class="form-input" id="middleName" name="middleName" value="<%= patient.middleName %>">
+                        </div>
+                        <div class="form-group">
+                            <label id="lastNameLabel" for="lastName" class="form-label">Last Name:<span class="required">*</label>
+                            <input type="text" class="form-input" id="lastName" name="lastName" required value="<%= patient.lastName %>">
+                        </div>
+                        
+
+                        <a href="<%= basePath %>/home"><button type="button" id="backButton" class="cancel-btn">Back</button></a>
+
+                </div>
+
+                <div class="right-section">
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <label for="DOB" id="dobLabel" class="form-label">Date of Birth:<span class="required">*</label>
+                        <input type="text" class="form-input" id="DOB" name="DOB" required value="<%= patient.DOB %>">
+                    </div>
+                    <div class="form-group">
+                        <label id="phoneNumberLabel" for="phoneNumber" class="form-label">Phone Number<span class="required">*</label>
+                        <input type="tel" id="phoneNumber" class="form-input" name="phoneNumber" required value="<%= patient.phoneNumber %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label id="appointmentDateTimeLabel" for="datetime" class="form-label">Appointment Date & Time<span class="required">*</label>
+                        <input type="datetime-local" id="datetime" class="form-input" name="datetime" required value="<%= patient.datetime %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label id="specialityLabel" for="speciality" class="form-label">Speciality<span class="required">*</label>
+                        <input type="text" class="form-input" id="speciality" name="speciality" readonly required value="<%= patient.speciality %>">
+                    </div>
+
+                    
+                    
+                    
+                    <button id="submitButton" type="submit" class="submit-btn" data-title="Submit" data-intro="Submit to save edited patient data">Submit</button>
+                   
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation message -->
+    
+
+    <% if (errorMessage.length > 0) { %>
+        <div class="flash-message error"><%= errorMessage %></div>
+        <%# --- ADD THIS SCRIPT BLOCK --- %>
+        <script>
+            setTimeout(() => {
+                const errorElement = document.querySelector('.flash-message.error');
+                if (errorElement) { // Check if the element exists before trying to hide it
+                    errorElement.style.display = 'none';
+                }
+            }, 5000); // 5000 milliseconds = 5 seconds
+        </script>
+        <%# --- END OF ADDED SCRIPT BLOCK --- %>
+    <% } %>
+
+    <% if (successMessage.length > 0) { %>
+        <div class="flash-message success"><%= successMessage %></div>
+        <script>
+            // Existing script for success message (hides after 3 seconds)
+            setTimeout(() => {
+                const successElement = document.querySelector('.flash-message.success');
+                 if (successElement) {
+                    successElement.style.display = 'none';
+                 }
+            }, 3000); // Currently 3 seconds
+        </script>
+    <% } %>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        };
+        const params = new URLSearchParams(window.location.search);
+        let currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+        
+        // Set the language cookie
+        document.cookie = `lng=${currentLanguage}; path=/`;
+              const fetchUrl = `/staff/locales/${currentLanguage}/translation.json`;
+        
+          
+              // Set the `lang` and `dir` attributes for the HTML document
+             
+          
+              fetch(fetchUrl)
+                .then(response => {
+                  if (!response.ok) {
+                    console.warn(`Translation file not found for language: ${currentLanguage}. Falling back to English.`);
+                    return fetch(`/staff/locales/en/translation.json`);
+                  }
+                  return response.json();
+                })
+                .then(translations => {
+                  console.log('Loaded translations:', translations);
+          
+                  // Update the elements based on translation keys
+                  Object.keys(translations).forEach(id => {
+                    const element = document.getElementById(id);
+          
+                    if (element) {
+                        const translationValue = translations[id];
+        
+                        if (typeof translationValue === 'string') {
+                            // Update regular text or HTML content
+                            element.innerHTML = translationValue;
+                        }
+                          if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+        
+                            // Update placeholders for input elements
+        
+                            console.log(`Updating placeholder for ${id}:`, translationValue);
+        
+                            element.placeholder = translationValue;
+        
+                          }
+                        else if (typeof translationValue === 'object') {
+                                                // Handle nested object (e.g., lists)
+                                                element.innerHTML = ''; // Clear existing content
+                                                Object.values(translationValue).forEach(item => {
+                                                    const listItem = document.createElement('li');
+                                                    listItem.textContent = item;
+                                                    element.appendChild(listItem);
+                                                });
+                        } else {
+                            console.warn(`Unexpected translation value type for "${id}":`, translationValue);
+                        }
+                    }
+                  });
+                })
+                .catch(error => console.error('Error loading translations:', error));
+            });
+          </script>
+
+    <!-- Include Flatpickr library -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/en.js"></script>
+
+    <script src="<%= basePath %>/js/intro.min.js"></script>
+    <script>
+        document.getElementById('helpButton').addEventListener('click', function () {
+    // Determine the current language (default to English)
+    const lang = new URLSearchParams(window.location.search).get('lng') || getCookie('lng') || 'en';
+
+    // Define translations for the steps
+    const translations = {
+        en: {
+            step1: "Edit details of the existing patient.",
+            step2: "Edit the respective inputs for the patient as needed.",
+            step3: "Submit to save the edited patient data."
+        },
+        ar: {
+            step1: "تحرير تفاصيل المريض الحالي.",
+            step2: "قم بتحرير الإدخالات المناسبة للمريض حسب الحاجة.",
+            step3: "أرسل لحفظ بيانات المريض المعدلة."
+        }
+    };
+
+    // Define the steps for Intro.js
+    const introSteps = [
+        {
+            element: '.main-container', // Form container
+            intro: translations[lang].step1
+        },
+        {
+            element: '.container', // Container for editing inputs
+            intro: translations[lang].step2
+        },
+        {
+            element: '#submitButton', // Submit button
+            intro: translations[lang].step3
+        }
+    ];
+
+    // Initialize and start Intro.js with dynamic labels for buttons
+    introJs()
+        .setOptions({
+            steps: introSteps,
+            rtl: lang === 'ar', // Enable RTL if the language is Arabic
+            nextLabel: lang === 'ar' ? 'التالي' : 'Next',
+            prevLabel: lang === 'ar' ? 'السابق' : 'Back',
+            doneLabel: lang === 'ar' ? 'تم' : 'Done'
+        })
+        .start();
+});
+
+// Helper function to retrieve a cookie value by name
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+        
+    </script>
+    <script>
+        // Initialize Flatpickr for datetime with custom minute increments and 12-hour time format
+        flatpickr("#datetime", {
+            enableTime: true,
+            dateFormat: "m-d-Y h:i K", // Store the value in 12-hour format with AM/PM
+            time_24hr: false, // Use 12-hour format with AM/PM
+            minuteIncrement: 15, // Set minute increments to 15 (00, 15, 30, 45)
+            minDate: "today", // Disable past dates and times
+            altInput: true, // Use an alternative input for displaying the formatted date
+            altFormat: "F j, Y h:i K", // Display format for the alternative input (12-hour time with AM/PM)
+            defaultHour: 12, // Set default hour to 12 PM
+        });
+
+        // Initialize Flatpickr for DOB with custom format
+        flatpickr("#DOB", {
+            dateFormat: "m/d/Y", // Store the value in MM/DD/YYYY format
+            maxDate: "today", // Disable future dates
+            altInput: true, // Use an alternative input for displaying the formatted date
+            altFormat: "m/d/Y", // Display format for the alternative input
+        });
+
+        
+            
+    </script>
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+        
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+        
+        // Show the loading GIF when the form is submitted
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function() {
+                document.getElementById('loadingContainer').style.display = 'flex';
+            });
+        });
+        
+        
+        </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+    
+      function removeCurrentPageClasses() {
+          sidebarLinks.forEach(link => {
+              link.classList.remove('CurrentPage');
+          });
+      }
+    
+      function setCurrentPageLink(path) {
+          removeCurrentPageClasses();
+          console.log(`Setting CurrentPage link for path: ${path}`);
+          const currentPageLink = Array.from(sidebarLinks).find(link => {
+              const linkPath = new URL(link.href).pathname;
+              return linkPath === path;
+          });
+          if (currentPageLink) {
+              console.log(`CurrentPage link found: ${currentPageLink.href}`);
+              currentPageLink.classList.add('CurrentPage');
+          } else {
+              console.log(`No CurrentPage link found for path: ${path}`);
+          }
+      }
+    
+      // Check the URL path and set the current page link on page load
+      const currentPath = window.location.pathname;
+      console.log(`Current path: ${currentPath}`);
+      setCurrentPageLink(currentPath);
+    
+      sidebarLinks.forEach(link => {
+          link.addEventListener('click', function() {
+              const targetPath = new URL(link.href).pathname;
+              console.log(`Navigating to: ${targetPath}`);
+              setCurrentPageLink(targetPath);
+          });
+      });
+    });
+    </script>
+</body>
+</html>

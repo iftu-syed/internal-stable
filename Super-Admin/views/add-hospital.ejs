@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Hospital and Sites</title>
+    <!-- Updated stylesheet link to include basePath -->
+    <link rel="stylesheet" href="<%= basePath %>/styles/styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 1rem;
+}
+
+.addAdmin {
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0 auto;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 10px; /* Reduced margin-bottom for headings */
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Reduced space between form groups */
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.form-group input.error {
+    border: 1px solid #dc3545;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.column {
+    width: 48%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 600px) {
+    .form-group {
+        flex-direction: column;
+    }
+
+    .column {
+        width: 100%;
+    }
+}
+
+.page3 {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 1rem;            /* optional breathing room */
+}
+
+/* left = form, right = table */
+.form-column {
+  flex: 1 1 300px;           /* grows, shrinks, min-width 300px */
+}
+.table-column {
+  flex: 2 1 500px;           /* twice the space, min-width 500px */
+}
+
+/* allow horizontal scrolling if the table is too wide */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+/* stack vertically on narrow viewports */
+@media (max-width: 800px) {
+  .page3 {
+    flex-direction: column;
+  }
+}
+
+/* Table container */
+.table-container {
+  background-color: #fff;
+  padding-top: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 84vh;
+  overflow: auto;
+}
+
+/* Table styles */
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Table header */
+.table-container th {
+  background-color: #5F677C; /* Header background color */
+  color: #fff;               /* Header text color */
+  text-transform: uppercase; /* Uppercase for header text */
+  font-size: 0.85rem;         /* Font size */
+  padding: 1rem;             /* Padding for header */
+  position: sticky;          /* Sticky positioning */
+  top: 0;                    /* Stick to the top */
+  z-index: 1;                /* Make sure it stays above the rows */
+  border-bottom: 2px solid #e0e0e0; /* Optional: Add a bottom border */
+}
+
+/* Table body cells */
+.table-container th,
+.table-container td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  word-wrap: break-word;
+}
+
+.table-container td {
+  background-color: #f5f6fa;
+}
+
+/* Styling for the "active" and "inactive" statuses */
+.table-container .active {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.table-container .inactive {
+  color: #f44336;
+  font-weight: bold;
+}
+
+/* Button styling */
+.table-container .edit-btn,
+.table-container .delete-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.table-container .edit-btn {
+  background-color: #f0ad4e;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+.table-container .delete-btn {
+  background-color: #d9534f;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+/* Button hover effect */
+.table-container .edit-btn:hover {
+  background-color: #ec971f;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.table-container .delete-btn:hover {
+  background-color: #d32f2f;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  table {
+    font-size: 12px; /* Reduce font size for smaller screens */
+  }
+  .patient-details {
+    overflow-x: scroll; /* Enable horizontal scroll for small screens */
+  }
+}
+
+
+
+</style>
+
+</head>
+<body>
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+        <!-- Sidebar content remains the same -->
+        <div class="top">
+            <div class="logo">
+                <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn" style="color: #fff; font-size: 24px;"></i>
+        </div>
+
+        <div class="user">
+            <div>
+                <p class="bold">Super Admin</p>
+                <hr class="spacer">
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a href="<%= basePath %>/dashboard">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="nav-item">Add Hospital Admin</span>
+                </a>
+                <span class="tooltip">Add</span>
+            </li>
+            
+            
+            <li>
+                <a href="<%= basePath %>/addHospital">
+                    <i class='bx bx-add-to-queue'></i>
+                    <span class="nav-item">Add Hospital & Site</span>
+                </a>
+                <span class="tooltip">Add Hospital & Site</span>
+            </li>
+            <li>
+                <a href="<%= basePath %>/">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item">Logout</span>
+                </a>
+                <span class="tooltip">Logout</span>
+            </li>
+        </ul>
+    </div>
+    
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+        <div class="topbar">
+            <h2 style="color: #333333;">Add Hospital and Sites</h2>
+        </div>
+        <hr style="opacity: 0.5;">
+        <div class="page3">
+
+            <div class="form-column">
+            <!-- Updated form action to include basePath with validation -->
+            <form action="<%= basePath %>/addHospital" method="POST" class="addAdmin" id="hospitalForm">
+                <h2 style="color: #333333;">Add Hospital</h2>
+
+                <div class="form-group">
+                    <div class="column">
+                        <input type="text" id="hospital_code" name="hospital_code" placeholder="Hospital Code" required maxlength="3" minlength="3">
+                        <div class="error-message" id="hospital_code_error">Hospital code must be exactly 3 characters</div>
+                    </div>
+                    <div class="column">
+                        <input type="text" id="hospital_name" name="hospital_name" placeholder="Hospital Name" required>
+                        <div class="error-message" id="hospital_name_error">Hospital name should contain only letters and spaces</div>
+                    </div>
+                </div>
+
+                <h3>Site Information</h3>
+
+                <div class="form-group">
+                    <div class="column">
+                        <input type="text" id="site_code" name="site_code" placeholder="Site Code" required maxlength="5" minlength="3">
+                        <div class="error-message" id="site_code_error">Site code must be 3-5 characters</div>
+                    </div>
+                    <div class="column">
+                        <input type="text" id="site_name" name="site_name" placeholder="Site Name" required>
+                        <div class="error-message" id="site_name_error">Site name should contain only letters and spaces</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="full-width">
+                        <input type="text" id="address" name="address" placeholder="Address" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="column">
+                        <input type="text" id="city" name="city" placeholder="City" required>
+                        <div class="error-message" id="city_error">City should contain only letters and spaces</div>
+                    </div>
+                    <div class="column">
+                        <input type="text" id="state" name="state" placeholder="State" required>
+                        <div class="error-message" id="state_error">State should contain only letters and spaces</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="column">
+                        <input type="text" id="country" name="country" placeholder="Country" required>
+                        <div class="error-message" id="country_error">Country should contain only letters and spaces</div>
+                    </div>
+                    <div class="column">
+                        <input type="text" id="zip" name="zip" placeholder="Zip Code" required pattern="[0-9]*">
+                        <div class="error-message" id="zip_error">Zip code should contain only numbers</div>
+                    </div>
+                </div>
+
+                <h3>Notification Preference</h3>
+                <div class="form-group">
+                    <select name="notification_preference" required>
+                        <option value="" disabled selected>Select Notification Method</option>
+                        <option value="sms">SMS</option>
+                        <option value="email">Email</option>
+                        <option value="whatsapp">WhatsApp</option>
+                        <option value="both">SMS and Email</option>
+                        <option value="none">Disabled</option>  
+                        <option value="third_party_api">Third Party API</option> </select>
+                    </select>
+                </div>
+                <button type="submit"> <i class='bx bx-book-add'></i> Add Hospital and Site</button>
+
+            </form>
+
+        </div>
+
+        <div class="table-column">
+            <% if (hospitals && hospitals.length > 0) { %> <div>
+                <h2 style="text-align: center;">Hospital and Site Records</h2>
+                <div class="table-container">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Hospital Code</th>
+                        <th>Hospital Name</th>
+                        <th>Site Code</th>
+                        <th>Site Name</th>
+                        <th>Address</th>
+                        <th>Notification</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% hospitals.forEach(hospital => { %>
+                        <%# Check if the hospital has sites and it's an array %>
+                        <% if (Array.isArray(hospital.sites) && hospital.sites.length > 0) { %>
+                          <%# Loop through each site and display its row %>
+                          <% hospital.sites.forEach(site => { %>
+                            <tr>
+                              <td><%= hospital.hospital_code %></td>
+                              <td><%= hospital.hospital_name %></td>
+                              <td><%= site.site_code %></td>
+                              <td><%= site.site_name %></td>
+                              <td><%= site.address %>, <%= site.city %>, <%= site.state %>, <%= site.country %> - <%= site.zip %></td>
+                              <td><%= site.notification_preference %></td>
+                              <td>
+                                <button type="button" class="edit-btn" onclick="openEditModal('<%= hospital._id %>', '<%= site._id %>')">Edit</button>
+                                <form method="POST" action="<%= basePath %>/deleteSite" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this site?');">
+                                  <input type="hidden" name="hospitalId" value="<%= hospital._id %>">
+                                  <input type="hidden" name="siteId" value="<%= site._id %>">
+                                  <button type="submit" class="delete-btn">Delete</button>
+                                </form>
+                              </td>
+                            </tr>
+                          <% }) %>
+                        <% } %> <%# End of the 'if sites exist' block. The 'else' block that showed "No sites added yet" has been removed. %>
+                      <% }) %> <%# End of hospitals.forEach loop %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            <% } else { %>
+              <p style="text-align: center;">No hospital records found yet.</p>
+            <% } %>
+          </div>
+
+
+            <div id="editModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; z-index: 9999; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6);">
+                <div style="background: #fff; margin: 5% auto; padding: 20px; width: 90%; max-width: 600px; border-radius: 8px; position: relative;">
+                  <h2>Edit Site</h2>
+                  <form method="POST" action="<%= basePath %>/updateSite" id="editSiteForm">
+                    <input type="hidden" name="hospitalId" id="modalHospitalId">
+                    <input type="hidden" name="siteId" id="modalSiteId">
+              
+                    <!-- <label>Site Code</label>
+                    <input type="text" name="site_code" id="modalSiteCode" required> -->
+              
+                    <label>Site Name</label>
+                    <input type="text" name="site_name" id="modalSiteName" required>
+              <br>
+                    <label>Address</label>
+                    <input type="text" name="address" id="modalAddress"><br>
+              
+                    <label>City</label>
+                    <input type="text" name="city" id="modalCity"><br>
+              
+                    <label>State</label>
+                    <input type="text" name="state" id="modalState"><br>
+              
+                    <label>Country</label>
+                    <input type="text" name="country" id="modalCountry"><br>
+              
+                    <label>Zip</label>
+                    <input type="text" name="zip" id="modalZip"><br>
+              
+                    <label>Notification</label>
+                    <select name="notification_preference" id="modalNotification" required>
+                      <option value="sms">SMS</option>
+                      <option value="email">Email</option>
+                      <option value="whatsapp">WhatsApp</option>
+                      <option value="both">SMS and Email</option>
+                      <option value="none">Disabled</option>
+                      <option value="third_party_api">Third Party API</option>
+                    </select>
+              
+                    <br><br>
+                    <button type="submit">Update Site</button>
+                    <button type="button" onclick="closeEditModal()" style="background-color: #f0ad4e; color: #fff; transition: background-color 0.3s; border-radius: 4px; font-size: 16px; padding: 10px; margin-top: 10px; width: 100%;">Cancel</button>
+                  </form>
+                </div>
+              </div>
+              
+        </div>
+        
+    </div>
+
+    <script>
+        // Sidebar toggle functionality
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+
+        btn.onclick = function () {
+            sidebar.classList.toggle('active');
+        };
+
+        // Sidebar active link handling
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+
+            // Function to remove 'current' class from all links
+            function removeCurrentPageClasses() {
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('current');
+                });
+            }
+
+            // Function to add 'current' class to the active link based on path
+            function setCurrentPageLink(path) {
+                removeCurrentPageClasses();
+                const currentPageLink = Array.from(sidebarLinks).find(link => {
+                    const linkPath = new URL(link.href, window.location.origin).pathname;
+                    return linkPath === path;
+                });
+                if (currentPageLink) {
+                    currentPageLink.classList.add('current');
+                }
+            }
+
+            // Check the URL path and set the current page link on page load
+            const currentPath = window.location.pathname;
+            setCurrentPageLink(currentPath);
+
+            // Add event listener to each sidebar link
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const targetPath = new URL(link.href, window.location.origin).pathname;
+                    setCurrentPageLink(targetPath);
+                    window.location.href = link.href;
+                });
+            });
+
+            // Form validation
+            const form = document.getElementById('hospitalForm');
+            
+            // Fields that should contain only letters and spaces
+            const textOnlyFields = [
+                { id: 'hospital_name', errorId: 'hospital_name_error' },
+                { id: 'site_name', errorId: 'site_name_error' },
+                { id: 'city', errorId: 'city_error' },
+                { id: 'state', errorId: 'state_error' },
+                { id: 'country', errorId: 'country_error' }
+            ];
+            
+            // Fields with specific length requirements
+            const lengthRestrictedFields = [
+                { id: 'hospital_code', errorId: 'hospital_code_error', exactLength: 3 },
+                { id: 'site_code', errorId: 'site_code_error', minLength: 3, maxLength: 5 }
+            ];
+            
+            // Fields that should contain only numbers
+            const numberOnlyFields = [
+                { id: 'zip', errorId: 'zip_error' }
+            ];
+            
+            // Function to check if a string contains only letters and spaces
+            function isValidText(text) {
+                return /^[A-Za-z\s]+$/.test(text);
+            }
+            
+            // Function to check if a string contains only numbers
+            function isValidNumber(text) {
+                return /^[0-9]+$/.test(text);
+            }
+            
+            // Function to check if a string has the exact required length
+            function hasExactLength(text, length) {
+                return text.length === length;
+            }
+            
+            // Function to check if a string has length within a range
+            function hasValidLength(text, minLength, maxLength) {
+                return text.length >= minLength && text.length <= maxLength;
+            }
+            
+            // Add input event listeners to text-only fields
+            textOnlyFields.forEach(field => {
+                const inputElement = document.getElementById(field.id);
+                const errorElement = document.getElementById(field.errorId);
+                
+                inputElement.addEventListener('input', function() {
+                    if (this.value && !isValidText(this.value)) {
+                        this.classList.add('error');
+                        errorElement.style.display = 'block';
+                    } else {
+                        this.classList.remove('error');
+                        errorElement.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Add input event listeners to length-restricted fields
+            lengthRestrictedFields.forEach(field => {
+                const inputElement = document.getElementById(field.id);
+                const errorElement = document.getElementById(field.errorId);
+                
+                inputElement.addEventListener('input', function() {
+                    if ('exactLength' in field) {
+                        if (this.value && !hasExactLength(this.value, field.exactLength)) {
+                            this.classList.add('error');
+                            errorElement.style.display = 'block';
+                        } else {
+                            this.classList.remove('error');
+                            errorElement.style.display = 'none';
+                        }
+                    } else if ('minLength' in field && 'maxLength' in field) {
+                        if (this.value && !hasValidLength(this.value, field.minLength, field.maxLength)) {
+                            this.classList.add('error');
+                            errorElement.style.display = 'block';
+                        } else {
+                            this.classList.remove('error');
+                            errorElement.style.display = 'none';
+                        }
+                    }
+                });
+            });
+            
+            // Add input event listeners to number-only fields
+            numberOnlyFields.forEach(field => {
+                const inputElement = document.getElementById(field.id);
+                const errorElement = document.getElementById(field.errorId);
+                
+                inputElement.addEventListener('input', function() {
+                    if (this.value && !isValidNumber(this.value)) {
+                        this.classList.add('error');
+                        errorElement.style.display = 'block';
+                    } else {
+                        this.classList.remove('error');
+                        errorElement.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Form submission validation
+            form.addEventListener('submit', function(event) {
+                let hasError = false;
+                
+                // Check all text-only fields
+                textOnlyFields.forEach(field => {
+                    const inputElement = document.getElementById(field.id);
+                    const errorElement = document.getElementById(field.errorId);
+                    
+                    if (inputElement.value && !isValidText(inputElement.value)) {
+                        inputElement.classList.add('error');
+                        errorElement.style.display = 'block';
+                        hasError = true;
+                    }
+                });
+                
+                // Check all length-restricted fields
+                lengthRestrictedFields.forEach(field => {
+                    const inputElement = document.getElementById(field.id);
+                    const errorElement = document.getElementById(field.errorId);
+                    
+                    if ('exactLength' in field) {
+                        if (!hasExactLength(inputElement.value, field.exactLength)) {
+                            inputElement.classList.add('error');
+                            errorElement.style.display = 'block';
+                            hasError = true;
+                        }
+                    } else if ('minLength' in field && 'maxLength' in field) {
+                        if (!hasValidLength(inputElement.value, field.minLength, field.maxLength)) {
+                            inputElement.classList.add('error');
+                            errorElement.style.display = 'block';
+                            hasError = true;
+                        }
+                    }
+                });
+                
+                // Check all number-only fields
+                numberOnlyFields.forEach(field => {
+                    const inputElement = document.getElementById(field.id);
+                    const errorElement = document.getElementById(field.errorId);
+                    
+                    if (inputElement.value && !isValidNumber(inputElement.value)) {
+                        inputElement.classList.add('error');
+                        errorElement.style.display = 'block';
+                        hasError = true;
+                    }
+                });
+                
+                // Prevent form submission if there are errors
+                if (hasError) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+    <script>
+        const hospitalsData = <%- JSON.stringify(hospitals) %>;
+      
+        function openEditModal(hospitalId, siteId) {
+          const hospital = hospitalsData.find(h => h._id === hospitalId);
+          if (!hospital) return;
+      
+          const site = hospital.sites.find(s => s._id === siteId);
+          if (!site) return;
+      
+          document.getElementById('modalHospitalId').value = hospitalId;
+          document.getElementById('modalSiteId').value = siteId;
+      
+          //document.getElementById('modalSiteCode').value = site.site_code;
+          document.getElementById('modalSiteName').value = site.site_name;
+          document.getElementById('modalAddress').value = site.address;
+          document.getElementById('modalCity').value = site.city;
+          document.getElementById('modalState').value = site.state;
+          document.getElementById('modalCountry').value = site.country;
+          document.getElementById('modalZip').value = site.zip;
+          document.getElementById('modalNotification').value = site.notification_preference || 'none';
+      
+          document.getElementById('editModal').style.display = 'block';
+        }
+      
+        function closeEditModal() {
+          document.getElementById('editModal').style.display = 'none';
+        }
+      
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+          const modal = document.getElementById('editModal');
+          if (event.target == modal) {
+            closeEditModal();
+          }
+        }
+      </script>
+      
+</body>
+</html>

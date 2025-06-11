@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Hospital</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Urbanist', Arial, sans-serif;
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            background-image: url('<%= basePath %>/assets/lgbg.png'); /* Update with correct path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 20px;
+            margin: 30px;
+            margin-top: 0px;
+        }
+
+        /* Form Container */
+        .form-container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Tabs Styling */
+        .form-tabs {
+            display: flex;
+            /* flex-wrap: wrap; */
+            justify-content: space-around;
+            background-color: #f1f1f1;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab {
+            flex: 1 1 auto;
+            text-align: center;
+            padding: 15px 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s, color 0.3s;
+            border-right: 1px solid #e0e0e0;
+            background-color: #e0e0e0;
+            color: #6c757d;
+        }
+
+        .tab:last-child {
+            border-right: none;
+        }
+
+        .tab.active {
+            background-color: #ffffff;
+            color: #000000;
+            border-bottom: 3px solid #38c172;
+        }
+
+        .tab:hover:not(.active) {
+            background-color: #d4d4d4;
+        }
+
+        /* Form Sections */
+        .form-section {
+            display: none;
+            padding: 20px;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        /* Form Groups */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333333;
+            margin-top: 10px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        /* Specialties Section */
+        .specialties-container {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .specialty-category {
+            margin-bottom: 25px;
+        }
+
+        .specialty-category h4 {
+            margin-bottom: 10px;
+            color: #333333;
+            font-size: 18px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: #555555;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .checkbox-label:hover {
+            color: #000000;
+        }
+
+        /* Branch Container */
+        #branch-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 5px;
+            padding: 20px;
+            border-radius: 10px;
+            align-items: flex-start;
+            position: relative;
+            border: 1px solid #ccc;
+            background-color: #fafafa;
+        }
+
+        .left-section,
+        .right-section {
+            width: 48%;
+        }
+
+        /* Vertical Separator Line */
+        #branch-container::before {
+            content: "";
+            display: block;
+            width: 1px;
+            background-color: #ddd;
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        :root {
+            /* Color Palette */
+            --submit-bg-color: #38c172; /* Primary Submit Color (Red) */
+            --submit-hover-bg-color: #2fa35e; /* Hover Color */
+            --submit-active-bg-color: #2fa35e;; /* Active/Clicked Color */
+            --submit-text-color: #ffffff; /* Text Color */
+            --submit-border: none; /* Border Style */
+            --submit-border-radius: 5px; /* Rounded Corners */
+            --submit-padding: 12px 24px; /* Padding */
+            --submit-font-size: 16px; /* Font Size */
+            --submit-font-weight: 600; /* Font Weight */
+            --submit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box Shadow */
+            --submit-hover-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Hover Box Shadow */
+            --transition-duration: 0.3s; /* Transition Duration */
+            --transition-timing-function: ease; /* Transition Timing Function */
+            --submit-font-family: 'Urbanist', Arial, sans-serif; /* Font Family */
+        }
+        .select-deselect-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    margin-top: 15px; /* Optional: Adjust spacing as needed */
+}
+
+/* Existing Select All Button Styling */
+.select-all-btn {
+    background-color: #4a90e2; /* Blue background */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover Effect for Select All Button */
+.select-all-btn:hover {
+    background-color: #357ABD;
+}
+
+/* New Deselect All Button Styling */
+.deselect-all-btn {
+    background-color: #e74c3c; /* Red background to indicate deselection */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover Effect for Deselect All Button */
+.deselect-all-btn:hover {
+    background-color: #c0392b;
+}
+
+        /* Buttons */
+        .btn, .add-btn  {
+            background-color: #38c172;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover, .add-btn:hover {
+            background-color: #2abf6e;
+        }
+
+
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #CBFCC6;
+            color: rgb(10, 1, 1);
+        }
+
+        .next-btn i {
+            font-size: 16px;
+        }
+
+        .next-btn:hover {
+            background-color: #218838;
+            color: white;
+        }
+
+        /* Form Actions */
+        .form-actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .required {
+            color: red;
+            font-weight: bold;
+            margin-left: 2px;
+        }
+        #add-user {
+            background-color: #98c8f5;
+            color: #333;
+            border: none;
+            gap: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        #add-user:hover {
+            background-color: #357ABD;
+        }
+
+        #add-doctor {
+            background-color: #98c8f5;
+            color: #333;
+            border: none;
+            gap: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        #add-doctor:hover {
+            background-color: #357ABD;
+        }
+
+        #add-staff {
+            background-color: #98c8f5;
+            color: #333;
+            border: none;
+            gap: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        #add-staff:hover {
+            background-color: #357ABD;
+        }
+
+
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            #branch-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .left-section,
+            .right-section {
+                width: 100%;
+            }
+
+            #branch-container::before {
+                display: none;
+            }
+
+            .checkbox-group {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .form-tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                border-right: none;
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            .tab:last-child {
+                border-bottom: none;
+            }
+        }
+
+        /* Header Section */
+        .form-header {
+            background-color: #4a90e2;
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .form-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+
+        #details {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            max-width: 95%;
+            margin: 40px auto;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        #details h2 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center align horizontally */
+            text-align: center; /* Center align text */
+        }
+
+        #details h2 i {
+            margin-right: 10px;
+            color: #4a90e2;
+        }
+
+        #details h3 {
+            font-size: 18px;
+            color: #333;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        #details h3 i {
+            margin-right: 8px;
+            color: #4a90e2;
+        }
+
+        #details p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 15px;
+            text-align: center; /* Center align text */
+        }
+
+        #details ul {
+            list-style: none; /* Remove default bullets */
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        #details ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #444;
+        }
+
+        #details ul li::before {
+            content: "\f00c"; /* Font Awesome checkmark */
+            font-family: "Font Awesome 5 Free"; /* Ensure Font Awesome is loaded */
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #4a90e2;
+            font-size: 14px;
+        }
+
+        /* Two-Column Layout for Details */
+        .details-columns {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* .details-columns .column {
+            text-align: center;
+        } */
+
+        .details-columns .column h3 {
+            margin-top: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .details-columns {
+                flex-direction: column;
+            }
+
+            .form-tabs {
+                flex-direction: column;
+            }
+
+            .form-tabs .tab {
+                text-align: left;
+                padding: 10px 15px;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Call to Action */
+        .form-actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            background-color: #CBFCC6;
+            color: rgb(10, 1, 1);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-family: 'Urbanist', Arial, sans-serif;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.7s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn i {
+            margin-left: 8px;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+            color: white;
+        }
+
+        /* Support Section */
+        .support-info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .support-info a {
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .support-info a:hover {
+            text-decoration: underline;
+        }
+        #users {
+            margin-top: 20px;
+        }
+
+        #users h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        #users h3 i {
+            margin-right: 8px;
+            color: #4a90e2;
+        }
+
+        .user-container,
+        .doctor-container,
+        .staff-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .user-container.additional,
+        .doctor-container.additional,
+        .staff-container.additional {
+            background-color: #f1faff;
+            border-color: #4a90e2;
+        }
+
+        .user-header,
+        .doctor-header,
+        .staff-header {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        /* Remove Button */
+        .remove-user,
+        .remove-doctor,
+        .remove-staff {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: transparent;
+            border: none;
+            color: #e74c3c;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .remove-user:hover,
+        .remove-doctor:hover,
+        .remove-staff:hover {
+            color: #c0392b;
+        }
+
+        #doctors {
+            margin-top: 20px;
+        }
+
+        #doctors h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        #doctors h3 i {
+            margin-right: 8px;
+            color: #4a90e2;
+        }
+
+        #staff {
+            margin-top: 20px;
+        }
+
+        #staff h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        #staff h3 i {
+            margin-right: 8px;
+            color: #4a90e2;
+        }
+
+        #patients {
+            margin-top: 20px;
+        }
+
+        #patients h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        #patients h3 i {
+            margin-right: 8px;
+            color: #4a90e2;
+        }
+        #add-specialties {
+            margin-top: 20px;
+        }
+
+        #add-specialties h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        #add-specialties h3 i {
+            margin-right: 8px;
+            color: #4a90e2;
+        }
+
+        .btn.submit-btn i {
+            margin-right: 5px; /* When icon is before the text */
+            /* OR */
+            margin-left: 5px;  /* When icon is after the text */
+        }
+        .main-content img {
+            display: block;       /* Make the image a block-level element */
+            margin: 0 auto;       /* Automatically adjust left and right margins to center */
+            max-width: 100%;      /* Ensure the image is responsive */
+            height: auto;         /* Maintain the aspect ratio */
+        }
+        .red-text {
+            color: red;
+            /* font-weight: bold; Optional: Make it bold for emphasis */
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="main-content">
+        <img src="<%= basePath %>/assets/logo1.png" alt="">
+        <form id="hospitalForm" action="<%= basePath %>/hospital-onboarding" method="POST" enctype="multipart/form-data">
+            <div class="form-container">
+                <!-- Tab Navigation -->
+                <div class="form-tabs">
+                	<div class="tab active" data-section="details" style="padding: 25px;"> Welcome</div>
+                    <div class="tab" data-section="hospital-details">1. Healthcare Facility Onboarding</div>
+                    <div class="tab" data-section="add-specialties">2. Specialties & Surveys Assignment</div>
+                    <div class="tab" data-section="users">3. PROMs Lead Person Onboarding</div>
+                    <div class="tab" data-section="doctors">4. Provider Onboarding</div>
+                    <div class="tab" data-section="staff">5. Staff Onboarding</div>
+                    <div class="tab" data-section="patients">6. Patient Details</div>
+                </div>
+ 
+                <div id="details" class="form-section active">
+                    <h2><i class="fas fa-hospital"></i> Welcome to Healthcare Facility Onboarding</h2>
+                    <p>This form collects important hospital details, including branches, specialties, and key personnel. 
+                        <br><br><span class="red-text">Please ensure you have the following required information before proceeding.</span></p>
+                
+                    <!-- Container for the two columns -->
+                    <div class="details-columns">
+                        <!-- Left Column -->
+                        <div class="column">
+                            <h3><i class="fas fa-building"></i> Hospital & Branch Information</h3>
+                            <ul>
+                                <li><strong>Hospital Name</strong> – Hospital specific details.</li>
+                                <li><strong>Branch Name</strong> – Branch specific details.</li>
+                                <li><strong>Location</strong> – Country, State, City, Street, Zip Code.</li>
+                                <li><strong>Hospital Logo</strong> – Upload JPG/PNG/PDF (225x55px).</li>
+                            </ul>
+                            <!-- <br> -->
+                            <h3><i class="fas fa-user-injured"></i> Patient Onboarding</h3>
+                            <ul>
+                                <li>A CSV file containing Patient Data parameters. </li>
+                            </ul>
+                        </div>
+                
+                        <!-- Right Column -->
+                        <div class="column">
+                            <h3><i class="fas fa-user-tie"></i> PROMs Lead Person</h3>
+                            <ul>
+                                <li>Name, Phone, Email of the responsible lead.</li>
+                                <li>At least one PROMs Lead Person added.</li>
+                            </ul>
+                            <!-- <br> -->
+                            <!-- <br> -->
+                            <h3><i class="fas fa-users"></i> Provider & Staff Onboarding</h3>
+                            <ul>
+                                <li>Doctors – Name & specialty.</li>
+                                <li>Staff – Name (specialty not required).</li>
+                            </ul>
+                
+                            
+                        </div>
+                    </div>
+                
+                    <p><strong>Click "Start" to begin onboarding!</strong></p>
+                    <!-- <p>Need help? Contact: <strong>support@wehealthify.org</strong></p> -->
+                    <p>Need help? Contact: <strong><a href="mailto:support@wehealthify.org">support@wehealthify.org</a></strong></p>
+                    <div class="form-actions">
+                        <button type="button" class="btn next-btn"> Start <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                
+
+
+                <!-- Hospital Onboarding Section -->
+                <div id="hospital-details" class="form-section active">
+                <label>This section collects basic information about the hospital and its branch.</label>
+                    <div id="branch-container">
+                        <div class="left-section">
+                            <div class="form-group">
+                                <label for="hospital_name">Hospital Name<span class="required">*</label>
+                                <input type="text" id="hospital_name" name="hospital_name" placeholder="Enter Hospital Name" required>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <label for="branch_name">Branch Name<span class="required">*</label>
+                                <input type="text" id="branch_name" name="branch_name" placeholder="Enter Branch Name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <select name="country" id="country" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="Saudi Arabia">Saudi Arabia</option>
+                                    <option value="UK">UK</option>
+                                    <option value="Brazil">Brazil</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <select name="state" id="state" required>
+                                    <option value="" disabled selected>Select State</option>
+                                    <!-- Populate states based on selected country -->
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="right-section">
+
+                
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <select name="city" id="city" required>
+                                    <option value="" disabled selected>Select City</option>
+                                    <!-- Populate cities based on selected state -->
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="street_details">Street Details</label>
+                                <input type="text" id="street_details" name="street_details" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="zip_code">Zip Code</label>
+                                <input type="text" id="zip_code" name="zip" placeholder="Enter Zip Code" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="hospital_logo">Upload Logo File</label>
+                                <input type="file" id="hospital_logo" name="hospital_logo" accept=".jpg, .jpeg, .png" required>
+                                <small>Make sure the logo size is 225px x 55px</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn next-btn"> Next <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Specialties & Surveys Assignment Section -->
+                <div id="add-specialties" class="form-section">
+                    <h3 style="margin-bottom: 10px;"><i class="fas fa-stethoscope"></i>Specialties & Surveys Assignment</h3>
+                    <div class="specialties-container">
+                        <div class="specialty-category">
+                            <h4>Diabetes</h4>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="specialties[Diabetes][]" value="PAID">
+                                    PAID
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="specialties[Diabetes][]" value="Promis Global Health">
+                                    Promis Global Health
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="specialty-category">
+                            <h4>Orthopedics</h4>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="specialties[Orthopedics][]" value="Pain Interference">
+                                    Pain Interference
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="specialties[Orthopedics][]" value="Physical Function">
+                                    Physical Function
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="specialties[Orthopedics][]" value="Promis Global Health">
+                                    Promis Global Health
+                                </label>
+                                
+                            </div>
+                        </div>
+                        <div class="select-deselect-buttons">
+                            <button class="select-all-btn" onclick="selectAllCheckboxes()">Select All</button>
+                            <button class="deselect-all-btn" onclick="deselectAllCheckboxes()">Deselect All</button>
+                        </div>
+
+                        
+                        <!-- Add more specialty categories as needed -->
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn next-btn"> Next <i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROMs Lead Person Onboarding Section -->
+                <div id="users" class="form-section">
+                    <h3><i class="fas fa-user-tie"></i> PROMs Lead Person Details</h3>
+                    <label>The PROMs Lead Person will receive their login credentials and must reset their password upon first login.</label>
+                    <div id="users-list">
+                        <div class="form-group user-container">
+                            <div class="user-header">User 1</div>
+                            <label for="users_first_name_0">First Name<span class="required">*</span></label>
+                            <input type="text" id="users_first_name_0" name="users[0].firstName" placeholder="Enter First Name" required>
+    
+                            <label for="users_last_name_0">Last Name<span class="required">*</span></label>
+                            <input type="text" id="users_last_name_0" name="users[0].lastName" placeholder="Enter Last Name" required>
+    
+                            <label for="users_phone_number_0">Phone Number</span></label>
+                            <input type="text" id="users_phone_number_0" name="users[0].phoneNumber" placeholder="+966 1234567" required>
+    
+                            <label for="users_email_0">Email</span></label>
+                            <input type="email" id="users_email_0" name="users[0].email" placeholder="Enter Email" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="add-user" class="btn"><i class="fas fa-plus"></i> Add Another User</button>
+                        <button type="button" class="btn next-btn">Next <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Provider Onboarding Section -->
+                <div id="doctors" class="form-section">
+                    <h3><i class="fas fa-users"></i> Provider Details</h3>
+                    <label>Each provider added will be provided with login credentials and is required to reset their password upon their first login.</label>
+                    <div id="doctors-list">
+                        <div class="form-group doctor-container">
+                            <div class="doctor-header">Doctor 1</div>
+                            <label for="doctors_first_name_0">First Name<span class="required">*</span></label>
+                            <input type="text" id="doctors_first_name_0" name="doctors[0].firstName" placeholder="Enter First Name" required>
+                
+                            <label for="doctors_last_name_0">Last Name<span class="required">*</span></label>
+                            <input type="text" id="doctors_last_name_0" name="doctors[0].lastName" placeholder="Enter Last Name" required>
+                
+                            <label for="doctors_specialty_0">Specialty<span class="required">*</span></label>
+                            <select id="doctors_specialty_0" name="doctors[0].specialty" required>
+                                <option value="" disabled selected>Select Specialty</option>
+                                <option value="Diabetes">Diabetes</option>
+                                <option value="Orthopedics">Orthopedics</option>
+                                <!-- <option value="Cardiology">Cardiology</option>
+                                <option value="Neurology">Neurology</option> -->
+                                <!-- Add more specialties as needed -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="add-doctor" class="btn"><i class="fas fa-plus"></i> Add Another Provider</button>
+                        <button type="button" class="btn next-btn">Next <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Staff Onboarding Section -->
+                <div id="staff" class="form-section">
+                    <h3><i class="fas fa-users"></i> Staff Details</h3>
+                    <label>Staff can manually add patients or choose to upload them in batches.</label>
+                    <div id="staff-list">
+                        <div class="form-group staff-container">
+                            <div class="staff-header">Staff 1</div>
+                            <!-- Remove button removed for Staff 1 to ensure at least one staff member exists -->
+                            <label for="staff_first_name_0">First Name<span class="required">*</span></label>
+                            <input type="text" id="staff_first_name_0" name="staff[0].firstName" placeholder="Enter First Name" required>
+                
+                            <label for="staff_last_name_0">Last Name<span class="required">*</span></label>
+                            <input type="text" id="staff_last_name_0" name="staff[0].lastName" placeholder="Enter Last Name" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="add-staff" class="btn"><i class="fas fa-plus"></i> Add Another Staff</button>
+                        <button type="button" class="btn next-btn">Next <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Patient Onboarding Section -->
+                <div id="patients" class="form-section">
+                    <h3 style="margin-bottom: 10px;"><i class="fas fa-user-injured"></i>Patient Details</h3>
+                    <label>Kindly upload a template containing the patient parameters that we can map to our system.</label>
+                    <br>
+            <br>
+            <p style="font-weight: bold;">For each patient, please share:</p>
+                        <p>
+                        Full Name (First Name, Last Name) <br>
+                        DOB <br>
+                        MR Number <br>
+                        Email & Phone <br>
+                        Gender <br>
+                        Appointment Date /Time <br>
+                        Doctor assigned <br> <br></p>
+                        <p><a href="<%= basePath %>/patient_data_template.csv"><span id="csvTemplateLinkText"><b>Find CSV Template Here</b></span></a></p>
+                    <div id="patients-list">
+                        <div class="form-group">
+            
+                            <input type="file" id="patient_upload" name="patient_upload" accept=".csv, .xlsx" required>
+                            <small>Allowed formats: CSV, XLSX. Maximum size: 5MB.</small>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn submit-btn">
+                                <i class="fas fa-check"></i> Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        // Get the reference to the container
+        const staffList = document.getElementById('staff-list');
+        let staffCount = 1; // Start from 1 since Staff 1 is already present
+    
+        // Handle the click event on the "+ Add Another Staff" button
+        document.getElementById('add-staff').addEventListener('click', () => {
+            staffCount++;
+            // Create a new staff container
+            const newStaffContainer = document.createElement('div');
+            newStaffContainer.classList.add('form-group', 'staff-container', 'additional');
+    
+            // Set the inner HTML with updated IDs and names
+            newStaffContainer.innerHTML = `
+                <div class="staff-header">Staff ${staffCount}</div>
+                <button type="button" class="remove-staff" title="Remove Staff"><i class="fas fa-trash-alt"></i></button>
+                <label for="staff_first_name_${staffCount}">First Name<span class="required">*</span></label>
+                <input type="text" id="staff_first_name_${staffCount}" name="staff[${staffCount}].firstName" placeholder="Enter First Name" required>
+    
+                <label for="staff_last_name_${staffCount}">Last Name<span class="required">*</span></label>
+                <input type="text" id="staff_last_name_${staffCount}" name="staff[${staffCount}].lastName" placeholder="Enter Last Name" required>
+            `;
+    
+            // Append the new staff container to the list
+            staffList.appendChild(newStaffContainer);
+    
+            // Add event listener to the remove button
+            newStaffContainer.querySelector('.remove-staff').addEventListener('click', () => {
+                staffList.removeChild(newStaffContainer);
+                updateStaffHeaders();
+            });
+        });
+    
+        // Function to update staff headers and IDs after removal
+        function updateStaffHeaders() {
+            const staffContainers = document.querySelectorAll('.staff-container');
+            staffCount = staffContainers.length; // Reset staffCount based on current containers
+            staffContainers.forEach((container, index) => {
+                const header = container.querySelector('.staff-header');
+                header.textContent = `Staff ${index + 1}`;
+                // Update the IDs and names of the input fields to reflect the new index
+                const firstNameInput = container.querySelector('input[name^="staff["][name$="].firstName"]');
+                const lastNameInput = container.querySelector('input[name^="staff["][name$="].lastName"]');
+                if (firstNameInput && lastNameInput) {
+                    firstNameInput.name = `staff[${index}].firstName`;
+                    firstNameInput.id = `staff_first_name_${index}`;
+                    firstNameInput.placeholder = "Enter First Name";
+                    lastNameInput.name = `staff[${index}].lastName`;
+                    lastNameInput.id = `staff_last_name_${index}`;
+                    lastNameInput.placeholder = "Enter Last Name";
+                }
+            });
+        }
+    
+        // Optional: Hide the remove button for the first staff member to ensure at least one staff exists
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstStaffRemoveBtn = document.querySelector('.staff-container .remove-staff');
+            if (firstStaffRemoveBtn) {
+                firstStaffRemoveBtn.style.display = 'none';
+            }
+        });
+    </script>
+    
+
+    
+<script>
+    // Get the reference to the container
+    const doctorsList = document.getElementById('doctors-list');
+    let doctorCount = 1; // Start from 1 since Doctor 1 is already present
+
+    // Handle the click event on the "+ Add Another Provider" button
+    document.getElementById('add-doctor').addEventListener('click', () => {
+        doctorCount++;
+        // Create a new doctor container
+        const newDoctorContainer = document.createElement('div');
+        newDoctorContainer.classList.add('form-group', 'doctor-container', 'additional');
+
+        // Set the inner HTML with updated IDs and names
+        newDoctorContainer.innerHTML = `
+            <button type="button" class="remove-doctor" title="Remove Provider"><i class="fas fa-trash-alt"></i></button>
+            <div class="doctor-header">Doctor ${doctorCount}</div>
+            <label for="doctors_first_name_${doctorCount}">First Name<span class="required">*</span></label>
+            <input type="text" id="doctors_first_name_${doctorCount}" name="doctors[${doctorCount}].firstName" placeholder="Enter First Name" required>
+
+            <label for="doctors_last_name_${doctorCount}">Last Name<span class="required">*</span></label>
+            <input type="text" id="doctors_last_name_${doctorCount}" name="doctors[${doctorCount}].lastName" placeholder="Enter Last Name" required>
+
+            <label for="doctors_specialty_${doctorCount}">Specialty<span class="required">*</span></label>
+            <select id="doctors_specialty_${doctorCount}" name="doctors[${doctorCount}].specialty" required>
+                <option value="" disabled selected>Select Specialty</option>
+                <option value="Diabetes">Diabetes</option>
+                <option value="Orthopedics">Orthopedics</option>
+                
+                <!-- Add more specialties as needed -->
+            </select>
+        `;
+
+        // Append the new doctor container to the list
+        doctorsList.appendChild(newDoctorContainer);
+
+        // Add event listener to the remove button
+        newDoctorContainer.querySelector('.remove-doctor').addEventListener('click', () => {
+            doctorsList.removeChild(newDoctorContainer);
+            updateDoctorHeaders();
+        });
+    });
+
+    // Function to update doctor headers after removal
+    function updateDoctorHeaders() {
+        const doctorContainers = document.querySelectorAll('.doctor-container');
+        doctorCount = doctorContainers.length; // Reset doctorCount based on current containers
+        doctorContainers.forEach((container, index) => {
+            const header = container.querySelector('.doctor-header');
+            header.textContent = `Doctor ${index + 1}`;
+        });
+    }
+
+    // Optional: Hide the remove button for the first doctor to ensure at least one provider exists
+    document.addEventListener('DOMContentLoaded', () => {
+        const firstDoctorRemoveBtn = document.querySelector('.doctor-container .remove-doctor');
+        if (firstDoctorRemoveBtn) {
+            firstDoctorRemoveBtn.style.display = 'none';
+        }
+    });
+</script>
+
+    
+    <script>
+        // Get the reference to the container
+        const usersList = document.getElementById('users-list');
+        let userCount = 1; // Start from 1 since User 1 is already present
+
+        // Handle the click event on the "+ Add Another User" button
+        document.getElementById('add-user').addEventListener('click', () => {
+            userCount++;
+            // Create a new user container
+            const newUserContainer = document.createElement('div');
+            newUserContainer.classList.add('form-group', 'user-container', 'additional');
+
+            // Set the inner HTML with updated IDs and names
+            newUserContainer.innerHTML = `
+                <button type="button" class="remove-user" title="Remove User"><i class="fas fa-trash-alt"></i></button>
+                <div class="user-header">User ${userCount}</div>
+                <label for="users_first_name_${userCount}">First Name<span class="required">*</span></label>
+                <input type="text" id="users_first_name_${userCount}" name="users[${userCount}].firstName" placeholder="Enter First Name" required>
+
+                <label for="users_last_name_${userCount}">Last Name<span class="required">*</span></label>
+                <input type="text" id="users_last_name_${userCount}" name="users[${userCount}].lastName" placeholder="Enter Last Name" required>
+
+                <label for="users_phone_number_${userCount}">Phone Number</span></label>
+                <input type="text" id="users_phone_number_${userCount}" name="users[${userCount}].phoneNumber" placeholder="+966 1234567" required>
+
+                <label for="users_email_${userCount}">Email</span></label>
+                <input type="email" id="users_email_${userCount}" name="users[${userCount}].email" placeholder="Enter Email" required>
+            `;
+
+            // Append the new user container to the list
+            usersList.appendChild(newUserContainer);
+
+            // Add event listener to the remove button
+            newUserContainer.querySelector('.remove-user').addEventListener('click', () => {
+                usersList.removeChild(newUserContainer);
+                updateUserHeaders();
+            });
+        });
+
+        // Function to update user headers after removal
+        function updateUserHeaders() {
+            const userContainers = document.querySelectorAll('.user-container');
+            userCount = userContainers.length; // Reset userCount based on current containers
+            userContainers.forEach((container, index) => {
+                const header = container.querySelector('.user-header');
+                header.textContent = `User ${index + 1}`;
+            });
+        }
+    </script>
+
+    <script>
+        // Existing Select All Function
+        function selectAllCheckboxes() {
+            document.querySelectorAll('.specialty-category input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = true;
+            });
+        }
+
+        // New Deselect All Function
+        function deselectAllCheckboxes() {
+            document.querySelectorAll('.specialty-category input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+        }
+    </script>
+
+
+    <script>
+    
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab');
+            const sections = document.querySelectorAll('.form-section');
+            const nextBtns = document.querySelectorAll('.next-btn');
+            const submitBtn = document.querySelector('.submit-btn');
+            
+            const stateSelect = document.getElementById('state');
+            const citySelect = document.getElementById('city');
+            const countrySelect = document.getElementById('country');
+            
+            const statesByCountry = {
+                'Saudi Arabia': {
+                    'Riyadh Province': ['Riyadh', 'Dammam', 'Al-Kharj', 'Al-Quwaiiyah'],
+                    'Makkah Province': ['Jeddah', 'Mecca', 'Taif', 'Rabigh', 'Al-Leith'],
+                    'Eastern Province': ['Khobar', 'Hofuf', 'Dhahran', 'Al-Ahsa'],
+                    'Madinah Province': ['Medina', 'Yanbu', 'Al-Ula'],
+                    'Asir Province': ['Abha', 'Khamis Mushait', 'Najran'],
+                    'Qassim Province': ['Buraydah', 'Unaizah'],
+                    'Hail Province': ['Hail City', 'Al-Ghata'],
+                    'Northern Borders Province': ['Arar', 'Rafha'],
+                    'Jazan Province': ['Jazan City', 'Sabya'],
+                    'Tabuk Province': ['Tabuk City', 'Duba'],
+                    'Al-Baha Province': ['Al-Baha City', 'Baljurashi'],
+                    'Al-Jouf Province': ['Sakakah', 'Dumat Al-Jandal']
+                },
+                'UK': {
+                    'England': ['London', 'Manchester', 'Birmingham'],
+                    'Scotland': ['Edinburgh', 'Glasgow'],
+                    'Wales': ['Cardiff', 'Swansea'],
+                    'Northern Ireland': ['Belfast', 'Derry']
+                },
+                'Brazil': {
+                    'São Paulo': ['São Paulo','Campinas', 'Santos','Ribeirão Preto'],
+                    'Minas Gerais': ['Belo Horizonte','Uberlândia'],
+                    'Paraná':['Curitiba','Londrina','Maringá'],
+                    'Rio de Janeiro': ['Rio de Janeiro','Niterói','Petrópolis']
+                }
+            };
+        
+            // Populate state dropdown based on selected country
+            countrySelect.addEventListener('change', function () {
+                const selectedCountry = this.value;
+                const states = Object.keys(statesByCountry[selectedCountry] || {});
+                
+                stateSelect.innerHTML = '<option value="" disabled selected>Select State</option>' + 
+                    states.map(state => `<option value="${state}">${state}</option>`).join('');
+                
+                // Reset city dropdown when the country changes
+                citySelect.innerHTML = '<option value="" disabled selected>Select City</option>';
+            });
+        
+            // Populate city dropdown based on selected state
+            stateSelect.addEventListener('change', function () {
+                const selectedState = this.value;
+                const selectedCountry = countrySelect.value;
+                const cities = statesByCountry[selectedCountry]?.[selectedState] || [];
+                
+                citySelect.innerHTML = '<option value="" disabled selected>Select City</option>' + 
+                    cities.map(city => `<option value="${city}">${city}</option>`).join('');
+            });
+        
+            // Function to activate a specific tab and its corresponding section
+            function activateTab(index) {
+                // Remove 'active' class from all tabs and sections
+                tabs.forEach(tab => tab.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('active'));
+        
+                // Add 'active' class to the selected tab and section
+                if (tabs[index]) {
+                    tabs[index].classList.add('active');
+                    const sectionId = tabs[index].dataset.section;
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        section.classList.add('active');
+                    }
+                }
+            }
+        
+            // Initial activation
+            activateTab(0);
+        
+            // Tab Click Event Listener
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    activateTab(index);
+                });
+            });
+        
+            // Next Button Click Event Listener
+            nextBtns.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    // Determine the current active tab index
+                    let currentIndex = Array.from(tabs).findIndex(tab => tab.classList.contains('active'));
+                    
+                    // Optional: Add validation for the current section before moving to the next
+                    // if (!validateSection(currentIndex)) return;
+        
+                    // Activate the next tab if it exists
+                    if (currentIndex + 1 < tabs.length) {
+                        activateTab(currentIndex + 1);
+                    }
+                });
+            });
+        
+            // Submit Button Click Event Listener
+            if (submitBtn) {
+                submitBtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    console.log('Submit button clicked');
+                    const formData = collectFormData();
+                
+                    // Perform form validation
+                    if (validateFormData(formData)) {
+                        submitFormData(formData);
+                    } else {
+                        alert('Please fill out all required fields.');
+                    }
+                });
+            }
+        
+            // Function to collect form data
+            function collectFormData() {
+                const formData = new FormData(document.getElementById('hospitalForm'));
+                
+                // Additional processing if needed
+                // Example: Collecting multiple users, specialties, etc.
+                
+                return formData;
+            }
+            
+        
+            // Function to submit form data
+            function submitFormData(formData) {
+                try{
+                    document.getElementById('hospitalForm').submit();
+                }catch(error){
+                    console.error('Error submitting form data:', error);
+                    alert('There was an error submitting the form. Please try again.');
+                }
+}       
+                        
+            function validateFormData(formData) {
+                // Check required text fields
+                if (!formData.get('hospital_name')) {
+                    alert("Hospital Name are required.");
+                    return false;
+                }
+
+                // Check if hospital_logo is selected
+                const hospitalLogo = formData.get('hospital_logo');
+                if (!hospitalLogo || hospitalLogo.size === 0) {
+                    alert("Please upload the Hospital Logo.");
+                    return false;
+                }
+
+                // Check if patient_upload is selected
+                const patientUpload = formData.get('patient_upload');
+                if (!patientUpload || patientUpload.size === 0) {
+                    alert("Please upload the Patient Data CSV.");
+                    return false;
+                }
+
+                return true; // Form is valid
+            }
+        
+        });
+
+    </script>
+        
+
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+ErrorType: Cannot read properties of undefined (reading 'split'), timestamp: 2024-08-09T12:05:46.172Z, username: man1, hospital: ABCD
+ErrorType: Cannot read properties of undefined (reading 'split'), timestamp: 2024-08-09T12:05:53.639Z, username: man1, hospital: ABCD
+ErrorType: Cannot read properties of undefined (reading 'includes'), timestamp: 2024-08-17T05:25:16.042Z, username: abcd_m1, hospital: ABCD
+ErrorType: doctor is not defined, timestamp: 2024-08-17T05:32:02.241Z, username: abcd_m1, hospital: ABCD
+ErrorType: gender is not defined, timestamp: 2025-01-16T06:24:26.078Z, username: wsc01_raustin, hospital_code: WSC, site_code: WSC01

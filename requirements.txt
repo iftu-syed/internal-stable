@@ -1,0 +1,9 @@
+pymongo
+pandas
+plotly
+openai
+numpy
+python-dotenv
+textblob
+requests
+markdown

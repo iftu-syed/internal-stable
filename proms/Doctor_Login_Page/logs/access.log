@@ -1,0 +1,2071 @@
+2024-08-09T07:23:26.361Z - Doctor fds from ABCD logged in at 8/9/2024, 12:53:26 PM
+2024-08-09T07:23:31.338Z - Doctor fds from ABCD accessed patient record for Mr_no: 88 at 8/9/2024, 12:53:31 PM
+2024-08-09T07:23:53.880Z - Doctor fds from ABCD accessed patient record for Mr_no: 88 at 8/9/2024, 12:53:53 PM
+2024-08-09T07:24:19.226Z - Doctor fds from ABCD logged out at 8/9/2024, 12:54:19 PM after 52.88 seconds of activity.
+2024-08-11T08:11:31.533Z - Doctor vijay1 from ABCD logged in at 8/11/2024, 1:41:31 PM
+2024-08-11T08:11:41.574Z - Doctor vijay1 from ABCD accessed patient record for Mr_no: 55 at 8/11/2024, 1:41:41 PM
+2024-08-11T08:14:07.032Z - Doctor vijay1 from ABCD accessed patient record for Mr_no: 88 at 8/11/2024, 1:44:07 PM
+2024-08-11T08:14:39.670Z - Doctor vijay1 from ABCD accessed patient record for Mr_no: 55 at 8/11/2024, 1:44:39 PM
+2024-08-11T08:22:48.208Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 1:52:48 PM
+2024-08-11T08:23:41.061Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 1:53:41 PM
+2024-08-11T08:23:51.131Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/11/2024, 1:53:51 PM
+2024-08-11T08:23:53.278Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/11/2024, 1:53:53 PM
+2024-08-11T08:24:45.457Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 1:54:45 PM
+2024-08-11T08:24:50.892Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/11/2024, 1:54:50 PM
+2024-08-11T08:25:10.767Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/11/2024, 1:55:10 PM
+2024-08-11T08:28:03.953Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 1:58:03 PM
+2024-08-11T08:32:19.850Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 2:02:19 PM
+2024-08-11T08:32:25.882Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/11/2024, 2:02:25 PM
+2024-08-11T09:21:50.833Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 2:51:50 PM
+2024-08-11T09:22:33.356Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 2:52:33 PM
+2024-08-11T09:23:00.255Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 2:53:00 PM
+2024-08-11T09:24:14.997Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 2:54:14 PM
+2024-08-11T09:24:35.005Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 2:54:35 PM
+2024-08-11T09:27:41.538Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 2:57:41 PM
+2024-08-11T09:28:42.635Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 2:58:42 PM
+2024-08-11T09:29:05.955Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 2:59:05 PM
+2024-08-11T09:43:15.755Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 3:13:15 PM
+2024-08-11T09:44:13.385Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 3:14:13 PM
+2024-08-11T09:48:25.038Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 3:18:25 PM
+2024-08-11T09:48:41.019Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 3:18:41 PM
+2024-08-11T10:03:18.147Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 3:33:18 PM
+2024-08-11T10:03:27.212Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 3:33:27 PM
+2024-08-11T10:03:41.462Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 3:33:41 PM
+2024-08-11T10:03:46.540Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/11/2024, 3:33:46 PM
+2024-08-11T10:05:05.864Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 3:35:05 PM
+2024-08-11T10:05:11.150Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/11/2024, 3:35:11 PM
+2024-08-11T10:06:21.150Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 3:36:21 PM
+2024-08-11T10:08:19.193Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 3:38:19 PM
+2024-08-11T10:08:24.338Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/11/2024, 3:38:24 PM
+2024-08-11T10:09:48.329Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 3:39:48 PM
+2024-08-11T10:09:53.027Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/11/2024, 3:39:53 PM
+2024-08-11T10:12:55.861Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 3:42:55 PM
+2024-08-11T10:13:00.979Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/11/2024, 3:43:00 PM
+2024-08-11T10:48:42.772Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 4:18:42 PM
+2024-08-11T10:50:48.160Z - Doctor Ravi_2 from ABCD logged in at 8/11/2024, 4:20:48 PM
+2024-08-11T10:50:55.036Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/11/2024, 4:20:55 PM
+2024-08-11T10:51:39.898Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/11/2024, 4:21:39 PM
+2024-08-12T10:15:50.303Z - Doctor vijay2 from ABCD logged in at 8/12/2024, 3:45:50 PM
+2024-08-12T10:22:12.904Z - Doctor vijay2 from ABCD accessed patient record for Mr_no: 66 at 8/12/2024, 3:52:12 PM
+2024-08-13T14:10:03.196Z - Doctor Ravi_2 from ABCD logged in at 8/13/2024, 7:40:03 PM
+2024-08-13T14:11:52.171Z - Doctor Ravi_2 from ABCD logged in at 8/13/2024, 7:41:52 PM
+2024-08-13T14:41:18.978Z - Doctor Ravi_2 from ABCD logged in at 8/13/2024, 8:11:18 PM
+2024-08-13T14:41:27.109Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/13/2024, 8:11:27 PM
+2024-08-13T14:41:48.991Z - Doctor Ravi_2 from ABCD logged out at 8/13/2024, 8:11:48 PM after 30.02 seconds of activity.
+2024-08-13T14:41:55.626Z - Doctor Ravi_2 from ABCD logged in at 8/13/2024, 8:11:55 PM
+2024-08-13T14:42:03.172Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/13/2024, 8:12:03 PM
+2024-08-13T14:42:09.916Z - Doctor Ravi_2 from ABCD logged out at 8/13/2024, 8:12:09 PM after 14.29 seconds of activity.
+2024-08-13T16:19:09.932Z - Doctor Ravi_2 from ABCD logged in at 8/13/2024, 9:49:09 PM
+2024-08-13T16:19:18.526Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/13/2024, 9:49:18 PM
+2024-08-13T16:19:55.514Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/13/2024, 9:49:55 PM
+2024-08-13T16:20:25.914Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/13/2024, 9:50:25 PM
+2024-08-13T16:30:54.687Z - Doctor Ravi_2 from ABCD logged in at 8/13/2024, 10:00:54 PM
+2024-08-13T16:31:02.527Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/13/2024, 10:01:02 PM
+2024-08-13T16:37:15.890Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/13/2024, 10:07:15 PM
+2024-08-13T16:37:24.096Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/13/2024, 10:07:24 PM
+2024-08-13T16:48:38.181Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/13/2024, 10:18:38 PM
+2024-08-13T16:52:10.123Z - Doctor Ravi_2 from ABCD logged in at 8/13/2024, 10:22:10 PM
+2024-08-13T16:52:18.094Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/13/2024, 10:22:18 PM
+2024-08-13T16:56:28.981Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/13/2024, 10:26:28 PM
+2024-08-13T17:04:14.470Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/13/2024, 10:34:14 PM
+2024-08-14T06:51:19.201Z - Doctor vijay1 from ABCD logged in at 8/14/2024, 12:21:19 PM
+2024-08-14T06:51:27.140Z - Doctor vijay1 from ABCD accessed patient record for Mr_no: 88 at 8/14/2024, 12:21:27 PM
+2024-08-14T07:29:26.069Z - Doctor vijay1 from ABCD logged in at 8/14/2024, 12:59:26 PM
+2024-08-14T07:29:33.571Z - Doctor vijay1 from ABCD accessed patient record for Mr_no: 88 at 8/14/2024, 12:59:33 PM
+2024-08-15T06:33:59.930Z - Doctor Ravi_2 from ABCD logged in at 8/15/2024, 12:03:59 PM
+2024-08-15T06:34:02.273Z - Doctor Ravi_2 from ABCD logged out at 8/15/2024, 12:04:02 PM after 2.38 seconds of activity.
+2024-08-15T06:34:07.707Z - Doctor Ravi_2 from ABCD logged in at 8/15/2024, 12:04:07 PM
+2024-08-15T06:34:09.315Z - Doctor Ravi_2 from ABCD logged out at 8/15/2024, 12:04:09 PM after 1.61 seconds of activity.
+2024-08-15T06:50:51.183Z - Doctor Ravi_2 from ABCD logged in at 8/15/2024, 12:20:51 PM
+2024-08-15T06:56:22.867Z - Doctor Ravi_2 from ABCD logged in at 8/15/2024, 12:26:22 PM
+2024-08-15T08:01:09.716Z - Doctor abcd_rkumar from ABCD logged in at 8/15/2024, 1:31:09 PM
+2024-08-15T08:01:20.640Z - Doctor abcd_rkumar from ABCD accessed patient record for Mr_no: 66 at 8/15/2024, 1:31:20 PM
+2024-08-15T08:01:22.935Z - Doctor abcd_rkumar from ABCD logged out at 8/15/2024, 1:31:22 PM after 13.22 seconds of activity.
+2024-08-15T10:28:26.855Z - Doctor Ravi_2 from ABCD logged in at 8/15/2024, 3:58:26 PM
+2024-08-15T10:28:28.380Z - Doctor Ravi_2 from ABCD logged out at 8/15/2024, 3:58:28 PM after 1.53 seconds of activity.
+2024-08-15T10:29:45.504Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 3:59:45 PM
+2024-08-15T10:30:41.880Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 4:00:41 PM
+2024-08-15T10:30:43.449Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 4:00:43 PM
+2024-08-15T10:31:05.180Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 4:01:05 PM
+2024-08-15T10:32:04.737Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 4:02:04 PM
+2024-08-15T10:34:22.488Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 4:04:22 PM
+2024-08-15T10:35:42.541Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 4:05:42 PM
+2024-08-15T10:35:45.405Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 4:05:45 PM
+2024-08-15T10:35:50.539Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 4:05:50 PM
+2024-08-15T10:36:19.361Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 4:06:19 PM
+2024-08-15T10:36:45.866Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 4:06:45 PM
+2024-08-15T10:38:32.826Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 4:08:32 PM
+2024-08-15T10:39:13.273Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 4:09:13 PM
+2024-08-15T10:40:08.842Z - Doctor ABCD_rkumar from ABCD logged in at 8/15/2024, 4:10:08 PM
+2024-08-16T05:26:25.870Z - Doctor ABCD_rkumar from ABCD logged in at 8/16/2024, 10:56:25 AM
+2024-08-16T05:26:55.193Z - Doctor ABCD_rkumar from ABCD logged out at 8/16/2024, 10:56:55 AM after 29.36 seconds of activity.
+2024-08-16T05:30:41.877Z - Doctor ABCD_rkumar from ABCD logged in at 8/16/2024, 11:00:41 AM
+2024-08-16T05:30:47.216Z - Doctor ABCD_rkumar from ABCD logged out at 8/16/2024, 11:00:47 AM after 5.35 seconds of activity.
+2024-08-16T05:30:52.931Z - Doctor ABCD_rkumar from ABCD logged in at 8/16/2024, 11:00:52 AM
+2024-08-16T05:30:57.825Z - Doctor ABCD_rkumar from ABCD logged out at 8/16/2024, 11:00:57 AM after 4.89 seconds of activity.
+2024-08-16T05:42:46.230Z - Doctor ABCD_rkumar from ABCD logged in at 8/16/2024, 11:12:46 AM
+2024-08-16T05:42:51.379Z - Doctor ABCD_rkumar from ABCD logged out at 8/16/2024, 11:12:51 AM after 5.15 seconds of activity.
+2024-08-16T05:45:39.464Z - Doctor ABCD_rkumar from ABCD logged in at 8/16/2024, 11:15:39 AM
+2024-08-16T05:45:49.484Z - Doctor ABCD_rkumar from ABCD accessed patient record for Mr_no: 66 at 8/16/2024, 11:15:49 AM
+2024-08-16T06:18:34.204Z - Doctor Ravi_2 from ABCD logged in at 8/16/2024, 11:48:34 AM
+2024-08-16T06:19:14.436Z - Doctor Ravi_2 from ABCD accessed patient record for Mr_no: 66 at 8/16/2024, 11:49:14 AM
+2024-08-16T10:59:57.655Z - Doctor ABCD_rkumar from ABCD logged in at 8/16/2024, 4:29:57 PM
+2024-08-16T11:00:12.620Z - Doctor ABCD_rkumar from ABCD accessed patient record for Mr_no: 66 at 8/16/2024, 4:30:12 PM
+2024-08-16T11:00:41.069Z - Doctor ABCD_rkumar from ABCD accessed patient record for Mr_no: 55 at 8/16/2024, 4:30:41 PM
+2024-08-16T11:01:38.676Z - Doctor ABCD_rkumar from ABCD accessed patient record for Mr_no: 55 at 8/16/2024, 4:31:38 PM
+2024-08-16T11:02:35.371Z - Doctor ABCD_rkumar from ABCD accessed patient record for Mr_no: 66 at 8/16/2024, 4:32:35 PM
+2024-08-17T06:58:24.035Z - Doctor cre_mrao from CRE logged in at 8/17/2024, 12:28:24 PM
+2024-08-17T06:58:30.987Z - Doctor cre_mrao from CRE accessed patient record for Mr_no: 9233 at 8/17/2024, 12:28:30 PM
+2024-08-19T08:35:01.873Z - Doctor cre_mrao from CRE logged in at 8/19/2024, 2:05:01 PM
+2024-08-19T08:35:10.362Z - Doctor cre_mrao from CRE accessed patient record for Mr_no: 9233 at 8/19/2024, 2:05:10 PM
+2024-08-20T09:20:37.827Z - Doctor cre_lchong from CRE logged out at 8/20/2024, 2:50:37 PM after 0.00 seconds of activity.
+2024-08-20T09:20:44.590Z - Doctor cre_lchong from CRE logged in at 8/20/2024, 2:50:44 PM
+2024-08-20T09:20:58.901Z - Doctor cre_lchong from CRE accessed patient record for Mr_no: 344 at 8/20/2024, 2:50:58 PM
+2024-08-20T09:26:35.569Z - Doctor cre_kkumar from CRE logged out at 8/20/2024, 2:56:35 PM after 350.98 seconds of activity.
+2024-08-20T09:26:51.203Z - Doctor cre_kkumar from CRE logged in at 8/20/2024, 2:56:51 PM
+2024-08-20T10:29:09.700Z - Doctor cre_lchong from CRE accessed patient record for Mr_no: 344 at 8/20/2024, 3:59:09 PM
+2024-08-20T10:29:26.472Z - Doctor cre_lchong from CRE logged in at 8/20/2024, 3:59:26 PM
+2024-08-20T10:30:00.877Z - Doctor cre_lchong from CRE logged in at 8/20/2024, 4:00:00 PM
+2024-08-20T10:32:49.255Z - Doctor cre_lchong from CRE logged in at 8/20/2024, 4:02:49 PM
+2024-08-20T10:57:43.695Z - Doctor cre_lchong from CRE logged in at 8/20/2024, 4:27:43 PM
+2024-08-20T10:59:00.249Z - Doctor cre_lchong from CRE logged in at 8/20/2024, 4:29:00 PM
+2024-08-20T11:12:55.656Z - Doctor cre_lchong from CRE logged in at 8/20/2024, 4:42:55 PM
+2024-08-20T11:15:08.565Z - Doctor cre_lchong from CRE logged in at 8/20/2024, 4:45:08 PM
+2024-08-20T11:17:47.100Z - Doctor cre_lchong from CRE logged in at 8/20/2024, 4:47:47 PM
+2024-08-22T11:59:22.125Z - Doctor cre_lchong from CRE logged in at 8/22/2024, 5:29:22 PM
+2024-08-22T11:59:30.696Z - Doctor cre_lchong from CRE accessed patient record for Mr_no: 344 at 8/22/2024, 5:29:30 PM
+2024-08-22T12:03:04.016Z - Doctor cre_lchong from CRE accessed patient record for Mr_no: 344 at 8/22/2024, 5:33:04 PM
+2024-08-22T12:10:52.784Z - Doctor cre_lchong from CRE accessed patient record for Mr_no: 344 at 8/22/2024, 5:40:52 PM
+2024-08-22T12:12:03.257Z - Doctor cre_lchong from CRE accessed patient record for Mr_no: 344 at 8/22/2024, 5:42:03 PM
+2024-08-22T12:13:52.957Z - Doctor cre_lchong from CRE accessed patient record for Mr_no: 344 at 8/22/2024, 5:43:52 PM
+2024-08-23T06:50:19.495Z - Doctor cre_sram from CRE logged in at 8/23/2024, 12:20:19 PM
+2024-08-23T06:51:12.607Z - Doctor cre_sram from CRE logged in at 8/23/2024, 12:21:12 PM
+2024-08-23T06:51:32.004Z - Doctor cre_sram from CRE logged in at 8/23/2024, 12:21:32 PM
+2024-08-23T06:56:41.867Z - Doctor cre_sram from CRE logged in at 8/23/2024, 12:26:41 PM
+2024-08-23T06:56:47.904Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 8788 at 8/23/2024, 12:26:47 PM
+2024-08-23T06:56:52.111Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 8788 at 8/23/2024, 12:26:52 PM
+2024-08-23T07:02:39.231Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 8788 at 8/23/2024, 12:32:39 PM
+2024-08-23T07:06:20.542Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 8788 at 8/23/2024, 12:36:20 PM
+2024-08-23T07:17:31.177Z - Doctor cre_sram from CRE logged in at 8/23/2024, 12:47:31 PM
+2024-08-23T07:17:37.595Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 8788 at 8/23/2024, 12:47:37 PM
+2024-08-23T07:36:37.196Z - Doctor cre_sram from CRE logged in at 8/23/2024, 1:06:37 PM
+2024-08-23T07:36:43.191Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 8788 at 8/23/2024, 1:06:43 PM
+2024-08-23T07:38:46.146Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 8788 at 8/23/2024, 1:08:46 PM
+2024-08-23T07:42:37.694Z - Doctor cre_sram from CRE logged in at 8/23/2024, 1:12:37 PM
+2024-08-23T07:42:44.802Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 8788 at 8/23/2024, 1:12:44 PM
+2024-08-23T08:13:29.633Z - Doctor cre_sram from CRE logged in at 8/23/2024, 1:43:29 PM
+2024-08-23T08:13:35.130Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 655 at 8/23/2024, 1:43:35 PM
+2024-08-23T08:13:45.104Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 9233 at 8/23/2024, 1:43:45 PM
+2024-08-23T08:13:52.060Z - Doctor cre_sram from CRE logged out at 8/23/2024, 1:43:52 PM after 22.43 seconds of activity.
+2024-08-23T08:13:55.847Z - Doctor cre_lchong from CRE logged in at 8/23/2024, 1:43:55 PM
+2024-08-23T08:14:01.454Z - Doctor cre_lchong from CRE accessed patient record for Mr_no: 432 at 8/23/2024, 1:44:01 PM
+2024-08-23T09:09:01.147Z - Doctor cre_sram from CRE logged in at 8/23/2024, 2:39:01 PM
+2024-08-23T09:09:07.256Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 8788 at 8/23/2024, 2:39:07 PM
+2024-08-23T09:10:00.939Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 8788 at 8/23/2024, 2:40:00 PM
+2024-08-23T09:11:31.255Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 8788 at 8/23/2024, 2:41:31 PM
+2024-08-23T09:14:01.009Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 8788 at 8/23/2024, 2:44:00 PM
+2024-08-23T09:17:10.011Z - Doctor cre_sram from CRE accessed patient record for Mr_no: 8788 at 8/23/2024, 2:47:10 PM
+2024-08-23T17:10:05.674Z - Doctor wgh_cwatson from WGH logged in at 8/23/2024, 10:40:05 PM
+2024-08-23T17:13:35.201Z - Doctor wgh_cwatson from WGH logged in at 8/23/2024, 10:43:35 PM
+2024-08-23T17:13:47.812Z - Doctor wgh_cwatson from WGH logged in at 8/23/2024, 10:43:47 PM
+2024-08-23T17:15:44.369Z - Doctor wgh_cwatson from WGH logged in at 8/23/2024, 10:45:44 PM
+2024-08-23T17:15:46.060Z - Doctor wgh_cwatson from WGH logged in at 8/23/2024, 10:45:46 PM
+2024-08-23T17:16:30.124Z - Doctor wgh_cwatson from WGH accessed patient record for Mr_no: 845 at 8/23/2024, 10:46:30 PM
+2024-08-23T17:16:48.561Z - Doctor wgh_cwatson from WGH accessed patient record for Mr_no: 845 at 8/23/2024, 10:46:48 PM
+2024-08-23T17:18:36.190Z - Doctor wgh_cwatson from WGH accessed patient record for Mr_no: 845 at 8/23/2024, 10:48:36 PM
+2024-08-23T17:19:06.169Z - Doctor wgh_cwatson from WGH accessed patient record for Mr_no: 845 at 8/23/2024, 10:49:06 PM
+2024-08-23T17:19:17.163Z - Doctor wgh_cwatson from WGH accessed patient record for Mr_no: 845 at 8/23/2024, 10:49:17 PM
+2024-08-23T17:21:59.388Z - Doctor wgh_mbrown from WGH logged in at 8/23/2024, 10:51:59 PM
+2024-08-23T17:22:20.646Z - Doctor wgh_mbrown from WGH accessed patient record for Mr_no: 874 at 8/23/2024, 10:52:20 PM
+2024-08-23T17:23:26.077Z - Doctor wgh_mbrown from WGH accessed patient record for Mr_no: 874 at 8/23/2024, 10:53:26 PM
+2024-08-23T17:24:27.535Z - Doctor wgh_mbrown from WGH accessed patient record for Mr_no: 874 at 8/23/2024, 10:54:27 PM
+2024-08-23T17:26:46.557Z - Doctor wgh_mbrown from WGH accessed patient record for Mr_no: 874 at 8/23/2024, 10:56:46 PM
+2024-08-23T17:28:08.827Z - Doctor wgh_mbrown from WGH accessed patient record for Mr_no: 874 at 8/23/2024, 10:58:08 PM
+2024-08-23T17:30:15.371Z - Doctor wgh_mbrown from WGH logged in at 8/23/2024, 11:00:15 PM
+2024-08-23T17:30:43.049Z - Doctor wgh_mbrown from WGH accessed patient record for Mr_no: 874 at 8/23/2024, 11:00:43 PM
+2024-08-23T17:31:18.177Z - Doctor wgh_mbrown from WGH accessed patient record for Mr_no: 874 at 8/23/2024, 11:01:18 PM
+2024-08-23T17:32:04.541Z - Doctor wgh_mbrown from WGH logged out at 8/23/2024, 11:02:04 PM after 109.17 seconds of activity.
+2024-08-26T10:17:28.648Z - Doctor wgh_mb_mdavis from WGH logged in at 8/26/2024, 3:47:28 PM
+2024-08-26T10:17:35.682Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 454 at 8/26/2024, 3:47:35 PM
+2024-08-26T10:17:56.122Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 454 at 8/26/2024, 3:47:56 PM
+2024-08-26T11:18:11.689Z - Doctor wgh_mb_mdavis from WGH logged in at 8/26/2024, 4:48:11 PM
+2024-08-26T11:18:21.230Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 4:48:21 PM
+2024-08-26T11:19:13.022Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 4:49:13 PM
+2024-08-26T11:21:25.567Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 4:51:25 PM
+2024-08-26T11:26:49.773Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 4:56:49 PM
+2024-08-26T11:27:09.315Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 4:57:09 PM
+2024-08-26T11:32:40.239Z - Doctor wgh_mb_mdavis from WGH logged in at 8/26/2024, 5:02:40 PM
+2024-08-26T11:32:46.811Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:02:46 PM
+2024-08-26T11:34:57.389Z - Doctor wgh_mb_mdavis from WGH logged in at 8/26/2024, 5:04:57 PM
+2024-08-26T11:35:03.930Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:05:03 PM
+2024-08-26T11:35:22.237Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:05:22 PM
+2024-08-26T11:35:39.580Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:05:39 PM
+2024-08-26T11:36:48.316Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:06:48 PM
+2024-08-26T11:37:15.000Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:07:15 PM
+2024-08-26T11:52:19.260Z - Doctor wgh_mb_mdavis from WGH logged in at 8/26/2024, 5:22:19 PM
+2024-08-26T11:52:25.522Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:22:25 PM
+2024-08-26T11:52:49.841Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:22:49 PM
+2024-08-26T11:53:02.731Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:23:02 PM
+2024-08-26T11:57:16.270Z - Doctor wgh_mb_mdavis from WGH logged in at 8/26/2024, 5:27:16 PM
+2024-08-26T11:57:23.578Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:27:23 PM
+2024-08-26T12:07:18.488Z - Doctor wgh_mb_mdavis from WGH logged in at 8/26/2024, 5:37:18 PM
+2024-08-26T12:07:24.629Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:37:24 PM
+2024-08-26T12:09:04.008Z - Doctor wgh_mb_mdavis from WGH logged in at 8/26/2024, 5:39:03 PM
+2024-08-26T12:09:10.513Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:39:10 PM
+2024-08-26T12:09:22.387Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:39:22 PM
+2024-08-26T12:12:24.422Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:42:24 PM
+2024-08-26T12:16:06.033Z - Doctor wgh_mb_mdavis from WGH logged in at 8/26/2024, 5:46:05 PM
+2024-08-26T12:16:12.909Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:46:12 PM
+2024-08-26T12:22:52.942Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:52:52 PM
+2024-08-26T12:23:45.622Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:53:45 PM
+2024-08-26T12:24:45.203Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:54:45 PM
+2024-08-26T12:29:39.288Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 5:59:39 PM
+2024-08-26T12:33:51.941Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 6:03:51 PM
+2024-08-26T12:35:54.024Z - Doctor wgh_mb_mdavis from WGH logged in at 8/26/2024, 6:05:54 PM
+2024-08-26T12:35:59.836Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 6:05:59 PM
+2024-08-26T12:40:41.490Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 6:10:41 PM
+2024-08-26T12:52:42.793Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 6:22:42 PM
+2024-08-26T12:53:21.976Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/26/2024, 6:23:21 PM
+2024-08-28T05:31:43.086Z - Doctor wgh_mb_mdavis from WGH logged in at 8/28/2024, 11:01:43 AM
+2024-08-28T05:31:51.559Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 121 at 8/28/2024, 11:01:51 AM
+2024-08-28T06:23:35.982Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/28/2024, 11:53:35 AM
+2024-08-28T06:24:16.165Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 121 at 8/28/2024, 11:54:16 AM
+2024-08-28T06:36:35.431Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/28/2024, 12:06:35 PM
+2024-08-28T06:41:21.313Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 121 at 8/28/2024, 12:11:21 PM
+2024-08-28T07:45:57.871Z - Doctor wgh_mb_mdavis from WGH logged in at 8/28/2024, 1:15:57 PM
+2024-08-28T07:46:06.254Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/28/2024, 1:16:06 PM
+2024-08-28T07:46:10.924Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/28/2024, 1:16:10 PM
+2024-08-28T07:46:35.414Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 121 at 8/28/2024, 1:16:35 PM
+2024-08-28T07:49:00.465Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/28/2024, 1:19:00 PM
+2024-08-28T08:32:55.146Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 121 at 8/28/2024, 2:02:55 PM
+2024-08-28T08:34:10.637Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/28/2024, 2:04:10 PM
+2024-08-28T09:08:11.765Z - Doctor wgh_mb_mdavis from WGH logged in at 8/28/2024, 2:38:11 PM
+2024-08-28T09:08:19.873Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/28/2024, 2:38:19 PM
+2024-08-28T09:35:13.234Z - Doctor wgh_mb_mdavis from WGH logged in at 8/28/2024, 3:05:13 PM
+2024-08-28T09:35:20.672Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 121 at 8/28/2024, 3:05:20 PM
+2024-08-28T09:36:00.938Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/28/2024, 3:06:00 PM
+2024-08-28T09:37:07.283Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 121 at 8/28/2024, 3:07:07 PM
+2024-08-28T09:49:28.154Z - Doctor wgh_mb_mdavis from WGH logged in at 8/28/2024, 3:19:28 PM
+2024-08-28T09:49:35.033Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/28/2024, 3:19:35 PM
+2024-08-28T09:49:51.612Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 121 at 8/28/2024, 3:19:51 PM
+2024-08-28T09:51:14.450Z - Doctor wgh_mb_mdavis from WGH logged in at 8/28/2024, 3:21:14 PM
+2024-08-28T09:51:22.943Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 121 at 8/28/2024, 3:21:22 PM
+2024-08-28T09:51:53.667Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 6345 at 8/28/2024, 3:21:53 PM
+2024-08-28T09:55:06.203Z - Doctor wgh_mb_mdavis from WGH logged in at 8/28/2024, 3:25:06 PM
+2024-08-28T09:55:12.505Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 121 at 8/28/2024, 3:25:12 PM
+2024-08-29T10:29:20.700Z - Doctor wgh_mb_mdavis from WGH logged in at 8/29/2024, 3:59:20 PM
+2024-08-29T10:29:27.353Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 55 at 8/29/2024, 3:59:27 PM
+2024-08-29T11:02:42.106Z - Doctor wgh_mb_mdavis from WGH logged in at 8/29/2024, 4:32:42 PM
+2024-08-29T11:02:49.301Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 4:32:49 PM
+2024-08-29T11:14:28.549Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 4:44:28 PM
+2024-08-29T11:14:49.937Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 4:44:49 PM
+2024-08-29T11:18:51.577Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 4:48:51 PM
+2024-08-29T11:20:08.811Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 4:50:08 PM
+2024-08-29T11:20:44.522Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 4:50:44 PM
+2024-08-29T11:20:54.191Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 4:50:54 PM
+2024-08-29T11:22:00.603Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 4:52:00 PM
+2024-08-29T11:37:29.701Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:07:29 PM
+2024-08-29T11:41:45.854Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 121 at 8/29/2024, 5:11:45 PM
+2024-08-29T11:44:24.388Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 121 at 8/29/2024, 5:14:24 PM
+2024-08-29T11:45:08.667Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 121 at 8/29/2024, 5:15:08 PM
+2024-08-29T11:47:17.952Z - Doctor wgh_mb_mdavis from WGH logged in at 8/29/2024, 5:17:17 PM
+2024-08-29T11:47:28.261Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:17:28 PM
+2024-08-29T11:50:21.554Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:20:21 PM
+2024-08-29T11:50:42.423Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:20:42 PM
+2024-08-29T11:51:55.527Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:21:55 PM
+2024-08-29T11:52:34.848Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:22:34 PM
+2024-08-29T11:52:53.134Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:22:53 PM
+2024-08-29T11:53:39.154Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:23:39 PM
+2024-08-29T11:54:03.330Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:24:03 PM
+2024-08-29T11:54:43.178Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:24:43 PM
+2024-08-29T11:55:08.457Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:25:08 PM
+2024-08-29T11:57:30.393Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:27:30 PM
+2024-08-29T12:00:40.749Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:30:40 PM
+2024-08-29T12:00:52.032Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:30:52 PM
+2024-08-29T12:01:09.819Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:31:09 PM
+2024-08-29T12:03:02.752Z - Doctor wgh_mb_mdavis from WGH logged in at 8/29/2024, 5:33:02 PM
+2024-08-29T12:03:09.747Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:33:09 PM
+2024-08-29T12:10:24.757Z - Doctor wgh_mb_mdavis from WGH logged in at 8/29/2024, 5:40:24 PM
+2024-08-29T12:10:31.501Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:40:31 PM
+2024-08-29T12:12:40.625Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:42:40 PM
+2024-08-29T12:13:38.172Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:43:38 PM
+2024-08-29T12:14:41.918Z - Doctor wgh_mb_mdavis from WGH logged in at 8/29/2024, 5:44:41 PM
+2024-08-29T12:14:48.238Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:44:48 PM
+2024-08-29T12:16:22.229Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:46:22 PM
+2024-08-29T12:16:47.951Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/29/2024, 5:46:47 PM
+2024-08-30T06:31:36.519Z - Doctor wgh_mb_mdavis from WGH logged in at 8/30/2024, 12:01:36 PM
+2024-08-30T06:31:54.693Z - Doctor wgh_mb_mdavis from WGH logged in at 8/30/2024, 12:01:54 PM
+2024-08-30T06:31:55.690Z - Doctor wgh_mb_mdavis from WGH logged in at 8/30/2024, 12:01:55 PM
+2024-08-30T06:33:09.348Z - Doctor wgh_mb_mdavis from WGH logged in at 8/30/2024, 12:03:09 PM
+2024-08-30T06:33:10.453Z - Doctor wgh_mb_mdavis from WGH logged in at 8/30/2024, 12:03:10 PM
+2024-08-30T06:33:24.031Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/30/2024, 12:03:24 PM
+2024-08-30T06:33:59.554Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/30/2024, 12:03:59 PM
+2024-08-30T06:35:04.784Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/30/2024, 12:05:04 PM
+2024-08-30T06:41:43.689Z - Doctor wgh_mb_mdavis from WGH logged in at 8/30/2024, 12:11:43 PM
+2024-08-30T06:41:51.925Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/30/2024, 12:11:51 PM
+2024-08-30T06:44:03.477Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/30/2024, 12:14:03 PM
+2024-08-30T06:44:24.731Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/30/2024, 12:14:24 PM
+2024-08-30T06:44:35.337Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/30/2024, 12:14:35 PM
+2024-08-30T08:36:54.905Z - Doctor wgh_mb_mdavis from WGH logged in at 8/30/2024, 2:06:54 PM
+2024-08-30T08:37:06.927Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/30/2024, 2:07:06 PM
+2024-08-31T05:32:19.305Z - Doctor wgh_mb_mdavis from WGH logged in at 8/31/2024, 11:02:19 AM
+2024-08-31T05:32:27.360Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 8/31/2024, 11:02:27 AM
+2024-09-01T15:00:47.422Z - Doctor wgh_mb_mdavis from WGH logged in at 9/1/2024, 8:30:47 PM
+2024-09-01T15:00:56.373Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 23 at 9/1/2024, 8:30:56 PM
+2024-09-01T15:01:56.995Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 23 at 9/1/2024, 8:31:56 PM
+2024-09-01T15:02:17.989Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 23 at 9/1/2024, 8:32:17 PM
+2024-09-01T15:03:58.908Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 9/1/2024, 8:33:58 PM
+2024-09-03T06:30:47.401Z - Doctor wgh_mb_mdavis from WGH logged in at 9/3/2024, 12:00:47 PM
+2024-09-03T06:31:11.284Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 9/3/2024, 12:01:11 PM
+2024-09-03T06:34:10.668Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 9/3/2024, 12:04:10 PM
+2024-09-03T06:35:43.117Z - Doctor wgh_mb_mdavis from WGH logged out at 9/3/2024, 12:05:43 PM after 295.74 seconds of activity.
+2024-09-03T07:13:54.342Z - Doctor wgh_mb_mdavis from WGH logged in at 9/3/2024, 12:43:54 PM
+2024-09-03T08:09:26.894Z - Doctor wgh_mb_mdavis from WGH logged in at 9/3/2024, 1:39:26 PM
+2024-09-03T10:50:09.469Z - Doctor wgh_mb_mdavis from WGH logged in at 9/3/2024, 4:20:09 PM
+2024-09-03T10:50:17.496Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 9/3/2024, 4:20:17 PM
+2024-09-03T17:40:45.453Z - Doctor wgh_mb_mdavis from WGH logged in at 9/3/2024, 11:10:45 PM
+2024-09-03T17:41:15.744Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 9/3/2024, 11:11:15 PM
+2024-09-04T05:55:19.214Z - Doctor wgh_mb_mdavis from WGH logged in at 9/4/2024, 11:25:19 AM
+2024-09-04T05:55:31.878Z - Doctor wgh_mb_mdavis from WGH accessed patient record for Mr_no: 874 at 9/4/2024, 11:25:31 AM
+2024-09-06T20:32:39.732Z - Doctor wgh_mb_vjhgghj from WGH logged in at 9/7/2024, 2:02:39 AM
+2024-09-06T20:37:09.325Z - Doctor wgh_mb_vjhgghj from WGH logged in at 9/7/2024, 2:07:09 AM
+2024-09-06T20:38:37.541Z - Doctor wgh_mb_vjhgghj from WGH logged in at 9/7/2024, 2:08:37 AM
+2024-09-06T20:51:13.795Z - Doctor wgh_mb_vjhgghj from WGH logged in at 9/7/2024, 2:21:13 AM
+2024-09-06T20:53:53.504Z - Doctor wgh_mb_vjhgghj from WGH logged in at 9/7/2024, 2:23:53 AM
+2024-09-06T20:53:59.142Z - Doctor wgh_mb_vjhgghj accessed surveys: Wexner, EPDS
+2024-09-06T20:54:24.113Z - Doctor wgh_mb_vjhgghj accessed surveys: Wexner, EPDS
+2024-09-06T20:57:37.393Z - Doctor wgh_mb_vjhgghj from WGH logged in at 9/7/2024, 2:27:37 AM
+2024-09-06T20:57:44.255Z - Doctor wgh_mb_vjhgghj accessed surveys: Wexner, EPDS
+2024-09-10T09:56:42.763Z - Doctor wgh_mb_rkumar from WGH logged in at 9/10/2024, 3:26:42 PM
+2024-09-10T09:57:25.455Z - Doctor wgh_mb_rkumar from WGH logged in at 9/10/2024, 3:27:25 PM
+2024-09-10T09:57:36.007Z - Doctor wgh_mb_rkumar from WGH logged in at 9/10/2024, 3:27:36 PM
+2024-09-10T09:58:03.466Z - Doctor wgh_mb_rkumar from WGH logged in at 9/10/2024, 3:28:03 PM
+2024-09-10T11:14:47.587Z - Doctor wgh_mb_rkumar from WGH logged in at 9/10/2024, 4:44:47 PM
+2024-09-10T11:15:36.478Z - Doctor wgh_mb_rkumar from WGH logged in at 9/10/2024, 4:45:36 PM
+2024-09-10T11:17:30.153Z - Doctor wgh_mb_rkumar from WGH logged in at 9/10/2024, 4:47:30 PM
+2024-09-13T11:40:50.590Z - Doctor wgh_mb_rkumar from WGH logged in at 9/13/2024, 5:10:50 PM
+2024-09-13T11:40:55.453Z - Doctor wgh_mb_rkumar from WGH logged out at 9/13/2024, 5:10:55 PM after 4.86 seconds of activity.
+2024-09-13T11:41:26.163Z - Doctor wgh_mb_mdavis from WGH logged in at 9/13/2024, 5:11:26 PM
+2024-09-13T11:51:01.792Z - Doctor wgh_mb_mdavis from WGH logged in at 9/13/2024, 5:21:01 PM
+2024-09-13T11:51:16.004Z - Doctor wgh_mb_mdavis from WGH logged out at 9/13/2024, 5:21:16 PM after 14.21 seconds of activity.
+2024-09-13T11:51:56.101Z - Doctor wgh_mb_vjhgghj from WGH logged in at 9/13/2024, 5:21:56 PM
+2024-09-13T19:15:31.464Z - Doctor wgh_mb_vjhgghj from WGH logged in at 9/14/2024, 12:45:31 AM
+2024-09-13T19:15:39.326Z - Doctor wgh_mb_vjhgghj accessed surveys: Wexner, ICIQ-UI_SF, EPDS, PROMIS-10
+2024-09-19T06:32:22.796Z - Doctor wgh_mb_vjhgghj from WGH logged in at 9/19/2024, 12:02:22 PM
+2024-09-19T06:32:50.375Z - Doctor wgh_mb_vjhgghj from WGH logged out at 9/19/2024, 12:02:50 PM after 27.61 seconds of activity.
+2024-09-19T08:47:17.692Z - Doctor wgh_mb_vjhgghj from WGH logged in at 9/19/2024, 2:17:17 PM
+2024-09-19T09:02:11.725Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 2:32:11 PM
+2024-09-19T10:39:57.847Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:09:57 PM
+2024-09-19T10:40:08.826Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:10:08 PM
+2024-09-19T10:47:24.229Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:17:24 PM
+2024-09-19T10:47:30.364Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:17:30 PM
+2024-09-19T10:48:53.238Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:18:53 PM
+2024-09-19T10:49:13.652Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:19:13 PM
+2024-09-19T10:49:37.558Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:19:37 PM
+2024-09-19T10:50:04.962Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:20:04 PM
+2024-09-19T10:51:32.099Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:21:32 PM
+2024-09-19T10:51:51.461Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:21:51 PM
+2024-09-19T10:52:01.627Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:22:01 PM
+2024-09-19T10:53:03.872Z - Doctor wgh_mb_dkumar from WGH logged out at 9/19/2024, 4:23:03 PM after 62.25 seconds of activity.
+2024-09-19T10:53:08.993Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:23:08 PM
+2024-09-19T10:54:02.439Z - Doctor wgh_mb_dkumar from WGH logged out at 9/19/2024, 4:24:02 PM after 53.45 seconds of activity.
+2024-09-19T10:54:06.640Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:24:06 PM
+2024-09-19T10:54:31.371Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:24:31 PM
+2024-09-19T10:56:35.458Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:26:35 PM
+2024-09-19T10:58:27.630Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:28:27 PM
+2024-09-19T10:58:42.940Z - Doctor wgh_mb_dkumar accessed surveys: 
+2024-09-19T10:58:45.899Z - Doctor wgh_mb_dkumar accessed surveys: 
+2024-09-19T10:58:51.063Z - Doctor wgh_mb_dkumar from WGH logged in at 9/19/2024, 4:28:51 PM
+2024-09-24T10:53:33.118Z - Doctor wgh_mb_tee from WGH logged out at 9/24/2024, 4:23:33 PM after 0.00 seconds of activity.
+2024-09-24T10:54:19.339Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-24T11:00:24.651Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T04:54:35.475Z - Doctor wgh_mb_dsdf from WGH logged in at 9/25/2024, 10:24:35 AM
+2024-09-25T04:54:45.585Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T04:55:22.463Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:05:50.583Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:06:37.092Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:07:13.525Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:10:41.601Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:18:03.467Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:18:22.328Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:21:06.113Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:21:11.020Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:21:16.978Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:21:17.123Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:21:53.657Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:23:36.782Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:23:46.204Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:24:19.276Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:27:54.932Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:28:19.397Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:30:30.981Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:30:40.716Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:36:24.273Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:36:36.043Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:36:54.992Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:40:51.654Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:41:00.109Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:45:01.763Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T05:45:10.183Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T11:13:10.165Z - Doctor wgh_mb_dsdf from WGH logged in at 9/25/2024, 4:43:10 PM
+2024-09-25T11:13:19.377Z - Doctor wgh_mb_dsdf accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-25T11:20:35.517Z - Doctor wgh_mb_dsdf from WGH logged out at 9/25/2024, 4:50:35 PM after 445.38 seconds of activity.
+2024-09-25T11:21:06.022Z - Doctor wgh_mb_yaw accessed surveys: PAID, Wexner, ICIQ_UI_SF, EPDS, PROMIS-10
+2024-09-29T18:18:48.795Z - Doctor wgh_mb_rkrishna from WGH logged out at 9/29/2024, 11:48:48 PM after 0.00 seconds of activity.
+2024-09-29T18:18:56.592Z - Doctor wgh_mb_rkrishna from WGH logged in at 9/29/2024, 11:48:56 PM
+2024-09-30T08:32:31.204Z - Doctor wgh_mb_mkumar from WGH logged in at 9/30/2024, 2:02:31 PM
+2024-09-30T08:32:39.621Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-30T11:04:21.675Z - Doctor wgh_mb_mkumar from WGH logged in at 9/30/2024, 4:34:21 PM
+2024-09-30T11:04:42.396Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-30T11:11:08.879Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-30T11:11:42.245Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-09-30T11:15:00.182Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T08:21:04.308Z - Doctor wgh_mb_mkumar from WGH logged in at 10/1/2024, 1:51:04 PM
+2024-10-01T08:21:13.242Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T08:22:15.847Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T08:28:36.894Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T08:33:27.129Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T08:33:59.098Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T08:36:43.794Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T08:51:05.583Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T08:53:57.131Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:02:43.123Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:06:17.785Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:07:09.335Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:08:20.330Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:09:29.686Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:36:17.072Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:37:23.799Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:38:43.277Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:40:03.553Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:40:24.240Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:40:51.371Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:41:09.134Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:41:22.130Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:41:36.113Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:43:57.145Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:46:00.629Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:51:09.928Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:51:55.202Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:52:09.679Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:54:53.008Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:56:01.551Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:57:37.370Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T09:58:52.717Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:00:40.573Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:01:04.637Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:07:32.804Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:08:32.434Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:08:41.348Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:16:04.689Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:25:19.658Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:25:34.823Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:26:22.632Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:26:30.199Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:26:54.044Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:27:00.314Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:28:53.577Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:29:32.592Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:29:39.452Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:29:48.862Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:30:27.377Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:30:35.229Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:31:35.089Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:31:42.207Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:31:49.808Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:32:31.481Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:34:11.344Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:34:18.232Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:34:25.445Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:34:32.750Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:36:00.416Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:36:17.979Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:36:55.753Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:36:56.245Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T10:40:22.638Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T11:14:10.609Z - Doctor wgh_mb_mkumar from WGH logged in at 10/1/2024, 4:44:10 PM
+2024-10-01T11:14:18.133Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T11:16:28.520Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-01T11:18:48.628Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-03T11:49:32.033Z - Doctor wgh_mb_mkumar from WGH logged in at 10/3/2024, 5:19:32 PM
+2024-10-03T11:49:42.440Z - Doctor wgh_mb_mkumar accessed surveys: Wexner, EPDS, PROMIS-10
+2024-10-04T07:07:02.726Z - Doctor wgh_mb_vkumar from WGH logged out at 10/4/2024, 12:37:02 PM after 0.00 seconds of activity.
+2024-10-04T07:07:10.528Z - Doctor wgh_mb_vkumar from WGH logged in at 10/4/2024, 12:37:10 PM
+2024-10-04T07:09:37.343Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-04T07:26:36.438Z - Doctor wgh_mb_vkumar from WGH logged out at 10/4/2024, 12:56:36 PM after 1165.91 seconds of activity.
+2024-10-04T07:26:49.080Z - Doctor wgh_mb_vkumar from WGH logged in at 10/4/2024, 12:56:49 PM
+2024-10-09T09:58:44.721Z - Doctor wgh_mb_vkumar from WGH logged in at 10/9/2024, 3:28:44 PM
+2024-10-09T09:58:54.247Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-09T10:32:49.376Z - Doctor wgh_mb_vkumar from WGH logged in at 10/9/2024, 4:02:49 PM
+2024-10-09T10:32:56.266Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-09T10:32:59.869Z - Doctor wgh_mb_vkumar from WGH logged out at 10/9/2024, 4:02:59 PM after 10.53 seconds of activity.
+2024-10-14T10:06:27.133Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 3:36:27 PM
+2024-10-14T10:06:35.243Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T10:06:47.031Z - Doctor wgh_mb_vkumar accessed surveys: 
+2024-10-14T10:06:50.370Z - Doctor wgh_mb_vkumar accessed surveys: 
+2024-10-14T10:19:00.576Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 3:49:00 PM
+2024-10-14T10:19:06.730Z - Doctor wgh_mb_vkumar accessed surveys: 
+2024-10-14T10:19:09.753Z - Doctor wgh_mb_vkumar accessed surveys: 
+2024-10-14T10:21:47.845Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T10:22:26.656Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T10:23:20.534Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T10:35:18.137Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T10:36:34.501Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T10:36:57.757Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T11:09:35.154Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 4:39:35 PM
+2024-10-14T11:09:40.702Z - Doctor wgh_mb_vkumar accessed surveys: 
+2024-10-14T11:09:40.900Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 4:39:40 PM
+2024-10-14T11:09:49.761Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T11:10:15.149Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T11:12:36.446Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T11:19:35.177Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 4:49:35 PM
+2024-10-14T11:20:21.435Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 4:50:21 PM
+2024-10-14T11:20:28.789Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T11:20:56.516Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T11:27:55.305Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:01:08.409Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 5:31:08 PM
+2024-10-14T12:01:15.755Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:01:29.975Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:01:32.445Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:01:50.478Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:05:24.442Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:05:53.013Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:08:38.401Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 5:38:38 PM
+2024-10-14T12:08:45.573Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:09:19.393Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:10:09.713Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:10:19.877Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:10:59.028Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:11:08.876Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:12:45.105Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:13:00.501Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:13:14.092Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:13:45.940Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:15:09.194Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 5:45:09 PM
+2024-10-14T12:15:16.099Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:15:27.205Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:16:36.015Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:16:46.680Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:21:20.682Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 5:51:20 PM
+2024-10-14T12:21:28.433Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:21:41.901Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T12:22:25.235Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T16:42:27.796Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 10:12:27 PM
+2024-10-14T16:42:35.551Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T16:42:51.034Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T16:47:04.280Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T16:52:22.070Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 10:22:22 PM
+2024-10-14T16:52:29.077Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T16:52:47.912Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T16:54:06.654Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T16:54:13.931Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T16:54:32.091Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T16:55:02.469Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T16:55:33.898Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T16:56:29.920Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:08:36.847Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 10:38:36 PM
+2024-10-14T17:08:43.827Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:09:10.331Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:09:33.570Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:09:53.240Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:12:53.422Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:15:26.189Z - Doctor wgh_mb_vkumar from WGH logged in at 10/14/2024, 10:45:26 PM
+2024-10-14T17:15:33.816Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:15:51.634Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:15:59.261Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:16:12.318Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:16:35.254Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:18:21.345Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:22:11.639Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:22:23.296Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:24:34.159Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:25:17.168Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:26:08.059Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:26:42.057Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:27:11.138Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:34:33.195Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:34:48.658Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:35:30.779Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:37:21.977Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:37:37.714Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:39:04.653Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:39:13.664Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-14T17:39:35.125Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-21T10:56:39.002Z - Doctor wgh_mb_vkumar from WGH logged in at 10/21/2024, 4:26:38 PM
+2024-10-21T10:56:49.613Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-21T11:01:02.846Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-21T11:01:26.196Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-21T11:03:52.627Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-21T11:06:31.452Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-21T11:08:11.090Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T07:49:06.065Z - Doctor wgh_mb_vkumar from WGH logged in at 10/23/2024, 1:19:06 PM
+2024-10-23T07:49:44.566Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T07:54:33.918Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T09:34:46.013Z - Doctor wgh_mb_vkumar from WGH logged in at 10/23/2024, 3:04:45 PM
+2024-10-23T09:42:36.691Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T10:54:04.092Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T10:56:15.372Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T10:59:13.264Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T11:05:09.699Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T11:22:29.868Z - Doctor wgh_mb_vkumar from WGH logged in at 10/23/2024, 4:52:29 PM
+2024-10-23T11:23:00.094Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T11:25:34.821Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T11:26:00.240Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T11:28:39.802Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T11:29:35.766Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T11:32:43.255Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T11:37:38.578Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T11:38:26.893Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T11:39:14.466Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T11:40:06.956Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-23T11:43:43.712Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-24T05:45:01.255Z - Doctor wgh_mb_vkumar from WGH logged in at 10/24/2024, 11:15:01 AM
+2024-10-24T06:46:35.241Z - Doctor wgh_mb_vkumar from WGH logged in at 10/24/2024, 12:16:35 PM
+2024-10-24T06:49:08.359Z - Doctor wgh_mb_vkumar from WGH logged in at 10/24/2024, 12:19:08 PM
+2024-10-24T06:49:17.759Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-24T06:50:42.047Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-24T06:53:57.265Z - Doctor wgh_mb_vkumar from WGH logged in at 10/24/2024, 12:23:57 PM
+2024-10-24T06:54:06.006Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-24T06:54:44.567Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-24T06:54:53.481Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-24T06:58:28.684Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-24T06:58:33.967Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-24T06:58:44.069Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-24T07:40:36.505Z - Doctor wgh_mb_vkumar from WGH logged in at 10/24/2024, 1:10:36 PM
+2024-10-24T07:40:46.848Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-24T07:50:54.148Z - Doctor wgh_mb_vkumar from WGH logged in at 10/24/2024, 1:20:54 PM
+2024-10-24T07:51:02.014Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-24T07:52:07.902Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-24T07:54:37.075Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-24T11:41:27.490Z - Doctor wgh_mb_vkumar from WGH logged in at 10/24/2024, 5:11:27 PM
+2024-10-24T11:41:32.222Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-29T06:35:11.716Z - Doctor wgh_mb_vkumar from WGH logged in at 10/29/2024, 12:05:11 PM
+2024-10-29T06:35:18.105Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-29T06:35:39.642Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-29T06:41:54.170Z - Doctor wgh_mb_vkumar from WGH logged in at 10/29/2024, 12:11:54 PM
+2024-10-29T06:41:58.876Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-29T06:43:49.625Z - Doctor wgh_mb_vkumar from WGH logged in at 10/29/2024, 12:13:49 PM
+2024-10-29T06:43:58.324Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-29T06:44:15.024Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-29T06:44:15.043Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-29T06:46:18.683Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-10-29T07:31:29.515Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-01T10:51:12.470Z - Doctor wgh_mb_vkumar from WGH logged in at 11/1/2024, 4:21:12 PM
+2024-11-01T10:51:18.953Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-02T04:13:25.298Z - Doctor wgh_mb_vkumar from WGH logged in at 11/2/2024, 9:43:25 AM
+2024-11-02T04:13:36.629Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-02T05:06:56.135Z - Doctor wgh_mb_kram accessed surveys: EPDS
+2024-11-02T05:31:03.270Z - Doctor wgh_mb_kram accessed surveys: EPDS
+2024-11-02T05:31:15.734Z - Doctor wgh_mb_kram accessed surveys: EPDS
+2024-11-02T08:56:33.163Z - Doctor wgh_mb_kram from WGH logged in at 11/2/2024, 2:26:33 PM
+2024-11-02T08:56:40.722Z - Doctor wgh_mb_kram accessed surveys: EPDS
+2024-11-02T08:56:46.075Z - Doctor wgh_mb_kram accessed surveys: EPDS
+2024-11-02T09:23:02.502Z - Doctor wgh_mb_kram from WGH logged in at 11/2/2024, 2:53:02 PM
+2024-11-02T09:23:06.142Z - Doctor wgh_mb_kram accessed surveys: EPDS
+2024-11-02T09:25:04.990Z - Doctor wgh_mb_kram accessed surveys: EPDS
+2024-11-02T09:25:40.786Z - Doctor wgh_mb_vkumar from WGH logged in at 11/2/2024, 2:55:40 PM
+2024-11-02T09:25:46.104Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-02T09:26:09.774Z - Doctor wgh_mb_vkumar accessed surveys: EPDS
+2024-11-04T05:00:09.189Z - Doctor wgh_mb_vkumar from WGH logged in at 11/4/2024, 10:30:09 AM
+2024-11-04T05:04:15.364Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:04:31.267Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:05:08.603Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:05:12.925Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:07:17.771Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:07:21.420Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:07:24.182Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:17:02.815Z - Doctor wgh_mb_vkumar from WGH logged in at 11/4/2024, 10:47:02 AM
+2024-11-04T05:17:07.650Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:17:27.005Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:29:43.259Z - Doctor wgh_mb_vkumar from WGH logged in at 11/4/2024, 10:59:43 AM
+2024-11-04T05:29:48.585Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:30:02.215Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:30:34.692Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:31:22.537Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:31:31.104Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T05:33:15.914Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T17:22:02.256Z - Doctor wgh_mb_vkumar from WGH logged in at 11/4/2024, 10:52:02 PM
+2024-11-04T17:22:09.762Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T17:22:22.327Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T17:24:34.773Z - Doctor wgh_mb_vkumar from WGH logged in at 11/4/2024, 10:54:34 PM
+2024-11-04T17:24:40.507Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T17:26:34.395Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T17:28:26.367Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-04T17:30:22.305Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T06:08:33.891Z - Doctor wgh_mb_klee accessed surveys: ICIQ_UI_SF
+2024-11-05T06:32:57.505Z - Doctor wgh_mb_vkumar from WGH logged in at 11/5/2024, 12:02:57 PM
+2024-11-05T06:33:08.822Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T07:53:40.437Z - Doctor wgh_mb_vkumar from WGH logged in at 11/5/2024, 1:23:40 PM
+2024-11-05T08:02:29.556Z - Doctor wgh_mb_vkumar from WGH logged in at 11/5/2024, 1:32:29 PM
+2024-11-05T08:03:02.031Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T08:06:01.656Z - Doctor wgh_mb_vkumar from WGH logged in at 11/5/2024, 1:36:01 PM
+2024-11-05T08:10:08.012Z - Doctor wgh_mb_vkumar from WGH logged in at 11/5/2024, 1:40:08 PM
+2024-11-05T08:15:33.357Z - Doctor wgh_mb_vkumar from WGH logged in at 11/5/2024, 1:45:33 PM
+2024-11-05T08:18:06.497Z - Doctor wgh_mb_vkumar from WGH logged in at 11/5/2024, 1:48:06 PM
+2024-11-05T08:18:32.350Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T08:50:06.800Z - Doctor wgh_mb_vkumar from WGH logged in at 11/5/2024, 2:20:06 PM
+2024-11-05T08:51:44.331Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T08:51:52.450Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T10:48:18.542Z - Doctor wgh_mb_vkumar from WGH logged in at 11/5/2024, 4:18:18 PM
+2024-11-05T10:58:38.583Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:02:33.061Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:02:40.052Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:03:16.889Z - Doctor wgh_mb_vkumar from WGH logged in at 11/5/2024, 4:33:16 PM
+2024-11-05T11:03:28.133Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:06:38.521Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:06:57.445Z - Doctor wgh_mb_vkumar from WGH logged in at 11/5/2024, 4:36:57 PM
+2024-11-05T11:07:02.056Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:08:06.756Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:08:11.675Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:08:11.681Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:12:11.887Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:12:46.222Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:18:17.023Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:21:44.293Z - Doctor wgh_mb_vkumar from WGH logged in at 11/5/2024, 4:51:44 PM
+2024-11-05T11:21:51.079Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:21:57.006Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:23:30.492Z - Doctor wgh_mb_vkumar from WGH logged in at 11/5/2024, 4:53:30 PM
+2024-11-05T11:23:36.233Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:23:45.360Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:25:18.492Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:25:25.694Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:25:32.879Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:27:43.739Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:39:42.366Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:39:49.714Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:39:59.434Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:40:33.795Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:40:57.311Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:41:25.811Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:41:25.815Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:41:25.943Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:41:57.749Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T11:42:06.057Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T18:35:56.309Z - Doctor wgh_mb_vkumar from WGH logged in at 11/6/2024, 12:05:56 AM
+2024-11-05T18:44:59.951Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T19:11:52.464Z - Doctor wgh_mb_vkumar from WGH logged in at 11/6/2024, 12:41:52 AM
+2024-11-05T19:11:57.682Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T19:16:00.078Z - Doctor wgh_mb_klee from WGH logged in at 11/6/2024, 12:46:00 AM
+2024-11-05T19:16:04.663Z - Doctor wgh_mb_klee accessed surveys: ICIQ_UI_SF
+2024-11-05T19:28:04.607Z - Doctor wgh_mb_vkumar from WGH logged in at 11/6/2024, 12:58:04 AM
+2024-11-05T19:28:11.413Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-05T19:31:09.695Z - Doctor wgh_mb_klee from WGH logged in at 11/6/2024, 1:01:09 AM
+2024-11-05T19:31:16.466Z - Doctor wgh_mb_klee accessed surveys: ICIQ_UI_SF
+2024-11-05T19:32:13.499Z - Doctor wgh_mb_klee accessed surveys: ICIQ_UI_SF
+2024-11-06T05:37:09.217Z - Doctor wgh_mb_vkumar from WGH logged in at 11/6/2024, 11:07:09 AM
+2024-11-06T05:37:21.431Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T05:37:36.011Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T05:45:01.705Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:01:57.546Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:02:05.285Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:02:20.220Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:06:25.614Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:17:06.727Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:17:24.388Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:17:34.864Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:18:09.248Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:38:05.962Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:38:12.510Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:38:25.227Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:38:30.881Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:38:45.701Z - Doctor wgh_mb_vkumar from WGH logged in at 11/6/2024, 12:08:45 PM
+2024-11-06T06:38:50.174Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:41:51.129Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:42:39.968Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:42:47.788Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:43:21.076Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T06:43:32.139Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T09:39:23.166Z - Doctor wgh_mb_vkumar from WGH logged in at 11/6/2024, 3:09:23 PM
+2024-11-06T09:39:30.631Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T10:42:40.925Z - Doctor wgh_mb_vkumar from WGH logged in at 11/6/2024, 4:12:40 PM
+2024-11-06T10:42:47.265Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T10:42:52.448Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-06T10:42:59.798Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-07T12:29:54.601Z - Doctor wgh_mb_vkumar from WGH logged in at 11/7/2024, 5:59:54 PM
+2024-11-07T15:13:10.791Z - Doctor wgh_mb_vkumar from WGH logged in at 11/7/2024, 8:43:10 PM
+2024-11-07T16:34:17.143Z - Doctor wgh_mb_vkumar from WGH logged in at 11/7/2024, 10:04:17 PM
+2024-11-08T08:42:08.266Z - Doctor wgh_mb_vkumar from WGH logged in at 11/8/2024, 2:12:08 PM
+2024-11-08T08:42:16.061Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-08T08:42:34.198Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-08T08:42:49.746Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-08T08:42:58.824Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-08T08:45:11.476Z - Doctor wgh_mb_vkumar accessed surveys: PAID, PROMIS-10
+2024-11-08T11:22:20.846Z - Doctor wgh_mb_vkumar from WGH logged in at 11/8/2024, 4:52:20 PM
+2024-11-08T14:31:40.241Z - Doctor wsc01_dsmith from WSC logged in at 11/8/2024, 8:01:40 PM
+2024-11-08T14:34:46.241Z - Doctor wsc01_dsmith from WSC logged in at 11/8/2024, 8:04:46 PM
+2024-11-08T14:44:49.655Z - Doctor wsc01_dsmith from WSC logged in at 11/8/2024, 8:14:49 PM
+2024-11-12T07:54:12.938Z - Doctor wsc01_dsmith from WSC logged in at 11/12/2024, 1:24:12 PM
+2024-11-12T08:10:37.209Z - Doctor wsc01_dsmith from WSC logged in at 11/12/2024, 1:40:37 PM
+2024-11-12T08:11:02.962Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-21T07:35:13.784Z - Doctor wsc01_dsmith from WSC logged in at 11/21/2024, 1:05:13 PM
+2024-11-21T07:35:20.158Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-21T07:35:29.296Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-21T08:00:10.242Z - Doctor wsc01_dsmith from WSC logged in at 11/21/2024, 1:30:10 PM
+2024-11-21T08:00:24.509Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-21T08:00:40.087Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-21T08:24:31.373Z - Doctor wsc01_dsmith from WSC logged in at 11/21/2024, 1:54:31 PM
+2024-11-21T08:24:59.530Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-21T08:25:07.546Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T04:57:24.272Z - Doctor wsc01_dsmith from WSC logged in at 11/22/2024, 10:27:24 AM
+2024-11-22T04:57:34.702Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T04:57:43.074Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T04:57:51.242Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T04:58:45.020Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:00:26.658Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:01:37.136Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:02:55.919Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:10:05.684Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:10:12.180Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:10:16.861Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:10:27.771Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:10:32.619Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:14:03.086Z - Doctor wsc01_dsmith from WSC logged in at 11/22/2024, 10:44:03 AM
+2024-11-22T05:14:13.593Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:15:18.257Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:15:22.641Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:15:27.331Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:16:25.550Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:17:18.173Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:17:24.860Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:17:31.620Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:26:03.014Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:26:10.516Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:27:08.024Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:27:11.826Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:33:24.744Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:33:30.154Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:34:02.780Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:34:10.227Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:34:26.465Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:37:53.891Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:38:15.795Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:42:11.148Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:42:26.056Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:42:34.701Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:48:14.865Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:48:26.866Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:51:58.173Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:52:09.446Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:52:16.234Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:53:12.963Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:53:32.296Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:53:36.909Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:53:44.735Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:53:55.121Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:54:01.971Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:57:46.066Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:58:00.263Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:58:07.386Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:58:38.061Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:58:44.549Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:58:53.783Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T05:59:03.144Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:00:17.615Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:01:21.989Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:01:26.354Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:03:50.022Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:04:24.898Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:06:54.608Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:10:32.206Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:10:39.346Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:13:20.618Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:13:24.669Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:16:24.260Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:16:28.712Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:16:54.031Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:16:59.966Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:32:54.985Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:32:59.079Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:33:19.593Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:33:24.655Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:33:57.984Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-22T06:34:57.245Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-24T07:58:12.947Z - Doctor wsc01_dsmith from WSC logged in at 11/24/2024, 1:28:12 PM
+2024-11-24T07:58:20.805Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-24T07:58:44.491Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-24T07:59:13.493Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-24T07:59:43.193Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T10:41:30.310Z - Doctor wsc01_dsmith from WSC logged in at 11/25/2024, 4:11:30 PM
+2024-11-25T10:41:37.730Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T10:47:29.506Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T11:50:26.704Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T11:52:32.499Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T12:08:06.558Z - Doctor wsc01_dsmith from WSC logged in at 11/25/2024, 5:38:06 PM
+2024-11-25T12:08:11.959Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:04:04.102Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:04:47.552Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:27:06.118Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:27:30.764Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:27:58.396Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:29:40.706Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:30:02.902Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:31:58.799Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:32:21.822Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:32:37.382Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:40:03.085Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:40:22.654Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:45:25.924Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:47:29.647Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:48:07.628Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:53:27.398Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:53:35.416Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:54:11.341Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:54:37.892Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:58:13.187Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:58:42.438Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T14:59:37.297Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T15:01:59.179Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T15:02:25.515Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T15:03:21.559Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T15:04:09.267Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T15:04:26.446Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T15:05:30.948Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T15:05:44.453Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T15:07:23.072Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-25T15:25:29.920Z - Doctor wsc01_dsmith from WSC logged in at 11/25/2024, 8:55:29 PM
+2024-11-25T15:35:24.689Z - Doctor wsc01_dsmith from WSC logged in at 11/25/2024, 9:05:24 PM
+2024-11-25T15:35:31.754Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-26T12:34:18.848Z - Doctor wsc01_dsmith from WSC logged in at 11/26/2024, 6:04:18 PM
+2024-11-26T12:34:24.601Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-26T12:34:33.000Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-26T12:35:12.208Z - Doctor wsc01_dsmith from WSC logged in at 11/26/2024, 6:05:12 PM
+2024-11-26T12:35:17.496Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-26T12:35:32.232Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-26T12:42:47.515Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-26T12:45:36.155Z - Doctor wsc01_dsmith from WSC logged in at 11/26/2024, 6:15:36 PM
+2024-11-26T12:57:02.631Z - Doctor wsc01_dsmith from WSC logged in at 11/26/2024, 6:27:02 PM
+2024-11-26T12:57:08.173Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T04:48:30.234Z - Doctor wsc01_dsmith from WSC logged in at 11/28/2024, 10:18:30 AM
+2024-11-28T04:48:36.316Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T04:55:55.717Z - Doctor wsc01_dsmith from WSC logged in at 11/28/2024, 10:25:55 AM
+2024-11-28T05:00:34.639Z - Doctor wsc01_dsmith from WSC logged in at 11/28/2024, 10:30:34 AM
+2024-11-28T08:47:39.519Z - Doctor wsc01_dsmith from WSC logged in at 11/28/2024, 2:17:39 PM
+2024-11-28T08:47:45.399Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T08:56:06.628Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T08:56:13.916Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:20:03.460Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:30:17.490Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:32:10.176Z - Doctor wsc01_dsmith from WSC logged in at 11/28/2024, 3:02:10 PM
+2024-11-28T09:32:15.465Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:32:32.552Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:33:03.629Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:33:05.216Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:33:05.752Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:33:06.140Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:33:09.909Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:33:10.332Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:33:10.647Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:33:10.967Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:33:11.265Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:33:46.676Z - Doctor wsc01_dsmith from WSC logged in at 11/28/2024, 3:03:46 PM
+2024-11-28T09:33:49.167Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:44:53.556Z - Doctor wsc01_dsmith from WSC logged in at 11/28/2024, 3:14:53 PM
+2024-11-28T09:44:59.279Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:45:07.820Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:49:12.516Z - Doctor wsc01_dsmith from WSC logged in at 11/28/2024, 3:19:12 PM
+2024-11-28T09:49:15.366Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:49:32.651Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:49:41.936Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:50:53.462Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:51:02.454Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:51:02.753Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:51:02.957Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:51:03.170Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:51:03.369Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:51:34.276Z - Doctor wsc01_dsmith from WSC logged in at 11/28/2024, 3:21:34 PM
+2024-11-28T09:51:36.387Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:52:10.310Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:52:36.688Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T09:52:50.441Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:05:18.662Z - Doctor wsc01_dsmith from WSC logged in at 11/28/2024, 3:35:18 PM
+2024-11-28T10:05:21.100Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:05:43.292Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:05:43.686Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:06:01.509Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:09:48.938Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:09:49.271Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:09:59.644Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:10:11.234Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:11:07.609Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:11:56.590Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:15:04.781Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:16:27.228Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:16:27.631Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:16:28.146Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:16:30.459Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:16:30.955Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:16:31.341Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:16:31.714Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:16:31.974Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:16:32.167Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:17:42.234Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:20:44.723Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:24:21.680Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:32:27.294Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:32:45.424Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:32:58.244Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:33:31.292Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:33:32.372Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:33:32.933Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:33:46.195Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:33:46.856Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:35:03.228Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:35:20.394Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:35:31.835Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:37:03.618Z - Doctor wsc01_dsmith from WSC logged in at 11/28/2024, 4:07:03 PM
+2024-11-28T10:37:06.247Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:37:21.282Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:38:32.002Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:39:19.158Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:39:27.129Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:39:27.817Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:40:08.155Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:40:59.012Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:41:07.233Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:41:29.976Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:41:44.862Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:41:54.052Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:44:21.724Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:44:32.371Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:44:32.832Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:44:33.072Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:45:14.835Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T10:45:15.567Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-11-28T12:33:08.349Z - Doctor wsc01_dsmith from WSC logged in at 11/28/2024, 6:03:08 PM
+2024-11-28T12:33:10.517Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-02T13:18:07.968Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-10b
+2024-12-02T13:18:38.759Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-10b
+2024-12-02T13:18:39.447Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-10b
+2024-12-02T13:18:39.854Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-10b
+2024-12-02T13:18:46.592Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-10b
+2024-12-02T13:18:58.973Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-10b
+2024-12-02T13:18:59.985Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-10b
+2024-12-02T13:22:17.622Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-10b
+2024-12-02T13:22:17.829Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-10b
+2024-12-02T13:22:52.052Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-10b
+2024-12-02T13:33:25.465Z - Doctor wsc01_vkumar03 from WSC logged in at 12/2/2024, 7:03:25 PM
+2024-12-02T13:33:28.066Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-10b
+2024-12-02T13:57:30.286Z - Doctor wsc01_vkumar03 from WSC logged in at 12/2/2024, 7:27:30 PM
+2024-12-02T13:57:33.724Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-6b
+2024-12-02T13:57:39.075Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-6b
+2024-12-02T17:34:12.189Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:34:25.234Z - Doctor wsc01_vkumar04 from WSC logged in at 12/2/2024, 11:04:25 PM
+2024-12-02T17:34:26.431Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:34:42.236Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:34:44.026Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:38:19.226Z - Doctor wsc01_vkumar04 from WSC logged in at 12/2/2024, 11:08:19 PM
+2024-12-02T17:38:24.500Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:39:17.259Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:39:17.979Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:39:18.511Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:39:18.790Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:39:19.063Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:39:19.266Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:39:19.436Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:39:19.611Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:39:19.795Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T17:42:29.147Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T18:12:32.246Z - Doctor wsc01_vkumar04 from WSC logged in at 12/2/2024, 11:42:32 PM
+2024-12-02T18:14:49.960Z - Doctor wsc01_vkumar04 from WSC logged in at 12/2/2024, 11:44:49 PM
+2024-12-02T18:14:51.302Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T18:16:42.864Z - Doctor wsc01_vkumar04 from WSC logged in at 12/2/2024, 11:46:42 PM
+2024-12-02T18:16:46.179Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T18:17:30.785Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-02T18:18:18.420Z - Doctor wsc01_vkumar04 from WSC logged in at 12/2/2024, 11:48:18 PM
+2024-12-02T18:18:19.824Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-03T07:40:22.739Z - Doctor wsc01_vkumar03 from WSC logged in at 12/3/2024, 1:10:22 PM
+2024-12-03T07:40:29.551Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-6b
+2024-12-03T07:40:35.592Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-6b
+2024-12-03T13:16:34.457Z - Doctor wsc01_dsmith from WSC logged in at 12/3/2024, 6:46:34 PM
+2024-12-03T13:16:51.639Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-03T13:16:56.817Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-03T13:17:10.302Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-06T13:00:09.645Z - Doctor wsc01_dsmith from WSC logged in at 12/6/2024, 6:30:09 PM
+2024-12-06T17:17:27.257Z - Doctor wsc01_dsmith from WSC logged in at 12/6/2024, 10:47:27 PM
+2024-12-06T17:29:48.904Z - Doctor wsc01_dsmith from WSC logged in at 12/6/2024, 10:59:48 PM
+2024-12-07T11:24:46.838Z - Doctor wsc01_dsmith from WSC logged in at 12/7/2024, 4:54:46 PM
+2024-12-07T11:33:03.996Z - Doctor wsc01_dsmith from WSC logged in at 12/7/2024, 5:03:03 PM
+2024-12-07T11:36:30.521Z - Doctor wsc01_dsmith from WSC logged in at 12/7/2024, 5:06:30 PM
+2024-12-07T11:41:20.177Z - Doctor wsc01_dsmith from WSC logged in at 12/7/2024, 5:11:20 PM
+2024-12-07T12:02:29.836Z - Doctor wsc01_dsmith from WSC logged in at 12/7/2024, 5:32:29 PM
+2024-12-07T12:17:48.296Z - Doctor wsc01_dsmith from WSC logged in at 12/7/2024, 5:47:48 PM
+2024-12-07T12:18:25.855Z - Doctor wsc01_dsmith from WSC logged in at 12/7/2024, 5:48:25 PM
+2024-12-07T12:18:28.188Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-07T17:45:57.107Z - Doctor wsc01_dsmith from WSC logged in at 12/7/2024, 11:15:57 PM
+2024-12-07T17:56:51.845Z - Doctor wsc01_dsmith from WSC logged in at 12/7/2024, 11:26:51 PM
+2024-12-07T17:57:27.059Z - Doctor wsc01_dsmith from WSC logged in at 12/7/2024, 11:27:27 PM
+2024-12-07T17:59:11.236Z - Doctor wsc01_dsmith from WSC logged in at 12/7/2024, 11:29:11 PM
+2024-12-08T01:30:52.516Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-08T01:38:48.020Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 7:08:47 AM
+2024-12-08T01:42:30.160Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 7:12:30 AM
+2024-12-08T01:43:11.439Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 7:13:11 AM
+2024-12-08T01:45:13.110Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 7:15:13 AM
+2024-12-08T01:46:35.979Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 7:16:35 AM
+2024-12-08T01:48:27.321Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 7:18:27 AM
+2024-12-08T01:48:58.274Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 7:18:58 AM
+2024-12-08T02:01:15.428Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 7:31:15 AM
+2024-12-08T02:05:51.371Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 7:35:51 AM
+2024-12-08T02:07:18.457Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-08T02:21:49.488Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 7:51:49 AM
+2024-12-08T02:37:13.509Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 8:07:13 AM
+2024-12-08T02:39:54.904Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 8:09:54 AM
+2024-12-08T02:55:34.230Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 8:25:34 AM
+2024-12-08T03:06:10.729Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 8:36:10 AM
+2024-12-08T03:07:22.418Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-08T03:08:32.291Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 8:38:32 AM
+2024-12-08T03:08:46.967Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-08T04:57:34.129Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 10:27:34 AM
+2024-12-08T05:31:06.068Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 11:01:06 AM
+2024-12-08T05:34:12.963Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 11:04:12 AM
+2024-12-08T05:51:43.506Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 11:21:43 AM
+2024-12-08T06:04:38.906Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 11:34:38 AM
+2024-12-08T06:16:31.326Z - Doctor wsc01_dsmith from WSC logged in at 12/8/2024, 11:46:31 AM
+2024-12-08T19:29:49.155Z - Doctor wsc01_dsmith from WSC logged in at 12/9/2024, 12:59:49 AM
+2024-12-09T03:46:22.027Z - Doctor wsc01_vkumar04 from WSC logged in at 12/9/2024, 9:16:22 AM
+2024-12-09T03:46:31.124Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-09T03:46:46.870Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-09T03:46:51.387Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-09T03:46:55.741Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-09T04:03:29.518Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-09T04:03:29.896Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-09T04:06:00.214Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-09T04:07:09.577Z - Doctor wsc01_vkumar04 accessed surveys: PHYSICAL-6b
+2024-12-09T04:15:08.325Z - Doctor wsc01_vkumar04 accessed surveys: PAIN-6b
+2024-12-09T04:15:26.288Z - Doctor wsc01_vkumar03 from WSC logged in at 12/9/2024, 9:45:26 AM
+2024-12-09T04:15:30.576Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-6b
+2024-12-09T04:15:39.234Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-6b
+2024-12-09T04:15:44.660Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-6b
+2024-12-09T04:17:50.631Z - Doctor wsc01_vkumar03 from WSC logged in at 12/9/2024, 9:47:50 AM
+2024-12-09T04:17:54.635Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-6b
+2024-12-09T04:24:51.842Z - Doctor wsc01_vkumar03 from WSC logged in at 12/9/2024, 9:54:51 AM
+2024-12-09T04:24:57.939Z - Doctor wsc01_vkumar03 accessed surveys: PAIN-6b
+2024-12-09T04:50:24.196Z - Doctor wsc01_dsmith from WSC logged in at 12/9/2024, 10:20:24 AM
+2024-12-09T04:58:01.019Z - Doctor wsc01_dsmith from WSC logged in at 12/9/2024, 10:28:01 AM
+2024-12-09T05:00:29.096Z - Doctor wsc01_dsmith from WSC logged in at 12/9/2024, 10:30:29 AM
+2024-12-09T05:52:20.637Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-09T07:32:16.512Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-09T07:32:28.416Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-09T07:32:41.054Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-09T10:15:31.778Z - Doctor wsc01_dsmith from WSC logged in at 12/9/2024, 3:45:31 PM
+2024-12-09T10:56:49.807Z - Doctor wsc01_dsmith from WSC logged in at 12/9/2024, 4:26:49 PM
+2024-12-09T14:36:05.098Z - Doctor wsc01_dsmith from WSC logged in at 12/9/2024, 8:06:05 PM
+2024-12-09T14:36:14.873Z - Doctor wsc01_vkumar04 from WSC logged in at 12/9/2024, 8:06:14 PM
+2024-12-10T05:22:49.740Z - Doctor wsc01_dsmith from WSC logged in at 12/10/2024, 10:52:49 AM
+2024-12-10T08:39:32.753Z - Doctor wsc01_dsmith from WSC logged in at 12/10/2024, 2:09:32 PM
+2024-12-10T08:39:38.295Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T09:32:35.164Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:10:39.489Z - Doctor wsc01_dsmith from WSC logged in at 12/10/2024, 7:40:39 PM
+2024-12-10T14:10:44.509Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:10:49.613Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:11:07.434Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:11:08.472Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:11:08.987Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:11:09.635Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:11:10.199Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:11:10.800Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:11:12.748Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:11:13.295Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:11:13.519Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:11:16.656Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:11:17.019Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:11:17.194Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:12:30.899Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:12:32.233Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:12:33.571Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:12:34.141Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:12:34.353Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:12:34.519Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:15:32.228Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:15:41.692Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:18:04.948Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:18:07.954Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:18:08.667Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:18:36.942Z - Doctor wsc01_dsmith from WSC logged in at 12/10/2024, 7:48:36 PM
+2024-12-10T14:18:38.699Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-10T14:18:48.895Z - Doctor wsc01_dsmith accessed surveys: PAID, PROMIS-10
+2024-12-11T05:34:13.413Z - Doctor wsc01_dsmith from WSC logged in at 12/11/2024, 11:04:13 AM
+2024-12-11T18:33:58.533Z - Doctor wsc01_dsmith from WSC logged in at 12/12/2024, 12:03:58 AM
+2024-12-13T11:55:35.532Z - Doctor wsc01_dsmith from WSC logged in at 12/13/2024, 5:25:35 PM
+2024-12-27T13:04:01.337Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-27T13:04:11.743Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-27T13:04:25.634Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-27T13:04:31.613Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-27T13:04:40.483Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-27T13:04:49.315Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-27T13:15:18.183Z - Doctor wsc01_vkumar13 from WSC logged in at 12/27/2024, 6:45:18 PM
+2024-12-27T13:15:24.477Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-27T13:15:35.059Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-27T13:17:16.153Z - Doctor wsc01_vkumar13 from WSC logged in at 12/27/2024, 6:47:16 PM
+2024-12-27T13:17:21.243Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-27T13:19:56.858Z - Doctor wsc01_vkumar13 from WSC logged in at 12/27/2024, 6:49:56 PM
+2024-12-27T13:19:59.647Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-27T13:21:42.613Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-29T10:43:30.761Z - Doctor wsc01_vkumar13 from WSC logged in at 12/29/2024, 4:13:30 PM
+2024-12-29T10:43:33.416Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-29T10:46:41.954Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-29T10:48:22.776Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-29T10:48:25.776Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-29T10:48:26.027Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-29T10:48:26.388Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-29T10:48:26.559Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-29T10:48:52.660Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-29T10:50:10.800Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-29T10:57:33.739Z - Doctor wsc01_vkumar13 from WSC logged in at 12/29/2024, 4:27:33 PM
+2024-12-29T10:58:02.285Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-29T11:37:53.550Z - Doctor wsc01_vkumar13 from WSC logged in at 12/29/2024, 5:07:53 PM
+2024-12-29T11:37:55.568Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2024-12-30T05:26:45.152Z - Doctor wsc01_vkumar13 from WSC logged in at 12/30/2024, 10:56:45 AM
+2025-01-02T04:39:15.001Z - Doctor wsc01_vkumar13 from WSC logged in at 1/2/2025, 10:09:14 AM
+2025-01-02T07:50:41.727Z - Doctor wsc01_vkumar13 from WSC logged in at 1/2/2025, 1:20:41 PM
+2025-01-02T08:14:48.415Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-02T08:34:46.551Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-02T08:35:30.790Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-02T09:56:46.350Z - Doctor wsc01_vkumar13 from WSC logged in at 1/2/2025, 3:26:46 PM
+2025-01-03T02:17:41.483Z - Doctor wsc01_vkumar13 from WSC logged in at 1/3/2025, 7:47:41 AM
+2025-01-03T02:28:31.394Z - Doctor wsc01_vkumar13 from WSC logged in at 1/3/2025, 7:58:31 AM
+2025-01-03T07:15:31.770Z - Doctor wsc01_vkumar13 from WSC logged in at 1/3/2025, 12:45:31 PM
+2025-01-03T08:07:15.366Z - Doctor wsc01_vkumar13 from WSC logged in at 1/3/2025, 1:37:15 PM
+2025-01-03T10:27:33.808Z - Doctor wsc01_vkumar13 from WSC logged in at 1/3/2025, 3:57:33 PM
+2025-01-03T12:00:56.611Z - Doctor wsc01_vkumar13 from WSC logged in at 1/3/2025, 5:30:56 PM
+2025-01-03T12:18:09.651Z - Doctor wsc01_vkumar13 from WSC logged in at 1/3/2025, 5:48:09 PM
+2025-01-03T12:31:37.406Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-03T12:52:59.048Z - Doctor wsc01_vkumar13 from WSC logged in at 1/3/2025, 6:22:59 PM
+2025-01-03T12:55:04.346Z - Doctor wsc01_vkumar13 from WSC logged in at 1/3/2025, 6:25:04 PM
+2025-01-03T13:29:12.382Z - Doctor wsc01_vkumar13 from WSC logged in at 1/3/2025, 6:59:12 PM
+2025-01-03T13:46:52.799Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-03T13:59:24.469Z - Doctor wsc01_vkumar13 from WSC logged in at 1/3/2025, 7:29:24 PM
+2025-01-03T13:59:26.836Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-06T04:13:11.029Z - Doctor wsc01_vkumar13 from WSC logged in at 1/6/2025, 9:43:11 AM
+2025-01-08T09:32:12.453Z - Doctor wsc01_vkumar13 from WSC logged in at 1/8/2025, 3:02:12 PM
+2025-01-09T05:02:37.210Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 10:32:37 AM
+2025-01-09T05:05:44.087Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 10:35:44 AM
+2025-01-09T05:08:43.645Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 10:38:43 AM
+2025-01-09T05:13:58.027Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 10:43:58 AM
+2025-01-09T05:14:03.655Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T05:26:47.849Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 10:56:47 AM
+2025-01-09T05:26:51.568Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T05:36:08.473Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 11:06:08 AM
+2025-01-09T05:51:45.610Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 11:21:45 AM
+2025-01-09T05:51:49.503Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T05:51:59.066Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T05:54:02.897Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 11:24:02 AM
+2025-01-09T05:54:05.422Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T05:55:42.936Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T05:55:56.980Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:30:55.869Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 4:00:55 PM
+2025-01-09T10:30:58.030Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:31:00.310Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:31:01.207Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:31:02.361Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:31:03.209Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:31:04.848Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:31:08.102Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:31:09.865Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:31:11.814Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:31:12.134Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:31:17.984Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:31:24.745Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:31:54.583Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:32:05.036Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:33:06.472Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:33:18.022Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:45:07.588Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 4:15:07 PM
+2025-01-09T10:45:17.148Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:47:38.042Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:47:40.301Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:47:41.059Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:47:41.455Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:57:57.315Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:59:37.307Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:59:39.204Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T10:59:39.910Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:02:36.101Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:11:23.015Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 4:41:22 PM
+2025-01-09T11:24:29.266Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 4:54:29 PM
+2025-01-09T11:24:58.498Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:25:24.306Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:26:36.425Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:26:36.621Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:26:36.842Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:26:37.380Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:26:37.539Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:27:10.504Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 4:57:10 PM
+2025-01-09T11:27:12.815Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:28:53.443Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:28:58.530Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:44:40.241Z - Doctor wsc01_vkumar13 from WSC logged in at 1/9/2025, 5:14:40 PM
+2025-01-09T11:44:44.981Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:46:31.595Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-09T11:46:42.483Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T04:38:48.775Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 10:08:48 AM
+2025-01-10T04:38:51.013Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T04:39:49.074Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T04:48:31.832Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T05:01:22.135Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 10:31:22 AM
+2025-01-10T05:02:03.280Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T05:03:39.557Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T05:05:33.945Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T05:07:11.226Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T05:15:47.557Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 10:45:47 AM
+2025-01-10T05:16:01.216Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T05:17:21.521Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 10:47:21 AM
+2025-01-10T05:17:58.277Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T05:21:20.920Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T05:21:26.074Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T09:37:34.074Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 3:07:34 PM
+2025-01-10T09:37:36.515Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T09:53:36.752Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 3:23:36 PM
+2025-01-10T09:54:00.128Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T09:54:57.901Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 3:24:57 PM
+2025-01-10T09:57:07.272Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T09:57:28.574Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T10:04:14.992Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 3:34:14 PM
+2025-01-10T10:04:45.187Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T10:05:06.921Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T10:09:28.645Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 3:39:28 PM
+2025-01-10T10:09:55.421Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T10:14:45.018Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 3:44:44 PM
+2025-01-10T10:15:18.830Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T10:16:09.484Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 3:46:09 PM
+2025-01-10T10:17:26.835Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 3:47:26 PM
+2025-01-10T10:19:07.984Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 3:49:07 PM
+2025-01-10T10:21:13.397Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 3:51:13 PM
+2025-01-10T10:22:35.255Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 3:52:35 PM
+2025-01-10T10:22:38.540Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T10:23:11.894Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T10:37:46.244Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 4:07:46 PM
+2025-01-10T10:38:26.030Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 4:08:26 PM
+2025-01-10T10:38:44.978Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T10:39:28.702Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 4:09:28 PM
+2025-01-10T10:39:46.523Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T10:40:36.745Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 4:10:36 PM
+2025-01-10T10:40:39.137Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T10:41:04.484Z - Doctor wsc01_vkumar13 from WSC logged in at 1/10/2025, 4:11:04 PM
+2025-01-10T10:41:27.773Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T10:41:45.396Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-10T10:41:46.582Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-15T08:14:26.547Z - Doctor wsc01_vkumar13 from WSC logged in at 1/15/2025, 1:44:26 PM
+2025-01-16T05:36:18.151Z - Doctor wsc01_vkumar13 from WSC logged in at 1/16/2025, 11:06:18 AM
+2025-01-16T05:36:21.713Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-16T05:36:28.687Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-16T09:45:26.510Z - Doctor wsc01_vkumar13 from WSC logged in at 1/16/2025, 3:15:26 PM
+2025-01-16T10:46:04.929Z - Doctor wsc01_vkumar13 from WSC logged in at 1/16/2025, 4:16:04 PM
+2025-01-16T10:46:09.690Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-16T10:47:22.974Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-16T10:47:44.542Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-16T17:55:26.214Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-16T17:55:36.562Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-16T17:55:38.677Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-16T17:55:40.205Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-16T17:55:41.288Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-16T17:58:43.144Z - Doctor wsc01_tsample from WSC logged in at 1/16/2025, 11:28:43 PM
+2025-01-16T17:58:44.636Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-18T12:30:50.054Z - Doctor wsc01_vkumar13 from WSC logged in at 1/18/2025, 6:00:50 PM
+2025-01-18T12:51:55.953Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-18T12:52:16.293Z - Doctor wsc01_vkumar13 accessed surveys: PAID, PROMIS-10
+2025-01-18T12:52:43.722Z - Doctor wsc01_tsample from WSC logged in at 1/18/2025, 6:22:43 PM
+2025-01-18T12:52:45.298Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-18T13:07:17.990Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-18T13:26:16.638Z - Doctor wsc01_vkumar13 from WSC logged in at 1/18/2025, 6:56:16 PM
+2025-01-18T13:26:29.460Z - Doctor wsc01_tsample from WSC logged in at 1/18/2025, 6:56:29 PM
+2025-01-18T13:26:30.855Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-18T13:28:17.884Z - Doctor wsc01_tsample from WSC logged in at 1/18/2025, 6:58:17 PM
+2025-01-18T13:28:19.454Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-18T13:28:53.530Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-18T13:31:56.598Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-18T13:44:50.710Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-18T13:45:04.929Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-19T11:39:24.296Z - Doctor wsc01_tsample from WSC logged in at 1/19/2025, 5:09:24 PM
+2025-01-19T11:39:25.565Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-19T11:51:51.324Z - Doctor wsc01_tsample from WSC logged in at 1/19/2025, 5:21:51 PM
+2025-01-19T11:51:52.874Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:24:09.476Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 9:54:09 AM
+2025-01-20T04:24:20.097Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:27:11.041Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 9:57:11 AM
+2025-01-20T04:27:12.403Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:29:07.117Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 9:59:07 AM
+2025-01-20T04:29:09.248Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:35:56.262Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:35:57.970Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:35:58.566Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:35:59.004Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:35:59.301Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:35:59.568Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:35:59.868Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:36:00.290Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:36:00.926Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:36:01.209Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:36:01.441Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:39:12.674Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 10:09:12 AM
+2025-01-20T04:39:38.740Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:43:25.343Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T04:55:05.319Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 10:25:05 AM
+2025-01-20T04:55:06.650Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T05:01:09.398Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 10:31:09 AM
+2025-01-20T05:01:10.970Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T05:08:57.306Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 10:38:57 AM
+2025-01-20T05:08:58.618Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T05:15:25.922Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T05:20:16.507Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 10:50:16 AM
+2025-01-20T05:20:18.245Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T05:23:05.431Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T05:31:00.720Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 11:01:00 AM
+2025-01-20T05:31:01.954Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T05:53:29.637Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T06:01:20.128Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 11:31:20 AM
+2025-01-20T06:01:21.652Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T06:10:59.775Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T06:23:23.287Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 11:53:23 AM
+2025-01-20T06:23:24.628Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T06:25:39.578Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T06:36:50.745Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 12:06:50 PM
+2025-01-20T06:36:51.986Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T06:43:17.213Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 12:13:17 PM
+2025-01-20T06:43:18.480Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T06:49:18.438Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 12:19:18 PM
+2025-01-20T06:49:19.720Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T07:37:16.474Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 1:07:16 PM
+2025-01-20T07:37:17.876Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T07:42:58.624Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 1:12:58 PM
+2025-01-20T07:43:07.993Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T07:43:47.608Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T07:55:49.892Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T07:55:50.928Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:05:44.830Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:06:04.184Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:07:14.785Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:10:29.111Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:10:30.480Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:12:47.723Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:13:14.976Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:21:06.440Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:21:07.578Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:24:02.234Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:25:02.052Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:25:19.998Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:25:21.849Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:25:22.423Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:25:22.854Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:25:23.208Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:25:44.665Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:25:45.466Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:25:45.723Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:26:31.098Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:27:06.774Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:27:07.649Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:27:08.020Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:35:59.073Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:36:22.998Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:36:24.017Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:36:41.191Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:38:04.495Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 2:08:04 PM
+2025-01-20T08:38:05.649Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:19.828Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:20.921Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:21.475Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:21.981Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:22.342Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:22.609Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:22.821Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:23.031Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:23.210Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:23.403Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:23.551Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:26.507Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:26.995Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:39:27.242Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:40:05.720Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:40:28.292Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:40:30.163Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:41:34.447Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 2:11:34 PM
+2025-01-20T08:41:36.249Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:41:51.130Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:41:51.409Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:42:12.416Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:42:19.011Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:43:50.229Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 2:13:50 PM
+2025-01-20T08:43:51.735Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:44:25.479Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:44:28.138Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:44:28.377Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:45:43.196Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:45:43.817Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:45:44.058Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:45:44.232Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:48:56.720Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 2:18:56 PM
+2025-01-20T08:48:58.803Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:50:48.038Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:50:50.431Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:50:50.988Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:50:51.195Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:51:12.766Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:52:45.446Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:53:08.323Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:57:18.365Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 2:27:18 PM
+2025-01-20T08:57:19.887Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:58:33.120Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T08:58:54.543Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T09:11:50.891Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T12:32:45.903Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 6:02:45 PM
+2025-01-20T12:32:47.208Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-20T12:36:44.058Z - Doctor wsc01_tsample from WSC logged in at 1/20/2025, 6:06:44 PM
+2025-01-20T12:36:45.331Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-21T05:11:28.306Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 10:41:28 AM
+2025-01-21T05:11:41.000Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-21T05:11:51.469Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-21T05:11:52.506Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-21T05:12:06.172Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-21T05:38:59.943Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 11:08:59 AM
+2025-01-21T05:42:01.177Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 11:12:01 AM
+2025-01-21T05:42:02.333Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-21T06:32:08.080Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 12:02:08 PM
+2025-01-21T06:32:09.306Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-21T09:27:34.291Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 2:57:34 PM
+2025-01-21T09:56:33.771Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-21T10:03:53.491Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 3:33:53 PM
+2025-01-21T10:09:18.248Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-21T10:21:57.182Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-21T10:27:47.857Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 3:57:47 PM
+2025-01-21T10:28:27.425Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 3:58:27 PM
+2025-01-21T10:29:50.677Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 3:59:50 PM
+2025-01-21T10:30:20.812Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 4:00:20 PM
+2025-01-21T10:31:19.167Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 4:01:19 PM
+2025-01-21T10:35:06.174Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 4:05:06 PM
+2025-01-21T10:39:43.364Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 4:09:43 PM
+2025-01-21T10:40:39.744Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 4:10:39 PM
+2025-01-21T10:41:29.714Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 4:11:29 PM
+2025-01-21T10:42:50.771Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 4:12:50 PM
+2025-01-21T10:51:11.227Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 4:21:11 PM
+2025-01-21T10:55:07.020Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 4:25:07 PM
+2025-01-21T11:06:16.870Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 4:36:16 PM
+2025-01-21T11:07:45.583Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 4:37:45 PM
+2025-01-21T11:10:36.013Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 4:40:36 PM
+2025-01-21T12:11:28.696Z - Doctor wsc01_tsample from WSC logged in at 1/21/2025, 5:41:28 PM
+2025-01-21T12:11:31.037Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-21T12:11:33.828Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-21T12:11:34.523Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:20.286Z - Doctor wsc01_tsample from WSC logged in at 1/23/2025, 11:25:20 AM
+2025-01-23T05:55:21.905Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:26.230Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:26.793Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:27.319Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:27.700Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:28.250Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:30.363Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:30.760Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:31.160Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:31.648Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:32.204Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:32.731Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:33.167Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:33.496Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:33.779Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:34.111Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:34.460Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:55:34.758Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:56:16.533Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:56:19.606Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:56:20.131Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:56:20.475Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:56:20.800Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:56:21.162Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:56:21.408Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:56:21.662Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:56:21.914Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:56:22.125Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T05:56:22.361Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:00:10.749Z - Doctor wsc01_tsample from WSC logged in at 1/23/2025, 11:30:10 AM
+2025-01-23T06:00:14.365Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:00:18.567Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:11:35.203Z - Doctor wsc01_tsample from WSC logged in at 1/23/2025, 11:41:35 AM
+2025-01-23T06:11:56.208Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:12:01.956Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:13:18.048Z - Doctor wsc01_tsample from WSC logged in at 1/23/2025, 11:43:18 AM
+2025-01-23T06:13:23.086Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:13:28.903Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:53.150Z - Doctor wsc01_tsample from WSC logged in at 1/23/2025, 11:46:53 AM
+2025-01-23T06:16:54.590Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:56.550Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:57.178Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:57.418Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:57.606Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:57.784Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:57.946Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:58.085Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:58.234Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:58.382Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:58.783Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:58.972Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:59.119Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:16:59.267Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:18:04.690Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:18:44.590Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:30:58.455Z - Doctor wsc01_tsample from WSC logged in at 1/23/2025, 12:00:58 PM
+2025-01-23T06:31:04.850Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:31:09.274Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:37:17.422Z - Doctor wsc01_tsample from WSC logged in at 1/23/2025, 12:07:17 PM
+2025-01-23T06:37:25.596Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:43:29.492Z - Doctor wsc01_tsample from WSC logged in at 1/23/2025, 12:13:29 PM
+2025-01-23T06:43:30.669Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:43:52.782Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:32.307Z - Doctor wsc01_tsample from WSC logged in at 1/23/2025, 12:28:32 PM
+2025-01-23T06:58:34.394Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:35.992Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:36.556Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:36.926Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:37.251Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:37.582Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:37.926Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:38.298Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:38.666Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:38.972Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:39.266Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:39.589Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:39.872Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:40.202Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:40.511Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T06:58:40.801Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T10:26:05.731Z - Doctor wsc01_tsample from WSC logged in at 1/23/2025, 3:56:05 PM
+2025-01-23T10:26:07.395Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T10:26:18.620Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T10:26:19.548Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-23T10:26:22.013Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-24T04:47:51.059Z - Doctor wsc01_tsample from WSC logged in at 1/24/2025, 10:17:51 AM
+2025-01-24T04:47:53.114Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-24T05:48:37.276Z - Doctor wsc01_tsample from WSC logged in at 1/24/2025, 11:18:37 AM
+2025-01-25T03:24:42.668Z - Doctor wsc01_tsample from WSC logged in at 1/25/2025, 8:54:42 AM
+2025-01-25T03:24:47.105Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T03:24:50.583Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T03:28:46.197Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T03:28:52.907Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T03:49:47.221Z - Doctor wsc01_tsample from WSC logged in at 1/25/2025, 9:19:47 AM
+2025-01-25T03:49:50.860Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T03:49:57.869Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T03:52:08.621Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T03:59:38.654Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:00:09.686Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:18:45.230Z - Doctor wsc01_tsample from WSC logged in at 1/25/2025, 9:48:45 AM
+2025-01-25T04:18:49.120Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:26:47.346Z - Doctor wsc01_tsample from WSC logged in at 1/25/2025, 9:56:47 AM
+2025-01-25T04:26:48.970Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:26:52.690Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:26:55.046Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:26:57.531Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:28:49.152Z - Doctor wsc01_tsample from WSC logged in at 1/25/2025, 9:58:49 AM
+2025-01-25T04:28:50.365Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:28:52.574Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:31:43.932Z - Doctor wsc01_tsample from WSC logged in at 1/25/2025, 10:01:43 AM
+2025-01-25T04:31:44.927Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:31:46.304Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:31:46.863Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:31:47.128Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:31:47.315Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:31:47.491Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:31:47.659Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:32:27.810Z - Doctor wsc01_tsample from WSC logged in at 1/25/2025, 10:02:27 AM
+2025-01-25T04:32:29.252Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:32:40.677Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:33:36.758Z - Doctor wsc01_tsample from WSC logged in at 1/25/2025, 10:03:36 AM
+2025-01-25T04:33:49.094Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:34:18.296Z - Doctor wsc01_tsample from WSC logged in at 1/25/2025, 10:04:18 AM
+2025-01-25T04:34:20.105Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:35:36.250Z - Doctor wsc01_tsample from WSC logged in at 1/25/2025, 10:05:36 AM
+2025-01-25T04:35:37.725Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:36:14.288Z - Doctor wsc01_tsample from WSC logged in at 1/25/2025, 10:06:14 AM
+2025-01-25T04:36:16.259Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T04:36:52.038Z - Doctor wsc01_tsample from WSC logged in at 1/25/2025, 10:06:52 AM
+2025-01-25T04:37:17.350Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-25T11:39:48.978Z - Doctor wsc01_tsample from WSC logged in at 1/25/2025, 5:09:48 PM
+2025-01-25T11:39:51.341Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-27T05:37:46.217Z - Doctor wsc01_tsample from WSC logged in at 1/27/2025, 11:07:46 AM
+2025-01-27T05:37:48.060Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-27T05:37:58.724Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-27T05:38:02.270Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-27T05:40:20.832Z - Doctor wsc01_tsample from WSC logged in at 1/27/2025, 11:10:20 AM
+2025-01-27T05:40:21.957Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-27T05:40:39.859Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-27T12:14:29.303Z - Doctor wsc01_tsample from WSC logged in at 1/27/2025, 5:44:29 PM
+2025-01-27T12:14:32.622Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-27T12:14:40.798Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-27T12:14:43.959Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-27T12:14:45.812Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:16:32.332Z - Doctor wsc01_tsample from WSC logged in at 1/28/2025, 9:46:32 AM
+2025-01-28T04:16:42.453Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:16:45.449Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:16:46.711Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:28:12.374Z - Doctor wsc01_tsample from WSC logged in at 1/28/2025, 9:58:12 AM
+2025-01-28T04:28:14.673Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:28:38.537Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:28:39.709Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:29:34.987Z - Doctor wsc01_tsample from WSC logged in at 1/28/2025, 9:59:34 AM
+2025-01-28T04:29:36.788Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:29:58.687Z - Doctor wsc01_tsample from WSC logged in at 1/28/2025, 9:59:58 AM
+2025-01-28T04:30:04.814Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:30:23.868Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:30:24.660Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:32:40.779Z - Doctor wsc01_tsample from WSC logged in at 1/28/2025, 10:02:40 AM
+2025-01-28T04:32:52.738Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:33:19.209Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:33:20.727Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:33:54.439Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:38:01.193Z - Doctor wsc01_tsample from WSC logged in at 1/28/2025, 10:08:01 AM
+2025-01-28T04:38:06.585Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-28T04:38:21.817Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-29T04:45:24.568Z - Doctor wsc01_tsample from WSC logged in at 1/29/2025, 10:15:24 AM
+2025-01-29T04:45:26.278Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-29T04:45:32.410Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-29T04:45:33.504Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-29T05:31:07.657Z - Doctor wsc01_tsample from WSC logged in at 1/29/2025, 11:01:07 AM
+2025-01-29T05:31:09.823Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-29T09:37:54.277Z - Doctor wsc01_tsample from WSC logged in at 1/29/2025, 3:07:54 PM
+2025-01-29T10:03:04.439Z - Doctor wsc01_tsample from WSC logged in at 1/29/2025, 3:33:04 PM
+2025-01-29T10:21:30.435Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-29T10:23:38.364Z - Doctor wsc01_tsample from WSC logged in at 1/29/2025, 3:53:38 PM
+2025-01-30T04:51:16.643Z - Doctor wsc01_tsample from WSC logged in at 1/30/2025, 10:21:16 AM
+2025-01-30T06:00:08.847Z - Doctor wsc01_tsample from WSC logged in at 1/30/2025, 11:30:08 AM
+2025-01-30T08:37:08.428Z - Doctor wsc01_tsample from WSC logged in at 1/30/2025, 2:07:08 PM
+2025-01-30T08:37:29.762Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-30T08:38:41.645Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-30T08:38:42.335Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-30T08:38:43.029Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-30T08:39:50.159Z - Doctor wsc01_tsample from WSC logged in at 1/30/2025, 2:09:50 PM
+2025-01-30T08:42:18.989Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-30T08:49:10.091Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-30T08:52:34.080Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-30T08:52:34.896Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-30T08:55:06.563Z - Doctor wsc01_tsample from WSC logged in at 1/30/2025, 2:25:06 PM
+2025-01-30T08:55:08.115Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-30T08:55:54.349Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-30T09:21:10.283Z - Doctor wsc01_tsample from WSC logged in at 1/30/2025, 2:51:10 PM
+2025-01-30T10:40:49.280Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-31T07:35:00.165Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 1:05:00 PM
+2025-01-31T07:44:09.113Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 1:14:09 PM
+2025-01-31T07:44:18.455Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 1:14:18 PM
+2025-01-31T07:44:20.419Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-31T07:44:55.094Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 1:14:55 PM
+2025-01-31T07:44:56.882Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-31T07:45:41.972Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 1:15:41 PM
+2025-01-31T07:45:43.889Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-31T07:46:00.591Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-31T07:46:16.081Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-31T08:28:16.783Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 1:58:16 PM
+2025-01-31T08:31:55.610Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 2:01:55 PM
+2025-01-31T08:36:51.661Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 2:06:51 PM
+2025-01-31T08:41:01.092Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 2:11:01 PM
+2025-01-31T09:04:03.419Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 2:34:03 PM
+2025-01-31T09:07:05.640Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 2:37:05 PM
+2025-01-31T09:07:07.678Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-31T09:07:29.124Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-31T09:23:19.668Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 2:53:19 PM
+2025-01-31T09:23:22.236Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-31T09:24:36.468Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 2:54:36 PM
+2025-01-31T09:24:38.660Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-01-31T09:29:17.560Z - Doctor wsc01_tsample from WSC logged in at 1/31/2025, 2:59:17 PM
+2025-02-03T04:38:22.967Z - Doctor wsc01_tsample from WSC logged in at 2/3/2025, 10:08:22 AM
+2025-02-03T13:18:30.502Z - Doctor wsc01_tsample from WSC logged in at 2/3/2025, 6:48:30 PM
+2025-02-03T13:18:32.925Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-02-03T13:24:51.446Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-02-03T13:25:48.218Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-02-03T13:27:37.883Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-02-04T05:44:18.486Z - Doctor wsc01_tsample from WSC logged in at 2/4/2025, 11:14:18 AM
+2025-02-04T09:36:01.452Z - Doctor wsc01_tsample from WSC logged in at 2/4/2025, 3:06:01 PM
+2025-02-04T10:11:31.138Z - Doctor wsc01_tsample from WSC logged in at 2/4/2025, 3:41:31 PM
+2025-02-05T05:04:01.032Z - Doctor wsc01_tsample from WSC logged in at 2/5/2025, 10:34:01 AM
+2025-02-05T11:11:29.008Z - Doctor wsc01_tsample from WSC logged in at 2/5/2025, 4:41:29 PM
+2025-02-05T11:11:31.362Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-02-05T11:15:18.395Z - Doctor wsc01_tsample from WSC logged in at 2/5/2025, 4:45:18 PM
+2025-02-05T11:15:21.301Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-02-05T11:45:30.553Z - Doctor wsc01_tsample from WSC logged in at 2/5/2025, 5:15:30 PM
+2025-02-05T11:54:52.832Z - Doctor wsc01_tsample from WSC logged in at 2/5/2025, 5:24:52 PM
+2025-02-05T11:54:59.833Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-02-06T05:42:57.595Z - Doctor wsc01_tsample from WSC logged in at 2/6/2025, 11:12:57 AM
+2025-02-06T09:56:14.473Z - Doctor wsc01_tsample from WSC logged in at 2/6/2025, 3:26:14 PM
+2025-02-06T09:56:26.667Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-02-07T11:38:08.756Z - Doctor wsc01_tsample from WSC logged in at 2/7/2025, 5:08:08 PM
+2025-02-07T12:06:21.476Z - Doctor wsc01_tsample from WSC logged in at 2/7/2025, 5:36:21 PM
+2025-02-07T12:06:24.908Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-02-10T03:49:12.464Z - Doctor wsc01_mkumar01 accessed surveys: Global-Health
+2025-02-10T03:57:31.793Z - Doctor wsc01_mkumar01 from WSC logged in at 2/10/2025, 9:27:31 AM
+2025-02-10T04:10:31.387Z - Doctor wsc01_mkumar01 from WSC logged in at 2/10/2025, 9:40:31 AM
+2025-02-10T07:13:21.618Z - Doctor wsc01_tsample from WSC logged in at 2/10/2025, 12:43:21 PM
+2025-02-10T08:28:42.280Z - Doctor wsc01_tsample from WSC logged in at 2/10/2025, 1:58:42 PM
+2025-02-10T08:39:04.562Z - Doctor wsc01_tsample from WSC logged in at 2/10/2025, 2:09:04 PM
+2025-02-10T11:41:27.532Z - Doctor wsc01_mss accessed surveys: EPDS
+2025-02-10T12:02:02.226Z - Doctor wsc01_mjohn04 accessed surveys: ICIQ_UI_SF, Wexner
+2025-02-10T15:49:44.269Z - Doctor wsc01_tsample from WSC logged in at 2/10/2025, 9:19:44 PM
+2025-02-11T06:59:31.265Z - Doctor wsc01_tsample from WSC logged in at 2/11/2025, 12:29:31 PM
+2025-02-12T17:30:20.847Z - Doctor wsc01_tsample from WSC logged in at 2/12/2025, 11:00:20 PM
+2025-02-12T17:36:29.216Z - Doctor wsc01_tsample from WSC logged in at 2/12/2025, 11:06:29 PM
+2025-02-12T17:36:42.823Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-02-12T17:38:51.898Z - Doctor wsc01_tsample from WSC logged in at 2/12/2025, 11:08:51 PM
+2025-02-12T18:17:22.276Z - Doctor wsc01_tsample from WSC logged in at 2/12/2025, 11:47:22 PM
+2025-02-13T11:08:26.221Z - Doctor wsc01_tsample from WSC logged in at 2/13/2025, 4:38:26 PM
+2025-02-13T11:42:41.488Z - Doctor wsc01_tsample from WSC logged in at 2/13/2025, 5:12:41 PM
+2025-02-18T06:57:06.770Z - Doctor wsc01_tsample from WSC logged in at 2/18/2025, 12:27:06 PM
+2025-02-19T05:02:38.143Z - Doctor wsc01_zuddin accessed surveys: EPDS, Wexner
+2025-02-19T05:03:22.931Z - Doctor wsc01_zuddin accessed surveys: EPDS, Wexner
+2025-02-19T05:48:19.582Z - Doctor wsc01_fsymed accessed surveys: EPDS, Wexner
+2025-02-19T05:48:55.015Z - Doctor wsc01_fsymed accessed surveys: EPDS, Wexner
+2025-02-19T05:49:36.849Z - Doctor wsc01_fsymed accessed surveys: EPDS, Wexner
+2025-02-19T05:50:20.015Z - Doctor wsc01_fsymed accessed surveys: EPDS, Wexner
+2025-02-22T08:28:58.839Z - Doctor wsc01_tsample from WSC logged in at 2/22/2025, 1:58:58 PM
+2025-02-28T07:09:56.452Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-02-28T07:10:35.577Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-02-28T07:10:37.672Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-02-28T07:10:38.540Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-02-28T07:10:39.126Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-02-28T07:13:31.522Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-02-28T07:13:32.964Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-02-28T07:13:35.123Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-02-28T07:13:36.805Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-02-28T07:13:37.988Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-02-28T07:13:40.547Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-02-28T07:13:43.440Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-02-28T10:18:56.354Z - Doctor testing.env.wsc01 from WSC logged in at 2/28/2025, 3:48:56 PM
+2025-02-28T10:18:59.645Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-02-28T10:19:24.976Z - Doctor wsc01_tsample from WSC logged in at 2/28/2025, 3:49:24 PM
+2025-02-28T10:19:26.979Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-02-28T10:19:43.084Z - Doctor wsc01_tsample from WSC logged in at 2/28/2025, 3:49:43 PM
+2025-03-05T20:25:40.972Z - Doctor wsc01_tsample from WSC logged in at 3/6/2025, 1:55:40 AM
+2025-03-05T20:25:42.709Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-03-05T20:25:54.859Z - Doctor wsc01_tsample from WSC logged in at 3/6/2025, 1:55:54 AM
+2025-03-05T20:25:56.445Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-03-05T20:26:05.510Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-03-05T20:26:42.984Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-03-05T20:28:56.591Z - Doctor wsc01_tsample from WSC logged in at 3/6/2025, 1:58:56 AM
+2025-03-05T20:28:58.046Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-03-05T20:29:06.448Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-03-05T20:29:20.020Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-03-05T20:29:20.720Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-03-05T20:35:12.946Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-03-05T20:56:18.242Z - Doctor wsc01_tsample accessed surveys: Global-Health, Pain-Interference, Physical-Function
+2025-03-11T07:19:17.075Z - Doctor testing.env.wsc01 from WSC logged in at 3/11/2025, 12:49:17 PM
+2025-03-11T07:19:18.849Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-03-11T07:28:09.169Z - Doctor testing.env.wsc01 from WSC logged in at 3/11/2025, 12:58:09 PM
+2025-03-11T07:28:10.372Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-03-16T15:25:58.624Z - Doctor testing.env.wsc01 from WSC logged in at 3/16/2025, 8:55:58 PM
+2025-03-16T15:26:01.605Z - Doctor testing.env.wsc01 accessed surveys: PAID-5
+2025-03-25T13:14:02.097Z - Doctor testing.env.wsc01 from WSC logged in at 3/25/2025, 6:44:02 PM
+2025-03-25T18:31:52.747Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 3/26/2025, 12:01:52 AM
+2025-03-26T09:53:12.561Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 3/26/2025, 3:23:12 PM
+2025-03-26T09:56:51.504Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-26T09:56:54.457Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T04:52:34.489Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 3/27/2025, 10:22:34 AM
+2025-03-27T04:52:51.119Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T05:22:48.994Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 3/27/2025, 10:52:48 AM
+2025-03-27T05:22:50.361Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T05:23:18.855Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T05:26:38.592Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T05:26:53.491Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T05:36:34.621Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T05:36:37.879Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T05:39:51.085Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T05:40:11.939Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T06:45:52.087Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 3/27/2025, 12:15:52 PM
+2025-03-27T06:47:32.089Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T06:48:15.166Z - Doctor vijay.kumar.wsc01 accessed surveys: Global-Health
+2025-03-27T06:48:29.376Z - Doctor vijay.kumar.wsc01 accessed surveys: Global-Health
+2025-03-27T06:51:25.607Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 3/27/2025, 12:21:25 PM
+2025-03-27T06:51:27.950Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T06:52:00.650Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T06:52:25.181Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T06:52:25.905Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-03-27T07:17:42.888Z - Doctor vijay.kumar.wsc01 from WSC logged in at 3/27/2025, 12:47:42 PM
+2025-03-27T07:17:45.586Z - Doctor vijay.kumar.wsc01 accessed surveys: Global-Health
+2025-03-28T07:19:30.187Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 3/28/2025, 12:49:30 PM
+2025-03-28T07:21:32.082Z - Doctor vijay.kumar.wsc01 from WSC logged in at 3/28/2025, 12:51:32 PM
+2025-03-28T07:21:35.148Z - Doctor vijay.kumar.wsc01 accessed surveys: Global-Health
+2025-03-28T07:32:03.835Z - Doctor vijay.kumar.wsc01 accessed surveys: Global-Health
+2025-04-01T05:47:39.729Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/1/2025, 11:17:39 AM
+2025-04-01T06:18:27.786Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/1/2025, 11:48:27 AM
+2025-04-01T06:18:29.408Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-04-01T06:30:14.069Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/1/2025, 12:00:14 PM
+2025-04-01T15:49:33.424Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/1/2025, 9:19:33 PM
+2025-04-03T07:00:09.367Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/3/2025, 12:30:09 PM
+2025-04-03T07:05:10.288Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-04-03T07:10:28.797Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-04-03T07:10:29.966Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-04-03T07:14:39.645Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-04-03T07:22:15.457Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-04-03T11:31:55.794Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-04-03T11:34:40.462Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/3/2025, 5:04:40 PM
+2025-04-03T11:34:41.952Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-04-03T16:45:55.932Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/3/2025, 10:15:55 PM
+2025-04-03T17:04:44.185Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/3/2025, 10:34:44 PM
+2025-04-03T17:04:48.227Z - Doctor mahesh.john.wsc01 accessed surveys: Global-Health, PAID-5
+2025-04-03T17:06:05.720Z - Doctor mahesh.john.wsc01 accessed surveys: Global-Health, PAID-5
+2025-04-04T07:08:17.719Z - Doctor mahesh.john.wsc01 accessed surveys: Global-Health, PAID-5
+2025-04-04T11:04:51.686Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/4/2025, 4:34:51 PM
+2025-04-04T11:14:26.862Z - Doctor mahesh.john.wsc01 accessed surveys: Global-Health, PAID-5
+2025-04-04T12:01:33.312Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/4/2025, 5:31:33 PM
+2025-04-04T12:19:34.811Z - Doctor mahesh.john.wsc01 accessed surveys: Global-Health, PAID-5
+2025-04-07T04:51:16.411Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/7/2025, 10:21:16 AM
+2025-04-07T06:18:21.927Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/7/2025, 11:48:21 AM
+2025-04-07T11:59:47.590Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/7/2025, 5:29:47 PM
+2025-04-07T12:19:29.195Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/7/2025, 5:49:29 PM
+2025-04-07T12:20:53.184Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/7/2025, 5:50:53 PM
+2025-04-07T12:21:14.356Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/7/2025, 5:51:14 PM
+2025-04-07T12:22:25.367Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/7/2025, 5:52:25 PM
+2025-04-07T12:29:10.040Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/7/2025, 5:59:10 PM
+2025-04-07T12:30:41.246Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/7/2025, 6:00:41 PM
+2025-04-07T12:32:31.259Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/7/2025, 6:02:31 PM
+2025-04-07T12:35:41.937Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/7/2025, 6:05:41 PM
+2025-04-07T12:49:02.986Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/7/2025, 6:19:02 PM
+2025-04-07T12:54:04.623Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/7/2025, 6:24:04 PM
+2025-04-07T14:50:51.937Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/7/2025, 8:20:51 PM
+2025-04-08T04:12:52.640Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 9:42:52 AM
+2025-04-08T04:15:02.884Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 9:45:02 AM
+2025-04-08T04:21:39.639Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 9:51:39 AM
+2025-04-08T04:28:12.847Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 9:58:12 AM
+2025-04-08T04:29:56.166Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 9:59:56 AM
+2025-04-08T04:34:50.226Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 10:04:50 AM
+2025-04-08T04:35:02.705Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/8/2025, 10:05:02 AM
+2025-04-08T04:35:58.100Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 10:05:58 AM
+2025-04-08T04:36:33.121Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 10:06:33 AM
+2025-04-08T04:36:51.616Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/8/2025, 10:06:51 AM
+2025-04-08T04:40:56.766Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 10:10:56 AM
+2025-04-08T04:54:42.519Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 10:24:42 AM
+2025-04-08T04:56:37.881Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 10:26:37 AM
+2025-04-08T05:03:18.737Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 10:33:18 AM
+2025-04-08T05:11:48.213Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/8/2025, 10:41:48 AM
+2025-04-08T05:19:15.094Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 10:49:15 AM
+2025-04-08T05:20:08.629Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/8/2025, 10:50:08 AM
+2025-04-08T05:20:18.296Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 10:50:18 AM
+2025-04-08T08:07:30.684Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-04-08T08:19:32.452Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 1:49:32 PM
+2025-04-08T08:29:31.314Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 1:59:31 PM
+2025-04-08T09:03:31.154Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-04-08T15:47:18.934Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 9:17:18 PM
+2025-04-08T15:55:21.652Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 9:25:21 PM
+2025-04-08T15:55:39.457Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/8/2025, 9:25:39 PM
+2025-04-08T15:57:35.104Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 9:27:35 PM
+2025-04-08T15:57:56.389Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/8/2025, 9:27:56 PM
+2025-04-08T16:20:24.970Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/8/2025, 9:50:24 PM
+2025-04-08T16:21:35.497Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/8/2025, 9:51:35 PM
+2025-04-08T16:21:52.408Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 9:51:52 PM
+2025-04-08T16:23:53.979Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/8/2025, 9:53:53 PM
+2025-04-09T11:14:10.195Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-04-09T11:14:16.750Z - Doctor abdullah.al-fayez.wsc01 accessed surveys: PAID-5
+2025-04-10T13:29:54.852Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/10/2025, 6:59:54 PM
+2025-04-10T13:30:13.180Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/10/2025, 7:00:13 PM
+2025-04-10T14:42:12.414Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/10/2025, 8:12:12 PM
+2025-04-14T06:03:22.319Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/14/2025, 11:33:22 AM
+2025-04-14T06:03:59.900Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/14/2025, 11:33:59 AM
+2025-04-14T06:07:53.051Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/14/2025, 11:37:53 AM
+2025-04-15T11:11:42.745Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/15/2025, 4:41:42 PM
+2025-04-17T04:44:06.469Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/17/2025, 10:14:06 AM
+2025-04-17T04:44:08.726Z - Doctor mahesh.john.wsc01 accessed surveys: Global-Health, PAID-5
+2025-04-17T05:04:18.130Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/17/2025, 10:34:18 AM
+2025-04-17T05:04:21.762Z - Doctor mahesh.john.wsc01 accessed surveys: Global-Health, PAID-5
+2025-04-17T12:20:35.801Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/17/2025, 5:50:35 PM
+2025-04-17T12:29:04.756Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/17/2025, 5:59:04 PM
+2025-04-17T12:31:07.577Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/17/2025, 6:01:07 PM
+2025-04-17T12:32:11.969Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/17/2025, 6:02:11 PM
+2025-04-17T12:35:00.499Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/17/2025, 6:05:00 PM
+2025-04-17T12:35:27.338Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/17/2025, 6:05:27 PM
+2025-04-17T12:38:35.238Z - Doctor bash.bose.fhh01 from FHH logged in at 4/17/2025, 6:08:35 PM
+2025-04-17T12:40:39.935Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/17/2025, 6:10:39 PM
+2025-04-17T12:42:10.217Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/17/2025, 6:12:10 PM
+2025-04-17T12:48:31.039Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/17/2025, 6:18:31 PM
+2025-04-17T12:59:00.329Z - Doctor bash.bose.fhh01 from FHH logged in at 4/17/2025, 6:29:00 PM
+2025-04-18T06:09:20.626Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/18/2025, 11:39:20 AM
+2025-04-18T06:57:29.637Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/18/2025, 12:27:29 PM
+2025-04-18T07:16:34.538Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/18/2025, 12:46:34 PM
+2025-04-18T07:19:30.179Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/18/2025, 12:49:30 PM
+2025-04-18T07:19:32.123Z - Doctor mahesh.john.wsc01 accessed surveys: Global-Health, PAID-5
+2025-04-20T07:03:02.692Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/20/2025, 12:33:02 PM
+2025-04-20T07:03:24.142Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/20/2025, 12:33:24 PM
+2025-04-20T07:05:58.779Z - Doctor bash.bose.fhh01 from FHH logged in at 4/20/2025, 12:35:58 PM
+2025-04-20T07:23:28.166Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/20/2025, 12:53:28 PM
+2025-04-20T07:24:19.030Z - Doctor bash.bose.fhh01 from FHH logged in at 4/20/2025, 12:54:19 PM
+2025-04-20T08:18:49.136Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/20/2025, 1:48:49 PM
+2025-04-20T08:20:21.124Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/20/2025, 1:50:21 PM
+2025-04-20T08:21:37.228Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/20/2025, 1:51:37 PM
+2025-04-20T08:21:53.583Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/20/2025, 1:51:53 PM
+2025-04-20T08:22:18.447Z - Doctor bash.bose.fhh01 from FHH logged in at 4/20/2025, 1:52:18 PM
+2025-04-20T08:34:17.608Z - Doctor bash.bose.fhh01 from FHH logged in at 4/20/2025, 2:04:17 PM
+2025-04-20T08:35:08.085Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/20/2025, 2:05:08 PM
+2025-04-20T08:36:19.432Z - Doctor bash.bose.fhh01 from FHH logged in at 4/20/2025, 2:06:19 PM
+2025-04-20T08:36:22.262Z - Doctor bash.bose.fhh01 accessed surveys: Global-Health, PAID-5
+2025-04-20T09:01:08.086Z - Doctor mahi.rao.fhh02 accessed surveys: Global-Health, PAID-5
+2025-04-20T09:17:29.232Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/20/2025, 2:47:29 PM
+2025-04-20T12:49:34.962Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/20/2025, 6:19:34 PM
+2025-04-20T12:54:05.789Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/20/2025, 6:24:05 PM
+2025-04-20T12:54:08.063Z - Doctor dhoni.mahi.fhh02 accessed surveys: Global-Health, PAID-5
+2025-04-20T13:00:36.043Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/20/2025, 6:30:36 PM
+2025-04-20T13:02:33.624Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/20/2025, 6:32:33 PM
+2025-04-20T13:06:55.221Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/20/2025, 6:36:55 PM
+2025-04-20T13:06:57.526Z - Doctor dhoni.mahi.fhh02 accessed surveys: Global-Health, PAID-5
+2025-04-20T13:07:10.292Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/20/2025, 6:37:10 PM
+2025-04-20T13:11:25.368Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/20/2025, 6:41:25 PM
+2025-04-20T13:17:06.178Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/20/2025, 6:47:06 PM
+2025-04-20T13:18:10.331Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/20/2025, 6:48:10 PM
+2025-04-20T13:19:07.166Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/20/2025, 6:49:07 PM
+2025-04-20T17:03:26.496Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/20/2025, 10:33:26 PM
+2025-04-20T17:11:53.018Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/20/2025, 10:41:52 PM
+2025-04-20T17:12:48.621Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/20/2025, 10:42:48 PM
+2025-04-20T17:24:16.126Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/20/2025, 10:54:16 PM
+2025-04-20T17:24:35.960Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/20/2025, 10:54:35 PM
+2025-04-20T17:32:10.625Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/20/2025, 11:02:10 PM
+2025-04-20T17:38:21.231Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/20/2025, 11:08:21 PM
+2025-04-20T17:38:41.933Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/20/2025, 11:08:41 PM
+2025-04-21T05:09:37.322Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 10:39:37 AM
+2025-04-21T05:22:37.840Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 10:52:37 AM
+2025-04-21T07:43:39.273Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 1:13:39 PM
+2025-04-21T07:44:22.334Z - Doctor mahi.rao.fhh02 from FHH logged in at 4/21/2025, 1:14:22 PM
+2025-04-21T07:46:22.874Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/21/2025, 1:16:22 PM
+2025-04-21T07:47:38.063Z - Doctor mahi.rao.fhh02 from FHH logged in at 4/21/2025, 1:17:38 PM
+2025-04-21T07:48:40.611Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/21/2025, 1:18:40 PM
+2025-04-21T07:48:49.912Z - Doctor dhoni.mahi.fhh02 accessed surveys: Global-Health, PAID-5
+2025-04-21T07:56:47.914Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/21/2025, 1:26:47 PM
+2025-04-21T08:00:34.155Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/21/2025, 1:30:34 PM
+2025-04-21T08:02:35.144Z - Doctor dhoni.mahi.fhh02 accessed surveys: Global-Health, PAID-5
+2025-04-21T08:08:54.888Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/21/2025, 1:38:54 PM
+2025-04-21T08:09:01.482Z - Doctor dhoni.mahi.fhh02 accessed surveys: Global-Health, PAID-5
+2025-04-21T08:23:44.924Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/21/2025, 1:53:44 PM
+2025-04-21T08:38:24.138Z - Doctor mahi.rao.fhh02 from FHH logged in at 4/21/2025, 2:08:24 PM
+2025-04-21T09:33:07.291Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 3:03:07 PM
+2025-04-21T09:33:26.539Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 3:03:26 PM
+2025-04-21T09:34:04.606Z - Doctor abdullah.al-fayez.wsc01 from WSC logged in at 4/21/2025, 3:04:04 PM
+2025-04-21T09:34:41.450Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 3:04:41 PM
+2025-04-21T09:58:31.572Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 3:28:31 PM
+2025-04-21T10:07:15.729Z - Doctor master.class.fhh02 from FHH logged in at 4/21/2025, 3:37:15 PM
+2025-04-21T10:09:58.019Z - Doctor master.class.fhh02 accessed surveys: Global-Health, PAID-5
+2025-04-21T10:10:19.942Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/21/2025, 3:40:19 PM
+2025-04-21T10:42:35.679Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 4:12:35 PM
+2025-04-21T10:43:35.534Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 4:13:35 PM
+2025-04-21T10:43:52.737Z - Doctor master.class.fhh02 from FHH logged in at 4/21/2025, 4:13:52 PM
+2025-04-21T10:45:15.380Z - Doctor dhoni.mahi.fhh02 from FHH logged in at 4/21/2025, 4:15:15 PM
+2025-04-21T10:45:48.612Z - Doctor master.class.fhh02 from FHH logged in at 4/21/2025, 4:15:48 PM
+2025-04-21T10:47:52.389Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 4:17:52 PM
+2025-04-21T11:00:26.687Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 4:30:26 PM
+2025-04-21T11:12:38.491Z - Doctor master.class.fhh02 from FHH logged in at 4/21/2025, 4:42:38 PM
+2025-04-21T11:16:58.872Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 4:46:58 PM
+2025-04-21T11:17:19.664Z - Doctor master.class.fhh02 from FHH logged in at 4/21/2025, 4:47:19 PM
+2025-04-21T11:17:57.292Z - Doctor mahi.rao.fhh02 from FHH logged in at 4/21/2025, 4:47:57 PM
+2025-04-21T11:19:01.680Z - Doctor master.class.fhh02 from FHH logged in at 4/21/2025, 4:49:01 PM
+2025-04-21T11:19:27.813Z - Doctor mahi.rao.fhh02 from FHH logged in at 4/21/2025, 4:49:27 PM
+2025-04-21T11:21:43.726Z - Doctor master.class.fhh02 from FHH logged in at 4/21/2025, 4:51:43 PM
+2025-04-21T11:40:30.877Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 5:10:30 PM
+2025-04-21T11:40:50.259Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/21/2025, 5:10:50 PM
+2025-04-21T11:41:00.449Z - Doctor master.class.fhh02 from FHH logged in at 4/21/2025, 5:11:00 PM
+2025-04-21T12:16:45.798Z - Doctor master.class.fhh02 from FHH logged in at 4/21/2025, 5:46:45 PM
+2025-04-23T07:16:00.084Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/23/2025, 12:46:00 PM
+2025-04-23T07:45:56.738Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/23/2025, 1:15:56 PM
+2025-04-23T07:59:18.600Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/23/2025, 1:29:18 PM
+2025-04-23T16:19:52.619Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/23/2025, 9:49:52 PM
+2025-04-23T20:15:37.630Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/24/2025, 1:45:37 AM
+2025-04-24T01:54:13.739Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/24/2025, 7:24:13 AM
+2025-04-24T01:59:26.873Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/24/2025, 7:29:26 AM
+2025-04-24T02:07:35.811Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/24/2025, 7:37:35 AM
+2025-04-24T02:11:49.789Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/24/2025, 7:41:49 AM
+2025-04-24T02:24:44.598Z - Doctor mahesh.john.wsc01 from WSC logged in at 4/24/2025, 7:54:44 AM
+2025-04-28T03:03:03.140Z - Doctor manu.sharma.nsh01 from NSH logged in at 4/28/2025, 8:33:03 AM
+2025-06-02T05:20:44.211Z - Doctor farhan.syed.ysh01 accessed surveys: EQ-5D
+2025-06-02T05:21:06.113Z - Doctor farhan.syed.ysh01 accessed surveys: EQ-5D
+2025-06-02T05:33:23.879Z - Doctor farhan.syed.ysh01 accessed surveys: EQ-5D
+2025-06-02T05:37:18.594Z - Doctor farhan.syed.ysh01 accessed surveys: EQ-5D
+2025-06-02T05:37:22.312Z - Doctor farhan.syed.ysh01 accessed surveys: EQ-5D
+2025-06-02T05:44:18.546Z - Doctor farhan.syed.ysh01 accessed surveys: EQ-5D
+2025-06-02T10:46:43.879Z - Doctor zeba.nauroin.ysh01 accessed surveys: PHQ-2
+2025-06-02T10:52:33.771Z - Doctor zeba.nauroin.ysh01 accessed surveys: PHQ-2

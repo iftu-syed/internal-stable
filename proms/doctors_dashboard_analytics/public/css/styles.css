@@ -1,0 +1,530 @@
+#dashboard {margin-top:10px;}
+
+/* Number Cards Section */
+.number-cards-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 5px;
+    flex-wrap: wrap; /*for the cards to move to next row upon resizing */
+}
+
+/* Filter container below number cards */
+#filterContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    width: 100%; /* Full width of the left section */
+    box-sizing: border-box;
+}
+
+/* Middle Section for 2x2 Grid and Right Pane */
+.middle-section {
+    display: flex;
+    gap: 20px; /* Space between left and right panes */
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+/* Left Section for Filter and 2x2 Grid */
+.left-section {
+    display: flex;
+    flex-direction: column;
+    flex: 2.25;
+}
+
+/* 2x2 Grid for Charts */
+.left-pane {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-template-rows: auto auto; /* Two rows */
+    flex-wrap: wrap;
+    gap:20px
+}
+
+/* Right Pane for Combined Chart */
+.right-pane {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 0.75;
+    height: 775px;
+}
+
+/* css for right pane bug fix */
+.right-section {
+    height: 100%;
+    flex-direction: column;
+    gap: 20px;
+    flex: 0.75;
+}
+
+#combinedChart {
+    height: 100%;
+}
+
+/* Chart Card Styling */
+.chart-card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 350px; /* Adjust height to ensure all chart cards are uniform */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    color: #555;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* Styling for labels and dropdowns in the filter */
+#filterContainer label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#filterContainer select {
+    padding: 5px;
+    font-size: 14px;
+}
+
+
+/* Chart Title */
+.chart-title {
+    font-size: 16px;
+    font-weight: bold;
+    text-anchor: middle;
+}
+
+/* Axis Labels */
+.axis-label {
+    font-size: 12px;
+    text-anchor: middle;
+}
+
+/* Bubble Text (Mean Score on Bubbles) */
+.bubble-text {
+    font-size: 14px;
+    text-anchor: middle;
+}
+
+/* Legend Text */
+.legend-text {
+    font-size: 14px;
+    text-anchor: start;
+}
+
+/* Axis Text */
+.axis-text {
+    font-size: 14px;
+    text-anchor: middle;
+}
+
+/* preset styles form doc dashboard */
+.CurrentPage {
+    background-color:#fff; /* Add your desired current page style here */
+    color: #000!important;
+  }
+
+    /* Loading GIF */
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none; /* Initially hide the loading container */
+}
+
+.loading-container img {
+    width: 35%;  /* Adjust the width to make the GIF smaller */
+    height: 35%; /* Adjust the height to make the GIF smaller */
+}
+
+
+    .user-img {
+        width: 50px;
+        border-radius: 100%;
+        border: 1px solid #eee;
+    }
+    
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        
+    }
+    /* SIDEBAR AND MAIN CONTENT STYLES */
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80px;
+    background-color: #12171e;
+    padding: 0.4rem 0.8rem;
+    transition: all 0.5s ease;
+    z-index: 1000; /* Added z-index to sidebar */
+  }
+  
+  .sidebar.active ~ .main-content {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+  
+  .sidebar.active {
+    width: 250px;
+  }
+  
+  .sidebar #btn {
+    position: absolute;
+    color: #fff;
+    top: .4rem;
+    left: 50%;
+    font-size: 1.2rem;
+    line-height: 50px;
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+  
+  .sidebar.active #btn {
+    left: 90%;
+  }
+  
+  .sidebar .top .logo {
+    justify-content: center;
+    color: #fff;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    margin-top: 2rem !important;
+  }
+  
+  .sidebar.active .top .logo {
+    opacity: 1;
+  }
+  
+  .top .logo i {
+    font-size: 2rem;
+    margin-right: 5px;
+  }
+  
+  .user {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+  }
+  
+  .user p {
+    color: #fff;
+    opacity: 1;
+    margin-left: 1rem;
+  }
+  
+  .bold {
+    font-weight: 600;
+  }
+  
+  .tooltip {
+    position: absolute;
+    text-align: left;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    font: 12px sans-serif;
+
+    border-radius: 8px;
+    pointer-events: none;
+    color: black;
+    z-index: 3000;
+  }
+  
+  .sidebar p {
+    opacity: 0;
+  }
+  
+  .sidebar.active p {
+    opacity: 1;
+    text-align: center;
+  }
+  
+  .sidebar ul li {
+    position: relative;
+    list-style-type: none;
+    height: 50px;
+    width: 90%;
+    margin: 0.8rem auto;
+    line-height: 50px;
+  }
+  
+  .sidebar ul li a {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+  }
+  
+  .sidebar ul li a:hover,
+  .sidebar ul li a.active {
+    background-color: #fff;
+    color: #12171e;
+  }
+  
+  .sidebar ul li a i {
+    min-width: 50px;
+    text-align: center;
+    height: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+  }
+  
+  .sidebar .nav-item {
+    display: none;
+  }
+  
+  .sidebar.active .nav-item {
+    opacity: 1;
+    display: block;
+  }
+  
+  .sidebar ul li .tooltip {
+    position: absolute;
+    left: 85px; /* Adjusted to position closer to the icon */
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2);
+    border-radius: .6rem;
+    padding: .4rem 1.2rem;
+    line-height: 1.8rem;
+    z-index: 2000; /* Ensure tooltip is above main content */
+    opacity: 0;
+    background-color: #fff;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    visibility: hidden; /* Initially hidden */
+  }
+  
+  .sidebar ul li:hover .tooltip {
+    opacity: 1;
+    visibility: visible; /* Visible on hover */
+  }
+  
+  .sidebar.active ul li .tooltip {
+    display: none;
+  }
+  
+  .main-content {
+    position: relative;
+    min-height: 100vh;
+    top: 0;
+    left: 80px;
+    transition: all 0.5s ease;
+    width: calc(100% - 80px);
+    z-index: 1; /* Lower z-index than sidebar and tooltip */
+    scroll-behavior: smooth;
+  }
+  
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 1rem;
+  }
+    
+  #mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #12171e;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 999; /* Ensures it stays above the content */
+}
+
+.mobile-nav ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.mobile-nav ul li {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.mobile-nav ul li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 23px;
+}
+
+.mobile-nav ul li a i {
+    font-size: 28px;
+    vertical-align: text-bottom;
+}
+
+.mobile-nav ul li a.active {
+
+  background-color: #fff;
+  color: #12171e;
+}
+
+
+@media (max-width: 800px) {
+
+#mobile-nav {
+display: block !important;
+padding-block: 4px !important; 
+}
+
+.sidebar {
+ display: none;
+}
+.main-content {
+  width: 100% !important;
+  left: 0;
+  margin-top: 50px;
+  
+}
+.topbar {
+position: fixed !important;
+width: 100%;
+justify-content: space-around !important;
+}
+
+.column2 {
+  display: none;
+  width: 0;
+  background-color: #f6f5fa;
+}
+
+svg {
+BACKGROUND-COLOR: #fff;
+BORDER-RADIUS: 15PX;
+transform: scale(0.85);
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.charts-grid {
+grid-template-columns: 1fr !important; /* Two columns for larger screens */
+margin-inline: 0px !important;
+padding-inline: 0px !important;
+row-gap: 0px !important;
+padding-bottom: 75px;
+}
+
+.chart-container {
+     
+      background-color:#f6f5fa !important;
+      box-shadow: 0px 0px 0px 0px !important;
+     
+      
+  }
+
+
+  .searchtopbar {
+      border:1px solid black;
+      border-radius: 4px;
+      display: flex;
+      height: fit-content;
+    }
+
+    .column1 {width: 100%;
+    }
+
+    .column2 {
+          display: none;
+          position: fixed;
+          z-index: 1000;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          max-width: 90%;
+          max-height: 80%;
+          overflow-y: auto;
+      }
+
+      /* Styling for overlay */
+      .overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 999;
+      }
+
+      /* Show the pop-up and overlay */
+      .show {
+          display: block;
+          width: 100%;
+      }
+
+      /* Close button styling */
+      .close-btn {
+          float: right;
+          font-size: 20px;
+          font-weight: bold;
+          cursor: pointer;
+      }
+
+     
+}
+    
+    
+    ul.promslist  { display:flex; list-style-type:circle; margin-left: 20px; min-width: 10ch;}
+    #dontshow {visibility: hidden;}
+    
+    hr.spacer {
+                border: 0px dashed;
+                padding-bottom: 30px;
+            
+            }
+    
+
+            .promslist1{
+                padding-left: 2rem;
+                margin-top: -2rem;
+                font-size: 14px;
+
+            }
+    .widget-container{display:flex; justify-content: space-between;padding: 50px;}
+    .widgets{box-shadow: 0px 3.712px 20px 0px rgba(0, 0, 0, 0.05); border-radius: 5px;}

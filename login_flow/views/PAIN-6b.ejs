@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pain Interference Form</title>
+  <link rel="stylesheet" href="<%= basePath %>/styles/pain.css">
+  <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+  <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>   
+  <button class="lang-toggle" onclick="toggleLanguage()">العربية</button>
+        
+<div class="parentrow">
+      
+  <div class="parentcolumn left">
+
+    <div class="sidebar">
+      <hr class="spacer">
+      <img src="<%= basePath %>/assets/images/logo.png">
+      <hr class="spacer">
+      <% surveyStatus.forEach(survey => { %>
+        <div class="<%= survey.active ? 'sidebar-item-active' 
+                        : (survey.completed ? 'sidebar-item-done' 
+                                            : 'sidebar-item-inactive') %>">
+          <%= survey.name %>
+        </div>
+      <% }) %>
+      <!-- <div class="sidebar-item-inactive">PAID</div> -->
+      
+      <!-- <div class="legend">
+        <h2 data-en="Notes :" data-ar="ملاحظات :">Notes :</h2>
+<ul>
+          <li data-en="0 = Perfect continence" data-ar="0 = سلس مثالي">1 = Excellent</li>
+          <li data-en="1 = Rarely: Less than 1/month" data-ar="1 = نادرا: أقل من 1/شهر">2 = very good</li>
+          <li data-en="2 = Sometimes: Less than 1/week, but at least 1/month" data-ar="2 = أحيانا: أقل من 1/أسبوع، ولكن على الأقل 1/شهر">3 = Good</li>
+          <li data-en="3 = Usually: Less than 1/day, but at least 1/week" data-ar="3 = عادة: أقل من 1/يوم، ولكن على الأقل 1/أسبوع">4 = Fair</li>
+          <li data-en="4 = Always: At least 1/day" data-ar="4 = دائما: على الأقل 1/يوم">5 = Poor</li>
+</ul>
+      </div> -->
+
+    </div>
+      
+  </div>
+
+  <div class="parentcolumn right">
+    <div class="infobox">
+
+      <div class="mobile-container">
+
+        <img src="<%= basePath %>/assets/images/logo.png">
+        
+      </div>
+
+
+
+
+  <h1 data-en="Pain Interference" data-ar="تدخل الألم">Pain Interference</h1>
+  <p id="text" class="info-text"
+  data-en="The PROMIS Pain Interference instruments (adult and child) measure the self-reported consequences of pain on relevant aspects of a person's life and may include the extent to which pain hinders engagement with social, cognitive, emotional, physical, and recreational activities."
+  data-ar="تقيس أدوات التدخل في الألم PROMIS (للبالغين والأطفال) العواقب المبلغ عنها ذاتيًا للألم على الجوانب ذات الصلة بحياة الشخص وقد تشمل مدى إعاقة الألم للمشاركة في الأنشطة الاجتماعية والمعرفية والعاطفية والجسدية والترفيهية.">
+  <span id="dots" style="display:none;">...</span>
+    <span id="more-text" style="display:none;"></span>
+    <span id="toggle-btn" onclick="toggleText()" style="color: blue; cursor: pointer; display:none;"> Show More</span>
+  </p>
+  
+
+  
+  <hr class="spacer">
+  <!-- Progress Bar -->
+  <div class="progress-bar">
+    <div class="progress" id="progress-bar"></div>
+  </div>
+
+  <form action="<%= basePath %>/submitPAIN-6b" method="POST" class="surveyform">
+    <input type="hidden" name="Mr_no" value="<%= Mr_no %>">
+    <input type="hidden" name="lang" value="<%= currentLang %>"> <!-- This is the added hidden field -->
+
+
+    <!-- Questions -->
+    <div class="question-container active" id="question-1">
+      <div class="back-button-first-question">
+        <button type="button" onclick="previousQuestion()" style="display:none;"><i class='bx bx-chevrons-left'></i>Previous</button>
+      </div>
+      <p class="question-text" data-en="In the past 7 days how much did pain interfere with your enjoyment of life?" data-ar="إلى أي مدى تعارض الألم مع استمتاعك بالحياة؟">In the past 7 days how much did pain interfere with your enjoyment of life?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of life?" id="PAIN1" value="1" required>
+                <label for="PAIN1" data-en="Not at all" data-ar="ليس على الإطلاق">Not at all</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of life?" id="PAIN2" value="2" required>
+                <label for="PAIN2" data-en="A little bit" data-ar="مرات قليلة">A little bit</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of life?" id="PAIN3" value="3" required>
+                <label for="PAIN3" data-en="Somewhat" data-ar="نوعاً ما">Somewhat</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of life?" id="PAIN4" value="4" required>
+                <label for="PAIN4" data-en="Quite a bit" data-ar="غالبا">Quite a bit</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of life?" id="PAIN5" value="5" required>
+                <label for="PAIN5" data-en="Very much" data-ar="كثيرا جدا">Very much</label>
+            </div>
+        </div>
+      </div>
+      
+      <!-- <div id="custom-radio-pos"></div> -->
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+      <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of life?" id="PAIN6" value="1" required>
+      <label for="PAIN6" data-en="Not at all" data-ar="ليس على الإطلاق" >Not at all</label> 
+      <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of life?" id="PAIN7" value="2" required>
+      <label for="PAIN7" data-en="A little bit" data-ar="مرات قليلة">A little bit</label>
+      <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of life?" id="PAIN8" value="3" required>
+      <label for="PAIN8" data-en="Somewhat" data-ar="نوعاً ما">Somewhat</label>
+      <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of life?" id="PAIN9" value="4" required>
+      <label for="PAIN9" data-en="Quite a bit" data-ar="غالبا">Quite a bit</label>
+      <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of life?" id="PAIN10" value="5" required>
+      <label for="PAIN10" data-en="Very much" data-ar="كثيرا جدا">Very much</label>     
+<div id="custom-radio-pos"></div>
+      </div>
+
+    </div>
+    </div>
+
+    <div class="question-container" id="question-2">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="In the past 7 days how much did pain interfere with your ability to concentrate?" data-ar="إلى أي مدى تعارض الألم مع قدرتك على التركيز؟">In the past 7 days how much did pain interfere with your ability to concentrate?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your ability to concentrate?" id="PAIN1_1" value="1" required>
+                <label for="PAIN1_1" data-en="Not at all" data-ar="ليس على الإطلاق">Not at all</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your ability to concentrate?" id="PAIN1_2" value="2" required>
+                <label for="PAIN1_2" data-en="A little bit" data-ar="مرات قليلة">A little bit</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your ability to concentrate?" id="PAIN1_3" value="3" required>
+                <label for="PAIN1_3" data-en="Somewhat" data-ar="نوعاً ما">Somewhat</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your ability to concentrate?" id="PAIN1_4" value="4" required>
+                <label for="PAIN1_4" data-en="Quite a bit" data-ar="غالبا">Quite a bit</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your ability to concentrate?" id="PAIN1_5" value="5" required>
+                <label for="PAIN1_5" data-en="Very much" data-ar="كثيرا جدا">Very much</label>
+            </div>
+        </div>
+      </div>
+
+      <!-- <div id="custom-radio-pos"></div> -->
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+          <input type="radio" name="In the past 7 days how much did pain interfere with your ability to concentrate?" id="PAIN1_6" value="1" required>
+          <label for="PAIN1_6" data-en="Not at all" data-ar="ليس على الإطلاق">Not at all</label> 
+          <input type="radio" name="In the past 7 days how much did pain interfere with your ability to concentrate?" id="PAIN1_7" value="2" required>
+          <label for="PAIN1_7" data-en="A little bit" data-ar="مرات قليلة">A little bit</label>
+          <input type="radio" name="In the past 7 days how much did pain interfere with your ability to concentrate?" id="PAIN1_8" value="3" required>
+          <label for="PAIN1_8" data-en="Somewhat" data-ar="نوعاً ما">Somewhat</label>
+          <input type="radio" name="In the past 7 days how much did pain interfere with your ability to concentrate?" id="PAIN1_9" value="4" required>
+          <label for="PAIN1_9" data-en="Quite a bit" data-ar="غالبا">Quite a bit</label>
+          <input type="radio" name="In the past 7 days how much did pain interfere with your ability to concentrate?" id="PAIN1_0" value="5" required>
+          <label for="PAIN1_0" data-en="Very much" data-ar="كثيرا جدا">Very much</label>     
+<div id="custom-radio-pos"></div>
+      </div>
+
+    </div>
+    </div>
+
+
+    <div class="question-container" id="question-3">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="In the past 7 days how much did pain interfere with your day to day activities?" data-ar="إلى أي مدى تعارض الألم مع أنشطتك اليومية؟">In the past 7 days how much did pain interfere with your day to day activities?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your day to day activities?" id="PAIN2_1" value="1" required>
+                <label for="PAIN2_1" data-en="Not at all" data-ar="ليس على الإطلاق">Not at all</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your day to day activities?" id="PAIN2_2" value="2" required>
+                <label for="PAIN2_2" data-en="A little bit" data-ar="مرات قليلة">A little bit</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your day to day activities?" id="PAIN2_3" value="3" required>
+                <label for="PAIN2_3" data-en="Somewhat" data-ar="نوعاً ما">Somewhat</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your day to day activities?" id="PAIN2_4" value="4" required>
+                <label for="PAIN2_4" data-en="Quite a bit" data-ar="غالبا">Quite a bit</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your day to day activities?" id="PAIN2_5" value="5" required>
+                <label for="PAIN2_5" data-en="Very much" data-ar="كثيرا جدا">Very much</label>
+            </div>
+        </div>
+      </div>
+
+
+      <!-- <div id="custom-radio-pos"></div> -->
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+      <input type="radio" name="In the past 7 days how much did pain interfere with your day to day activities?" id="PAIN2_6" value="1" required>
+      <label for="PAIN2_6" data-en="Not at all" data-ar="ليس على الإطلاق">Not at all</label> 
+      <input type="radio" name="In the past 7 days how much did pain interfere with your day to day activities?" id="PAIN2_7" value="2" required>
+      <label for="PAIN2_7" data-en="A little bit" data-ar="مرات قليلة">A little bit</label>
+      <input type="radio" name="In the past 7 days how much did pain interfere with your day to day activities?" id="PAIN2_8" value="3" required>
+      <label for="PAIN2_8" data-en="Somewhat" data-ar="نوعاً ما">Somewhat</label>
+      <input type="radio" name="In the past 7 days how much did pain interfere with your day to day activities?" id="PAIN2_9" value="4" required>
+      <label for="PAIN2_9" data-en="Quite a bit" data-ar="غالبا">Quite a bit</label>
+      <input type="radio" name="In the past 7 days how much did pain interfere with your day to day activities?" id="PAIN2_0" value="5" required>
+      <label for="PAIN2_0" data-en="Very much" data-ar="كثيرا جدا">Very much</label>     
+<div id="custom-radio-pos"></div>
+      </div>
+
+    </div>
+    </div>
+
+
+    
+
+   
+    <div class="question-container" id="question-4">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="In the past 7 days how much did pain interfere with your enjoyment of recreational activities?" data-ar="إلى أي مدى تعارض الألم مع استمتاعك بالأنشطة الترفيهيّة البدنية؟">In the past 7 days how much did pain interfere with your enjoyment of recreational activities?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of recreational activities?" id="PAIN3_1" value="1" required>
+                <label for="PAIN3_1" data-en="Not at all" data-ar="ليس على الإطلاق">Not at all</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of recreational activities?" id="PAIN3_2" value="2" required>
+                <label for="PAIN3_2" data-en="A little bit" data-ar="مرات قليلة">A little bit</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of recreational activities?" id="PAIN3_3" value="3" required>
+                <label for="PAIN3_3" data-en="Somewhat" data-ar="نوعاً ما">Somewhat</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of recreational activities?" id="PAIN3_4" value="4" required>
+                <label for="PAIN3_4" data-en="Quite a bit" data-ar="غالبا">Quite a bit</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of recreational activities?" id="PAIN3_5" value="5" required>
+                <label for="PAIN3_5" data-en="Very much" data-ar="كثيرا جدا">Very much</label>
+            </div>
+        </div>
+      </div>
+
+
+
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+      <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of recreational activities?" id="PAIN3_6" value="1" required>
+      <label for="PAIN3_6" data-en="Not at all" data-ar="ليس على الإطلاق">Not at all</label> 
+      <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of recreational activities?" id="PAIN3_7" value="2" required>
+      <label for="PAIN3_7" data-en="A little bit" data-ar="مرات قليلة">A little bit</label>
+      <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of recreational activities?" id="PAIN3_8" value="3" required>
+      <label for="PAIN3_8" data-en="Somewhat" data-ar="نوعاً ما">Somewhat</label>
+      <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of recreational activities?" id="PAIN3_9" value="4" required>
+      <label for="PAIN3_9" data-en="Quite a bit" data-ar="غالبا">Quite a bit</label>
+      <input type="radio" name="In the past 7 days how much did pain interfere with your enjoyment of recreational activities?" id="PAIN3_0" value="5" required>
+      <label for="PAIN3_0" data-en="Very much" data-ar="كثيرا جدا">Very much</label>     
+<div id="custom-radio-pos"></div>
+      </div>
+
+    </div>
+    </div>
+
+
+    <div class="question-container" id="question-5">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="In the past 7 days how much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands)?" data-ar="إلى أي مدى تعارض الألم مع قضاء حاجاتك خارج المنزل (مثلاً: شراء البقالة، أداء المهام)؟">In the past 7 days how much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands)?</p><br>      
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands)?" id="PAIN4_1" value="1" required>
+                <label for="PAIN4_1" data-en="Not at all" data-ar="ليس على الإطلاق">Not at all</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands)?" id="PAIN4_2" value="2" required>
+                <label for="PAIN4_2" data-en="A little bit" data-ar="مرات قليلة">A little bit</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands)?" id="PAIN4_3" value="3" required>
+                <label for="PAIN4_3" data-en="Somewhat" data-ar="نوعاً ما">Somewhat</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands)?" id="PAIN4_4" value="4" required>
+                <label for="PAIN4_4" data-en="Quite a bit" data-ar="غالبا">Quite a bit</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands)?" id="PAIN4_5" value="5" required>
+                <label for="PAIN4_5" data-en="Very much" data-ar="كثيرا جدا">Very much</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+      <input type="radio" name="In the past 7 days how much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands)?" id="PAIN4_6" value="1" required>
+      <label for="PAIN4_6" data-en="Not at all" data-ar="ليس على الإطلاق">Not at all</label> 
+      <input type="radio" name="In the past 7 days how much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands)?" id="PAIN4_7" value="2" required>
+      <label for="PAIN4_7" data-en="A little bit" data-ar="مرات قليلة">A little bit</label>
+      <input type="radio" name="In the past 7 days how much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands)?" id="PAIN4_8" value="3" required>
+      <label for="PAIN4_8" data-en="Somewhat" data-ar="نوعاً ما">Somewhat</label>
+      <input type="radio" name="In the past 7 days how much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands)?" id="PAIN4_9" value="4" required>
+      <label for="PAIN4_9" data-en="Quite a bit" data-ar="غالبا">Quite a bit</label>
+      <input type="radio" name="In the past 7 days how much did pain interfere with doing your tasks away from home (e.g., getting groceries, running errands)?" id="PAIN4_0" value="5" required>
+      <label for="PAIN4_0" data-en="Very much" data-ar="كثيرا جدا">Very much</label>     
+<div id="custom-radio-pos"></div>
+      </div>
+
+    </div>
+    </div>
+
+
+    <div class="question-container" id="question-6">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="In the past 7 days how often did pain keep you from socializing with others?" data-ar="كم مرة منعك الألم من الاختلاط اجتماعيا بالآخرين؟">In the past 7 days how often did pain keep you from socializing with others?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how often did pain keep you from socializing with others?" id="PAIN5_1" value="1" required>
+                <label for="PAIN5_1" data-en="Never" data-ar="ممتاز">Never</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how often did pain keep you from socializing with others?" id="PAIN5_2" value="2" required>
+                <label for="PAIN5_2" data-en="Rarely" data-ar="مرات قليلة">Rarely</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how often did pain keep you from socializing with others?" id="PAIN5_3" value="3" required>
+                <label for="PAIN5_3" data-en="Sometimes" data-ar="جيد">Sometimes</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how often did pain keep you from socializing with others?" id="PAIN5_4" value="4" required>
+                <label for="PAIN5_4" data-en="Often" data-ar="مقبول">Often</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="In the past 7 days how often did pain keep you from socializing with others?" id="PAIN5_5" value="5" required>
+                <label for="PAIN5_5" data-en="Always" data-ar="سيء">Always</label>
+            </div>
+        </div>
+      </div>
+
+
+
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+      <input type="radio" name="In the past 7 days how often did pain keep you from socializing with others?" id="PAIN5_6" value="1" required>
+      <label for="PAIN5_6" data-en="Never" data-ar="ممتاز">Never</label> 
+      <input type="radio" name="In the past 7 days how often did pain keep you from socializing with others?" id="PAIN5_7" value="2" required>
+      <label for="PAIN5_7" data-en="Rarely" data-ar="مرات قليلة">Rarely</label>
+      <input type="radio" name="In the past 7 days how often did pain keep you from socializing with others?" id="PAIN5_8" value="3" required>
+      <label for="PAIN5_8" data-en="Sometimes" data-ar="جيد">Sometimes</label>
+      <input type="radio" name="In the past 7 days how often did pain keep you from socializing with others?" id="PAIN5_9" value="4" required>
+      <label for="PAIN5_9" data-en="Often" data-ar="مقبول">Often</label>
+      <input type="radio" name="In the past 7 days how often did pain keep you from socializing with others?" id="PAIN5_0" value="5" required>
+      <label for="PAIN5_0" data-en="Always" data-ar="سيء">Always</label>     
+<div id="custom-radio-pos"></div>
+      </div>
+
+    </div>
+
+    <div class="nav-buttons">
+        <button data-en="Submit" data-ar="إرسال" type="submit">
+          <i class='bx bx-check-double'></i> Submit
+        </button>
+      </div>
+    </div>
+
+    
+  </form>
+
+  <!-- <script>
+    let currentLang = 'en';
+    let currentQuestion = 0;
+    const questions = document.querySelectorAll('.question-container');
+    const progressBar = document.getElementById('progress-bar');
+
+    function updateProgressBar() {
+        const progress = ((currentQuestion + 1) / questions.length) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function showQuestion(index) {
+        questions.forEach((question, i) => {
+            question.classList.toggle('active', i === index);
+        });
+        updateProgressBar();
+    }
+
+    // Function to toggle between "Show More" and "Show Less"
+    // Character limit for truncation
+// Character limit for truncation on mobile
+var charLimit = 80;
+
+function toggleText() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more-text");
+  var toggleBtn = document.getElementById("toggle-btn");
+
+  if (moreText.style.display === "none") {
+    dots.style.display = "none"; // Hide the dots
+    moreText.style.display = "inline"; // Show the extra text
+    toggleBtn.innerHTML = " Show Less"; // Change text to "Show Less"
+  } else {
+    dots.style.display = "inline"; // Show the dots
+    moreText.style.display = "none"; // Hide the extra text
+    toggleBtn.innerHTML = " Show More"; // Change text back to "Show More"
+  }
+}
+
+// Function to handle truncation based on screen size (mobile vs desktop)
+function setInitialText() {
+  var fullText = "PROMIS-10 Global Health is a brief survey that assesses your overall health across physical, mental, and social aspects. It's a quick way to track your health over time and helps doctors understand your concerns from your perspective."; 
+  var truncatedText = fullText.substring(0, charLimit); // Get the first 100 characters
+
+  // Check if the screen size is mobile
+  if (window.innerWidth < 768) {
+    // On mobile, truncate the text if it exceeds the character limit
+    if (fullText.length > charLimit) {
+      document.getElementById("text").innerHTML = 
+        truncatedText + 
+        '<span id="dots">...</span>' +
+        '<span id="more-text" style="display:none;">' + 
+        fullText.substring(charLimit) + 
+        '</span>' + 
+        '<span id="toggle-btn" style="color: blue; cursor: pointer;" onclick="toggleText()"> Show More</span>';
+    } else {
+      // If text is within the character limit, show the full text
+      document.getElementById("text").innerHTML = fullText;
+    }
+  } else {
+    // On desktop, show the full text without truncation and without "Show More"
+    document.getElementById("text").innerHTML = fullText;
+  }
+}
+
+// Call setInitialText on page load and when the window is resized
+window.onload = setInitialText;
+window.onresize = setInitialText;
+
+
+
+    function nextQuestion() {
+        const currentInputs = questions[currentQuestion].querySelectorAll('input[type="radio"]');
+        let answered = false;
+
+        currentInputs.forEach(input => {
+            if (input.checked) {
+                answered = true;
+            }
+        });
+
+        if (answered) {
+            if (currentQuestion < questions.length - 1) {
+              setTimeout(() => {
+                currentQuestion++;
+                showQuestion(currentQuestion)
+              }, 500);
+            }
+                
+        }
+    }
+
+    document.querySelectorAll('.radio-grid').forEach(function (grid) {
+        grid.addEventListener('click', function () {
+            // Find the label element within this grid and simulate a click on it
+            const label = this.querySelector('label');
+            if (label) {
+                label.click();  // Simulate a click on the label
+            }
+        });
+    });
+
+
+    function previousQuestion() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            showQuestion(currentQuestion);
+
+            addRadioEventListeners();
+        }
+    }
+
+    function addRadioEventListeners() {
+  questions.forEach((question, questionIndex) => {
+    const radioInputs = question.querySelectorAll('input[type="radio"]');
+
+    radioInputs.forEach(input => {
+      // Remove any existing event listener before adding a new one to avoid multiple triggers
+      input.removeEventListener('click', handleRadioClick);
+      input.addEventListener('click', handleRadioClick);
+    });
+  });
+}
+
+function handleRadioClick() {
+  if (currentQuestion === questions.length - 1) {
+    return; // Do nothing if we are on the last question
+  }
+  nextQuestion();
+}
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'ar' : 'en';
+        document.querySelectorAll('[data-en]').forEach(el => {
+            el.innerText = el.getAttribute(`data-${currentLang}`);
+        });
+        document.querySelector('.lang-toggle').innerText = currentLang === 'en' ? 'العربية' : 'English';
+    }
+
+    showQuestion(0);
+    addRadioEventListeners();
+</script> -->
+
+<!-- <script>
+  let currentLang = 'en'; // Default language
+  let currentQuestion = 0;
+  const questions = document.querySelectorAll('.question-container');
+  const progressBar = document.getElementById('progress-bar');
+
+  // Update progress bar based on the current question
+  function updateProgressBar() {
+    const progress = ((currentQuestion + 1) / questions.length) * 100;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  // Show a specific question
+  function showQuestion(index) {
+    questions.forEach((question, i) => {
+      question.classList.toggle('active', i === index);
+    });
+    updateProgressBar();
+  }
+
+  // Function to toggle between "Show More" and "Show Less"
+  var charLimit = 80;
+
+  function toggleText() {
+    var dots = document.getElementById("dots");
+    var moreText = document.getElementById("more-text");
+    var toggleBtn = document.getElementById("toggle-btn");
+
+    if (moreText.style.display === "none") {
+      dots.style.display = "none"; // Hide the dots
+      moreText.style.display = "inline"; // Show the extra text
+      toggleBtn.innerHTML = " Show Less"; // Change text to "Show Less"
+    } else {
+      dots.style.display = "inline"; // Show the dots
+      moreText.style.display = "none"; // Hide the extra text
+      toggleBtn.innerHTML = " Show More"; // Change text back to "Show More"
+    }
+  }
+
+  // Function to handle truncation based on screen size (mobile vs desktop)
+  function setInitialText() {
+    var fullText = "PROMIS-10 Global Health is a brief survey that assesses your overall health across physical, mental, and social aspects. It's a quick way to track your health over time and helps doctors understand your concerns from your perspective."; 
+    var truncatedText = fullText.substring(0, charLimit); // Truncate the text
+
+    if (window.innerWidth < 768) {
+      if (fullText.length > charLimit) {
+        document.getElementById("text").innerHTML =
+          truncatedText +
+          '<span id="dots">...</span>' +
+          '<span id="more-text" style="display:none;">' +
+          fullText.substring(charLimit) +
+          '</span>' +
+          '<span id="toggle-btn" style="color: blue; cursor: pointer;" onclick="toggleText()"> Show More</span>';
+      } else {
+        document.getElementById("text").innerHTML = fullText;
+      }
+    } else {
+      document.getElementById("text").innerHTML = fullText;
+    }
+  }
+
+  // Call setInitialText on page load and when the window is resized
+  window.onload = setInitialText;
+  window.onresize = setInitialText;
+
+  // Handle going to the next question
+  function nextQuestion() {
+    const currentInputs = questions[currentQuestion].querySelectorAll('input[type="radio"]');
+    let answered = false;
+
+    currentInputs.forEach(input => {
+      if (input.checked) {
+        answered = true;
+      }
+    });
+
+    if (answered) {
+      if (currentQuestion < questions.length - 1) {
+        setTimeout(() => {
+          currentQuestion++;
+          showQuestion(currentQuestion);
+        }, 500);
+      }
+    }
+  }
+
+  // Handle going to the previous question
+  function previousQuestion() {
+    if (currentQuestion > 0) {
+      currentQuestion--;
+      showQuestion(currentQuestion);
+      addRadioEventListeners();
+    }
+  }
+
+  // Add event listeners for radio buttons to move to the next question
+  function addRadioEventListeners() {
+    questions.forEach((question, questionIndex) => {
+      const radioInputs = question.querySelectorAll('input[type="radio"]');
+  
+      radioInputs.forEach(input => {
+        // Remove any existing event listener before adding a new one to avoid multiple triggers
+        input.removeEventListener('click', handleRadioClick);
+        input.addEventListener('click', handleRadioClick);
+      });
+    });
+  }
+  
+  function handleRadioClick() {
+    if (currentQuestion === questions.length - 1) {
+      return; // Do nothing if we are on the last question
+    }
+    nextQuestion();
+  }
+
+  // Function to toggle the language and update content accordingly
+  function toggleLanguage() {
+    currentLang = currentLang === 'en' ? 'ar' : 'en';
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.innerText = el.getAttribute(`data-${currentLang}`);
+    });
+
+    document.querySelector('.lang-toggle').innerText = currentLang === 'en' ? 'العربية' : 'English';
+    document.querySelector('input[name="lang"]').value = currentLang; // Update hidden input for language
+
+    // Update the URL without refreshing the page
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', currentLang);
+    window.history.pushState({}, '', url);
+  }
+
+  // Initialize the form to ensure the correct language is set
+  document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    currentLang = urlParams.get('lang');
+
+    // If lang is undefined or not set, default to 'en'
+    if (!currentLang || currentLang === 'undefined') {
+      currentLang = 'en';
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', currentLang);
+      window.history.replaceState({}, '', url);
+    }
+
+    document.querySelector('input[name="lang"]').value = currentLang; // Set the hidden field to the current language
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.innerText = el.getAttribute(`data-${currentLang}`);
+    });
+
+    document.querySelector('.lang-toggle').innerText = currentLang === 'en' ? 'العربية' : 'English';
+
+    showQuestion(0);
+    addRadioEventListeners();
+  });
+</script> -->
+
+<script>
+  let currentLang = 'en'; // Default language
+  let currentQuestion = 0;
+  const questions = document.querySelectorAll('.question-container');
+  const progressBar = document.getElementById('progress-bar');
+
+  // Update progress bar based on the current question
+  function updateProgressBar() {
+    const progress = ((currentQuestion + 1) / questions.length) * 100;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  // Show a specific question
+  function showQuestion(index) {
+    questions.forEach((question, i) => {
+      question.classList.toggle('active', i === index);
+    });
+    updateProgressBar();
+  }
+
+  // Function to toggle between "Show More" and "Show Less"
+  var charLimit = 80;
+  var isTextExpanded = false;
+
+  function setInitialText() {
+  var fullTextEn = "The PROMIS Pain Interference instruments (adult and child) measure the self-reported consequences of pain on relevant aspects of a person's life and may include the extent to which pain hinders engagement with social, cognitive, emotional, physical, and recreational activities.";
+  var fullTextAr = "تقيس أدوات التدخل في الألم PROMIS (للبالغين والأطفال) العواقب المبلغ عنها ذاتيًا للألم على الجوانب ذات الصلة بحياة الشخص وقد تشمل مدى إعاقة الألم للمشاركة في الأنشطة الاجتماعية والمعرفية والعاطفية والجسدية والترفيهية.";
+  
+  var fullText = currentLang === 'en' ? fullTextEn : fullTextAr;
+  var truncatedText = fullText.substring(0, charLimit);
+
+  if (window.innerWidth < 724) {
+    if (fullText.length > charLimit) {
+      // Set truncated text with 'Show More' button
+      document.getElementById("text").innerHTML = 
+        truncatedText + 
+        '<span id="dots">...</span>' +
+        '<span id="more-text" style="display:none;">' + 
+        fullText.substring(charLimit) + 
+        '</span>' + 
+        '<span id="toggle-btn" style="color: blue; cursor: pointer;">' + 
+        (currentLang === 'en' ? ' Show More' : ' عرض المزيد') + 
+        '</span>';
+
+      // If the text was previously expanded, show it as expanded
+      if (isTextExpanded) {
+        document.getElementById("more-text").style.display = "inline";
+        document.getElementById("dots").style.display = "none";
+        document.getElementById("toggle-btn").innerHTML = (currentLang === 'en' ? ' Show Less' : ' إخفاء');
+      }
+
+      // Attach the event listener to the toggle button after it's created
+      var toggleBtn = document.getElementById("toggle-btn");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", toggleText);
+      }
+    } else {
+      document.getElementById("text").innerHTML = fullText;
+    }
+  } else {
+    document.getElementById("text").innerHTML = fullText;
+  }
+}
+
+function toggleText() {
+  var moreText = document.getElementById("more-text");
+  var dots = document.getElementById("dots");
+  var toggleBtn = document.getElementById("toggle-btn");
+
+  if (moreText.style.display === "none") {
+    moreText.style.display = "inline";
+    dots.style.display = "none";
+    toggleBtn.innerHTML = (currentLang === 'en' ? ' Show Less' : ' إخفاء');
+    isTextExpanded = true;  // Store the state as expanded
+  } else {
+    moreText.style.display = "none";
+    dots.style.display = "inline";
+    toggleBtn.innerHTML = (currentLang === 'en' ? ' Show More' : ' عرض المزيد');
+    isTextExpanded = false;  // Store the state as collapsed
+  }
+}
+
+// Call the setInitialText function when the page loads
+window.onload = setInitialText;
+
+// Adjust text visibility when resizing the window
+window.onresize = function() {
+  setInitialText();
+};
+
+function adjustViewportForOrientation() {
+    const metaViewport = document.querySelector('meta[name="viewport"]');
+    if (window.matchMedia("(max-width: 1000px) and (orientation: landscape)").matches) {
+      metaViewport.setAttribute("content", "width=device-width, initial-scale=1.0");
+    } else {
+      metaViewport.setAttribute("content", "width=device-width, initial-scale=1.0");
+    }
+  }
+
+  // Adjust on page load
+  adjustViewportForOrientation();
+
+  // Adjust on orientation change
+  window.addEventListener("resize", adjustViewportForOrientation);
+
+  // Handle going to the next question
+  function nextQuestion() {
+    const currentInputs = questions[currentQuestion].querySelectorAll('input[type="radio"]');
+    let answered = false;
+
+    currentInputs.forEach(input => {
+      if (input.checked) {
+        answered = true;
+      }
+    });
+
+    if (answered) {
+      if (currentQuestion < questions.length - 1) {
+        setTimeout(() => {
+          currentQuestion++;
+          showQuestion(currentQuestion);
+        }, 500);
+      }
+    }
+  }
+
+  // Handle going to the previous question
+  function previousQuestion() {
+    if (currentQuestion > 0) {
+      currentQuestion--;
+      showQuestion(currentQuestion);
+      addRadioEventListeners();
+    }
+  }
+
+  // Add event listeners for radio buttons to move to the next question
+  function addRadioEventListeners() {
+    questions.forEach((question, questionIndex) => {
+      const radioInputs = question.querySelectorAll('input[type="radio"]');
+  
+      radioInputs.forEach(input => {
+        // Remove any existing event listener before adding a new one to avoid multiple triggers
+        input.removeEventListener('click', handleRadioClick);
+        input.addEventListener('click', handleRadioClick);
+      });
+    });
+  }
+  
+  function handleRadioClick() {
+    if (currentQuestion === questions.length - 1) {
+      return; // Do nothing if we are on the last question
+    }
+    nextQuestion();
+  }
+
+  // Function to toggle the language and update content accordingly
+  function toggleLanguage() {
+    currentLang = currentLang === 'en' ? 'ar' : 'en';
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.innerText = el.getAttribute(`data-${currentLang}`);
+    });
+
+    document.querySelector('.lang-toggle').innerText = currentLang === 'en' ? 'العربية' : 'English';
+    document.querySelector('input[name="lang"]').value = currentLang; // Update hidden input for language
+
+    // Update the URL without refreshing the page
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', currentLang);
+    window.history.pushState({}, '', url);
+    setInitialText();
+  }
+
+  // Initialize the form to ensure the correct language is set
+  document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    currentLang = urlParams.get('lang');
+
+    // If lang is undefined or not set, default to 'en'
+    if (!currentLang || currentLang === 'undefined') {
+      currentLang = 'en';
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', currentLang);
+      window.history.replaceState({}, '', url);
+    }
+
+    document.querySelector('input[name="lang"]').value = currentLang; // Set the hidden field to the current language
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.innerText = el.getAttribute(`data-${currentLang}`);
+    });
+
+    document.querySelector('.lang-toggle').innerText = currentLang === 'en' ? 'العربية' : 'English';
+
+    showQuestion(0);
+    addRadioEventListeners();
+  });
+</script>
+
+</body>
+</html>

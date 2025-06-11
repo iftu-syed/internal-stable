@@ -1,0 +1,74 @@
+{
+  "language_selector_english": "English",
+  "language_selector_arabic": "العربية",
+  "welcome_message": "Welcome, Staff.",
+  "newPassword": "New Password",
+  "confirmPassword": "Confirm Password",
+  "username_placeholder": "Username",
+  "password_placeholder": "Password",
+  "login_button": "Login",
+  "doc_text": "Doc.",
+  "proms_title": "Let's power up with PROMs",
+  "copyright": "© WeHealthify",
+  "contact": "Contact",
+  "privacy_policy": "Privacy Policy",
+  "privacy_policy_title": "Privacy Policy for PROMs App",
+  "intro_title": "1. Introduction",
+  "intro_text": "This Privacy Policy explains how we collect, use, disclose, and protect your personal data when you use the PROMs app.",
+  "intro_agreement": "By using our app, you agree to the collection and use of your information in accordance with this policy.",
+  "data_we_collect_title": "2. Data We Collect",
+  "patient_data_title": "2.1 Patient Data",
+  "patient_data_personal": "Personal Information: Name, Date of Birth, Phone Number, Medical Record (MR) Number, and Appointment Details.",
+  "patient_data_health": "Health Information: PROMs survey responses related to your health status, doctor’s notes, ICD codes, and medical history.",
+  "doctor_data_title": "2.2 Doctor Data",
+  "doctor_data_personal": "Personal Information: Name, Username, and Password.",
+  "doctor_data_patient": "Patient Data: Access to assigned patients’ details including personal and health information for analysis and decision-making.",
+  "staff_data_title": "2.3 Staff Data",
+  "staff_data_personal": "Personal Information: Name, Username, and Password.",
+  "staff_data_management": "Patient Management: Access to patient appointment scheduling, edits, and data uploads.",
+  "admin_data_title": "2.4 Hospital Admin and Super Admin Data",
+  "admin_data_personal": "Personal Information: Name, Username, and Password.",
+  "admin_data_management": "Hospital Management: Access to manage hospitals, specialties, and staff, and view anonymized hospital-level data.",
+  "data_usage_title": "3. How We Use Your Data",
+  "data_usage_list": {
+    "1": "Facilitate patient-doctor interactions through PROMs surveys.",
+    "2": "Enable doctors to view and analyze patient progress.",
+    "3": "Provide hospital-level insights for hospital and super admins.",
+    "4": "Ensure the proper functioning of the app and improve healthcare outcomes."
+  },
+  "legal_basis_title": "4. Legal Basis for Processing",
+  "legal_basis_list": {
+    "1": "GDPR (General Data Protection Regulation) for users based in the EU.",
+    "2": "HIPAA (Health Insurance Portability and Accountability Act) for healthcare-related data in the US.",
+    "3": "Explicit user consent is obtained before processing any personal data."
+  },
+  "data_security_title": "6. Security of Your Data",
+  "data_security_list": {
+    "1": "Encryption: All personal data is encrypted both at rest (AES-256) and in transit (SSL/TLS).",
+    "2": "Access Controls: Role-based access ensures that only authorized personnel can access sensitive information.",
+    "3": "Audit Logs: All actions are logged for security monitoring and accountability."
+  },
+  "data_retention_title": "7. Data Retention Policy",
+  "data_retention_list": {
+    "patient": "Patient Data: Retained for a minimum of 5 years or as required by local health regulations. After this period, data will be anonymized or securely deleted.",
+    "staff": "Staff, Doctor, Admin Data: Retained for the duration of employment or service and deleted 6 months after termination."
+  },
+  "data_rights_title": "8. Your Data Rights",
+  "data_rights_description": "Under the GDPR and HIPAA, you have the following rights:",
+  "data_rights_list": {
+    "access": "Access: You may request a copy of your personal data.",
+    "correction": "Correction: You can request corrections to inaccurate or incomplete data.",
+    "deletion": "Deletion: You can request the deletion of your data where applicable.",
+    "portability": "Data Portability: You can request a copy of your data in a portable format."
+  },
+  "data_breach_title": "9. Data Breach Notifications",
+  "data_breach_description": "In the event of a data breach, we will notify affected users and relevant authorities within 72 hours as required by GDPR and HIPAA.",
+  "policy_changes_title": "10. Changes to the Privacy Policy",
+  "policy_changes_description": "We may update this policy from time to time. You will be notified of any changes via email or through our app.",
+  "contact_info_title": "11. Contact Information",
+  "contact_info_description": "For questions or concerns regarding this Privacy Policy, please contact us at:",
+  "contact_email": "Email: support@wehealthify.org",
+  "contact_website": "Website: app.wehealthify.org",
+  "contact_address": "Address: Suite 2 Parkway 5 Parkway Business Centre, 300 Princess Road, Manchester, M14 7HR"
+}
+

@@ -1,0 +1,97 @@
+/* Individual number card styling */
+.number-card {
+    flex: 1;  /* Allow each card to grow/shrink equally */
+    min-width: 180px;
+    padding: 20px;
+    border-radius: 10px;
+    padding-bottom: 0px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly lower */
+    animation: fadeInUp 1s ease-out forwards; /* Fade-in Animation */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover animation */
+}
+
+/* Fade-In Animation Keyframes */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Scale Effect */
+.number-card:hover {
+    transform: scale(1.05); /* Slight zoom */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Enhance shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Unique Light Background Colors for Each Card */
+.number-card-1 {
+    background-color: rgba(75, 87, 249, 0.05); /* Very light blue */
+}
+
+.number-card-2 {
+    background-color: rgba(235, 203, 0, 0.1); /* Very light yellow */
+}
+
+.number-card-3 {
+    background-color: rgba(249, 137, 139, 0.1); /* Very light red */
+}
+
+.number-card-4 {
+    background-color: rgba(45, 158, 105, 0.1); /* Very light green */
+}
+
+/* Styling for the number (main value) */
+.number-card-value-1 {
+    font-size: 48px;
+    font-weight: bold;
+    fill: #4B57F9;
+}
+
+/* Styling for the number (main value) */
+.number-card-value-2 {
+    font-size: 48px;
+    font-weight: bold;
+    fill: #706414;
+}
+
+/* Styling for the number (main value) */
+.number-card-value-3 {
+    font-size: 48px;
+    font-weight: bold;
+    fill: #a93638;
+}
+
+/* Styling for the number (main value) */
+.number-card-value-4 {
+    font-size: 48px;
+    font-weight: bold;
+    fill: #2D9E69;
+}
+
+/* Styling for the description text */
+.number-card-description {
+    font-size: 18px;
+    fill: #333;
+}
+
+
+@font-face {
+    font-family: 'Inter';
+    src: url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.number-card-value-1,
+.number-card-value-2,
+.number-card-value-3,
+.number-card-value-4,
+.number-card-description {
+    font-family: 'Inter', sans-serif;
+}

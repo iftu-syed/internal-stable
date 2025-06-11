@@ -1,0 +1,2561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Entry Form</title>
+    <link rel="stylesheet" href="<%= basePath %>/styles.css"> <!-- Correct the path to your CSS file -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<%= basePath %>/css/introjs.min.css">
+
+    <style>
+        .language-selector {
+      text-align: right;
+      /* margin: 10px; */
+    }
+
+    .required {
+  color: red;
+  margin-left: 2px;
+}
+
+
+    .language-selector a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: #007BFF;
+    }
+
+    .language-selector a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .language-selector img {
+      margin-right: 5px;
+      width: 20px;
+      margin-left: 5px;
+      height: auto;
+      vertical-align: bottom;
+    }
+
+        /* Existing styles for .form-select */
+        .form-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #5F677C;
+            border-radius: 5px;
+            appearance: none;
+            font-weight: lighter;
+            background-color: white; /* Ensure background is white */
+            color: black; /* Ensure text color is black */
+        }
+
+        /* Ensure the dropdown options have a white background with black text */
+        .form-select option {
+            background-color: white; /* White background for options */
+            color: black; /* Black text for options */
+        }
+
+        /* Apply styles specifically when the dropdown is expanded */
+        .form-select:focus {
+            background-color: white; /* White background when dropdown is focused/expanded */
+            color: black; /* Black text when dropdown is focused/expanded */
+        }
+
+        /* Ensure selected option also has a white background and black text */
+        .form-select option:checked {
+            background-color: white; /* White background for the selected option */
+            color: black; /* Black text for the selected option */
+        }
+
+        /* Additional styling for the dropdown arrow */
+        .form-select .arrow {
+            margin-left: 40px;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid #131217;
+            border-top: 2px solid #131217;
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
+        }
+
+        .optional-text {
+            font-size: smaller; /* Adjust the size as needed */
+            color: gray;       /* Optional: Change color for more distinction */
+        }
+
+        .csv-upload-button {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        .csv-upload-button:hover {
+            background-color: #0056b3;
+        }
+
+        #csvFile {
+            display: none;
+        }
+
+        .introjs-tooltipbuttons {
+    text-align: right; /* Align buttons to the right */
+
+}
+
+.help-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0px !important;
+    transition: background-color 0.3s ease;
+}
+
+.help-btn:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+}
+
+
+.help-button-container {
+    position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #12171e;
+  padding: 12px 0;
+  transition: all 0.5s ease;
+}
+
+/* Ensure the button aligns well with sidebar's active state */
+.sidebar.active .help-btn {
+    color: #fff;
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+}
+
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  /* Center horizontally; tweak vertical margin as needed */
+  margin: 10% auto;
+  width: 75%;
+  max-height: 55vh; /* Or 50vh, 52vh, etc. if you prefer */
+  position: relative;
+  container-type: inline-size; /* For the offset-path/trail animation */
+}
+
+/* The content wrapper inside .popup-content.
+   This is where your header, body, and footer live.
+   We make it flex:1 so it can grow/shrink to fill vertical space,
+   letting the .popup-body scroll and the footer stay at bottom.
+*/
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;   /* Let this fill the space */
+  position: relative; /* For safe measure */
+  height: 50px;
+  border: calc(var(--border-width, 3) * 1px) solid transparent;
+  border-radius: calc(var(--border-radius, 16) * 1px);
+  background: linear-gradient(
+      var(--canvas, #ffffff),
+      var(--canvas, #ffffff)
+    ) padding-box,
+    transparent;
+  /* Just some padding if you like */
+  padding: 0.5rem;
+}
+
+/* 
+  Now your existing popup-header, popup-body, and popup-footer 
+  remain largely the same, but nested inside .content 
+*/
+.popup-header {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  /* color:red; */
+  /* Tweak styling as needed */
+}
+.warning-msg{
+    color: red;
+    font-size: 24px;
+}
+.popup-body {
+  /* This is the scrollable area */
+  flex: 1;               /* Fill remaining vertical space */
+  overflow-y: auto;      /* Enable vertical scrolling */
+  padding: 10px;
+  white-space: nowrap;   /* Keep table from wrapping */
+}
+
+.popup-footer {
+  position: sticky;
+  bottom: 0;
+  background-color: #fefefe;
+  border-top: 1px solid #ddd;
+  padding: 10px;
+  z-index: 1; /* So it stays above the scrolling content */
+  
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  position: relative; /* needed for absolute-positioned .Btn-desc */
+}
+
+/* The left-side text in the footer */
+.Btn-desc {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 340px;
+}
+
+.skip-desc,
+.cancel-desc {
+  display: none;
+  color: #5F677C;
+  font-size: small;
+  font-weight: bold;
+  margin: 0 0 5px; 
+}
+.download-desc{
+    color: #5F677C;
+  font-size: small;
+  font-weight: bold;
+  margin: 5px 0 5px; 
+}
+
+.DOB{
+    color: #5F677C; 
+}
+/* Buttons area in the footer */
+.popup-buttons {
+  display: inline-flex; 
+  gap: 10px;
+}
+
+.skip-btn {
+  background-color: #28a745; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.skip-btn:hover {
+  background-color: #218838;
+}
+
+.download-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6c757d; /* Gray */
+    color: white;
+  }
+  .download-btn:hover {
+    background-color: #5a6268; /* Darker gray */
+  }
+
+.cancel-btn {
+  background-color: #dc3545; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.cancel-btn:hover {
+  background-color: #c82333;
+}
+
+/* Table styling */
+table {
+  border-collapse: collapse;
+  width: 100%;          
+  min-width: 1000px; /* Force horizontal scrolling if narrower */
+}
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+.missing-field {
+  color: #d8000c;
+  border-radius: 3px;
+  padding: 4px;
+  text-align: center;
+}
+
+/******************************************/
+/* 2) The Border + Trail Effect           */
+/******************************************/
+
+/* The big background perimeter behind .content */
+.border {
+  position: absolute;
+  inset: 0;
+  border-radius: calc(var(--border-radius, 16) * 1px);
+  clip-path: inset(0 0 0 0 round calc(var(--border-radius, 16) * 1px));
+  background: var(--border, #aaa); 
+  z-index: -1; /* behind .content */
+  border: 0;
+  container-type: inline-size;
+}
+
+/* The traveling radial dot along the perimeter */
+.trail {
+  width: calc(var(--trail-size, 20) * 1cqmin); /* can use px if you prefer */
+  aspect-ratio: 2 / 1;
+  position: absolute;
+  background: radial-gradient(
+    100% 100% at right,
+    var(--accent, red),
+    transparent 50%
+  );
+  offset-path: border-box; /* key to follow the “border” perimeter */
+  offset-anchor: 100% 50%;
+  animation: journey var(--speed, 6s) infinite linear;
+}
+
+/* Slower if the container is big */
+@container (width > 600px) {
+  .trail {
+    --speed: 12s;
+  }
+}
+
+@keyframes journey {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+/******************************************/
+/* 3) (Optional) 3D "explode" transitions */
+/******************************************/
+[data-explode="true"] .popup-content {
+  transition: transform 0.7s;
+  transform: scale(0.8) rotateX(-20deg) rotateY(30deg);
+}
+
+[data-explode="true"] .content {
+  transition: 
+    transform 0.7s 0.3s, 
+    opacity 0.5s 0.3s;
+  transform: translate3d(0, 0, 400px);
+  opacity: 0;
+}
+
+
+.flash-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    background-color: #4CAF50; /* Green for success */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    z-index: 1000;
+}
+
+.flash-error-message{
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    background-color: #f32727; /* Green for success */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    z-index: 1000;
+}
+.success-dialog {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-dialog-content {
+    background-color: white;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.success-icon {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.success-dialog h2 {
+    color: #0000EE;
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.success-dialog p {
+    margin-bottom: 24px;
+    color: #333;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+.success-ok-btn {
+    background-color: #CBFCC6;
+    color: black;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.success-ok-btn:hover {
+    color: #ffffff !important;
+    background-color: #45a049 !important; 
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+.success-ok-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.cancel-content {
+    background-color: white;
+}
+
+.cancel-content h2 {
+    color: #b6323f;
+}
+
+.cancel-icon {
+    color: #dc3545;
+    margin-bottom: 20px;
+}
+
+.cancel-ok-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.cancel-ok-btn:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.cancel-ok-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+.warning-text {
+  color: #d8000c;
+  border-radius: 3px;
+  padding: 4px;
+  text-align: center;
+}
+/* Make the Select2 “single selection” box use your .form-input look */
+.select2-container--default .select2-selection--single {
+  height: auto;                     /* let padding drive height */
+  padding: 10px;                    /* match .form-input */
+  border: 1px solid #5F677C;        /* match .form-input */
+  border-radius: 5px;               /* match .form-input */
+  background-color: white;          /* ensure same bg */
+  font-weight: normal;              /* match .form-input */
+  color: black;                     /* match your inputs */
+  box-sizing: border-box;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+color: #333;
+}
+
+/* Ensure the placeholder/selected text lines up like a normal input */
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 1.2; /* or whatever matches your input’s line-height */
+  color: black;
+}
+
+/* Tweak the dropdown arrow to align like your arrow styling (optional) */
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 100%;
+  top: 0;
+  right: 10px;
+  width: 20px;
+}
+
+.popup-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+    z-index: 10;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.popup-close:hover{
+    color: black;
+}
+/* Enhanced CSS to ensure proper dropdown positioning */
+.select2-container--default .select2-dropdown {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    background-color: white;
+    color: black;
+    max-height: 200px;
+    overflow-y:hidden;
+    /* Important: Ensure proper positioning */
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1051;
+}
+
+/* Ensure the container has relative positioning */
+.form-group {
+    position: relative;
+}
+
+/* Prevent dropdown from appearing elsewhere */
+.select2-dropdown--below {
+    top: 100% !important;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* Ensure dropdown never appears above */
+.select2-dropdown--above {
+    top: auto !important;
+    bottom: 100% !important;
+}
+
+/* Style the select2 container */
+.select2-container {
+    width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single {
+    height: auto;
+    padding: 10px;
+    border: 1px solid #5F677C;
+    border-radius: 5px;
+    background-color: white;
+    font-weight: normal;
+    color: black;
+    box-sizing: border-box;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #333;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 1.2;
+    color: black;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100%;
+    top: 0;
+    right: 10px;
+    width: 20px;
+}
+
+/* Results styling */
+.select2-results__option {
+    padding: 8px;
+    background-color: white;
+    color: black;
+}
+
+.select2-results__option--highlighted {
+    background-color: #5897fb;
+    color: white;
+}
+
+/* Fix for dropdown positioning within the form */
+.form-group .select2-container .select2-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <img src="<%= basePath %>/assets/images/logo_white.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+        <br>
+        <div class="sidebar-footer">
+            <p id="staffLabel" class="bold">Staff</p>
+            <p class="bold"><%= doctor.hospitalName %></p><!-- Updated here -->
+            <p class="bold"><%= doctor.site_code %></p>   <!-- Updated here -->
+        </div>
+        <ul>
+            <li>
+                <a href="<%= basePath %>/home">
+                    <i class="bx bxs-grid-alt"></i>
+                    <span class="nav-item" id="dashboardLabel">Dashboard</span>
+                </a>
+                <span class="tooltip" id="dashboardTooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="<%= basePath %>/data-entry">
+                    <i class='bx bx-plus-circle'></i>
+                    <span class="nav-item" id="addAppointmentLabel">Add Appointment</span>
+                </a>
+                <span class="tooltip" id="addAppointmentTooltip">Add Appointment</span>
+            </li> 
+            <li>
+                <a href="<%= basePath %>/logout">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item" id="logoutLabel">Logout</span>
+                </a>
+                <span class="tooltip" id="logoutTooltip">Logout</span>
+            </li>            
+        </ul>
+
+        <div class="help-button-container">
+            <button id="helpButton" class="help-btn">
+                <span class="nav-item" id="helpLabel">Help </span>
+                <i class='bx bx-help-circle'></i>
+            </button>
+
+
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+            <!-- <h1>Add Appointment</h1>  -->
+            <h2 style="color: #333333;">
+                <%= lng === 'ar' 
+                    ? `مرحباً, ${doctor.firstName} ${doctor.lastName}` 
+                    : `Welcome, ${doctor.firstName} ${doctor.lastName}` 
+                %>
+            </h2>
+        </div>
+        <hr style="opacity: 0.5;">
+        <div class="language-selector" style="text-align: right; padding: 10px; background-color: #f6f5fa;">
+            <a href="?lng=en" class="<%= lng === 'en' ? 'active' : '' %>">
+                <img src="<%= basePath %>/assets/usa.png" alt="English Flag">English
+            </a> |
+            <a href="?lng=ar" class="<%= lng === 'ar' ? 'active' : '' %>">
+                <img src="<%= basePath %>/assets/flag.png" alt="Arabic Flag">العربية
+            </a>
+          </div>   
+
+        <div class="csv-upload-container" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+            <div class="main-container" data-title="Form" data-intro="Enter details of patient for appointment creation.">
+                <div class="topContainer">
+                    <br><br><h2 id="dataEntryFormTitle" style="text-align: center; margin-bottom: 20px; color: #333333;">Data Entry Form</h2>
+                </div>
+
+                <!-- image -->
+                <div class="container">
+                    <div class="left-section">
+                        <h4 id="batchAppointmentsTitle">Batch Appointments</h4>
+                        <form id="csvUploadForm" class="upload-area" method="POST" action="<%= basePath %>/api/upload-csv" enctype="multipart/form-data" style="position: relative;">
+
+                            <i class='bx bx-upload' style='font-size: 60px;'></i>
+                            <p id="selectCSVFileText"><b>Select a CSV file to upload</b><br>or drag and drop it here</p>
+                            <input type="file" id="csvFile" name="csvFile" accept=".csv" required>
+                        </form>  
+
+                        <div id="progress-container" style="display: none;">
+                            <progress id="upload-progress" value="0" max="100"></progress>
+                            <span id="progress-text">0%</span>
+                        </div>
+
+                        <a href="<%= basePath %>/patient_data_template.csv"><span id="csvTemplateLinkText"><b>Find CSV Template Here</b></span></a>
+                        <div style="text-align: center;">
+                            <button id="uploadCSVButton" type="button" class="upload-btn" onclick="document.getElementById('csvFile').click()"><i class='bx bx-upload'></i> Upload CSV</button>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="middle-section">
+                        <h4 id="singleAppointmentsTitle">Single Appointments</h4>
+                        <form id="dataForm" method="POST" action="<%= basePath %>/api/data">
+                            <div class="form-group">
+                                <label for="Mr_no" class="form-label">MR Number<span class="required">*</span></label>
+                                <input type="text" id="Mr_no" class="form-input" name="Mr_no" required>
+                            </div>
+                            <div class="form-group">
+                                <label id="firstNameLabel" for="firstName" class="form-label">First Name:<span class="required">*</span></label>
+                                <input type="text" id="firstName" class="form-input" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="middleName" id="middleNameLabel" class="form-label">Middle Name (Optional):</label>
+                                <input type="text" id="middleName" class="form-input" name="middleName">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" id="lastNameLabel" class="form-label">Last Name:<span class="required">*</span></label>
+                                <input type="text" id="lastName" class="form-input" name="lastName" required>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label for="lastName" id="genderLabel" class="form-label">Gender</label>
+                                <input type="text" id="lastName" class="form-input" name="gender" required>
+                            </div> -->
+                            <div class="form-group" style="margin-bottom: 0px;">
+                                <label for="gender-select" id="genderLabel" class="form-label">Gender</span></label>                            
+                                    <select id="gender-select" class="form-input" name="gender">
+                                        <option value="" hidden id="selectGender">Select Gender</option>
+                                        <option value="male" id="Male">Male</option>
+                                        <option value="female" id="Female">Female</option>
+                                        <option value="other" id="Other">Other</option>
+                                    </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="codes" class="form-label diagnosis">Diagnosis (Optional)</label>
+                                
+                                <select id="codes" name="codes" class="form-input">
+                                    <option value="" disabled selected >Select Diagnosis</option>
+                                </select>
+                                <input type="hidden" id="code_date" placeholder="Search Diagnosis" name="code_date" value="<%= new Date().toISOString().split('T')[0] %>">
+                            </div>
+                    </div>
+
+                    <div class="right-section">
+                        <h4> <pre> </pre></h4>
+                        <div class="form-group">
+                            <label for="DOB" id="dobLabel" class="form-label">Date of Birth:<span class="required">*</span></label>
+                            <input type="text" class="form-input" id="DOB" name="DOB" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber" id="phoneNumberLabel" class="form-label">Phone Number<span class="required">*</label>
+                                <input type="tel" id="phoneNumber" class="form-input" name="phoneNumber" required inputmode="tel" pattern="\+[0-9]{1,3}[0-9]{7,12}" placeholder="+966XXXXXXXXXX" title="Please enter your phone number with country code, e.g. +9661234567890" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" id="emailLabel" class="form-label">Email (Optional)</label>
+                            <input type="email" id="email" class="form-input" name="email">
+                        </div>
+
+                        <div class="form-group" data-title="Time" data-intro="Set appointment time">
+                            <label for="datetime" id="appointmentDateTimeLabel" class="form-label">Appointment Date & Time<span class="required">*</label>
+                            <input type="datetime-local" id="datetime" class="form-input" name="datetime" required>
+                        </div>
+                        <div class="form-group" data-title="Doctor" data-intro="Assign a doctor">
+                            <label for="speciality-doctor" id="doctorLabel" class="form-label">Doctor<span class="required">*</label>
+                            <select id="speciality-doctor"  style="font-weight: 400;" class="form-select" name="speciality-doctor" required>
+                                <option id="selectDoctorOption" value="">Select Doctor</option>
+                                <!-- Options will be dynamically populated here -->
+                            </select>
+                        </div>
+
+
+                        <input type="hidden" id="hospitalCode" name="hospital_code" value="<%= hospital_code %>">
+                        <input type="hidden" name="site_code" value="<%= site_code %>"> <!-- Add this line -->
+                        <input type="hidden" name="surveyStatus" value="Not Completed"> 
+
+                        <button type="submit" class="submit-btn" id="submitButton" data-title="Submit" data-intro="Submitting the details will create an appointment"><i class='bx bx-check-double'></i> Submit</button>
+                    </form>
+                </div>
+            </div>         
+        </div>
+    </div>
+    <div id="flashMessageContainer" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background-color: #f44336; color: white; padding: 15px; border-radius: 5px; z-index: 1000; font-family: Arial, sans-serif;">
+    </div>
+    <div id="popup" class="popup">
+        <div class="popup-content fluid" data-explode="false">
+          <!-- The "border" shape behind, plus the moving "trail" dot -->
+          <div class="border">
+            <div class="trail"></div>
+          </div>
+
+          <!-- Wrap your actual popup fields in .content -->
+          <div class="content">
+            <!-- Popup Header -->
+            <div class="popup-header">
+              <!-- <h3 id="missingFields" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>"><span class="warning-msg" >Warning:</span>Incorrect or Incomplete Data Found. Please Correct Before Proceeding.</h3> -->
+              <h2 id="missingFields" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+                <span class="warning-text"><%= lng === 'ar' ? 'تحذير' : 'Warning' %></span>: 
+                <%= lng === 'ar' 
+                    ? 'تم العثور على بيانات غير صحيحة أو غير كاملة. يرجى التصحيح قبل المتابعة.' 
+                    : 'Incorrect or Incomplete Data Found. Please Correct Before Proceeding.' %>
+            </h2>
+            <button class="popup-close" onclick="closePopupAndReload()">×</button>
+            </div>
+
+            <!-- Scrollable Body -->
+            <div class="popup-body">
+              <div>
+                <table
+                  border="1"
+                  style="width: 100%; border-collapse: collapse;"
+                  dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>"
+                >
+                  <thead>
+                    <tr>
+                      <th id="Row">Row</th>
+                      <th>Mr Number</th>
+                      <th id="FirstName">First Name</th>
+                      <th id="LastName">Last Name</th>
+                      <th id="DateofBirth">Date of Birth <br>
+                        <p class="DOB">(mm/dd/yyyy)</p>
+                    </th>
+                    <th id="appointmentDandT">Appointment Date & Time <br>
+                        <p class="DOB">(mm/dd/yyyy, hh:mm AM/PM )</p>
+                    </th>
+                      <th id="Specialty">Specialty</th>
+                      <th id="DocID">Doctor ID</th>
+                      <th id="PhoneNumber">PhoneNumber</th>
+                      <!-- <th id="codes">Diagnosis</th> -->
+                      <th id="validationMessages">validation Messages</th>
+                      <!-- <th>Email</th>
+                      <th>Gender</th> -->
+                    </tr>
+                  </thead>
+                  <tbody id="missing-fields-table"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Buttons Footer (sticky) -->
+            <div class="popup-footer">
+              <div class="Btn-desc">
+                <p class="download-desc" id="pop-up-p3">
+                    *Download the error report before proceeding.
+                  </p>
+                <p class="skip-desc" id="pop-up-p1">
+                  *Data for the above patients will not be saved if skipped.
+                </p>
+                <p class="cancel-desc" id="pop-up-p2">
+                  *Upon cancel the entire batch upload will be terminated
+                </p>
+              </div>
+              <div class="popup-buttons">
+                <button class="skip-btn" id="uploadButton" onclick="handleSkip()">Skip & Continue</button>
+                <button id="downloadCSVButton" class="btn btn-primary download-btn">Download Missing Data CSV</button>
+                <button class="cancel-btn" id="cancelButton" onclick="handleCancel()">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Confirmation message -->
+    <div id="confirmationMessage" style="display: none;">Data Entry is done.</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    };
+    const params = new URLSearchParams(window.location.search);
+    let currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+    
+    // Set the language cookie
+    document.cookie = `lng=${currentLanguage}; path=/`;
+          const fetchUrl = `/staff/locales/${currentLanguage}/translation.json`;
+    
+      
+          // Set the `lang` and `dir` attributes for the HTML document
+         
+      
+          fetch(fetchUrl)
+            .then(response => {
+              if (!response.ok) {
+                console.warn(`Translation file not found for language: ${currentLanguage}. Falling back to English.`);
+                return fetch(`/staff/locales/en/translation.json`);
+              }
+              return response.json();
+            })
+            .then(translations => {
+              console.log('Loaded translations:', translations);
+      
+              // Update the elements based on translation keys
+              Object.keys(translations).forEach(id => {
+                const element = document.getElementById(id);
+      
+                if (element) {
+                    const translationValue = translations[id];
+    
+                    if (typeof translationValue === 'string') {
+                        // Update regular text or HTML content
+                        element.innerHTML = translationValue;
+                    }
+                      if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+    
+                        // Update placeholders for input elements
+    
+                        console.log(`Updating placeholder for ${id}:`, translationValue);
+    
+                        element.placeholder = translationValue;
+    
+                      }
+                    else if (typeof translationValue === 'object') {
+                                            // Handle nested object (e.g., lists)
+                                            element.innerHTML = ''; // Clear existing content
+                                            Object.values(translationValue).forEach(item => {
+                                                const listItem = document.createElement('li');
+                                                listItem.textContent = item;
+                                                element.appendChild(listItem);
+                                            });
+                    } else {
+                        console.warn(`Unexpected translation value type for "${id}":`, translationValue);
+                    }
+                }
+              });
+            })
+            .catch(error => console.error('Error loading translations:', error));
+        });
+      </script>
+    <!-- Include Flatpickr library -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/en.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  // helper to build a picker with consistent behavior & styling
+  function makePicker(selector, config) {
+    return flatpickr(selector, Object.assign({}, config, {
+      altInput: false,
+      altInputClass: "form-input",  // your existing input styles
+      allowInput: true,
+      clickOpens: true,
+      onReady(_, __, fp) {
+        // wire click & focus on the visible altInput so it always opens
+        ["click", "focus"].forEach(evt =>
+          fp.altInput.addEventListener(evt, () => fp.open())
+        );
+      }
+    }));
+  }
+
+  // 1) Date of Birth (date only)
+  const dobPicker = makePicker("#DOB", {
+    dateFormat: "m/d/Y",
+    maxDate: "today",
+    altFormat: "m/d/Y"
+  });
+
+  // 2) Appointment Date & Time (with time)
+  const apptPicker = makePicker("#datetime", {
+  enableTime: true,
+  // store in MM/DD/YYYY h:mm AM/PM
+  dateFormat: "m/d/Y h:i K",
+  // display in the same numeric format
+  altFormat:  "m/d/Y h:i K",
+  time_24hr:   false,
+  minuteIncrement: 15,
+  minDate:     "today"
+});
+
+
+  // 3) Basic form‐submit validation (optional)
+  document.getElementById("dataForm").addEventListener("submit", e => {
+    if (dobPicker.selectedDates.length === 0) {
+      e.preventDefault();
+      alert("Please enter your Date of Birth.");
+      dobPicker.altInput.focus();
+      return;
+    }
+    if (apptPicker.selectedDates.length === 0) {
+      e.preventDefault();
+      alert("Please enter your Appointment Date & Time.");
+      apptPicker.altInput.focus();
+    }
+  });
+});
+  
+
+
+
+function clearPatientFields() {
+         document.getElementById('firstName').value = '';
+         document.getElementById('middleName').value = '';
+         document.getElementById('lastName').value = '';
+         document.getElementById('DOB').value = '';
+         // Reset Flatpickr instance for DOB if it exists
+         const dobInput = document.getElementById('DOB');
+         if (dobInput._flatpickr) {
+             dobInput._flatpickr.clear();
+         }
+         document.getElementById('phoneNumber').value = '';
+         document.getElementById('email').value = '';
+         document.getElementById('gender-select').value = ''; // Reset gender dropdown
+         // Add any other fields that might be auto-populated
+     }
+
+     document.getElementById('Mr_no').addEventListener('change', function() {
+         var mrNo = this.value;
+         // Clear previous auto-populated data immediately when MRN changes
+         clearPatientFields();
+
+         if (mrNo) {
+             // Fetch patient data
+             fetch(`<%= basePath %>/api/patient/${mrNo}`)
+                 .then(response => {
+                    if (!response.ok) {
+                        // Handle HTTP errors (like 401, 500 from backend)
+                        return response.json().then(errData => {
+                            // Throw an error to be caught by the .catch block
+                            throw new Error(errData.message || `Server responded with status ${response.status}`);
+                        });
+                    }
+                    return response.json(); // Parse successful JSON response
+                 })
+                 .then(patientData => {
+                     if (patientData.success) {
+                         // Patient found and belongs to the user's hospital
+                         const patient = patientData.patient;
+
+                         // Populate the form fields
+                         document.getElementById('firstName').value = patient.firstName || '';
+                         document.getElementById('middleName').value = patient.middleName || '';
+                         document.getElementById('lastName').value = patient.lastName || '';
+
+                         // Set the DOB
+                         const dobInput = document.getElementById('DOB');
+                         dobInput.value = patient.DOB || '';
+                         if (patient.DOB && dobInput._flatpickr) {
+                            // Update Flatpickr only if it exists and DOB is present
+                            dobInput._flatpickr.setDate(patient.DOB, false); // Set date without triggering change events
+                         } else if (dobInput._flatpickr) {
+                            dobInput._flatpickr.clear(); // Clear Flatpickr if no DOB
+                         }
+
+
+                         document.getElementById('phoneNumber').value = patient.phoneNumber || '';
+                         document.getElementById('email').value = patient.email || '';
+
+                         // Populate the gender dropdown
+                         const genderSelect = document.getElementById('gender-select');
+                         if (patient.gender) {
+                             const genderValue = patient.gender.toLowerCase();
+                             let foundGender = false;
+                             for (let option of genderSelect.options) {
+                                 if (option.value === genderValue) {
+                                     genderSelect.value = genderValue;
+                                     foundGender = true;
+                                     break;
+                                 }
+                             }
+                             if (!foundGender) {
+                                 genderSelect.value = ''; // Reset if fetched gender isn't a valid option
+                             }
+                         } else {
+                             genderSelect.value = ''; // Reset if gender is not available
+                         }
+                         const codeSelect = $('#codes');
+                    codeSelect.empty();
+
+                    if (patient.Codes && patient.Codes.length) {
+                        const latestCode = patient.Codes[patient.Codes.length - 1]; // most recent code
+                        const optionText = `${latestCode.code} - ${latestCode.description}`;
+                        const newOption = new Option(optionText, latestCode.code, true, true);
+                        codeSelect.append(newOption).trigger('change');
+                    } else {
+                        codeSelect.val(null).trigger('change');
+                    }
+                         showExistingPatientDialog(patient);
+
+                     } else {
+                         // Patient not found OR not in the user's hospital
+                         // Display the specific message from the backend
+                        //  alert(patientData.message); // Show the message (e.g., "Patient not found.", "Patient found, but does not belong to your hospital.")
+                         // Fields are already cleared at the start of the change event
+                     }
+                 })
+                 .catch(error => {
+                     console.error('Error fetching patient data:', error);
+                     // Display a generic error or the specific error message from the fetch rejection
+                    //  alert('Error fetching patient data: ' + error.message);
+                     // Ensure fields are cleared on fetch error as well
+                     clearPatientFields();
+                 });
+         }
+     });
+    </script>
+    <script src="<%= basePath %>/js/intro.min.js"></script>
+    <script>
+        document.getElementById('helpButton').addEventListener('click', function () {
+    // Determine the current language (default to English)
+    const lang = new URLSearchParams(window.location.search).get('lng') || getCookie('lng') || 'en';
+
+    // Define translations for the steps
+    const translations = {
+        en: {
+            step1: "Enter details of the patient for appointment creation.",
+            step2: "Set the appointment time.",
+            step3: "Assign a doctor to the appointment.",
+            step4: "Submit the details to create the appointment."
+        },
+        ar: {
+            step1: "أدخل تفاصيل المريض لإنشاء موعد.",
+            step2: "حدد وقت الموعد.",
+            step3: "قم بتعيين طبيب للموعد.",
+            step4: "أرسل التفاصيل لإنشاء الموعد."
+        }
+    };
+
+    // Define the steps for Intro.js
+    const introSteps = [
+        {
+            element: '.main-container', // Form container
+            intro: translations[lang].step1
+        },
+        {
+            element: '.form-group[data-title="Time"]', // Appointment date & time input
+            intro: translations[lang].step2
+        },
+        {
+            element: '#speciality-doctor', // Doctor dropdown
+            intro: translations[lang].step3
+        },
+        {
+            element: '#submitButton', // Submit button
+            intro: translations[lang].step4
+        }
+    ];
+
+    // Initialize and start Intro.js with dynamic labels for buttons
+    introJs()
+        .setOptions({
+            steps: introSteps,
+            rtl: lang === 'ar', // Enable RTL if the language is Arabic
+            nextLabel: lang === 'ar' ? 'التالي' : 'Next',
+            prevLabel: lang === 'ar' ? 'السابق' : 'Back',
+            doneLabel: lang === 'ar' ? 'تم' : 'Done'
+        })
+        .start();
+});
+
+// Helper function to retrieve a cookie value by name
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+        
+    </script>
+
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+        
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+        
+        // Show the loading GIF when the form is submitted
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function() {
+                document.getElementById('loadingContainer').style.display = 'flex';
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+
+            function removeCurrentPageClasses() {
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('CurrentPage');
+                });
+            }
+
+            function setCurrentPageLink(path) {
+                removeCurrentPageClasses();
+                console.log(`Setting CurrentPage link for path: ${path}`);
+                const currentPageLink = Array.from(sidebarLinks).find(link => {
+                    const linkPath = new URL(link.href).pathname;
+                    return linkPath === path;
+                });
+                if (currentPageLink) {
+                    console.log(`CurrentPage link found: ${currentPageLink.href}`);
+                    currentPageLink.classList.add('CurrentPage');
+                } else {
+                    console.log(`No CurrentPage link found for path: ${path}`);
+                }
+            }
+
+            // Check the URL path and set the current page link on page load
+            const currentPath = window.location.pathname;
+            console.log(`Current path: ${currentPath}`);
+            setCurrentPageLink(currentPath);
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const targetPath = new URL(link.href).pathname;
+                    console.log(`Navigating to: ${targetPath}`);
+                    setCurrentPageLink(targetPath);
+                });
+            });
+        });
+        setTimeout(() => {
+            document.querySelectorAll('.success-message, .error-message').forEach(message => {
+                message.style.display = 'none';
+            });
+        }, 3000); // Hide the message after 3 seconds
+    </script>
+
+    <script>
+        // Populate the combined dropdown on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const hospital_code = "<%= hospital_code %>"; // Get the hospital_code from the session
+            const site_code = "<%= site_code %>"; // Get the site_code from the session
+            
+            // Fetch all specialities and their respective doctors
+            fetch(`<%= basePath %>/api/specialties-doctors?hospital_code=${hospital_code}&site_code=${site_code}`)
+                .then(response => response.json())
+                .then(data => {
+                    const selectElement = document.getElementById('speciality-doctor');
+                    if (data.success) {
+                        data.specialties.forEach(speciality => {
+                            // Create an optgroup for each specialty
+                            const optgroup = document.createElement('optgroup');
+                            optgroup.label = speciality.name;
+
+                            speciality.doctors.forEach(doctor => {
+                                const option = document.createElement('option');
+                                option.value = `${speciality.name}||${doctor.doctor_id}`;  // Store both specialty and doctor in value
+                                option.textContent = doctor.doctor_id; // Display doctor ID
+                                optgroup.appendChild(option);
+                            });
+
+                            selectElement.appendChild(optgroup);
+                        });
+                    } else {
+                        // alert('No specialities or doctors found.');
+                    }
+                })
+                .catch(error => console.error('Error fetching specialties and doctors:', error));
+        });
+
+        // On form submission, parse the selected value to extract specialty and doctor
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const combinedValue = document.getElementById('speciality-doctor').value;
+            if (combinedValue) {
+                const [speciality, doctor] = combinedValue.split('||');
+                
+                // Append hidden fields to store extracted specialty and doctor names
+                const specialityInput = document.createElement('input');
+                specialityInput.type = 'hidden';
+                specialityInput.name = 'speciality';
+                specialityInput.value = speciality;
+        
+                const doctorInput = document.createElement('input');
+                doctorInput.type = 'hidden';
+                doctorInput.name = 'doctor';
+                doctorInput.value = doctor;
+        
+                this.appendChild(specialityInput);
+                this.appendChild(doctorInput);
+            }
+        });
+    </script>
+
+
+<script>
+    // flash message script
+    const uploadArea = document.getElementById("csvUploadForm");
+    const fileInput = document.getElementById("csvFile");
+    let isUploading = false; // Prevent duplicate uploads
+async function handleFileUpload(file) {
+    if (!file || isUploading) return;
+    isUploading = true;
+    const maxRows = 20000;
+
+    const progressBar = document.getElementById("upload-progress");
+    const progressContainer = document.getElementById("progress-container");
+    const progressText = document.getElementById("progress-text");
+    
+    progressContainer.style.display = "block";
+    progressBar.value = 0;
+    progressText.textContent = "0%";
+
+    try {
+        // Read and validate file row count
+        const text = await file.text();
+        const rows = text.split(/\r?\n/).filter(row => row.trim() !== '');
+
+        if (rows.length - 1 > maxRows) {
+            showFlashMessage(`Maximum ${maxRows} patients allowed. Your file contains ${rows.length - 1} rows.`, 'error');
+            isUploading = false;
+            return;
+        }
+
+        if (!file.name.endsWith(".csv")) {
+            showFlashMessage("Invalid file type. Please upload a CSV file.", "error");
+            return;
+        }
+
+        const formData = new FormData();
+        const hospitalCode = document.getElementById("hospitalCode").value;
+        formData.append("csvFile", file);
+        formData.append("hospital_code", hospitalCode);
+        formData.append("validate_only", "true");
+
+        // Initialize progress animation
+        let artificialProgress = 0;
+        const progressInterval = setInterval(() => {
+            if (artificialProgress < 90) {
+                artificialProgress += Math.random() * 2 + 0.5;
+                artificialProgress = Math.min(artificialProgress, 90);
+                progressBar.value = artificialProgress;
+                progressText.textContent = `${Math.round(artificialProgress)}%`;
+            }
+        }, 300);
+
+        try {
+            const validationResponse = await fetch("/staff/data-entry/upload", {
+                method: "POST",
+                body: formData
+            });
+
+            clearInterval(progressInterval);
+
+            if (!validationResponse.ok) {
+                throw new Error(`HTTP error! status: ${validationResponse.status}`);
+            }
+
+            const responseData = await validationResponse.json();
+
+            // Check if we have validation issues
+            if (responseData.validationIssues && 
+                Object.values(responseData.validationIssues).some(arr => arr?.length > 0)) {
+                progressBar.value = 100;
+                progressText.textContent = "100%";
+                showPopup(responseData.validationIssues);
+                return;
+            }
+
+            // If no validation issues, proceed with final upload
+            progressBar.value = 50;
+            progressText.textContent = "50%";
+
+            const finalFormData = new FormData();
+            finalFormData.append("csvFile", file);
+            finalFormData.append("hospital_code", hospitalCode);
+            finalFormData.append("final_upload", "true");
+
+            const finalResponse = await fetch("/staff/data-entry/upload", {
+                method: "POST",
+                body: finalFormData
+            });
+
+            if (!finalResponse.ok) {
+                throw new Error(`HTTP error! status: ${finalResponse.status}`);
+            }
+
+            const finalResult = await finalResponse.json();
+
+            progressBar.value = 100;
+            progressText.textContent = "100%";
+
+// if (finalResult && typeof finalResult === 'object') {
+//     const uploadedCount = finalResult.uploadedCount || 0;
+//     const skippedRecords = finalResult.skippedRecords || 0;
+//     const totalRecords = finalResult.totalRecords || (uploadedCount + skippedRecords);
+
+//     const summary = `Upload completed: ${uploadedCount} records processed, ${skippedRecords} records skipped (Total: ${totalRecords})`;
+    
+//     // Show loading progress completion first
+//     progressBar.value = 100;
+//     progressText.textContent = "100%";
+
+//     // Wait for 1.5 seconds before showing the success dialog
+//     setTimeout(() => {
+//         // Hide progress bar
+//         progressContainer.style.display = "none";
+        
+//         // Show success dialog
+//         showSuccessDialog(summary);
+//     }, 1500); // 1.5 seconds delay
+// }
+
+if (finalResult && typeof finalResult === 'object') {
+    // Use the correct property names from backend response
+    const uploadedCount = finalResult.uploadedCount || 0;
+    const skippedRecords = finalResult.skippedRecords || 0;
+    const totalRecords = finalResult.totalRecords || 0;
+
+    // const summary = `Upload completed: ${uploadedCount} records processed, ${skippedRecords} records skipped (Total: ${totalRecords})`;
+    const userLang = getCookie('lng') || 'en';
+const summary = userLang === 'ar'
+    ? `تم اكتمال التحميل: تمت معالجة ${uploadedCount} سجل، تم تخطي ${skippedRecords} سجل (المجموع: ${totalRecords})`
+    : `Upload completed: ${uploadedCount} records processed, ${skippedRecords} records skipped (Total: ${totalRecords})`;
+    
+    // Show loading progress completion first
+    progressBar.value = 100;
+    progressText.textContent = "100%";
+
+    // Wait for 1.5 seconds before showing the success dialog
+    setTimeout(() => {
+        // Hide progress bar
+        progressContainer.style.display = "none";
+        
+        // Show success dialog
+        showSuccessDialog(summary);
+    }, 1500);
+}
+
+        } catch (error) {
+            console.error("Error during upload:", error);
+            showFlashMessage(error.message || "An error occurred during the upload process.", "error");
+        }
+
+    } catch (error) {
+        console.error("Error processing file:", error);
+        showFlashMessage(error.message || "An error occurred while processing the file.", "error");
+    } finally {
+        setTimeout(() => {
+            progressContainer.style.display = "none";
+            isUploading = false;
+            resetUploadArea();
+        }, 1000);
+    }
+}
+
+function showSuccessDialog(message) {
+    const dialog = document.getElementById('successDialog');
+    const messageEl = document.getElementById('successMessage');
+    const okButton = document.getElementById('successOkButton');
+
+    messageEl.textContent = message;
+    dialog.style.display = 'flex';
+
+    okButton.onclick = () => {
+        dialog.style.display = 'none';
+        // window.location.reload();
+            setTimeout(() => {
+        window.location.reload();
+    }, 3000);
+    };
+}
+
+// Update performFinalUpload function to handle progress
+async function performFinalUpload(file, hospitalCode) {
+    const formData = new FormData();
+    formData.append("csvFile", file);
+    formData.append("hospital_code", hospitalCode);
+    formData.append("final_upload", "true");
+
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        const progressBar = document.getElementById("upload-progress");
+        const progressText = document.getElementById("progress-text");
+
+        xhr.upload.addEventListener("progress", (event) => {
+            if (event.lengthComputable) {
+                const baseProgress = 50; // Start from 50%
+                const actualProgress = Math.min(
+                    baseProgress + ((event.loaded / event.total) * 45), // Second phase uses 50-95%
+                    95
+                );
+                progressBar.value = actualProgress;
+                progressText.textContent = `${Math.round(actualProgress)}%`;
+            }
+        });
+
+        xhr.addEventListener("load", () => {
+            if (xhr.status === 200) {
+                try {
+                    const result = JSON.parse(xhr.responseText);
+                    resolve(result);
+                } catch (error) {
+                    reject(new Error("Invalid server response"));
+                }
+            } else {
+                reject(new Error("Server error"));
+            }
+        });
+
+        xhr.addEventListener("error", () => reject(new Error("Network error")));
+        xhr.addEventListener("abort", () => reject(new Error("Upload aborted")));
+
+        xhr.open("POST", "/staff/data-entry/upload", true);
+        xhr.send(formData);
+    });
+}
+
+// CHANGE #2: Add this new function right after the handleFileUpload function
+async function performFinalUpload(file, hospitalCode) {
+    const formData = new FormData();
+    formData.append("csvFile", file);
+    formData.append("hospital_code", hospitalCode);
+    formData.append("final_upload", "true");
+
+    try {
+        const response = await fetch("/staff/data-entry/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            const summary = `Upload completed: ${result.uploadedCount} records processed, ${result.skippedRecords} records skipped (Total: ${result.totalRecords})`;
+            showFlashMessage(summary, "success");
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+        } else {
+            showFlashMessage(result.error || "Upload failed", "error");
+        }
+    } catch (error) {
+        console.error("Error during final upload:", error);
+        showFlashMessage("An error occurred during the upload.", "error");
+    }
+}
+
+// Add the CSS for smooth progress bar animation
+const style = document.createElement('style');
+style.textContent = `
+    #upload-progress {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 15px;
+        border-radius: 10px;
+        background: #f0f0f0;
+        outline: none;
+    }
+
+    #upload-progress::-webkit-progress-bar {
+        background: #f0f0f0;
+        border-radius: 5px;
+    }
+
+    #upload-progress::-webkit-progress-value {
+        background: #007bff;
+        border-radius: 5px;
+        transition: width 1s ease-in-out;
+    }
+
+    #upload-progress::-moz-progress-bar {
+        background: #007bff;
+        border-radius: 5px;
+        transition: width 0.3s ease-in-out;
+    }
+
+    #progress-text {
+        display: block;
+        text-align: center;
+        margin-top: 5px;
+        font-size: 14px;
+    }
+        .validation-error {
+        background-color: #ffebee;
+        color: #d32f2f;
+    }
+    
+    .validation-message {
+        color: #d32f2f;
+        font-size: 0.9em;
+        max-width: 200px;
+    }
+    
+    .missing-field {
+        background-color: #ffebee !important;
+        color: #d32f2f;
+    }
+
+    
+    .validation-error {
+        background-color: #ffebee !important;
+    }
+    
+    .validation-message {
+        color: #d32f2f;
+        font-size: 0.9em;
+        padding: 8px !important;
+    }
+    
+    .validation-list {
+        margin: 0;
+        padding-left: 20px;
+        list-style-type: disc;
+        list-style-position: inside;
+    }
+    
+    .validation-list li {
+        margin: 2px 0;
+        line-height: 1.4;
+        margin-right: 5px;
+    }
+    
+    
+    .validation-message td {
+        vertical-align: top;
+    }
+`;
+document.head.appendChild(style);
+
+    // Reset the upload area styles
+    function resetUploadArea() {
+        uploadArea.style.border = "none";
+        uploadArea.style.backgroundColor = "transparent";
+    }
+
+    // Handle drag-and-drop file upload
+    uploadArea.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        uploadArea.style.border = "2px dashed #666";
+        uploadArea.style.backgroundColor = "#f0f8ff";
+    });
+
+    uploadArea.addEventListener("dragleave", resetUploadArea);
+
+    uploadArea.addEventListener("drop", (event) => {
+        event.preventDefault();
+        resetUploadArea();
+        const files = event.dataTransfer.files;
+        if (files.length > 0) {
+            handleFileUpload(files[0]); // Pass the dropped file for upload
+        }
+    });
+
+    // Handle upload button click (trigger file input)
+    uploadArea.addEventListener("click", () => {
+        fileInput.click();
+    });
+
+    // Handle file input change (file selection)
+    fileInput.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        handleFileUpload(file); // Pass the selected file for upload
+    });
+
+
+// Handle drag and drop
+uploadArea.addEventListener("drop", (event) => {
+    event.preventDefault();
+    resetUploadArea();
+
+    const files = event.dataTransfer.files;
+    if (files.length > 0) {
+        currentFile = files[0]; // Store the dropped file
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(currentFile);
+        fileInput.files = dataTransfer.files; // Update the file input element
+        // showFlashMessage(`File "${currentFile.name}" selected for upload.`, "info");
+        function showFlashMessage(message, type = "success") {
+    const flashMessage = document.createElement("div");
+    flashMessage.className = `flash-message ${type}`;
+    flashMessage.innerHTML = message;
+
+    document.body.appendChild(flashMessage);
+
+ 
+    setTimeout(() => {
+        flashMessage.remove();
+    }, 2000);
+}
+
+
+    }
+});
+
+// Function to reset drag-and-drop styling
+function resetUploadArea() {
+    uploadArea.style.border = "none";
+    uploadArea.style.backgroundColor = "transparent";
+}
+
+// Handle file input selection
+fileInput.addEventListener("change", (event) => {
+    currentFile = event.target.files[0]; // Store the selected file
+});
+
+
+function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+}
+
+// Update the skip button click handler in your frontend
+document.querySelector(".skip-btn").addEventListener("click", async () => {
+    closePopup();
+    const file = document.getElementById("csvFile").files[0];
+    
+    if (!file) {
+        showFlashMessage("No file selected.", "error");
+        return;
+    }
+
+    // Get progress elements
+    const progressBar = document.getElementById("upload-progress");
+    const progressContainer = document.getElementById("progress-container");
+    const progressText = document.getElementById("progress-text");
+
+    // Show and reset progress bar
+    progressContainer.style.display = "block";
+    progressBar.value = 50;
+    progressText.textContent = "50%";
+
+    try {
+        const hospitalCode = document.getElementById("hospitalCode").value;
+        
+        // Create FormData for the upload
+        const formData = new FormData();
+        formData.append("csvFile", file);
+        formData.append("hospital_code", hospitalCode);
+        formData.append("final_upload", "true");
+
+        const response = await fetch("/staff/data-entry/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        
+        // Use the correct property names from backend response
+        const uploadedCount = result?.uploadedCount || 0;
+        const skippedRecords = result?.skippedRecords || 0;
+        const totalRecords = result?.totalRecords || 0;
+
+        // Update progress to 100%
+        progressBar.value = 100;
+        progressText.textContent = "100%";
+
+        // const summary = `Upload completed: ${uploadedCount} records processed, ${skippedRecords} records skipped (Total: ${totalRecords})`;
+        const userLang = getCookie('lng') || 'en';
+        const summary = userLang === 'ar'
+    ? `تم اكتمال التحميل: تمت معالجة ${uploadedCount} سجل، تم تخطي ${skippedRecords} سجل (المجموع: ${totalRecords})`
+    : `Upload completed: ${uploadedCount} records processed, ${skippedRecords} records skipped (Total: ${totalRecords})`;
+        showFormSuccessDialog(summary, "success");
+    } catch (error) {
+        console.error("Error during skip upload:", error);
+        showFlashMessage(error.message || "An error occurred during the upload process.", "error");
+    } finally {
+        // Ensure progress bar is hidden after a delay
+        setTimeout(() => {
+            progressContainer.style.display = "none";
+        }, 3000);
+    }
+});
+
+// CHANGE #4: Update the cancel button event listener (around line 674)
+// Replace the existing cancel button event listener with:
+
+cancelButton.addEventListener("click", () => {
+    closePopup();
+    showFormErrorDialog("Upload cancelled", "error");
+    setTimeout(() => {
+        window.location.reload();
+    }, 8000);
+});
+
+</script>
+
+
+<script>
+    // Global variable to store current missing data rows displayed in the popup
+    let currentMissingDataRows = [];
+    let downloadCount = 0; // Counter for downloads
+    const maxDownloads = 20; // Maximum allowed downloads
+    
+function showPopup(validationIssues) {
+    const tableBody = document.getElementById("missing-fields-table");
+    const skipBtn = document.querySelector(".skip-btn");
+    const cancelBtn = document.querySelector(".cancel-btn");
+    const downloadBtn = document.getElementById("downloadCSVButton");
+
+    skipBtn.style.display = 'none';
+    cancelBtn.style.display = 'none';
+    downloadBtn.style.display = 'block';
+
+    tableBody.innerHTML = "";
+
+    // Combine all validation issues
+    const allIssues = [
+        ...validationIssues.missingData,
+        ...validationIssues.invalidDoctors,
+        ...validationIssues.duplicates,
+        ...validationIssues.invalidEntries
+    ].sort((a, b) => a.rowNumber - b.rowNumber);
+
+    currentMissingDataRows = allIssues;
+
+    allIssues.forEach(row => {
+        const tableRow = document.createElement("tr");
+
+        // Add Row Number
+        const rowNumberCell = document.createElement("td");
+        rowNumberCell.textContent = row.rowNumber;
+        tableRow.appendChild(rowNumberCell);
+
+        // Check if this row has both specialty and doctor errors
+        const hasSpecialtyError = row.validationErrors?.some(error => 
+            error.toLowerCase().includes('specialty') || 
+            error.toLowerCase().includes('speciality')
+        );
+        const hasDoctorError = row.validationErrors?.some(error => 
+            error.toLowerCase().includes('doctor')
+        );
+        const hasBothErrors = hasSpecialtyError && hasDoctorError;
+
+        // Add data fields
+        ['Mr_no', 'firstName', 'lastName', 'DOB', 'datetime', 'speciality', 'doctorId', 'phoneNumber'].forEach(field => {
+            const cell = document.createElement("td");
+            
+            // Check if field is missing or marked as "Missing"
+            const isMissing = !row[field] || row[field] === "Missing" || 
+                row.validationErrors?.some(error => 
+                    error.toLowerCase().includes(`missing ${field.toLowerCase()}`)
+                );
+            
+            // Set cell content
+            cell.textContent = isMissing ? "Missing" : row[field];
+
+            // Determine if this field has validation errors
+            let hasValidationError = false;
+
+            if (isMissing) {
+                cell.classList.add("missing-field");
+            }
+
+            
+
+if (field === 'speciality') {
+    hasValidationError = row.validationErrors.some(error => {
+        const errorLower = error.toLowerCase();
+        return errorLower.includes('specialty') || errorLower.includes('speciality') || 
+               errorLower.includes('not found');
+    });
+
+    if (hasValidationError) {
+        // console.log(`Highlighting specialty: ${field}, Errors: ${row.validationErrors}`);
+        cell.classList.add("validation-error");
+    }
+}
+
+if (field === 'doctorId') {
+    const hasDoctorError = row.validationErrors?.some(error => {
+        const errorLower = error.toLowerCase();
+        return errorLower.includes('doctor') || 
+               errorLower.includes('no doctor') ||
+               errorLower.includes('doctor not found') ||
+               errorLower.includes('doctor id') ||
+               errorLower.includes('doctor mismatch');
+    });
+    if (hasDoctorError) {
+        cell.classList.add("validation-error");
+    }
+}
+
+ else {
+    hasValidationError = row.validationErrors.some(error => {
+        const errorLower = error.toLowerCase();
+        const fieldLower = field.toLowerCase();
+        return errorLower.includes(fieldLower) && !errorLower.startsWith('missing');
+    });
+}
+
+row.validationErrors.forEach(error => {
+    const errorLower = error.toLowerCase();
+
+    // Debugging: Log the error and the corresponding field
+    // console.log(`Checking error: "${errorLower}" for field: "${field}"`);
+
+    // Highlight ONLY the DOB field if the error is related to birth date
+    if (field === 'DOB' && (
+        errorLower.includes('date of birth') || 
+        errorLower.includes('birth') || 
+        errorLower.includes('dob') ||
+        errorLower.includes('invalid dob')
+    )) {
+        cell.classList.add("validation-error");
+        cell.title = error;
+        // console.log(`Applying validation error on DOB field: ${error}`);
+    }
+
+    // Highlight ONLY the Appointment Date & Time field if the error is related to date/time
+    else if (field === 'datetime' && (
+        errorLower.includes('appointment date') || 
+        errorLower.includes('appointment time') ||
+        errorLower.includes('date/time') ||
+        errorLower.includes('invalid appointment date')
+    )) {
+        cell.classList.add("validation-error");
+        cell.title = error;
+        // console.log(`Applying validation error on Appointment Date field: ${error}`);
+    }
+});
+
+            // Add tooltips for errors
+            if (hasValidationError || isMissing) {
+                const relevantErrors = row.validationErrors.filter(error => {
+                    const errorLower = error.toLowerCase();
+                    if (field === 'speciality' || field === 'doctorId') {
+                        return errorLower.includes('doctor') || 
+                               errorLower.includes('specialty') || 
+                               errorLower.includes('speciality');
+                    }
+                    return errorLower.includes(field.toLowerCase());
+                });
+                if (relevantErrors.length > 0) {
+                    cell.title = relevantErrors.join('\n');
+                }
+            }
+
+            tableRow.appendChild(cell);
+        });
+
+        // Add validation messages column with improved formatting
+        const validationCell = document.createElement("td");
+        if (row.validationErrors?.length > 0) {
+            // Group similar errors
+            const errorGroups = {
+                missing: [],
+                format: [],
+                doctor: [],
+                other: []
+            };
+
+            row.validationErrors.forEach(error => {
+                const errorLower = error.toLowerCase();
+                if (errorLower.startsWith('missing')) {
+                    errorGroups.missing.push(error);
+                } else if (errorLower.includes('format') || errorLower.includes('invalid')) {
+                    errorGroups.format.push(error);
+                } else if (errorLower.includes('doctor')) {
+                    errorGroups.doctor.push(error);
+                } else {
+                    errorGroups.other.push(error);
+                }
+            });
+
+            // Create formatted message
+            const formattedList = document.createElement('ul');
+            formattedList.className = 'validation-list';
+
+            // Add missing fields as a single bullet point
+            if (errorGroups.missing.length > 0) {
+                const missingFields = errorGroups.missing
+                    .map(err => err.replace('Missing ', ''))
+                    .join(', ');
+                const missingItem = document.createElement('li');
+                missingItem.textContent = `Missing Fields`;
+                formattedList.appendChild(missingItem);
+            }
+
+            // Add other error groups
+            [...errorGroups.format, ...errorGroups.doctor, ...errorGroups.other].forEach(error => {
+                const item = document.createElement('li');
+                item.textContent = error;
+                formattedList.appendChild(item);
+            });
+
+            validationCell.appendChild(formattedList);
+            validationCell.classList.add("validation-message");
+        }
+        tableRow.appendChild(validationCell);
+
+        tableBody.appendChild(tableRow);
+    });
+
+    // Show the popup
+    document.getElementById("popup").style.display = "block";
+}
+// Function to show flash messages
+    function showFlashMessage(message, type = 'success') {
+        const flashMessageContainer = document.getElementById('flashMessageContainer');
+        flashMessageContainer.textContent = message;
+
+        // Set the background color based on the message type
+        flashMessageContainer.style.backgroundColor = type === 'success' ? '#4CAF50' : '#f44336';
+
+        // Show the flash message
+        flashMessageContainer.style.display = 'block';
+
+        // Hide the flash message after 2 seconds
+        setTimeout(() => {
+            flashMessageContainer.style.display = 'none';
+        }, 3000);
+    }
+
+    // Function to download the missing data rows as a CSV
+    function downloadMissingData() {
+    if (downloadCount >= maxDownloads) {
+        showFlashMessage('Maximum download limit reached. No further downloads are allowed.', 'error');
+        return;
+    }
+
+    if (!currentMissingDataRows.length) {
+        showFlashMessage('No missing data available for download.', 'error');
+        return;
+    }
+
+    // Increment the download counter
+    downloadCount++;
+
+    const templateHeaders = [
+        `MR Number,First Name,MiddleName (Optional),Last Name,Date of Birth (mm/dd/yyyy),"Appointment Date & Time (mm/dd/yyyy , hh:mm AM/PM )",Specialty,Doctor ID,Phone Number,Email,Gender,Diagnosis`
+    ];
+
+   const csvContent = [
+       templateHeaders.join(','),
+       ...currentMissingDataRows.map(row => [
+           row.Mr_no || '',
+           row.firstName || '',
+           row.middleName || '',
+           row.lastName || '', 
+           row.DOB || '',
+           `"${row.datetime || ''}"`,
+           row.speciality || '',
+           row.doctorId || '',
+           row.phoneNumber || '',
+           row.email || '',
+           row.gender || '',
+           row.icd ||''
+       ].join(','))
+   ].join('\n');
+
+        // Create a Blob from the CSV content
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = window.URL.createObjectURL(blob);
+
+        // Create a temporary anchor element to trigger the download
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'missing_data.csv'; // Set the file name
+        document.body.appendChild(a);
+        a.click(); // Trigger the download
+        a.remove(); // Remove the element after download
+
+        // Clean up the Blob URL
+        window.URL.revokeObjectURL(url);
+
+    // After successful download, show skip and cancel buttons
+    const skipBtn = document.querySelector(".skip-btn");
+    const cancelBtn = document.querySelector(".cancel-btn");
+    const downloadBtn = document.getElementById("downloadCSVButton");
+    const skipDesc = document.querySelector(".skip-desc");
+    const cancelDesc = document.querySelector(".cancel-desc");
+    const downloadDesc = document.querySelector(".download-desc");
+    
+    // Show the buttons
+    skipBtn.style.display = 'block';
+    cancelBtn.style.display = 'block';
+    downloadBtn.style.display = 'none';
+    
+    // Show the descriptions
+    skipDesc.style.display = 'block';
+    cancelDesc.style.display = 'block';
+    downloadDesc.style.display = 'none';  // Hide download description
+
+    // Show success message
+    if (downloadCount < maxDownloads) {
+        showFlashMessage("Download successful. You can now skip or cancel the upload.");
+    }
+    if (downloadCount > maxDownloads) {
+        showFlashMessage('Maximum download limit reached. No further downloads are allowed.', 'error');
+    }
+}
+
+    // Attach the download functionality to the download button
+    document.getElementById("downloadCSVButton").addEventListener("click", downloadMissingData);
+</script>
+
+
+
+<!-- <div id="successDialog" class="success-dialog" style="display: none;">
+    <div class="success-dialog-content">
+        <div class="success-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        <h2 id="uploadSuccess">Upload Successful</h2>
+        <p id="successMessage"></p>
+        <a href="<%= basePath %>/data-entry/download-latest" class="text-blue-600 underline" download>
+            Download Last Processed Excel <br>
+          </a>
+          <br>
+        <button id="successOkButton" class="success-ok-btn">OK</button>
+    </div>
+</div> -->
+
+
+<div id="successDialog" class="success-dialog" style="display: none;">
+    <div class="success-dialog-content">
+        <div class="success-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        <!-- Replace this line -->
+        <h2 id="uploadSuccess"><%= lng === 'ar' ? 'نجاح' : 'Upload Successful' %></h2>
+        <p id="successMessage"></p>
+        <a href="<%= basePath %>/data-entry/download-latest" class="text-blue-600 underline" download>
+            <%= lng === 'ar' ? 'تنزيل آخر ملف إكسل تمت معالجته' : 'Download Last Processed Excel' %> <br>
+        </a>
+        <br>
+        <!-- Replace this line -->
+        <button id="successOkButton" class="success-ok-btn"><%= lng === 'ar' ? 'موافق' : 'OK' %></button>
+    </div>
+</div>
+
+<div id="cancelDialog" class="success-dialog" style="display: none;">
+    <div class="success-dialog-content cancel-content">
+        <div class="cancel-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 9l-6 6m0-6l6 6" />
+            </svg>
+        </div>
+        <h2 id="uploadCancel">Upload Cancelled</h2>
+        <p id="uploadCancelled">The upload process has been cancelled.</p>
+        <button id="cancelOkButton" class="cancel-ok-btn">OK</button>
+    </div>
+</div>
+
+<!-- <div id="formSuccessDialog" class="success-dialog" style="display: none;">
+    <div class="success-dialog-content">
+        <div class="success-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        <h2>Success</h2>
+        <p id="formSuccessMessage"></p>
+        <a href="<%= basePath %>/data-entry/download-latest" class="text-blue-600 underline" download>
+            Download Last Processed Excel <br>
+          </a>
+          <br>
+        <button id="formSuccessOkButton" class="success-ok-btn">OK</button>
+    </div>
+</div> -->
+
+
+<div id="formSuccessDialog" class="success-dialog" style="display: none;">
+    <div class="success-dialog-content">
+        <div class="success-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        <!-- Replace this line -->
+        <h2><%= lng === 'ar' ? 'نجاح' : 'Success' %></h2>
+        <p id="formSuccessMessage"></p>
+        <a href="<%= basePath %>/data-entry/download-latest" class="text-blue-600 underline" download>
+            <%= lng === 'ar' ? 'تنزيل آخر ملف إكسل تمت معالجته' : 'Download Last Processed Excel' %> <br>
+        </a>
+        <br>
+        <!-- Replace this line -->
+        <button id="formSuccessOkButton" class="success-ok-btn"><%= lng === 'ar' ? 'موافق' : 'OK' %></button>
+    </div>
+</div>
+
+<!-- <div id="formErrorDialog" class="success-dialog" style="display: none;">
+    <div class="success-dialog-content cancel-content">
+        <div class="cancel-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+            </svg>
+        </div>
+        <h2>Error</h2>
+        <p id="formErrorMessage"></p>
+        <button id="formErrorOkButton" class="cancel-ok-btn">OK</button>
+    </div>
+</div> -->
+
+<div id="formErrorDialog" class="success-dialog" style="display: none;">
+    <div class="success-dialog-content cancel-content">
+        <div class="cancel-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <!-- Circle -->
+                <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                <!-- X mark (two crossing lines) -->
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 9l-6 6m0-6l6 6" />
+            </svg>
+        </div>
+        <!-- Replace this line -->
+        <h2><%= lng === 'ar' ? 'خطأ' : 'Error' %></h2>
+        <p id="formErrorMessage"></p>
+        <!-- Replace this line -->
+        <button id="formErrorOkButton" class="cancel-ok-btn"><%= lng === 'ar' ? 'موافق' : 'OK' %></button>
+    </div>
+</div>
+
+<!-- 
+<div id="existingPatientDialog" class="success-dialog" style="display: none;">
+    <div class="success-dialog-content cancel-content">
+        <div class="cancel-icon">
+        </div>
+        <h2>Patient Exists</h2>
+        <p id="existingPatientMessage">We found an existing patient record.</p>
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="continueWithExistingBtn" class="success-ok-btn" style="padding: 8px 20px; font-size: 14px; margin-bottom: 10px; background-color: #CBFCC6; color: black;">Continue with existing patient</button><br>
+            <a href="#" id="registerNewLink" style="color: #007BFF; text-decoration: underline; cursor: pointer;">Register New Patient</a>
+        </div>
+    </div>
+</div> -->
+
+<div id="existingPatientDialog" class="success-dialog" style="display: none;">
+    <div class="success-dialog-content cancel-content">
+        <div class="cancel-icon">
+        </div>
+        <h2><%= lng === 'ar' ? 'المريض موجود' : 'Patient Exists' %></h2>
+        <p id="existingPatientMessage"><%= lng === 'ar' ? 'لقد وجدنا سجل مريض موجود مسبقاً.' : 'We found an existing patient record.' %></p>
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="continueWithExistingBtn" class="success-ok-btn" style="padding: 8px 20px; font-size: 14px; margin-bottom: 10px; background-color: #CBFCC6; color: black;"><%= lng === 'ar' ? 'متابعة مع المريض الحالي' : 'Continue with existing patient' %></button><br>
+            <a href="#" id="registerNewLink" style="color: #007BFF; text-decoration: underline; cursor: pointer;"><%= lng === 'ar' ? 'تسجيل مريض جديد' : 'Register New Patient' %></a>
+        </div>
+    </div>
+</div>
+
+<script>
+// For form success
+// Find the showFormSuccessDialog function (around line 915)
+function showFormSuccessDialog(message) {
+    const dialog = document.getElementById('formSuccessDialog');
+    const messageEl = document.getElementById('formSuccessMessage');
+    const okButton = document.getElementById('formSuccessOkButton');
+
+    messageEl.textContent = message;
+    dialog.style.display = 'flex';
+
+    okButton.onclick = () => {
+        dialog.style.display = 'none';
+        // window.location.reload();
+            setTimeout(() => {
+        window.location.reload();
+    }, 3000);
+    };
+    
+    // Add language to the dialog heading and button if needed
+    // (Not required if you've already used the template approach above)
+    const currentLang = getCookie('lng') || 'en';
+    if (currentLang === 'ar') {
+        document.querySelector('#formSuccessDialog h2').textContent = 'نجاح';
+        okButton.textContent = 'موافق';
+    }
+}
+
+// Add this function to get cookie value
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+// For form error
+function showFormErrorDialog(message) {
+    const dialog = document.getElementById('formErrorDialog');
+    const messageEl = document.getElementById('formErrorMessage');
+    const okButton = document.getElementById('formErrorOkButton');
+
+    messageEl.textContent = message;
+    dialog.style.display = 'flex';
+
+    okButton.onclick = () => {
+        dialog.style.display = 'none';
+    };
+}
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Function to safely handle and escape strings
+    const escapeString = (str) => {
+        if (typeof str !== 'string') return '';
+        return str.replace(/"/g, '\\"').replace(/'/g, "\\'").replace(/\n/g, '\\n');
+    };
+
+    // Function to handle messages with one-time display
+    const handleMessage = (type, message, showDialog) => {
+        const storageKey = `${type}Shown`;
+        const wasShown = sessionStorage.getItem(storageKey);
+        
+        if (!wasShown && message) {
+            showDialog(message);
+            sessionStorage.setItem(storageKey, 'true');
+            
+            // Clear flag when navigating away
+            window.addEventListener('popstate', () => sessionStorage.removeItem(storageKey));
+            window.addEventListener('beforeunload', () => sessionStorage.removeItem(storageKey));
+        }
+    };
+
+    // Show success message if it exists
+    <% if (successMessage) { %>
+        const successMsg = escapeString("<%= successMessage %>");
+        handleMessage('success', successMsg, showFormSuccessDialog);
+    <% } %>
+    
+    // Show error message if it exists
+    <% if (errorMessage) { %>
+        const errorMsg = escapeString("<%= errorMessage %>");
+        handleMessage('error', errorMsg, showFormErrorDialog);
+    <% } %>
+});
+</script>
+
+<script>
+    // Add this near your other dialog functions
+function showExistingPatientDialog(patientData) {
+    const dialog = document.getElementById('existingPatientDialog');
+    const continueBtn = document.getElementById('continueWithExistingBtn');
+    const registerNewLink = document.getElementById('registerNewLink');
+
+    dialog.style.display = 'flex';
+
+    // Handle Continue with existing patient button click
+    continueBtn.onclick = () => {
+        dialog.style.display = 'none';
+        
+        // Continue with existing patient - do nothing as fields are already populated
+        // You could add any additional logic here if needed
+    };
+
+    // Handle Register New Patient link click
+    registerNewLink.onclick = (e) => {
+        e.preventDefault(); // Prevent default link behavior
+        dialog.style.display = 'none';
+        
+        // Clear all fields to allow new registration
+        document.getElementById('Mr_no').value = '';
+        document.getElementById('firstName').value = '';
+        document.getElementById('middleName').value = '';
+        document.getElementById('lastName').value = '';
+        document.getElementById('DOB').value = '';
+        document.getElementById('phoneNumber').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('gender-select').value = '';
+    };
+    
+    // To close the dialog when clicking outside
+    window.onclick = (event) => {
+        if (event.target === dialog) {
+            dialog.style.display = 'none';
+        }
+    };
+}
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<!-- 
+<script>
+    $('#codes').select2({
+  ajax: {
+    url: '<%= basePath %>/codes',
+    dataType: 'json',
+    delay: 250,
+    data: function(params) {
+        console.log("Request Parameters:", params);
+      return {
+        searchTerm: params.term,
+        page: params.page || 1,
+        limit: 50
+      };
+    },
+    processResults: function(data, params) {
+        console.log("Data received from server:", data); // Log the data received from the server
+
+      params.page = params.page || 1;
+      return {
+        results: data.map(code => ({
+          id: code.code, 
+          text: `${code.code} - ${code.description}`
+        })),
+        pagination: {
+          more: data.length === 50
+        }
+      };
+    },
+    cache: true
+  },
+  placeholder: 'Select ICD Code',
+  templateResult: formatCode,
+  templateSelection: formatCodeSelection
+});
+function formatCode(code) {
+    if (code.loading) {
+        return code.text;
+    }
+    var $container = $(
+        "<div class='select2-result-code clearfix'>" +
+            "<div class='select2-result-code__meta'>" +
+                "<div class='select2-result-code__description'></div>" +
+            "</div>" +
+        "</div>"
+    );
+    $container.find(".select2-result-code__description").text(code.text);
+    return $container;
+}
+
+function formatCodeSelection(code) {
+    return code.text || code.id;
+}
+
+</script> -->
+
+<script>
+    // Fixed Select2 configuration with proper dropdown positioning
+    $(document).ready(function () {
+        $('#codes').select2({
+            ajax: {
+                url: '<%= basePath %>/codes',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    console.log("Request Parameters:", params);
+                    return {
+                        searchTerm: params.term,
+                        page: params.page || 1,
+                        limit: 50
+                    };
+                },
+                processResults: function (data, params) {
+                    console.log("Data received from server:", data);
+                    params.page = params.page || 1;
+                    return {
+                        results: data.map(code => ({
+                            id: code.code,
+                            text: `${code.code} - ${code.description}`
+                        })),
+                        pagination: {
+                            more: data.length === 50
+                        }
+                    };
+                },
+                cache: true
+            },
+            placeholder: 'Select Diagnosis',
+            templateResult: formatCode,
+            templateSelection: formatCodeSelection,
+            width: '100%',
+            dropdownAutoWidth: false,
+            // Attach dropdown to the parent container
+            dropdownParent: $('#codes').parent()
+        });
+
+        // Template functions for formatting
+        function formatCode(code) {
+            if (code.loading) {
+                return code.text;
+            }
+            var $container = $(
+                "<div class='select2-result-code clearfix'>" +
+                    "<div class='select2-result-code__meta'>" +
+                        "<div class='select2-result-code__description'></div>" +
+                    "</div>" +
+                "</div>"
+            );
+            $container.find(".select2-result-code__description").text(code.text);
+            return $container;
+        }
+
+        function formatCodeSelection(code) {
+            return code.text || code.id;
+        }
+
+        // Add placeholder to the search input inside the dropdown
+        $('#codes').on('select2:open', function () {
+            $('.select2-search__field').attr('placeholder', 'Search Diagnosis');
+        });
+    });
+</script>
+
+
+  <script>
+    function closePopupAndReload() {
+    // Hide the popup
+    document.getElementById('popup').style.display = 'none';
+    
+    // Reload the page
+    window.location.reload();
+}
+</script>
+</body>

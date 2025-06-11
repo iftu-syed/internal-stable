@@ -1,0 +1,70 @@
+/* 
+.combined-chart-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 500px;
+}
+
+.donut-text {
+    font-size: 24px;
+    fill: #333;
+    font-weight: bold;
+}
+
+
+
+.bar {
+    fill: #555555;
+    transition: fill 0.3s ease, height 0.3s ease;
+}
+
+.bar:hover {
+    fill: #333; 
+} */
+
+
+/* Container styling for the combined donut and bar chart */
+.combined-chart-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 500px; /* Adjust height to fit both donut and bar chart */
+}
+
+.donut-text {
+    font-size: 24px;
+    fill: #333;
+    font-weight: bold;
+}
+
+/* 
+
+.bar {
+    fill: #555555;
+    transition: fill 0.3s ease, height 0.3s ease;
+}
+
+.bar:hover {
+    fill: #333; 
+} */
+
+
+/* Bar styling */
+.bar {
+    transition: fill 0.3s ease, height 0.3s ease;
+}
+
+.bar:hover {
+    fill: #222; /* Darker shade on hover */
+}

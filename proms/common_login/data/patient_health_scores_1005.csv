@@ -1,0 +1,4 @@
+date,months_since_baseline,score,trace_name,mr_no,title,ymin,ymax,event_date,event
+2025-04-10,1,42.3,Global-Health Physical,1005,Global Physical Health Score,16,68,,
+2025-04-10,1,43.5,Global-Health Mental,1005,Global Mental Health Score,21,68,,
+2025-04-10,1,11.25,PAID-5,1005,PAID-5,0,25,,

@@ -1,0 +1,36 @@
+{
+  "name": "doctor_login_page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.8",
+    "body-parser": "^1.20.2",
+    "bull": "^4.14.0",
+    "childprocess": "^2.0.2",
+    "cli-table3": "^0.6.5",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.1.0",
+    "cookie-parser": "^1.4.7",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "i18next": "^23.16.8",
+    "i18next-browser-languagedetector": "^8.0.0",
+    "i18next-fs-backend": "^2.6.0",
+    "i18next-http-middleware": "^3.7.1",
+    "json2csv": "^6.0.0-alpha.2",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.3.2",
+    "node-cache": "^5.1.2",
+    "socket.io": "^4.7.5"
+  }
+}

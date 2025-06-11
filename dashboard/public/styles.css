@@ -1,0 +1,585 @@
+/* Current Page highlight using JS active style */
+.CurrentPage {
+  background-color: #fff; /* Add your desired current page style here */
+  color: #000!important;
+}
+
+/* General styles */
+body {
+
+    background-color: #f6f5fa;
+    /* margin: 0; */
+    /* padding: 0; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    background-color: #f0f0f0;
+    text-align: center;
+
+  }
+  *{	font-family: "Urbanist", sans-serif;}
+
+
+  html, body {
+    scroll-behavior: smooth;
+    
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  
+
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    .profile-card {
+      padding: 10px;
+      width: calc(100% - 40px);
+      left: 20px;
+    }
+  }
+  
+
+/* Search button styles */
+.search-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Adjust margin as needed */
+}
+
+
+
+button[type="submit"] {
+  background: #CBFCC6;
+  border-radius: 5px;
+  border: 0px;
+      color: rgb(0, 0, 0);
+      padding: 5px 20px 8px 10px ;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+button[type="submit"]:hover {
+      background-color: #45a049; /* Darker green */
+      color:#fff;
+    }
+
+    .btn-search {
+      padding: 10px 20px!important;
+      margin:0px!important;
+    }
+    
+
+    .searchtopbar {
+      border:1px solid black;
+      border-radius: 4px;
+    }
+
+    .searchtopbar input[type="text"] {
+      border: 0px!important;
+      margin-right: 0!important;
+    }
+
+    .searchtopbar input[type="text"]:focus {
+      outline: none;
+      background-color: #fff;
+    }
+
+    .addAdmin {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .addAdmin h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .addAdmin input[type="text"],
+    .addAdmin input[type="password"],
+    .addAdmin select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    
+    .addAdmin button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background: #CBFCC6;
+      border-radius: 5px;
+      border: 0px;
+          color: rgb(0, 0, 0);
+          padding: 5px 20px 8px 10px ;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+    }
+    
+    .addAdmin button[type="submit"]:hover {
+      background-color: #45a049; /* Darker green */
+      color:#fff;
+    }
+    
+    .addAdmin h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+/* Responsive styles */
+@media (max-width: 600px) {
+  .search-container {
+    flex-direction: column; /* Change flex direction for smaller screens */
+    align-items: stretch;
+  }
+}
+
+
+
+/* Table styles */
+.table-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table-container th {
+  background-color: #5F677C;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  border-radius: 10px;
+}
+
+.table-container td {
+  background-color: #f5f6fa;
+}
+
+.table-container .active {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.table-container .inactive {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.table-container .edit-btn,
+.table-container .delete-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.table-container .edit-btn {
+  background-color: #f0ad4e;
+  color: #fff;
+}
+
+.table-container .delete-btn {
+  background-color: #d9534f;
+  color: #fff;
+}
+/* Responsive styles */
+@media (max-width: 600px) {
+  table {
+    font-size: 12px; /* Reduce font size for smaller screens */
+  }
+  .patient-details {
+    overflow-x: scroll; /* Enable horizontal scroll for small screens */
+  }
+}
+
+
+
+
+/* Responsive styling */
+@media screen and (max-width: 600px) {
+  form[action="/search"] {
+    display: block;
+    margin-bottom: 10px; /* Add spacing between each button on smaller screens */
+  }
+
+  form[action="/search"] button[type="submit"] {
+    width: 100%; /* Make button width 100% on smaller screens */
+  }
+
+  .topbar {display: contents!important;padding:15px!important;}
+}
+
+
+
+
+
+
+
+/* styles.css */
+
+.active {
+    color: green; /* Change color for active subscription */
+}
+
+.inactive {
+    color: red; /* Change color for inactive subscription */
+}
+
+
+select {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 25%; /* Set width to 25% of the maximum width */
+    max-width: calc(100% - 20px); /* Limit maximum width to ensure proper spacing */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* SIDEBAR AND MAIN CONTENT STYLES */
+
+.user-img {
+  width: 50px;
+  border-radius: 100%;
+  border: 1px solid #eee;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+body {
+display: flex;
+}
+/* SIDEBAR AND MAIN CONTENT STYLES */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80px;
+  background-color: #12171e;
+  padding: 0.4rem 0.8rem;
+  transition: all 0.5s ease;
+  z-index: 1000; /* Added z-index to sidebar */
+}
+
+.sidebar.active ~ .main-content {
+  left: 250px;
+  width: calc(100% - 250px);
+}
+
+.sidebar.active {
+  width: 250px;
+}
+
+.sidebar #btn {
+  position: absolute;
+  color: #fff;
+  top: .4rem;
+  left: 50%;
+  font-size: 1.2rem;
+  line-height: 50px;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.sidebar.active #btn {
+  left: 90%;
+}
+
+.sidebar .top .logo {
+  justify-content: center;
+  color: #fff;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0;
+  margin-top: 2rem !important;
+}
+
+.sidebar.active .top .logo {
+  opacity: 1;
+}
+
+.top .logo i {
+  font-size: 2rem;
+  margin-right: 5px;
+}
+
+.user {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.user p {
+  color: #fff;
+  opacity: 1;
+  margin-left: 1rem;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.sidebar p {
+  opacity: 0;
+}
+
+.sidebar.active p {
+  opacity: 1;
+}
+
+.sidebar ul li {
+  position: relative;
+  list-style-type: none;
+  height: 50px;
+  width: 90%;
+  margin: 0.8rem auto;
+  line-height: 50px;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 0.8rem;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  background-color: #fff;
+  color: #12171e;
+}
+
+.sidebar ul li a i {
+  min-width: 50px;
+  text-align: center;
+  height: 50px;
+  border-radius: 12px;
+  line-height: 50px;
+}
+
+.sidebar .nav-item {
+  display: none;
+}
+
+.sidebar.active .nav-item {
+  opacity: 1;
+  display: block;
+}
+
+.sidebar ul li .tooltip {
+  position: absolute;
+  left: 85px; /* Adjusted to position closer to the icon */
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2);
+  border-radius: .6rem;
+  padding: .4rem 1.2rem;
+  line-height: 1.8rem;
+  z-index: 2000; /* Ensure tooltip is above main content */
+  opacity: 0;
+  background-color: #fff;
+  white-space: nowrap;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  visibility: hidden; /* Initially hidden */
+}
+
+.sidebar ul li:hover .tooltip {
+  opacity: 1;
+  visibility: visible; /* Visible on hover */
+}
+
+.sidebar.active ul li .tooltip {
+  display: none;
+}
+
+.main-content {
+  position: relative;
+  min-height: 100vh;
+  top: 0;
+  left: 80px;
+  transition: all 0.5s ease;
+  width: calc(100% - 80px);
+  z-index: 1; /* Lower z-index than sidebar and tooltip */
+  scroll-behavior: smooth;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1rem;
+}
+
+ul.promslist {
+display: flex;
+list-style-type: circle;
+margin-left: 20px;
+min-width: 10ch;
+}
+
+#dontshow {
+visibility: hidden;
+}
+
+hr.spacer {
+border: 0px dashed;
+padding-bottom: 30px;
+}
+
+.page1 {
+height: 100vh;
+display: block;
+scroll-margin-top: 100px;
+margin-top: 100px;
+}
+
+.page2 {
+height: 100vh;
+display: block;
+scroll-margin-top: 100px;
+margin-top: 100px;
+}
+
+
+
+/* dashboard blurbs and their styles */
+
+.dashboard {
+    text-align: center;
+    padding: 2rem;
+}
+
+.blurbs {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.blurb {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0rem;
+    width: 30%;
+    text-align: center;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.blurb img {
+    max-width: 50%;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.blurb h3 {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+.blurb p {
+    margin: 1rem 0;
+    flex-grow: 1; /* Pushes the button down */
+}
+
+.cta-blurb {
+    background-color: #CBFCC6;
+    color: #000;
+    border: none;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%!important; /* Ensure button is full width */
+    box-sizing: border-box; /* Include padding in width */
+    margin: 0!important; /* Remove default margin */
+}
+
+.cta-blurb:hover {
+    background-color: #45a049; /* Darker green */
+    color:#fff;
+}
+
+.container {
+margin: auto;
+margin-top: 2rem;
+box-sizing: border-box;
+  position: relative;
+  width: 70%;
+  padding: 2rem;
+  background: #FFFFFF;
+  box-shadow: 0px 3.712px 20px 0px rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+  text-align: center;
+}

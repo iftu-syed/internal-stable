@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Dashboard</title>
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Use basePath for static assets -->
+    <link rel="stylesheet" href="<%= basePath %>/css/styles.css">
+    <link rel="stylesheet" href="<%= basePath %>/css/numberCard.css">
+    <link rel="stylesheet" href="<%= basePath %>/css/midLevelChart1.css">
+    <link rel="stylesheet" href="<%= basePath %>/css/midLevelChart2.css">
+    <link rel="stylesheet" href="<%= basePath %>/css/detailedChart1.css">
+    <link rel="stylesheet" href="<%= basePath %>/css/detailedChart2.css">
+    <link rel="stylesheet" href="<%= basePath %>/css/combinedChart.css">
+    <!-- <style>
+    #siteNameDropdown {
+    display: none; 
+}
+    </style> -->
+
+    <style>
+      #siteNameDropdown,
+      #departmentDropdown,
+      #hospitalIdDropdown,   /* Added */
+      #hospitalNameDropdown { /* Added */
+        display: none !important;
+      }
+    </style>
+      
+</head>
+<body>
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+    
+        <div class="user">
+            <div>
+                <p class="bold"><%= doctor.speciality %></p>
+                <p class="bold"><%= doctor.hospitalName %></p>
+                <p class="bold"><%= doctor.site_code %></p>
+            </div>
+        </div>
+        <ul>
+
+    
+          <li>
+              <a href="<%= basePath %>/home">
+                <i class='bx bx-group'></i>
+                  <span class="nav-item">List of Patients</span>
+              </a>
+              <span class="tooltip">List of Patients</span>
+          </li>
+          
+          <li>
+            <!-- Using basePath for Analytics/Dashboard link as per reference -->
+            <a href="<%= basePath %>/dashboard" target="_self">
+                <i class="bx bxs-grid-alt"></i>
+              <span class="nav-item">Dashboard</span>
+            </a>
+            <span class="tooltip">Dashboard</span>
+          </li>
+
+          <li>
+              <a href="<%= basePath %>">
+                  <i class="bx bx-log-out"></i>
+                  <span class="nav-item">Logout</span>
+              </a>
+              <span class="tooltip">Logout</span>
+          </li>
+        </ul>
+    </div>
+    
+    
+    <div class="mobile-nav" id="mobile-nav">
+      <ul>
+        <li>
+          <a href="<%= basePath %>/dashboard" target="_self">
+            <i class="bx bx-bar-chart"></i>
+            <span class="nav-item">Analytics</span>
+          </a>
+          <span class="tooltip">Analytics</span>
+        </li>
+    
+        <li>
+            <a href="<%= basePath %>/home">
+                <i class="bx bxs-grid-alt"></i>
+                <span class="nav-item">Dashboard</span>
+            </a>
+            <span class="tooltip">Dashboard</span>
+        </li>
+        
+        <li>
+            <a href="<%= basePath %>">
+                <i class="bx bx-log-out"></i>
+                <span class="nav-item">Logout</span>
+            </a>
+            <span class="tooltip">Logout</span>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="main-content">
+        <div class="topbar">
+            <h2 style="color: #333333;">Welcome, Dr. <%= doctor.firstName %> <%= doctor.lastName %></h2>
+        </div>
+
+        <!-- Root container for the dashboard -->
+        <div id="dashboard">
+            <!-- Top Section: Number Cards -->
+            <div id="topLayer" class="number-cards-container">
+                <div id="numberCard1" class="number-card number-card-1"></div>
+                <div id="numberCard2" class="number-card number-card-2"></div>
+                <div id="numberCard3" class="number-card number-card-3"></div>
+                <div id="numberCard4" class="number-card number-card-4"></div>
+            </div>
+
+            <!-- Middle Section with Filter, 2x2 Grid, and Right Pane -->
+            <div class="middle-section">
+                <!-- Left Section: Filter and 2x2 Grid -->
+                <div class="left-section">
+                    <!-- Filter Container -->
+                    <div id="filterContainer">
+
+                          <select id="siteNameDropdown" disabled>
+                              <option value="<%= siteName %>"><%= siteName %></option>
+                            </select>
+  
+                            <select id="departmentDropdown">
+                              <option value="<%= departmentName %>"><%= departmentName %></option>
+                            </select>
+  
+                            <!-- <label for="hospitalIdDropdown">Hospital ID:</label>  -->
+                             <select id="hospitalIdDropdown"> 
+                               <option value="<%= hospitalId %>"><%= hospitalId %></option> 
+                             </select> 
+  
+                             <!-- <label for="hospitalNameDropdown">Hospital Name:</label>  -->
+                             <select id="hospitalNameDropdown"> 
+                               <option value="<%= hospitalName %>"><%= hospitalName %></option> 
+                             </select> 
+                            <label for="doctorIdDropdown">Select Doctor ID:</label>
+                          <select id="doctorIdDropdown">
+                              <option value="all">All</option>
+                              </select>
+  
+
+
+
+                        <label for="diagnosisDropdown">Select Diagnosis:</label>
+                        <select id="diagnosisDropdown">
+                            <option value="null">Unassigned / No Diagnosis</option>
+                        </select>
+
+                          <!-- NEW: Intervention dropdown -->
+                        <label for="interventionDropdown">Select Intervention:</label>
+                        <select id="interventionDropdown" disabled></select>
+                        
+
+                        <!-- AFTER: no hard-coded placeholder option -->
+                        <label for="instrumentDropdown">Select PROMs Instrument:</label>
+                        <select id="instrumentDropdown" disabled></select>
+
+                        </select>
+
+
+                                                <!-- Scale -->
+                        <label for="scaleDropdown">Select Scale:</label>
+                        <select id="scaleDropdown" disabled></select>
+
+                        
+
+                    </div>
+
+                    <!-- 2x2 Grid for Charts -->
+                    <div class="left-pane">
+                        <div id="midLevelChart1Container" class="chart-card">
+                            <div id="midLevelChart1"></div>
+                        </div>
+                        <div id="midLevelChart2Container" class="chart-card">
+                            <div id="midLevelChart2"></div>
+                        </div>
+                        <div id="detailedChart1Container" class="chart-card">
+                            <div id="detailedChart1"></div>
+                        </div>
+                        <div id="detailedChart2Container" class="chart-card">
+                            <div id="detailedChart2"></div>
+                        </div>                    
+                    </div>
+                </div>
+
+                <div class="right-section">
+                    <!-- Right Pane: Combined Chart -->
+                    <div class="right-pane">
+                        <!-- Donut/Bar filter using the same "filter-block" style -->
+                        <div class="filter-block">
+                          <label for="combinedSurveyTypeDropdown">Survey Type (for Donut/Bar):</label>
+                          <select id="combinedSurveyTypeDropdown">
+                            <option value="All">All</option>
+                            <option value="Baseline">Baseline</option>
+                            <option value="Follow-up 1">Follow-up 1</option>
+                            <option value="Follow-up 2">Follow-up 2</option>
+                            <!-- etc. -->
+                          </select>
+                        </div>
+                    
+                        <!-- Keep your combined chart container below it -->
+                        <div id="combinedChart" class="combined-chart-card"></div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <script>
+        //   const basePath = "<%= basePath %>";
+        //   const defaultDoctorId = "<%= doctor.username %>";  
+        // </script>
+
+<script>
+  const basePath = "<%= basePath %>";
+  const defaultDoctorId = "<%= doctor.username %>";
+  // Ensure these are passed from the route, providing empty strings as fallback
+  const defaultHospitalId = "<%= typeof hospitalId !== 'undefined' ? hospitalId : '' %>";
+  const defaultHospitalName = "<%= typeof hospitalName !== 'undefined' ? hospitalName : '' %>";
+  // Pass the boolean directly from the route
+  const doctorHasData = <%= doctorHasData %>;
+</script>
+        
+
+        <script>
+            function adjustZoom() {
+              if (window.innerWidth >= 1366) {  // Only adjust zoom for wider screens
+                document.body.style.zoom = "97%";  // Adjust as needed
+              } else if (window.innerWidth >= 1024) {
+                document.body.style.zoom = "70%";  // Smaller zoom for mid-sized screens
+              } else {
+                document.body.style.zoom = "100%";  // Keep normal zoom for smaller screens
+              }
+            }
+          
+            // Run on page load
+            window.onload = adjustZoom;
+          
+            // Run when window resizes
+            window.onresize = adjustZoom;
+          </script>
+          
+        <script>
+            const basePath = "<%= basePath %>";
+        </script>
+
+        <!-- Include D3.js Library -->
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        
+        <!-- Include JavaScript Files with basePath -->
+        <script src="<%= basePath %>/js/charts/numberCard1.js"></script>
+        <script src="<%= basePath %>/js/charts/numberCard2.js"></script>
+        <script src="<%= basePath %>/js/charts/numberCard3.js"></script>
+        <script src="<%= basePath %>/js/charts/numberCard4.js"></script>
+        <script src="<%= basePath %>/js/charts/combinedChart.js"></script>
+        <script src="<%= basePath %>/js/charts/midLevelChart1.js"></script>
+        <script src="<%= basePath %>/js/charts/midLevelChart2.js"></script>
+        <script src="<%= basePath %>/js/charts/detailedChart1.js"></script>
+        <script src="<%= basePath %>/js/charts/detailedChart2.js"></script>
+        <script src="<%= basePath %>/js/common/hierarchicalDropdown.js"></script>
+        <script src="<%= basePath %>/js/dashboard.js"></script>
+        <script src="<%= basePath %>/script.js"></script>
+
+        <script>
+            let btn = document.querySelector('#btn');
+            let sidebar = document.querySelector('.sidebar');
+          
+            btn.onclick = function() {
+                sidebar.classList.toggle('active');
+            };
+        </script>
+          
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+          
+            function removeCurrentPageClasses() {
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('CurrentPage');
+                });
+            }
+          
+            function setCurrentPageLink(path) {
+                removeCurrentPageClasses();
+                const currentPageLink = Array.from(sidebarLinks).find(link => {
+                    const linkPath = new URL(link.href).pathname;
+                    return linkPath === path;
+                });
+                if (currentPageLink) {
+                    currentPageLink.classList.add('CurrentPage');
+                }
+            }
+          
+            // Check the URL path and set the current page link on page load
+            const currentPath = window.location.pathname;
+            setCurrentPageLink(currentPath);
+          
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const targetPath = new URL(link.href).pathname;
+                    setCurrentPageLink(targetPath);
+                });
+            });
+        });
+        </script>
+
+        <!-- Right after all your JS includes, or at the bottom of doc_dashboard.ejs -->
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Grab the SurveyType dropdown
+      const surveyTypeDropdown = document.getElementById('surveyTypeDropdown');
+  
+      // Whenever the survey type changes, re-fetch just midLevelChart2 data
+      surveyTypeDropdown.addEventListener('change', () => {
+        const surveyType = surveyTypeDropdown.value;
+  
+        // Gather the existing filter values from your other dropdowns
+        const diagnosisValue = document.getElementById('diagnosisDropdown').value;
+        const instrumentValue = document.getElementById('instrumentDropdown').value;
+        const scaleValue     = document.getElementById('scaleDropdown').value;
+        const departmentValue= document.getElementById('departmentDropdown').value;
+        const siteValue      = document.getElementById('siteNameDropdown').value;
+  
+        // Call the existing function from midLevelChart2.js,
+        // but now pass `surveyType` at the end.
+        fetchScatterPlotData(
+          diagnosisValue,
+          instrumentValue,
+          scaleValue,
+          departmentValue,
+          siteValue,
+        //   surveyType        // <-- new argument
+        );
+      });
+    });
+  </script> -->
+
+
+  <!--This is code that include the hosptialId and hospitalName-->
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // IMPORTANT NOTE: The main filter container in your EJS doesn't show an element
+      // with id="surveyTypeDropdown". This listener might be intended for
+      // #combinedSurveyTypeDropdown, or perhaps this logic should be integrated
+      // into the event listeners within the specific chart JS files (like midLevelChart2.js)
+      // that react to changes in the primary filters (#diagnosisDropdown, #instrumentDropdown, etc.).
+      // If 'surveyTypeDropdown' truly doesn't exist, this specific listener will not fire.
+      const surveyTypeDropdown = document.getElementById('surveyTypeDropdown');
+
+      if (surveyTypeDropdown) { // Check if the element actually exists
+          surveyTypeDropdown.addEventListener('change', () => {
+            const surveyType = surveyTypeDropdown.value; // Value from the trigger element
+
+            // Gather the existing filter values from your other dropdowns
+            const diagnosisValue = document.getElementById('diagnosisDropdown').value;
+            const instrumentValue = document.getElementById('instrumentDropdown').value;
+            const scaleValue     = document.getElementById('scaleDropdown').value;
+            const departmentValue= document.getElementById('departmentDropdown').value;
+            const siteValue      = document.getElementById('siteNameDropdown').value;
+            // ****** ADD THESE LINES START ******
+            const hospitalIdValue = document.getElementById('hospitalIdDropdown').value;
+            const hospitalNameValue = document.getElementById('hospitalNameDropdown').value;
+            // ****** ADD THESE LINES END ******
+
+            // Call the existing function from midLevelChart2.js,
+            // NOTE: You need to ensure the 'fetchScatterPlotData' function in
+            //       midLevelChart2.js is updated to accept and use these new
+            //       hospitalIdValue and hospitalNameValue parameters in its API call.
+            fetchScatterPlotData(
+              diagnosisValue,
+              instrumentValue,
+              scaleValue,
+              departmentValue,
+              siteValue,
+              // surveyType, // Consider if surveyType is the correct argument here for fetchScatterPlotData
+              // ****** PASS ADDED VALUES AS ARGUMENTS START ******
+              hospitalIdValue,    // Added argument
+              hospitalNameValue   // Added argument
+              // ****** PASS ADDED VALUES AS ARGUMENTS END ******
+            );
+          });
+      } else {
+        console.warn("Note: Element with ID 'surveyTypeDropdown' was not found in doc_dashboard.ejs. The specific listener in the last script block was not attached.");
+      }
+    });
+  </script>
+  
+    </div>
+</body>
+</html>

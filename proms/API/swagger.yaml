@@ -1,0 +1,462 @@
+openapi: 3.0.0
+info:
+  title: WeHealthify - Patient Reported Outcome Measures API 
+  description: |
+    This API enables the management of patient information within the We Healthify PROMS application, with secure authentication. 
+
+    Steps to connect and interact with the API
+    
+    1. Authenticate to generate tokens.
+
+    2. Use secured endpoints with the provided tokens.
+
+    3. Refresh tokens as they expire.
+    
+
+    Please refer to the API Guide for Detailed usage instructions. 
+  version: v1 
+  contact: 
+    email: admin@giftysolutions.com 
+externalDocs: 
+  description: Detailed Guide for Using the API
+  url: http://localhost:3005/api-guide
+servers: 
+  - url: http://localhost:3005
+    description: API
+tags: 
+  - name: authentication
+    description: Everything about authentication
+  - name: patient 
+    description: Everything about Patients 
+    externalDocs: 
+      description: Find out more 
+      url: http://localhost/patientlogin 
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Patient: 
+      type: object 
+      properties: 
+        Mr_no: 
+          type: string 
+          description: Patient's Medical Record number. 
+        firstName: 
+          type: string 
+          description: First name of the patient. 
+        middleName: 
+          type: string 
+          description: Middle name of the patient. 
+        lastName: 
+          type: string 
+          description: Last name of the patient. 
+        DOB: 
+          type: string 
+          format: date 
+          description: Date of birth (YYYY-MM-DD). 
+        datetime: 
+          type: string 
+          format: date-time 
+          description: Appointment date and time (YYYY-MM-DD HH:MM:SS). 
+        phoneNumber: 
+          type: string 
+          description: Patient's phone number. 
+        speciality-doctor: 
+          type: string 
+          description: Combined field for speciality and doctor ID (format- speciality||doctor_id). 
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+    SuccessResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Success message
+        data:
+          type: object
+          description: Additional data (if any)
+
+security:
+  - bearerAuth: []
+
+paths:
+  /token:
+    post:
+      tags:
+        - authentication
+      summary: Generate access and refresh tokens
+      description: Endpoint to obtain access and refresh tokens using client credentials.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                clientId:
+                  type: string
+                  description: The client's unique identifier.
+                  example: "your-client-id"
+                clientSecret:
+                  type: string
+                  description: The client's secret key.
+                  example: "your-client-secret"
+      responses:
+        '200':
+          description: Tokens generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                    description: The JWT access token.
+                  refreshToken:
+                    type: string
+                    description: The JWT refresh token.
+                  expiresIn:
+                    type: integer
+                    description: Access token expiration time in seconds.
+                    example: 3600
+                  refreshExpiresIn:
+                    type: integer
+                    description: Refresh token expiration time in seconds.
+                    example: 2592000
+              example:
+                accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                refreshToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                expiresIn: 3600
+                refreshExpiresIn: 2592000
+        '401':
+          description: Invalid client credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /refresh-token:
+    post:
+      tags:
+        - authentication
+      summary: Refresh access token
+      description: Generate a new access token using a refresh token.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                clientId:
+                  type: string
+                  description: The client's unique identifier.
+                  example: "your-client-id"
+                refreshToken:
+                  type: string
+                  description: The JWT refresh token.
+                  example: "your-refresh-token"
+      responses:
+        '200':
+          description: Tokens refreshed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                    description: The new JWT access token.
+                  refreshToken:
+                    type: string
+                    description: The new JWT refresh token.
+                  expiresIn:
+                    type: integer
+                    description: Access token expiration time in seconds.
+                    example: 3600
+                  refreshExpiresIn:
+                    type: integer
+                    description: Refresh token expiration time in seconds.
+                    example: 2592000
+              example:
+                accessToken: "new-access-token"
+                refreshToken: "new-refresh-token"
+                expiresIn: 3600
+                refreshExpiresIn: 2592000
+        '401':
+          description: Invalid or expired refresh token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /validate:
+    get:
+      tags:
+        - authentication
+      summary: Validate access token
+      description: Check if an access token is valid and not expired.
+      parameters:
+        - in: query
+          name: accessToken
+          schema:
+            type: string
+            description: The JWT access token to validate.
+      responses:
+        '200':
+          description: Token validation success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+                    description: Indicates if the token is valid.
+                  clientId:
+                    type: string
+                    description: The client ID associated with the token.
+              example:
+                valid: true
+                clientId: "your-client-id"
+        '401':
+          description: Invalid or expired token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /add-appointment:
+    servers:
+    - url: http://localhost/staff/api/v1 
+      description: Patient
+    post:
+      tags: 
+        - patient 
+      summary: Add a patient appointment 
+      description: Create a new appointment for a patient. 
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Mr_no:
+                  type: string
+                  description: Patient's Medical Record Number.
+                  example: "555" 
+                firstName: 
+                  type: string 
+                  description: First name of the patient. 
+                  example: "Johnny" 
+                middleName: 
+                  type: string 
+                  description: Middle name of the patient. 
+                  example: "Doe" 
+                lastName: 
+                  type: string 
+                  description: Last name of the patient. 
+                  example: "Smith" 
+                DOB: 
+                  type: string 
+                  format: date 
+                  description: Date of birth of the patient (YYYY-MM-DD). 
+                  example: "1985-10-25" 
+                datetime: 
+                  type: string 
+                  format: date-time 
+                  description: Appointment date and time (YYYY-MM-DD HH:MM:SS). 
+                  example: "2024-12-01T15:30:00" 
+                phoneNumber: 
+                  type: string 
+                  description: Patient's phone number. 
+                  example: "+1234567890" 
+                speciality-doctor: 
+                  type: string 
+                  description: Combined field for speciality and doctor ID (format- speciality||doctor_id). 
+                  example: "Diabetes||pm_01_dn" 
+      responses:
+        '200':
+          description: Appointment added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /update:
+    servers:
+    - url: http://localhost/staff/api/v1 
+      description: Patient
+    post:
+      tags: 
+        - patient 
+      summary: Update patient details
+      description: Update details of a patient using their Medical Record number (Mr_no). 
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mrNo: 
+                  type: string 
+                  description: Patient's Medical Record number. 
+                  example: "555" 
+                firstName: 
+                  type: string 
+                  description: First name of the patient. 
+                  example: "Jacob" 
+                middleName: 
+                  type: string 
+                  description: Middle name of the patient. 
+                  example: "Doe" 
+                lastName: 
+                  type: string 
+                  description: Last name of the patient. 
+                  example: "Smith" 
+                DOB: 
+                  type: string 
+                  format: date 
+                  description: Date of birth (YYYY-MM-DD). 
+                  example: "1985-10-25" 
+                datetime: 
+                  type: string 
+                  format: date-time 
+                  description: Appointment date and time (YYYY-MM-DD HH:MM:SS). 
+                  example: "2024-12-01T15:30:00" 
+                speciality: 
+                  type: string 
+                  description: Patient's speciality. 
+                  example: "Diabetes" 
+                phoneNumber: 
+                  type: string 
+                  description: Patient's phone number. 
+                  example: "+1234567110"
+      responses:
+        '200':
+          description: Patient data updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Patient not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /get-patient:
+    servers:
+    - url: http://localhost/staff/api/v1 
+      description: Patient
+    post:
+      tags: 
+        - patient 
+      summary: Retrieve patient details 
+      description: Get details of a patient using their Medical Record number (Mr_no). 
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Mr_no:
+                  type: string
+                  description: Patient's medical record number
+                  example: "555"
+      responses:
+        '200':
+          description: Patient details retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  patient:
+                    $ref: '#/components/schemas/Patient'
+        '404':
+          description: Patient not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /delete-patient:
+    servers:
+    - url: http://localhost/staff/api/v1 
+      description: Patient
+    post:
+      tags: 
+        - patient 
+      summary: Delete a patient record
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Mr_no:
+                  type: string
+                  description: Patient's Medical Record Number.
+                  example: "555"
+      responses:
+        '200':
+          description: Patient record deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          description: Patient not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'

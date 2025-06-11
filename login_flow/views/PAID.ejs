@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diabetes Care Assessment</title>
+  <link rel="stylesheet" href="<%= basePath %>/styles/survey.css">
+  <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+  <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <button class="lang-toggle" onclick="toggleLanguage()">العربية</button>
+
+  <div class="parentrow">
+    
+    <div class="parentcolumn left">
+  
+      <div class="sidebar">
+        <hr class="spacer">
+        <img src="<%= basePath %>/assets/images/logo.png">
+        <hr class="spacer">
+        <% surveyStatus.forEach(survey => { %>
+          <div class="<%= survey.active ? 'sidebar-item-active' 
+                          : (survey.completed ? 'sidebar-item-done' 
+                                              : 'sidebar-item-inactive') %>">
+            <%= survey.name %>
+          </div>
+        <% }) %>
+        
+        <!-- <div class="legend">
+          <h2 data-en="Notes :" data-ar="ملاحظات :">Notes :</h2>
+  <ul>
+            <li data-en="0 = Perfect continence" data-ar="0 = سلس مثالي">1 = No: never</li>
+            <li data-en="1 = Rarely: Less than 1/month" data-ar="1 = نادرا: أقل من 1/شهر">2 = No: sometimes</li>
+            <li data-en="2 = Sometimes: Less than 1/week, but at least 1/month" data-ar="2 = أحيانا: أقل من 1/أسبوع، ولكن على الأقل 1/شهر">3 = Yes: sometimes</li>
+            <li data-en="3 = Usually: Less than 1/day, but at least 1/week" data-ar="3 = عادة: أقل من 1/يوم، ولكن على الأقل 1/أسبوع">4 = Yes: most of the times</li>
+            <li data-en="4 = Always: At least 1/day" data-ar="4 = دائما: على الأقل 1/يوم">5 = Always: everytime</li>
+  </ul>
+        </div> -->
+  
+      </div>
+        
+    </div>
+  
+    <div class="parentcolumn right">
+      <div class="infobox">
+        <div class="mobile-container">
+
+          <img src="<%= basePath %>/assets/images/logo.png">
+  
+          
+        </div>
+
+  <h1 data-en="Diabetes Care Assessment" data-ar="تقييم رعاية مرضى السكري">Diabetes Care Assessment</h1>
+
+  <p id="text" class="info-text"
+  data-en="PAID is a self-report questionnaire that asks about negative emotions you may experience related to having diabetes. These emotions could include fear, anger, or frustration."
+  data-ar="تقييم الرعاية لمرض السكري يعد PAID استبيانًا للإبلاغ الذاتي يسألك عن المشاعر السلبية التي قد تشعر بها بسبب إصابتك بمرض السكري. قد تشمل هذه المشاعر الخوف أو الغضب أو الإحباط.">
+  <span id="dots" style="display:none;">...</span>
+  <span id="more-text" style="display:none;"></span>
+  <span id="toggle-btn" onclick="toggleText()" style="color: blue; cursor: pointer; display:none;"> Show More</span>
+</p>
+
+  <hr class="spacer">
+
+  <div class="progress-bar">
+    <div class="progress" id="progress-bar"></div>
+  </div>
+
+  <form action="<%= basePath %>/submitPAID" method="post" class="surveyform">
+    <input type="hidden" name="Mr_no" value="<%= Mr_no %>">
+    <input type="hidden" id="selectedLang" name="lang" value="<%= currentLang %>">
+
+    <!-- Questions -->
+    <div class="question-container active" id="question-1">
+      <div class="back-button-first-question">
+        <button type="button" onclick="previousQuestion()" style="display:none;"><i class='bx bx-chevrons-left'></i>Previous</button>
+      </div>
+      <p class="question-text" data-en="Q.1: Not having clear and concrete goals for your diabetes care?" data-ar="عدم وجود أهداف واضحة وملموسة لرعاية مرضى السكري؟">Q.1: Not having clear and concrete goals for your diabetes care?</p><br>
+
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Not having clear and concrete goals for your diabetes care?" id="PAID_6" value="0" required>
+                <label for="PAID_6" data-en="Not a Problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Not having clear and concrete goals for your diabetes care?" id="PAID_7" value="1" required>
+                <label for="PAID_7" data-en="Minor Problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Not having clear and concrete goals for your diabetes care?" id="PAID_8" value="2" required>
+                <label for="PAID_8" data-en="Moderate Problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Not having clear and concrete goals for your diabetes care?" id="PAID_9" value="3" required>
+                <label for="PAID_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Not having clear and concrete goals for your diabetes care?" id="PAID_0" value="4" required>
+                <label for="PAID_0" data-en="Serious Problem" data-ar="مشكلة خطيرة">Serious Problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+    <input type="radio" name="Not having clear and concrete goals for your diabetes care?" id="PAID_1" value="0" required>
+    <label for="PAID_1" data-en="Not a Problem" data-ar="ليس مشكلة">Not a Problem</label> 
+    <input type="radio" name="Not having clear and concrete goals for your diabetes care?" id="PAID_2" value="1" required>
+    <label for="PAID_2" data-en="Minor Problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+    <input type="radio" name="Not having clear and concrete goals for your diabetes care?" id="PAID_3" value="2" required>
+    <label for="PAID_3" data-en="Moderate Problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+    <input type="radio" name="Not having clear and concrete goals for your diabetes care?" id="PAID_4" value="3" required>
+    <label for="PAID_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+    <input type="radio" name="Not having clear and concrete goals for your diabetes care?" id="PAID_5" value="4" required>
+    <label for="PAID_5" data-en="Serious Problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+  </div>
+
+</div>
+</div>
+
+
+
+    <div class="question-container" id="question-2">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.2:Feeling discouraged with your diabetes treatment plan?" data-ar="الشعور بالإحباط من خطة علاج مرض السكري؟">Q.2: Feeling discouraged with your diabetes treatment plan?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feeling discouraged with your diabetes treatment plan?" id="PAID1_6" value="0" required>
+                <label for="PAID1_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling discouraged with your diabetes treatment plan?" id="PAID1_7" value="1" required>
+                <label for="PAID1_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling discouraged with your diabetes treatment plan?" id="PAID1_8" value="2" required>
+                <label for="PAID1_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling discouraged with your diabetes treatment plan?" id="PAID1_9" value="3" required>
+                <label for="PAID1_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling discouraged with your diabetes treatment plan?" id="PAID1_0" value="4" required>
+                <label for="PAID1_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feeling discouraged with your diabetes treatment plan?" id="PAID1_1" value="0" required>
+  <label for="PAID1_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Feeling discouraged with your diabetes treatment plan?" id="PAID1_2" value="1" required>
+  <label for="PAID1_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Feeling discouraged with your diabetes treatment plan?" id="PAID1_3" value="2" required>
+  <label for="PAID1_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Feeling discouraged with your diabetes treatment plan?" id="PAID1_4" value="3" required>
+  <label for="PAID1_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Feeling discouraged with your diabetes treatment plan?" id="PAID1_5" value="4" required>
+  <label for="PAID1_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+
+    <!-- <div class="question-container" id="question-3">
+      <div class="back-button">
+        <button type="button" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i>Previous</button>
+      </div>
+      <p data-en="Q.3:Feeling scared when you think about living with diabetes?" data-ar="الشعور بالخوف عند التفكير في التعايش مع مرض السكري؟">Q.3: Feeling scared when you think about living with diabetes?</p><br>
+
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID2_6" value="0" required>
+                <label for="PAID2_6" data-en="Not a problem" data-ar="ليس مشكلة">Not A Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID2_7" value="1" required>
+                <label for="PAID2_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID2_8" value="2" required>
+                <label for="PAID2_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID2_9" value="3" required>
+                <label for="PAID2_9" data-en="Somewhat serious" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID2_0" value="4" required>
+                <label for="PAID2_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>
+            </div>
+        </div>
+      </div>
+      
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feeling scared when you think about living with diabetes" id="PAID2_1" value="0" required>
+  <label for="PAID2_1" data-en="Not a problem" data-ar="ليس مشكلة">Not A Problem</label> 
+  <input type="radio" name="Feeling scared when you think about living with diabetes" id="PAID2_2" value="1" required>
+  <label for="PAID2_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Feeling scared when you think about living with diabetes" id="PAID2_3" value="2" required>
+  <label for="PAID2_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Feeling scared when you think about living with diabetes" id="PAID2_4" value="3" required>
+  <label for="PAID2_4" data-en="Somewhat serious" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious</label>
+  <input type="radio" name="Feeling scared when you think about living with diabetes" id="PAID2_5" value="4" required>
+  <label for="PAID2_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div> -->
+    <div class="question-container" id="question-3">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.3:Feeling scared when you think about living with diabetes?" data-ar="الشعور بالإحباط من خطة علاج مرض السكري؟">Q.3: Feeling scared when you think about living with diabetes?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID1_26" value="0" required>
+                <label for="PAID1_26" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID1_27" value="1" required>
+                <label for="PAID1_27" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID1_28" value="2" required>
+                <label for="PAID1_28" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID1_29" value="3" required>
+                <label for="PAID1_29" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID1_20" value="4" required>
+                <label for="PAID1_20" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID1_31" value="0" required>
+  <label for="PAID1_31" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID1_32" value="1" required>
+  <label for="PAID1_32" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID1_33" value="2" required>
+  <label for="PAID1_33" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID1_34" value="3" required>
+  <label for="PAID1_34" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Feeling scared when you think about living with diabetes?" id="PAID1_35" value="4" required>
+  <label for="PAID1_35" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+    
+    <div class="question-container" id="question-4">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.4:Uncomfortable social situations related to your diabetes care (e.g., people telling you what to eat)?" data-ar="مواقف اجتماعية غير مريحة تتعلق برعاية مرضى السكري (مثل إخبار الناس بما تأكله)؟">Q.4: Uncomfortable social situations related to your diabetes care (e.g., people telling you what to eat)?</p><br>
+      
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Uncomfortable social situations related to your diabetes care (e.g., people telling you what to eat)?" id="PAID3_6" value="0" required>
+                <label for="PAID3_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Uncomfortable social situations related to your diabetes care (e.g., people telling you what to eat)?" id="PAID3_7" value="1" required>
+                <label for="PAID3_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Uncomfortable social situations related to your diabetes care (e.g., people telling you what to eat)?" id="PAID3_8" value="2" required>
+                <label for="PAID3_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Uncomfortable social situations related to your diabetes care (e.g., people telling you what to eat)?" id="PAID3_9" value="3" required>
+                <label for="PAID3_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Uncomfortable social situations related to your diabetes care (e.g., people telling you what to eat)?" id="PAID3_0" value="4" required>
+                <label for="PAID3_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Uncomfortable social situations related to your diabetes care (e.g., people telling you what to eat)?" id="PAID3_1" value="0" required>
+  <label for="PAID3_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Uncomfortable social situations related to your diabetes care (e.g., people telling you what to eat)?" id="PAID3_2" value="1" required>
+  <label for="PAID3_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Uncomfortable social situations related to your diabetes care (e.g., people telling you what to eat)?" id="PAID3_3" value="2" required>
+  <label for="PAID3_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Uncomfortable social situations related to your diabetes care (e.g., people telling you what to eat)?" id="PAID3_4" value="3" required>
+  <label for="PAID3_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Uncomfortable social situations related to your diabetes care (e.g., people telling you what to eat)?" id="PAID3_5" value="4" required>
+  <label for="PAID3_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-5">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.5:Feelings of deprivation regarding food and meals?" data-ar="مشاعر الحرمان فيما يتعلق بالطعام والوجبات؟">Q.5: Feelings of deprivation regarding food and meals?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feelings of deprivation regarding food and meals?" id="PAID4_6" value="0" required>
+                <label for="PAID4_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feelings of deprivation regarding food and meals?" id="PAID4_7" value="1" required>
+                <label for="PAID4_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feelings of deprivation regarding food and meals?" id="PAID4_8" value="2" required>
+                <label for="PAID4_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feelings of deprivation regarding food and meals?" id="PAID4_9" value="3" required>
+                <label for="PAID4_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feelings of deprivation regarding food and meals?" id="PAID4_0" value="4" required>
+                <label for="PAID4_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feelings of deprivation regarding food and meals?" id="PAID4_1" value="0" required>
+  <label for="PAID4_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Feelings of deprivation regarding food and meals?" id="PAID4_2" value="1" required>
+  <label for="PAID4_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+  <input type="radio" name="Feelings of deprivation regarding food and meals?" id="PAID4_3" value="2" required>
+  <label for="PAID4_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+  <input type="radio" name="Feelings of deprivation regarding food and meals?" id="PAID4_4" value="3" required>
+  <label for="PAID4_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Feelings of deprivation regarding food and meals?" id="PAID4_5" value="4" required>
+  <label for="PAID4_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    
+    <div class="question-container" id="question-6">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.6:Feeling depressed when you think about living with diabetes?" data-ar="الشعور بالاكتئاب عند التفكير في التعايش مع مرض السكري؟">Q.6:Feeling depressed when you think about living with diabetes?</p><br>
+
+      
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feeling depressed when you think about living with diabetes?" id="PAID5_6" value="0" required>
+                <label for="PAID5_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling depressed when you think about living with diabetes?" id="PAID5_7" value="1" required>
+                <label for="PAID5_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling depressed when you think about living with diabetes?" id="PAID5_8" value="2" required>
+                <label for="PAID5_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling depressed when you think about living with diabetes?" id="PAID5_9" value="3" required>
+                <label for="PAID5_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling depressed when you think about living with diabetes?" id="PAID5_0" value="4" required>
+                <label for="PAID5_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+      
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feeling depressed when you think about living with diabetes?" id="PAID5_1" value="0" required>
+  <label for="PAID5_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a problem</label> 
+  <input type="radio" name="Feeling depressed when you think about living with diabetes?" id="PAID5_2" value="1" required>
+  <label for="PAID5_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+  <input type="radio" name="Feeling depressed when you think about living with diabetes?" id="PAID5_3" value="2" required>
+  <label for="PAID5_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+  <input type="radio" name="Feeling depressed when you think about living with diabetes?" id="PAID5_4" value="3" required>
+  <label for="PAID5_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Feeling depressed when you think about living with diabetes?" id="PAID5_5" value="4" required>
+  <label for="PAID5_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-7">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.7:Not knowing if your mood or feelings are related to your diabetes?" data-ar="عدم معرفة ما إذا كانت حالتك المزاجية أو مشاعرك مرتبطة بمرض السكري؟">Q.7: Not knowing if your mood or feelings are related to your diabetes?</p><br>
+
+      
+      
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Not knowing if your mood or feelings are related to your diabetes?" id="PAID6_6" value="0" required>
+                <label for="PAID6_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Not knowing if your mood or feelings are related to your diabetes?" id="PAID6_7" value="1" required>
+                <label for="PAID6_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Not knowing if your mood or feelings are related to your diabetes?" id="PAID6_8" value="2" required>
+                <label for="PAID6_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Not knowing if your mood or feelings are related to your diabetes?" id="PAID6_9" value="3" required>
+                <label for="PAID6_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Not knowing if your mood or feelings are related to your diabetes?" id="PAID6_0" value="4" required>
+                <label for="PAID6_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Not knowing if your mood or feelings are related to your diabetes?" id="PAID6_1" value="0" required>
+  <label for="PAID6_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a problem</label> 
+  <input type="radio" name="Not knowing if your mood or feelings are related to your diabetes?" id="PAID6_2" value="1" required>
+  <label for="PAID6_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+  <input type="radio" name="Not knowing if your mood or feelings are related to your diabetes?" id="PAID6_3" value="2" required>
+  <label for="PAID6_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+  <input type="radio" name="Not knowing if your mood or feelings are related to your diabetes?" id="PAID6_4" value="3" required>
+  <label for="PAID6_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Not knowing if your mood or feelings are related to your diabetes?" id="PAID6_5" value="4" required>
+  <label for="PAID6_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-8">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.8:Feeling overwhelmed by your diabetes?" data-ar="الشعور بالإرهاق بسبب مرض السكري؟">Q.8: Feeling overwhelmed by your diabetes?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feeling overwhelmed by your diabetes?" id="PAID7_6" value="0" required>
+                <label for="PAID7_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling overwhelmed by your diabetes?" id="PAID7_7" value="1" required>
+                <label for="PAID7_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling overwhelmed by your diabetes?" id="PAID7_8" value="2" required>
+                <label for="PAID7_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling overwhelmed by your diabetes?" id="PAID7_9" value="3" required>
+                <label for="PAID7_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling overwhelmed by your diabetes?" id="PAID7_0" value="4" required>
+                <label for="PAID7_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feeling overwhelmed by your diabetes?" id="PAID7_1" value="0" required>
+  <label for="PAID7_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Feeling overwhelmed by your diabetes?" id="PAID7_2" value="1" required>
+  <label for="PAID7_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Feeling overwhelmed by your diabetes?" id="PAID7_3" value="2" required>
+  <label for="PAID7_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Feeling overwhelmed by your diabetes?" id="PAID7_4" value="3" required>
+  <label for="PAID7_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Feeling overwhelmed by your diabetes?" id="PAID7_5" value="4" required>
+  <label for="PAID7_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-9">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.9:Worrying about low blood sugar reactions?" data-ar="القلق بشأن ردود فعل انخفاض نسبة السكر في الدم؟">Q.9: Worrying about low blood sugar reactions?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Worrying about low blood sugar reactions?" id="PAID8_6" value="0" required>
+                <label for="PAID8_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Worrying about low blood sugar reactions?" id="PAID8_7" value="1" required>
+                <label for="PAID8_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Worrying about low blood sugar reactions?" id="PAID8_8" value="2" required>
+                <label for="PAID8_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Worrying about low blood sugar reactions?" id="PAID8_9" value="3" required>
+                <label for="PAID8_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Worrying about low blood sugar reactions?" id="PAID8_0" value="4" required>
+                <label for="PAID8_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Worrying about low blood sugar reactions?" id="PAID8_1" value="0" required>
+  <label for="PAID8_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Worrying about low blood sugar reactions?" id="PAID8_2" value="1" required>
+  <label for="PAID8_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Worrying about low blood sugar reactions?" id="PAID8_3" value="2" required>
+  <label for="PAID8_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Worrying about low blood sugar reactions?" id="PAID8_4" value="3" required>
+  <label for="PAID8_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Worrying about low blood sugar reactions?" id="PAID8_5" value="4" required>
+  <label for="PAID8_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-10">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.10:Feeling angry when you think about living with diabetes?" data-ar="الشعور بالغضب عند التفكير في التعايش مع مرض السكري؟">Q.10: Feeling angry when you think about living with diabetes?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feeling angry when you think about living with diabetes?" id="PAID9_6" value="0" required>
+                <label for="PAID9_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling angry when you think about living with diabetes?" id="PAID9_7" value="1" required>
+                <label for="PAID9_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling angry when you think about living with diabetes?" id="PAID9_8" value="2" required>
+                <label for="PAID9_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling angry when you think about living with diabetes?" id="PAID9_9" value="3" required>
+                <label for="PAID9_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling angry when you think about living with diabetes?" id="PAID9_0" value="4" required>
+                <label for="PAID9_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feeling angry when you think about living with diabetes?" id="PAID9_1" value="0" required>
+  <label for="PAID9_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Feeling angry when you think about living with diabetes?" id="PAID9_2" value="1" required>
+  <label for="PAID9_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Feeling angry when you think about living with diabetes?" id="PAID9_3" value="2" required>
+  <label for="PAID9_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Feeling angry when you think about living with diabetes?" id="PAID9_4" value="3" required>
+  <label for="PAID9_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Feeling angry when you think about living with diabetes?" id="PAID9_5" value="4" required>
+  <label for="PAID9_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-11">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.11:Feeling constantly concerned about food and eating?" data-ar="الشعور بالقلق المستمر بشأن الطعام وتناول الطعام؟">Q.11: Feeling constantly concerned about food and eating?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feeling constantly concerned about food and eating?" id="PAID10_6" value="0" required>
+                <label for="PAID10_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling constantly concerned about food and eating?" id="PAID10_7" value="1" required>
+                <label for="PAID10_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling constantly concerned about food and eating?" id="PAID10_8" value="2" required>
+                <label for="PAID10_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling constantly concerned about food and eating?" id="PAID10_9" value="3" required>
+                <label for="PAID10_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling constantly concerned about food and eating?" id="PAID10_0" value="4" required>
+                <label for="PAID10_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feeling constantly concerned about food and eating?" id="PAID10_1" value="0" required>
+  <label for="PAID10_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Feeling constantly concerned about food and eating?" id="PAID10_2" value="1" required>
+  <label for="PAID10_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Feeling constantly concerned about food and eating?" id="PAID10_3" value="2" required>
+  <label for="PAID10_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Feeling constantly concerned about food and eating?" id="PAID10_4" value="3" required>
+  <label for="PAID10_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Feeling constantly concerned about food and eating?" id="PAID10_5" value="4" required>
+  <label for="PAID10_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-12">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.12:Worrying about the future and the possibility of serious complications?" data-ar="القلق بشأن المستقبل وإمكانية حدوث مضاعفات خطيرة؟">Q.12: Worrying about the future and the possibility of serious complications?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Worrying about the future and the possibility of serious complications?" id="PAID11_6" value="0" required>
+                <label for="PAID11_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Worrying about the future and the possibility of serious complications?" id="PAID11_7" value="1" required>
+                <label for="PAID11_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Worrying about the future and the possibility of serious complications?" id="PAID11_8" value="2" required>
+                <label for="PAID11_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Worrying about the future and the possibility of serious complications?" id="PAID11_9" value="3" required>
+                <label for="PAID11_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Worrying about the future and the possibility of serious complications?" id="PAID11_0" value="4" required>
+                <label for="PAID11_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Worrying about the future and the possibility of serious complications?" id="PAID11_1" value="0" required>
+  <label for="PAID11_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Worrying about the future and the possibility of serious complications?" id="PAID11_2" value="1" required>
+  <label for="PAID11_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Worrying about the future and the possibility of serious complications?" id="PAID11_3" value="2" required>
+  <label for="PAID11_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Worrying about the future and the possibility of serious complications?" id="PAID11_4" value="3" required>
+  <label for="PAID11_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Worrying about the future and the possibility of serious complications?" id="PAID11_5" value="4" required>
+  <label for="PAID11_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-13">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.13:Feelings of guilt or anxiety when you get off track with your diabetes management?" data-ar="مشاعر الذنب أو القلق عندما تخرج عن مسار إدارة مرض السكري؟">Q.13: Feelings of guilt or anxiety when you get off track with your diabetes management?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feelings of guilt or anxiety when you get off track with your diabetes management?" id="PAID12_6" value="0" required>
+                <label for="PAID12_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feelings of guilt or anxiety when you get off track with your diabetes management?" id="PAID12_7" value="1" required>
+                <label for="PAID12_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feelings of guilt or anxiety when you get off track with your diabetes management?" id="PAID12_8" value="2" required>
+                <label for="PAID12_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feelings of guilt or anxiety when you get off track with your diabetes management?" id="PAID12_9" value="3" required>
+                <label for="PAID12_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feelings of guilt or anxiety when you get off track with your diabetes management?" id="PAID12_0" value="4" required>
+                <label for="PAID12_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feelings of guilt or anxiety when you get off track with your diabetes management?" id="PAID12_1" value="0" required>
+  <label for="PAID12_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Feelings of guilt or anxiety when you get off track with your diabetes management?" id="PAID12_2" value="1" required>
+  <label for="PAID12_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Feelings of guilt or anxiety when you get off track with your diabetes management?" id="PAID12_3" value="2" required>
+  <label for="PAID12_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Feelings of guilt or anxiety when you get off track with your diabetes management?" id="PAID12_4" value="3" required>
+  <label for="PAID12_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Feelings of guilt or anxiety when you get off track with your diabetes management?" id="PAID12_5" value="4" required>
+  <label for="PAID12_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-14">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en='Q.14:Not "accepting" your diabetes?' data-ar="عدم 'قبول' مرض السكري الخاص بك؟">Q.14: Not "accepting" your diabetes?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Not 'accepting' your diabetes?" id="PAID13_6" value="0" required>
+                <label for="PAID13_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Not 'accepting' your diabetes?" id="PAID13_7" value="1" required>
+                <label for="PAID13_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Not 'accepting' your diabetes?" id="PAID13_8" value="2" required>
+                <label for="PAID13_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Not 'accepting' your diabetes?" id="PAID13_9" value="3" required>
+                <label for="PAID13_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Not 'accepting' your diabetes?" id="PAID13_0" value="4" required>
+                <label for="PAID13_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Not 'accepting' your diabetes?" id="PAID13_1" value="0" required>
+  <label for="PAID13_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Not 'accepting' your diabetes?" id="PAID13_2" value="1" required>
+  <label for="PAID13_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Not 'accepting' your diabetes?" id="PAID13_3" value="2" required>
+  <label for="PAID13_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Not 'accepting' your diabetes?" id="PAID13_4" value="3" required>
+  <label for="PAID13_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Not 'accepting' your diabetes?" id="PAID13_5" value="4" required>
+  <label for="PAID13_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-15">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.15:Feeling unsatisfied with your diabetes physician?" data-ar="الشعور بعدم الرضا عن طبيب مرض السكري الخاص بك؟">Q.15: Feeling unsatisfied with your diabetes physician?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feeling unsatisfied with your diabetes physician?" id="PAID14_6" value="0" required>
+                <label for="PAID14_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling unsatisfied with your diabetes physician?" id="PAID14_7" value="1" required>
+                <label for="PAID14_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling unsatisfied with your diabetes physician?" id="PAID14_8" value="2" required>
+                <label for="PAID14_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling unsatisfied with your diabetes physician?" id="PAID14_9" value="3" required>
+                <label for="PAID14_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling unsatisfied with your diabetes physician?" id="PAID14_0" value="4" required>
+                <label for="PAID14_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feeling unsatisfied with your diabetes physician?" id="PAID14_1" value="0" required>
+  <label for="PAID14_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Feeling unsatisfied with your diabetes physician?" id="PAID14_2" value="1" required>
+  <label for="PAID14_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Feeling unsatisfied with your diabetes physician?" id="PAID14_3" value="2" required>
+  <label for="PAID14_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Feeling unsatisfied with your diabetes physician?" id="PAID14_4" value="3" required>
+  <label for="PAID14_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Feeling unsatisfied with your diabetes physician?" id="PAID14_5" value="4" required>
+  <label for="PAID14_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-16">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.16:Feeling that diabetes is taking up too much of your mental and physical energy every day?" data-ar="الشعور بأن مرض السكري يستنزف الكثير من طاقتك العقلية والجسدية كل يوم؟">Q.16: Feeling that diabetes is taking up too much of your mental and physical energy every day?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feeling that diabetes is taking up too much of your mental and physical energy every day?" id="PAID15_6" value="0" required>
+                <label for="PAID15_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling that diabetes is taking up too much of your mental and physical energy every day?" id="PAID15_7" value="1" required>
+                <label for="PAID15_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling that diabetes is taking up too much of your mental and physical energy every day?" id="PAID15_8" value="2" required>
+                <label for="PAID15_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling that diabetes is taking up too much of your mental and physical energy every day?" id="PAID15_9" value="3" required>
+                <label for="PAID15_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling that diabetes is taking up too much of your mental and physical energy every day?" id="PAID15_0" value="4" required>
+                <label for="PAID15_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feeling that diabetes is taking up too much of your mental and physical energy every day?" id="PAID15_1" value="0" required>
+  <label for="PAID15_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Feeling that diabetes is taking up too much of your mental and physical energy every day?" id="PAID15_2" value="1" required>
+  <label for="PAID15_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Feeling that diabetes is taking up too much of your mental and physical energy every day?" id="PAID15_3" value="2" required>
+  <label for="PAID15_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Feeling that diabetes is taking up too much of your mental and physical energy every day?" id="PAID15_4" value="3" required>
+  <label for="PAID15_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Feeling that diabetes is taking up too much of your mental and physical energy every day?" id="PAID15_5" value="4" required>
+  <label for="PAID15_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-17">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.17:Feeling alone with your diabetes?" data-ar="الشعور بالوحدة مع مرض السكري الخاص بك؟">Q.17: Feeling alone with your diabetes?</p><br>
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feeling alone with your diabetes?" id="PAID16_6" value="0" required>
+                <label for="PAID16_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling alone with your diabetes?" id="PAID16_7" value="1" required>
+                <label for="PAID16_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling alone with your diabetes?" id="PAID16_8" value="2" required>
+                <label for="PAID16_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling alone with your diabetes?" id="PAID16_9" value="3" required>
+                <label for="PAID16_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling alone with your diabetes?" id="PAID16_0" value="4" required>
+                <label for="PAID16_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feeling alone with your diabetes?" id="PAID16_1" value="0" required>
+  <label for="PAID16_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Feeling alone with your diabetes?" id="PAID16_2" value="1" required>
+  <label for="PAID16_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Feeling alone with your diabetes?" id="PAID16_3" value="2" required>
+  <label for="PAID16_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Feeling alone with your diabetes?" id="PAID16_4" value="3" required>
+  <label for="PAID16_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Feeling alone with your diabetes?" id="PAID16_5" value="4" required>
+  <label for="PAID16_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-18">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.18:Feeling that your friends and family are not supportive of your diabetes management efforts?" data-ar="الشعور بأن أصدقائك وعائلتك لا يدعمون جهودك في إدارة مرض السكري؟">Q.18: Feeling that your friends and family are not supportive of your diabetes management efforts?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feeling that your friends and family are not supportive of your diabetes management efforts?" id="PAID17_6" value="0" required>
+                <label for="PAID17_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling that your friends and family are not supportive of your diabetes management efforts?" id="PAID17_7" value="1" required>
+                <label for="PAID17_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling that your friends and family are not supportive of your diabetes management efforts?" id="PAID17_8" value="2" required>
+                <label for="PAID17_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling that your friends and family are not supportive of your diabetes management efforts?" id="PAID17_9" value="3" required>
+                <label for="PAID17_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling that your friends and family are not supportive of your diabetes management efforts?" id="PAID17_0" value="4" required>
+                <label for="PAID17_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feeling that your friends and family are not supportive of your diabetes management efforts?" id="PAID17_1" value="0" required>
+  <label for="PAID17_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Feeling that your friends and family are not supportive of your diabetes management efforts?" id="PAID17_2" value="1" required>
+  <label for="PAID17_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Feeling that your friends and family are not supportive of your diabetes management efforts?" id="PAID17_3" value="2" required>
+  <label for="PAID17_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Feeling that your friends and family are not supportive of your diabetes management efforts?" id="PAID17_4" value="3" required>
+  <label for="PAID17_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Feeling that your friends and family are not supportive of your diabetes management efforts?" id="PAID17_5" value="4" required>
+  <label for="PAID17_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+    <div class="question-container" id="question-19">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Q.19:Coping with complications of diabetes?" data-ar="التعامل مع مضاعفات مرض السكري؟">Q.19: Coping with complications of diabetes?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Coping with complications of diabetes?" id="PAID18_6" value="0" required>
+                <label for="PAID18_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Coping with complications of diabetes?" id="PAID18_7" value="1" required>
+                <label for="PAID18_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Coping with complications of diabetes?" id="PAID18_8" value="2" required>
+                <label for="PAID18_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Coping with complications of diabetes?" id="PAID18_9" value="3" required>
+                <label for="PAID18_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Coping with complications of diabetes?" id="PAID18_0" value="4" required>
+                <label for="PAID18_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+        </div>
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Coping with complications of diabetes?" id="PAID18_1" value="0" required>
+  <label for="PAID18_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Coping with complications of diabetes?" id="PAID18_2" value="1" required>
+  <label for="PAID18_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Coping with complications of diabetes?" id="PAID18_3" value="2" required>
+  <label for="PAID18_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Coping with complications of diabetes?" id="PAID18_4" value="3" required>
+  <label for="PAID18_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Coping with complications of diabetes?" id="PAID18_5" value="4" required>
+  <label for="PAID18_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+
+</div>
+    </div>
+
+<div class="question-container" id="question-20">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en='Q.20:Feeling "burned out" by the constant effort needed to manage diabetes?' data-ar="الشعور بالإرهاق من الجهد المستمر اللازم لإدارة مرض السكري؟">Q.20: Feeling "burned out" by the constant effort needed to manage diabetes?</p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feeling burned out by the constant effort needed to manage diabetes?" id="PAID19_6" value="0" required>
+                <label for="PAID19_6" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling burned out by the constant effort needed to manage diabetes?" id="PAID19_7" value="1" required>
+                <label for="PAID19_7" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling burned out by the constant effort needed to manage diabetes?" id="PAID19_8" value="2" required>
+                <label for="PAID19_8" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling burned out by the constant effort needed to manage diabetes?" id="PAID19_9" value="3" required>
+                <label for="PAID19_9" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling burned out by the constant effort needed to manage diabetes?" id="PAID19_0" value="4" required>
+                <label for="PAID19_0" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious problem</label>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div id="custom-radio-pos"></div>
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+
+  <input type="radio" name="Feeling burned out by the constant effort needed to manage diabetes?" id="PAID19_1" value="0" required>
+  <label for="PAID19_1" data-en="Not a problem" data-ar="ليس مشكلة">Not a Problem</label> 
+  <input type="radio" name="Feeling burned out by the constant effort needed to manage diabetes?" id="PAID19_2" value="1" required>
+  <label for="PAID19_2" data-en="Minor problem" data-ar="مشكلة بسيطة">Minor Problem</label>
+  <input type="radio" name="Feeling burned out by the constant effort needed to manage diabetes?" id="PAID19_3" value="2" required>
+  <label for="PAID19_3" data-en="Moderate problem" data-ar="مشكلة معتدلة">Moderate Problem</label>
+  <input type="radio" name="Feeling burned out by the constant effort needed to manage diabetes?" id="PAID19_4" value="3" required>
+  <label for="PAID19_4" data-en="Somewhat Serious Problem" data-ar="مشكلة إلى حد ما خطيرة">Somewhat Serious Problem</label>
+  <input type="radio" name="Feeling burned out by the constant effort needed to manage diabetes?" id="PAID19_5" value="4" required>
+  <label for="PAID19_5" data-en="Serious problem" data-ar="مشكلة خطيرة">Serious Problem</label>        <div id="custom-radio-pos"></div>
+</div>
+</div>
+<div class="nav-buttons">
+  <button data-en="Submit" data-ar="إرسال" type="submit"><i class='bx bx-check-double'></i> Submit</button>
+</div>
+</div>
+
+
+
+  </form>
+
+ 
+
+<!-- <script>
+  let currentLang = 'en'; // Default language is English
+  let currentQuestion = 0; // Track the current question
+  const questions = document.querySelectorAll('.question-container'); // Get all question containers
+  const progressBar = document.getElementById('progress-bar'); // Get the progress bar element
+
+  // Update the progress bar width based on the current question number
+  function updateProgressBar() {
+    const progress = ((currentQuestion + 1) / questions.length) * 100;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  // Show a specific question based on index
+  function showQuestion(index) {
+    questions.forEach((question, i) => {
+      question.classList.toggle('active', i === index);
+    });
+    updateProgressBar();
+    
+    // Check if we're at the last question
+    const submitButton = document.querySelector('.nav-buttons button[type="submit"]');
+    if (currentQuestion === questions.length - 1) {
+      submitButton.style.display = 'block'; // Show submit button
+    } else {
+      submitButton.style.display = 'none'; // Hide submit button
+    }
+  }
+
+
+  // Move to the next question
+  function nextQuestion() {
+    const currentInputs = questions[currentQuestion].querySelectorAll('input[type="radio"], input[type="range"]');
+    let answered = false;
+
+    // Check if all required inputs in the current question are answered
+    currentInputs.forEach(input => {
+        if (input.checked || (input.type === 'range' && input.value !== '')) {
+            answered = true;
+        }
+    });
+
+    if (answered) {
+        if (currentQuestion < questions.length - 1) {
+            // Add 0.5 seconds (500 milliseconds) delay before transitioning to the next question
+            setTimeout(() => {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }, 500);
+        }
+    } else {
+        alert("Please answer the question before proceeding.");
+    }
+}
+  // Move to the previous question
+  function previousQuestion() {
+    if (currentQuestion > 0) {
+      currentQuestion--;
+      showQuestion(currentQuestion);
+  
+      // Reattach the event listeners after showing the previous question
+      addRadioEventListeners();
+    }
+  }
+  
+  function addRadioEventListeners() {
+    questions.forEach((question, questionIndex) => {
+      const radioInputs = question.querySelectorAll('input[type="radio"]');
+  
+      radioInputs.forEach(input => {
+        // Remove any existing event listener before adding a new one to avoid multiple triggers
+        input.removeEventListener('click', handleRadioClick);
+        input.addEventListener('click', handleRadioClick);
+      });
+    });
+  }
+  
+  function handleRadioClick() {
+    if (currentQuestion === questions.length - 1) {
+      return; // Do nothing if we are on the last question
+    }
+    nextQuestion();
+  }
+  
+  
+
+  // Function to handle text truncation and "Show More" functionality for smaller screens
+  function toggleText() {
+    const dots = document.getElementById("dots");
+    const moreText = document.getElementById("more-text");
+    const toggleBtn = document.getElementById("toggle-btn");
+
+    if (moreText.style.display === "none") {
+      dots.style.display = "none"; // Hide dots
+      moreText.style.display = "inline"; // Show more text
+      toggleBtn.innerHTML = " Show Less"; // Change button text
+    } else {
+      dots.style.display = "inline"; // Show dots
+      moreText.style.display = "none"; // Hide more text
+      toggleBtn.innerHTML = " Show More"; // Change button text back
+    }
+  }
+
+  // Function to set initial text truncation based on screen size (mobile vs desktop)
+  function setInitialText() {
+    const charLimit = 80; // Character limit for mobile truncation
+    const fullText = "The PAID is a self-report questionnaire that asks about negative emotions you may experience related to having diabetes. These emotions could include fear, anger, or frustration.";
+    const truncatedText = fullText.substring(0, charLimit); // Truncate text
+
+    if (window.innerWidth < 768) {
+      // For mobile screens, show truncated text
+      if (fullText.length > charLimit) {
+        document.getElementById("text").innerHTML =
+          truncatedText +
+          '<span id="dots">...</span>' +
+          '<span id="more-text" style="display:none;">' +
+          fullText.substring(charLimit) +
+          '</span>' +
+          '<span id="toggle-btn" style="color: blue; cursor: pointer;" onclick="toggleText()"> Show More</span>';
+      } else {
+        document.getElementById("text").innerHTML = fullText; // Show full text if it fits within the limit
+      }
+    } else {
+      document.getElementById("text").innerHTML = fullText; // Show full text for larger screens
+    }
+  }
+
+  // Language toggle functionality
+  function toggleLanguage() {
+    currentLang = currentLang === 'en' ? 'ar' : 'en'; // Switch language between English and Arabic
+
+    // Toggle language content for all questions
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.innerText = el.getAttribute(`data-${currentLang}`); // Update the content based on the selected language
+    });
+
+    // Update the toggle button text
+    document.querySelector('.lang-toggle').innerText = currentLang === 'en' ? 'العربية' : 'English';
+  }
+
+  // Initialize the form with the correct language on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    showQuestion(0); // Show the first question
+    setInitialText(); // Set initial text for mobile
+    addRadioEventListeners(); // Attach radio button event listeners
+  });
+
+  // Call setInitialText on window resize
+  window.onresize = setInitialText;
+</script> -->
+
+<script>
+  let isAnswering = false;
+  let currentLang = 'en'; // Default language is English
+  let currentQuestion = 0; // Track the current question
+  const questions = document.querySelectorAll('.question-container'); // Get all question containers
+  const progressBar = document.getElementById('progress-bar'); // Get the progress bar element
+  const selectedLangInput = document.getElementById('selectedLang');
+
+  // Update the progress bar width based on the current question number
+  function updateProgressBar() {
+    const progress = ((currentQuestion + 1) / questions.length) * 100;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  // Show a specific question based on index
+  function showQuestion(index) {
+    questions.forEach((question, i) => {
+      question.classList.toggle('active', i === index);
+    });
+    updateProgressBar();
+    isAnswering = false;
+    
+    // Check if we're at the last question
+    const submitButton = document.querySelector('.nav-buttons button[type="submit"]');
+    if (currentQuestion === questions.length - 1) {
+      submitButton.style.display = 'block'; // Show submit button
+    } else {
+      submitButton.style.display = 'none'; // Hide submit button
+    }
+  }
+
+
+  // Move to the next question
+  function nextQuestion() {
+    const currentInputs = questions[currentQuestion].querySelectorAll('input[type="radio"], input[type="range"]');
+    let answered = false;
+
+    // Check if all required inputs in the current question are answered
+    currentInputs.forEach(input => {
+        if (input.checked || (input.type === 'range' && input.value !== '')) {
+            answered = true;
+        }
+    });
+
+    if (answered) {
+        if (currentQuestion < questions.length - 1) {
+            // Add 0.5 seconds (500 milliseconds) delay before transitioning to the next question
+            setTimeout(() => {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }, 500);
+        }
+    }
+}
+  // Move to the previous question
+  function previousQuestion() {
+    if (currentQuestion > 0) {
+      currentQuestion--;
+      showQuestion(currentQuestion);
+  
+      // Reattach the event listeners after showing the previous question
+      addRadioEventListeners();
+    }
+  }
+  
+  function addRadioEventListeners() {
+    questions.forEach((question, questionIndex) => {
+      const radioInputs = question.querySelectorAll('input[type="radio"]');
+  
+      radioInputs.forEach(input => {
+        // Remove any existing event listener before adding a new one to avoid multiple triggers
+        input.removeEventListener('click', handleRadioClick);
+        input.addEventListener('click', handleRadioClick);
+      });
+    });
+  }
+  
+  function handleRadioClick() {
+    if (isAnswering) return; // Ignore if already processing an answer
+    isAnswering = true; // Set the flag to indicate processing has started
+    if (currentQuestion === questions.length - 1) {
+      return; // Do nothing if we are on the last question
+    }
+    nextQuestion();
+  }
+  
+  const charLimit = 80;
+  var isTextExpanded = false;
+
+
+  function setInitialText() {
+  var fullTextEn = "PAID is a self-report questionnaire that asks about negative emotions you may experience related to having diabetes. These emotions could include fear, anger, or frustration.";
+  var fullTextAr = "تقييم الرعاية لمرض السكري يعد PAID استبيانًا للإبلاغ الذاتي يسألك عن المشاعر السلبية التي قد تشعر بها بسبب إصابتك بمرض السكري. قد تشمل هذه المشاعر الخوف أو الغضب أو الإحباط.";
+  
+  var fullText = currentLang === 'en' ? fullTextEn : fullTextAr;
+  var truncatedText = fullText.substring(0, charLimit);
+
+  if (window.innerWidth < 724) {
+    if (fullText.length > charLimit) {
+      // Set truncated text with 'Show More' button
+      document.getElementById("text").innerHTML = 
+        truncatedText + 
+        '<span id="dots">...</span>' +
+        '<span id="more-text" style="display:none;">' + 
+        fullText.substring(charLimit) + 
+        '</span>' + 
+        '<span id="toggle-btn" style="color: blue; cursor: pointer;">' + 
+        (currentLang === 'en' ? ' Show More' : ' عرض المزيد') + 
+        '</span>';
+
+      // If the text was previously expanded, show it as expanded
+      if (isTextExpanded) {
+        document.getElementById("more-text").style.display = "inline";
+        document.getElementById("dots").style.display = "none";
+        document.getElementById("toggle-btn").innerHTML = (currentLang === 'en' ? ' Show Less' : ' إخفاء');
+      }
+
+      // Attach the event listener to the toggle button after it's created
+      var toggleBtn = document.getElementById("toggle-btn");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", toggleText);
+      }
+    } else {
+      document.getElementById("text").innerHTML = fullText;
+    }
+  } else {
+    document.getElementById("text").innerHTML = fullText;
+  }
+}
+
+function toggleText() {
+  var moreText = document.getElementById("more-text");
+  var dots = document.getElementById("dots");
+  var toggleBtn = document.getElementById("toggle-btn");
+
+  if (moreText.style.display === "none") {
+    moreText.style.display = "inline";
+    dots.style.display = "none";
+    toggleBtn.innerHTML = (currentLang === 'en' ? ' Show Less' : ' إخفاء');
+    isTextExpanded = true;  // Store the state as expanded
+  } else {
+    moreText.style.display = "none";
+    dots.style.display = "inline";
+    toggleBtn.innerHTML = (currentLang === 'en' ? ' Show More' : ' عرض المزيد');
+    isTextExpanded = false;  // Store the state as collapsed
+  }
+}
+
+// Call the setInitialText function when the page loads
+window.onload = setInitialText;
+
+// Adjust text visibility when resizing the window
+window.onresize = function() {
+  setInitialText();
+};
+
+function adjustViewportForOrientation() {
+    const metaViewport = document.querySelector('meta[name="viewport"]');
+    if (window.matchMedia("(max-width: 1000px) and (orientation: landscape)").matches) {
+      metaViewport.setAttribute("content", "width=device-width, initial-scale=1.0");
+    } else {
+      metaViewport.setAttribute("content", "width=device-width, initial-scale=1.0");
+    }
+  }
+
+  // Adjust on page load
+  adjustViewportForOrientation();
+
+  // Adjust on orientation change
+  window.addEventListener("resize", adjustViewportForOrientation);
+
+  function toggleLanguage() {
+  currentLang = currentLang === 'en' ? 'ar' : 'en';
+  selectedLangInput.value = currentLang;
+
+  // Update all text with data attributes
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.innerText = el.getAttribute(`data-${currentLang}`);
+  });
+
+  // Update radio button labels dynamically
+  document.querySelectorAll('label').forEach(label => {
+    if (label.hasAttribute('data-en') && label.hasAttribute('data-ar')) {
+      label.innerText = label.getAttribute(`data-${currentLang}`);
+    }
+  });
+
+  // Update the toggle button text
+  document.querySelector('.lang-toggle').innerText = currentLang === 'en' ? 'العربية' : 'English';
+
+  // Update URL parameter without reloading the page
+  const url = new URL(window.location.href);
+  url.searchParams.set('lang', currentLang);
+  window.history.pushState({}, '', url);
+
+  // Update description text dynamically
+  setInitialText();
+}
+
+  // Initialize to ensure correct language and show first question
+  document.addEventListener('DOMContentLoaded', function () {
+  const url = new URL(window.location.href);
+
+  let langParam = url.searchParams.get('lang') || 'en';
+  currentLang = langParam;
+  document.getElementById('selectedLang').value = currentLang;
+
+  // Set language for all text content
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.innerText = el.getAttribute(`data-${currentLang}`);
+  });
+
+  // Update radio button labels
+  document.querySelectorAll('label').forEach(label => {
+    if (label.hasAttribute('data-en') && label.hasAttribute('data-ar')) {
+      label.innerText = label.getAttribute(`data-${currentLang}`);
+    }
+  });
+
+  // Set toggle button text
+  document.querySelector('.lang-toggle').innerText = currentLang === 'en' ? 'العربية' : 'English';
+
+  // Show the first question and add event listeners
+  showQuestion(0);
+  addRadioEventListeners();
+
+  // Set the description text dynamically
+  setInitialText();
+});
+</script>
+
+</body>
+</html>

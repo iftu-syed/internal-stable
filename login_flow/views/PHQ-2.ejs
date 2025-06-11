@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHQ-2 Form</title>
+  <link rel="stylesheet" href="<%= basePath %>/styles/PHQ-2.css">
+  <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+  <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <button class="lang-toggle" onclick="toggleLanguage()">العربية</button>
+        
+<div class="parentrow">
+    
+  <div class="parentcolumn left">
+
+    <div class="sidebar">
+      <hr class="spacer">
+      <img src="<%= basePath %>/assets/images/logo.png">
+      <hr class="spacer">
+      <% surveyStatus.forEach(survey => { %>
+        <div class="<%= survey.active ? 'sidebar-item-active' 
+                        : (survey.completed ? 'sidebar-item-done' 
+                                            : 'sidebar-item-inactive') %>">
+          <%= survey.name %>
+        </div>
+      <% }) %>
+
+    </div>
+      
+  </div>
+
+  <div class="parentcolumn right">
+    <div class="infobox">
+
+      <div class="mobile-container">
+
+        <img src="<%= basePath %>/assets/images/logo.png">
+
+        
+      </div>
+
+
+
+
+  <h1 data-en="Patient Health Questionnaire-2 " data-ar="الصحة العامة">Patient Health Questionnaire-2 </h1>
+  <p id="text" class="info-text"
+  data-en="The PHQ-2 is a brief two-item screening tool used to assess the presence and severity of depressive symptoms. It focuses on the frequency of depressed mood and loss of interest or pleasure in activities over the past two weeks."
+  data-ar="استبيان PHQ-2 هو أداة فحص موجزة مكونة من عنصرين، تُستخدم لتقييم وجود أعراض الاكتئاب وشدتها. يركز الاستبيان على تواتر الاكتئاب وفقدان الاهتمام أو الاستمتاع بالأنشطة خلال الأسبوعين الماضيين. ">
+  <span id="dots" style="display:none;">...</span>
+    <span id="more-text" style="display:none;"></span>
+    <span id="toggle-btn" onclick="toggleText()" style="color: blue; cursor: pointer; display:none;"> Show More</span>
+  </p>
+  
+  
+  
+  <p data-en="Over the last 2 weeks, how often have you been bothered by any of the following problems?" data-ar="على مدى الأسبوعين الماضيين، كم مرة أزعجتك أي من المشاكل التالية؟">
+    Over the last 2 weeks, how often have you been bothered by any of the following problems? 
+  </p>
+  
+  
+  
+  
+  
+  
+  <hr class="spacer">
+  <!-- Progress Bar -->
+  <div class="progress-bar">
+    <div class="progress" id="progress-bar"></div>
+  </div>
+
+  <form action="<%= basePath %>/submitPHQ-2" method="POST" class="surveyform">
+    <input type="hidden" name="Mr_no" value="<%= Mr_no %>">
+    <input type="hidden" name="lang" value="<%= currentLang %>"> <!-- This is the added hidden field -->
+
+
+    <!-- Questions -->
+    <div class="question-container active" id="question-1">
+      <div class="back-button-first-question">
+        <button type="button" onclick="previousQuestion()" style="display:none;"><i class='bx bx-chevrons-left'></i>Previous</button>
+      </div>
+      <p class="question-text" data-en="Little interest or pleasure in doing things " data-ar="بشكل عام، كيف يمكنك تقييم صحتك؟">Little interest or pleasure in doing things </p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Little interest or pleasure in doing things" id="PHQ_1" value="0" required>
+                <label for="PHQ_1" data-en="Not at all" data-ar="ممتاز">Not at all</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Little interest or pleasure in doing things" id="PHQ_2" value="1" required>
+                <label for="PHQ_2" data-en="Several Days" data-ar="جيد جدا">Several Days</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Little interest or pleasure in doing things" id="PHQ_3" value="2" required>
+                <label for="PHQ_3" data-en="More than half the days" data-ar="جيد">More than half the days</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Little interest or pleasure in doing things" id="PHQ_4" value="3" required>
+                <label for="PHQ_4" data-en="Nearly every day" data-ar="مقبول">Nearly every day</label>
+            </div>
+        </div>
+      </div>
+      
+      <!-- <div id="custom-radio-pos"></div> -->
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+      <input type="radio" name="Little interest or pleasure in doing things" id="PHQ_6" value="0" required>
+      <label for="PHQ_6" data-en="Not at all" data-ar="ممتاز" >Not at all</label> 
+      <input type="radio" name="Little interest or pleasure in doing things" id="PHQ_7" value="1" required>
+      <label for="PHQ_7" data-en="Several Days" data-ar="جيد جدا">Several Days</label>
+      <input type="radio" name="Little interest or pleasure in doing things" id="PHQ_8" value="2" required>
+      <label for="PHQ_8" data-en="More than half the days" data-ar="جيد">More than half the days</label>
+      <input type="radio" name="Little interest or pleasure in doing things" id="PHQ_9" value="3" required>
+      <label for="PHQ_9" data-en="Nearly every day" data-ar="مقبول">Nearly every day</label>  
+<div id="custom-radio-pos"></div>
+      </div>
+
+    </div>
+    </div>
+
+    <div class="question-container" id="question-2">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+      <p data-en="Feeling down, depressed, or hopeless " data-ar="بشكل عام، كيف يمكنك تقييم نوعية حياتك؟">Feeling down, depressed, or hopeless </p><br>
+
+      <div id="form-wrapper">
+        <div class="responsive-grid-radio">
+            <div class="radio-grid">
+                <input type="radio" name="Feeling down, depressed, or hopeless" id="PHQ1_1" value="0" required>
+                <label for="PHQ1_1" data-en="Not at all" data-ar="ممتاز">Not at all</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling down, depressed, or hopeless" id="PHQ1_2" value="1" required>
+                <label for="PHQ1_2" data-en="Several Days" data-ar="جيد جدا">Several Days</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling down, depressed, or hopeless" id="PHQ1_3" value="2" required>
+                <label for="PHQ1_3" data-en="More than half the days" data-ar="جيد">More than half the days</label>
+            </div>
+            <div class="radio-grid">
+                <input type="radio" name="Feeling down, depressed, or hopeless" id="PHQ1_4" value="3" required>
+                <label for="PHQ1_4" data-en="Nearly every day" data-ar="مقبول">Nearly every day</label>
+            </div>
+        </div>
+      </div>
+
+      <!-- <div id="custom-radio-pos"></div> -->
+      <div id="form-wrapper-desktop">
+        <div id="custom-radio">
+          <input type="radio" name="Feeling down, depressed, or hopeless" id="PHQ1_6" value="0" required>
+          <label for="PHQ1_6" data-en="Not at all" data-ar="ممتاز">Not at all</label> 
+          <input type="radio" name="Feeling down, depressed, or hopeless" id="PHQ1_7" value="1" required>
+          <label for="PHQ1_7" data-en="Several Days" data-ar="جيد جدا">Several Days</label>
+          <input type="radio" name="Feeling down, depressed, or hopeless" id="PHQ1_8" value="2" required>
+          <label for="PHQ1_8" data-en="More than half the days" data-ar="جيد">More than half the days</label>
+          <input type="radio" name="Feeling down, depressed, or hopeless" id="PHQ1_9" value="3" required>
+          <label for="PHQ1_9" data-en="Nearly every day" data-ar="مقبول">Nearly every day</label> 
+<div id="custom-radio-pos"></div>
+      </div>
+
+    </div>
+
+    <div class="nav-buttons">
+        <button data-en="Submit" data-ar="إرسال" type="submit">
+          <i class='bx bx-check-double'></i> Submit
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+<script>
+  let currentLang = 'en'; // Default language
+  let currentQuestion = 0;
+  const questions = document.querySelectorAll('.question-container');
+  const progressBar = document.getElementById('progress-bar');
+
+  // Update progress bar based on the current question
+  function updateProgressBar() {
+    const progress = ((currentQuestion + 1) / questions.length) * 100;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  // Show a specific question
+  function showQuestion(index) {
+    questions.forEach((question, i) => {
+      question.classList.toggle('active', i === index);
+    });
+    updateProgressBar();
+  }
+
+  // Function to toggle between "Show More" and "Show Less"
+  var charLimit = 80;
+
+  var isTextExpanded = false; // Variable to store the state of the text (expanded or collapsed)
+
+function setInitialText() {
+  var fullTextEn = "The PHQ-2 is a brief two-item screening tool used to assess the presence and severity of depressive symptoms. It focuses on the frequency of depressed mood and loss of interest or pleasure in activities over the past two weeks.";
+  var fullTextAr = "استبيان PHQ-2 هو أداة فحص موجزة مكونة من عنصرين، تُستخدم لتقييم وجود أعراض الاكتئاب وشدتها. يركز الاستبيان على تواتر الاكتئاب وفقدان الاهتمام أو الاستمتاع بالأنشطة خلال الأسبوعين الماضيين.";
+  
+  var fullText = currentLang === 'en' ? fullTextEn : fullTextAr;
+  var truncatedText = fullText.substring(0, charLimit);
+
+  // Check if screen size is mobile
+  if (window.innerWidth < 724) {
+    if (fullText.length > charLimit) {
+      // Set truncated text with 'Show More' button
+      document.getElementById("text").innerHTML = 
+        truncatedText + 
+        '<span id="dots">...</span>' +
+        '<span id="more-text" style="display:none;">' + 
+        fullText.substring(charLimit) + 
+        '</span>' + 
+        '<span id="toggle-btn" style="color: blue; cursor: pointer;">' + 
+        (currentLang === 'en' ? ' Show More' : ' عرض المزيد') + 
+        '</span>';
+
+      // If the text was previously expanded, show it as expanded
+      if (isTextExpanded) {
+        document.getElementById("more-text").style.display = "inline";
+        document.getElementById("dots").style.display = "none";
+        document.getElementById("toggle-btn").innerHTML = (currentLang === 'en' ? ' Show Less' : ' إخفاء');
+      }
+
+      // Attach the event listener to the toggle button after it's created
+      var toggleBtn = document.getElementById("toggle-btn");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", toggleText);
+      }
+    } else {
+      document.getElementById("text").innerHTML = fullText;
+    }
+  } else {
+    document.getElementById("text").innerHTML = fullText;
+  }
+}
+
+function toggleText() {
+  var moreText = document.getElementById("more-text");
+  var dots = document.getElementById("dots");
+  var toggleBtn = document.getElementById("toggle-btn");
+
+  if (moreText.style.display === "none") {
+    moreText.style.display = "inline";
+    dots.style.display = "none";
+    toggleBtn.innerHTML = (currentLang === 'en' ? ' Show Less' : ' إخفاء');
+    isTextExpanded = true;  // Store the state as expanded
+  } else {
+    moreText.style.display = "none";
+    dots.style.display = "inline";
+    toggleBtn.innerHTML = (currentLang === 'en' ? ' Show More' : ' عرض المزيد');
+    isTextExpanded = false;  // Store the state as collapsed
+  }
+}
+
+window.onload = setInitialText;
+
+// Adjust text visibility when resizing the window
+window.onresize = function() {
+  setInitialText();
+};
+
+function adjustViewportForOrientation() {
+    const metaViewport = document.querySelector('meta[name="viewport"]');
+    if (window.matchMedia("(max-width: 1000px) and (orientation: landscape)").matches) {
+      metaViewport.setAttribute("content", "width=device-width, initial-scale=1.0");
+    } else {
+      metaViewport.setAttribute("content", "width=device-width, initial-scale=1.0");
+    }
+  }
+
+  // Adjust on page load
+  adjustViewportForOrientation();
+
+  // Adjust on orientation change
+  window.addEventListener("resize", adjustViewportForOrientation);
+
+  // Handle going to the next question
+  function nextQuestion() {
+    const currentInputs = questions[currentQuestion].querySelectorAll('input[type="radio"]');
+    let answered = false;
+
+    currentInputs.forEach(input => {
+      if (input.checked) {
+        answered = true;
+      }
+    });
+
+    if (answered) {
+      if (currentQuestion < questions.length - 1) {
+        setTimeout(() => {
+          currentQuestion++;
+          showQuestion(currentQuestion);
+        }, 500);
+      }
+    }
+  }
+
+  // Handle going to the previous question
+  function previousQuestion() {
+    if (currentQuestion > 0) {
+      currentQuestion--;
+      showQuestion(currentQuestion);
+      addRadioEventListeners();
+    }
+  }
+
+  // Add event listeners for radio buttons to move to the next question
+  function addRadioEventListeners() {
+    questions.forEach((question, questionIndex) => {
+      const radioInputs = question.querySelectorAll('input[type="radio"]');
+  
+      radioInputs.forEach(input => {
+        // Remove any existing event listener before adding a new one to avoid multiple triggers
+        input.removeEventListener('click', handleRadioClick);
+        input.addEventListener('click', handleRadioClick);
+      });
+    });
+  }
+  
+  function handleRadioClick() {
+    if (currentQuestion === questions.length - 1) {
+      return; // Do nothing if we are on the last question
+    }
+    nextQuestion();
+  }
+
+  // Function to toggle the language and update content accordingly
+  function toggleLanguage() {
+    currentLang = currentLang === 'en' ? 'ar' : 'en';
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.innerText = el.getAttribute(`data-${currentLang}`);
+    });
+
+    document.querySelector('.lang-toggle').innerText = currentLang === 'en' ? 'العربية' : 'English';
+    document.querySelector('input[name="lang"]').value = currentLang; // Update hidden input for language
+
+    // Update the URL without refreshing the page
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', currentLang);
+    window.history.pushState({}, '', url);
+    setInitialText();
+  }
+
+  // Initialize the form to ensure the correct language is set
+  document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    currentLang = urlParams.get('lang');
+
+    // If lang is undefined or not set, default to 'en'
+    if (!currentLang || currentLang === 'undefined') {
+      currentLang = 'en';
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', currentLang);
+      window.history.replaceState({}, '', url);
+    }
+
+    document.querySelector('input[name="lang"]').value = currentLang; // Set the hidden field to the current language
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.innerText = el.getAttribute(`data-${currentLang}`);
+    });
+
+    document.querySelector('.lang-toggle').innerText = currentLang === 'en' ? 'العربية' : 'English';
+
+    showQuestion(0);
+    addRadioEventListeners();
+  });
+</script>
+
+</body>
+</html>

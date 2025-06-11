@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Details</title>
+    <link rel="stylesheet" href="/path/to/your/styles.css">
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #2c7d5a;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.fixed-width th:first-child, 
+.fixed-width td:first-child {
+    width: 40%;
+}
+
+
+    </style>
+</head>
+<body>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h1>Survey Details</h1>
+        <button onclick="printSurvey()" style="background-color: #2c7d5a; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+            Print Survey
+        </button>
+    </div>
+    
+
+
+    <div>
+        <h2>Patient Name: <%= patient.firstName %> <%= patient.middleName %> <%= patient.lastName %></h2>
+        <p>DOB: <%= patient.DOB %></p>
+        <p>Speciality: <%= patient.speciality %></p>
+        <p>Phone Number: <%= patient.phoneNumber %></p>
+        <p>Hospital: <%= patient.hospital_code %></p>
+    </div>
+
+
+    <% if (EQ5DSurvey && EQ5DSurvey.length > 0) { %>
+    <div>
+        <h3>EQ-5D Survey</h3>
+        <table class="fixed-width">
+            <thead>
+                <tr>
+                    <th>Questions</th>
+                    <% EQ5DSurvey.forEach((assessment) => { %>
+                        <th><%- assessment.question %></th> <% }); %>
+                </tr>
+            </thead>
+            <tbody>
+                <% const eq5dDimensions = ['Mobility', 'Self-Care', 'Usual-Activities', 'Pain-Discomfort', 'Anxiety-Depression', 'Health State']; %>
+                
+                <%# Loop through each dimension to create a row for it %>
+                <% eq5dDimensions.forEach((dimension) => { %>
+                    <tr>
+                        <td><%= dimension %></td>
+                        <%# For each assessment, find the response for the current dimension %>
+                        <% EQ5DSurvey.forEach((assessment) => { 
+                            const responseValue = assessment.responses[dimension];
+                            let backgroundColor = '';
+
+                            // Logic for color-coding the cells
+                            if (responseValue) {
+                                // Extracts the number from strings like "(3/5)" or "80/100"
+                                const match = responseValue.match(/(\d+)\/\d+/);
+                                if (match) {
+                                    const value = parseInt(match[1]);
+                                    
+                                    // Coloring for 5-level dimensions
+                                    if (dimension !== 'Health State') {
+                                        if (value >= 4) backgroundColor = '#FF7F7F';      // Severe/Extreme -> Red
+                                        else if (value === 3) backgroundColor = '#FFCC80'; // Moderate -> Orange
+                                        else if (value === 2) backgroundColor = '#FFFF99'; // Slight -> Yellow
+                                    } 
+                                    // Optional: Coloring for Health State (lower score is worse)
+                                    else {
+                                        if (value < 50) backgroundColor = '#FF7F7F';
+                                        else if (value < 70) backgroundColor = '#FFCC80';
+                                    }
+                                }
+                            }
+                        %>
+                            <td style="background-color: <%= backgroundColor %>;">
+                                <%= responseValue || 'N/A' %>
+                            </td>
+                        <% }); %>
+                    </tr>
+                <% }); %>
+
+                <%# Add a final row for the language used %>
+                <tr>
+                    <td>Language</td>
+                    <% EQ5DSurvey.forEach((assessment) => { %>
+                        <td><%= assessment.responses['lang'] || 'N/A' %></td>
+                    <% }); %>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<% } %>
+
+
+<% if (PHQ2Survey && PHQ2Survey.length > 0) { %>
+    <div>
+        <h3>PHQ-2 Survey</h3>
+        <table class="fixed-width">
+            <thead>
+                <tr>
+                    <th>Questions</th>
+                    <% PHQ2Survey.forEach((assessment) => { %>
+                        <th><%- assessment.question %></th>
+                    <% }); %>
+                </tr>
+            </thead>
+            <tbody>
+                <% const phq2Questions = [
+                    "Little interest or pleasure in doing things",
+                    "Feeling down, depressed, or hopeless"
+                   ]; 
+                %>
+                
+                <% phq2Questions.forEach((questionText) => { %>
+                    <tr>
+                        <td><%= questionText %></td>
+                        <% PHQ2Survey.forEach((assessment) => { 
+                            const responseValue = assessment.responses[questionText];
+                            let backgroundColor = '';
+
+                            if (responseValue) {
+                                const match = responseValue.match(/\((\d+)\/\d+\)/);
+                                if (match) {
+                                    const value = parseInt(match[1]);
+                                    if (value === 3) backgroundColor = '#FF7F7F';      // Nearly every day -> Red
+                                    else if (value === 2) backgroundColor = '#FFCC80'; // More than half the days -> Orange
+                                    else if (value === 1) backgroundColor = '#FFFF99'; // Several Days -> Yellow
+                                }
+                            }
+                        %>
+                            <td style="background-color: <%= backgroundColor %>;">
+                                <%= responseValue || 'N/A' %>
+                            </td>
+                        <% }); %>
+                    </tr>
+                <% }); %>
+
+                <tr>
+                    <td>Language</td>
+                    <% PHQ2Survey.forEach((assessment) => { %>
+                        <td><%= assessment.responses['lang'] || 'N/A' %></td>
+                    <% }); %>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<% } %>
+
+    <% if (PAIN6bSurvey) { %>
+        <div>
+            <h3>Pain-Interference</h3>
+            <table class="fixed-width">
+                <thead>
+                    <tr>
+                        <th>Questions</th>
+                        <% PAIN6bSurvey.forEach((question) => { %>
+                            <th><%- question.question %></th> <!-- Assessment 1 (Formatted Date) -->
+                        <% }); %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Object.keys(PAIN6bSurvey[0].responses).forEach((responseKey) => { %>
+                        <tr>
+                            <td><%= responseKey %></td>
+                            <% PAIN6bSurvey.forEach((question) => { 
+                                const responseValue = question.responses[responseKey];
+                                let backgroundColor = '';
+                                
+                                // Set background color based on the value
+                                if (responseValue.includes('5/5')) {
+                                    backgroundColor = '#FF7F7F';
+                                } else if (responseValue.includes('4/5')) {
+                                    backgroundColor = '#FFCC80';
+                                }
+                            %>
+                                <td style="background-color: <%= backgroundColor %>;">
+                                    <%= responseValue %>
+                                </td>
+                            <% }); %>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    <% } %>
+    
+    <% if (PHYSICAL6bSurvey) { %>
+        <div>
+            <h3>Physical-Function</h3>
+            <table class="fixed-width">
+                <thead>
+                    <tr>
+                        <th>Questions</th>
+                        <% PHYSICAL6bSurvey.forEach((question) => { %>
+                            <th><%- question.question %></th> <!-- Assessment 1 (Formatted Date) -->
+                        <% }); %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Object.keys(PHYSICAL6bSurvey[0].responses).forEach((responseKey) => { %>
+                        <tr>
+                            <td><%= responseKey %></td>
+                            <% PHYSICAL6bSurvey.forEach((question) => { 
+                                const responseValue = question.responses[responseKey];
+                                let backgroundColor = '';
+                                
+                                // Set background color based on the value
+                                if (responseValue.includes('1/5')) {
+                                    backgroundColor = '#FF7F7F';
+                                } else if (responseValue.includes('2/5')) {
+                                    backgroundColor = '#FFCC80';
+                                }
+                            %>
+                                <td style="background-color: <%= backgroundColor %>;">
+                                    <%= responseValue %>
+                                </td>
+                            <% }); %>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    <% } %>    
+    
+    
+    <% if (PAIDSurvey) { %>
+        <div>
+            <h3>PAID Survey</h3>
+            <table class="fixed-width">
+                <thead>
+                    <tr>
+                        <th>Questions</th>
+                        <% PAIDSurvey.forEach((question) => { %>
+                            <th><%- question.question %></th> <!-- Assessment 1 (Formatted Date) -->
+                        <% }); %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Object.keys(PAIDSurvey[0].responses).forEach((responseKey) => { %>
+                        <tr>
+                            <td><%= responseKey %></td>
+                            <% PAIDSurvey.forEach((question) => { 
+                                const responseValue = question.responses[responseKey];
+                                let backgroundColor = '';
+                                
+                                // Apply background color based on response values
+                                if (responseValue.includes('4/4')) {
+                                    backgroundColor = '#FF7F7F'; // 4/4 -> light red (#FF7F7F)
+                                } else if (responseValue.includes('3/4')) {
+                                    backgroundColor = '#FFCC80'; // 3/4 -> light orange (#FFCC80)
+                                }
+                            %>
+                                <td style="background-color: <%= backgroundColor %>;">
+                                    <%= responseValue %>
+                                </td>
+                            <% }); %>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    <% } %>
+    
+    
+    <% if (PROMISSurvey) { %>
+        <div>
+            <h3>Global-Health</h3>
+            <table class="fixed-width">
+                <thead>
+                    <tr>
+                        <th>Questions</th>
+                        <% PROMISSurvey.forEach((question) => { %>
+                            <th><%- question.question %></th> <!-- Assessment 1 (Formatted Date) -->
+                        <% }); %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Object.keys(PROMISSurvey[0].responses).forEach((responseKey) => { %>
+                        <tr>
+                            <td><%= responseKey %></td>
+                            <% PROMISSurvey.forEach((question) => { 
+                                const responseValue = question.responses[responseKey];
+                                let backgroundColor = '';
+                                
+                                // Apply background color based on response value
+                                if (responseValue.includes('1/5') || responseValue.includes('9/10') || responseValue.includes('10/10')) {
+                                    backgroundColor = '#FF7F7F'; // 1/5, 9/10, 10/10 -> light red (#FF7F7F)
+                                } else if (responseValue.includes('2/5') || responseValue.includes('7/10') || responseValue.includes('8/10')) {
+                                    backgroundColor = '#FFCC80'; // 2/5, 7/10, 8/10 -> light orange (#FFCC80)
+                                } else if (responseValue.includes('5/10') || responseValue.includes('6/10')) {
+                                    backgroundColor = '#FFFF99'; // 5/10, 6/10 -> yellow
+                                }
+                            %>
+                                <td style="background-color: <%= backgroundColor %>;">
+                                    <%= responseValue %>
+                                </td>
+                            <% }); %>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    <% } %>
+
+    <% if (PAID5Survey) { %>
+    <div>
+        <h3>PAID-5 Survey</h3>
+        <table class="fixed-width">
+            <thead>
+                <tr>
+                    <th>Questions</th>
+                    <% PAID5Survey.forEach((question) => { %>
+                        <th><%- question.question %></th>
+                    <% }); %>
+                </tr>
+            </thead>
+            <tbody>
+                <% Object.keys(PAID5Survey[0].responses).forEach((responseKey) => { %>
+                    <tr>
+                        <td><%= responseKey %></td>
+                        <% PAID5Survey.forEach((question) => { 
+                            const responseValue = question.responses[responseKey];
+                            let backgroundColor = '';
+
+                            if (responseValue.includes('4/4')) {
+                                backgroundColor = '#FF7F7F'; 
+                            } else if (responseValue.includes('3/4')) {
+                                backgroundColor = '#FFCC80'; 
+                            }
+                        %>
+                            <td style="background-color: <%= backgroundColor %>;">
+                                <%= responseValue %>
+                            </td>
+                        <% }); %>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+<% } %>
+
+    
+    
+    <% if (ICIQSurvey) { %>
+        <div>
+            <h3>ICIQ-UI-SF Survey</h3>
+            <table class="fixed-width">
+                <thead>
+                    <tr>
+                        <th>Questions</th>
+                        <% ICIQSurvey.forEach((assessment) => { %>
+                            <th><%- assessment.question %></th> <!-- Assessment 1 (Formatted Date) -->
+                        <% }); %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Object.keys(ICIQSurvey[0].responses).forEach((responseKey) => { %>
+                        <tr>
+                            <td><%= responseKey %></td>
+                            <% ICIQSurvey.forEach((assessment) => { 
+                                const responseValue = assessment.responses[responseKey];
+                                let backgroundColor = '';
+                                
+                                // Apply background color based on value
+                                if (responseValue.includes('9/10') || responseValue.includes('10/10')) {
+                                    backgroundColor = '#FF7F7F';
+                                } else if (responseValue.includes('7/10') || responseValue.includes('8/10')) {
+                                    backgroundColor = '#FFCC80';
+                                } else if (responseValue.includes('5/10') || responseValue.includes('6/10')) {
+                                    backgroundColor = '#FFFF99';
+                                } else if (responseValue.includes('6/6')) {
+                                    backgroundColor = '#FF7F7F';
+                                } else if (responseValue.includes('4/6')) {
+                                    backgroundColor = '#FFCC80';
+                                } else if (responseValue.includes('5/5')) {
+                                    backgroundColor = '#FF7F7F';
+                                } else if (responseValue.includes('4/5')) {
+                                    backgroundColor = '#FFCC80';
+                                }
+                            %>
+                                <td style="background-color: <%= backgroundColor %>;">
+                                    <%= responseValue %>
+                                </td>
+                            <% }); %>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    <% } %>    
+    
+    
+    
+    <% if (WexnerSurvey) { %>
+        <div>
+            <h3>Wexner Survey</h3>
+            <table class="fixed-width">
+                <thead>
+                    <tr>
+                        <th>Questions</th>
+                        <% WexnerSurvey.forEach((question) => { %>
+                            <th><%- question.question %></th> <!-- Assessment 1 (Formatted Date) -->
+                        <% }); %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Object.keys(WexnerSurvey[0].responses).forEach((responseKey) => { %>
+                        <tr>
+                            <td><%= responseKey %></td>
+                            <% WexnerSurvey.forEach((question) => { 
+                                const responseValue = question.responses[responseKey];
+                                let backgroundColor = '';
+                                
+                                // Set background color based on the response value
+                                if (responseValue.includes('4/4')) {
+                                    backgroundColor = '#FF7F7F'; // 4/4 -> red
+                                } else if (responseValue.includes('3/4')) {
+                                    backgroundColor = '#FFCC80'; // 3/4 -> orange
+                                }
+                            %>
+                                <td style="background-color: <%= backgroundColor %>;">
+                                    <%= responseValue %>
+                                </td>
+                            <% }); %>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    <% } %>
+    
+    
+    <% if (EPDSSurvey) { %>
+        <div>
+            <h3>EPDS Survey</h3>
+            <table class="fixed-width">
+                <thead>
+                    <tr>
+                        <th>Questions</th>
+                        <% EPDSSurvey.forEach((question) => { %>
+                            <th><%- question.question %></th> <!-- Assessment 1 (Formatted Date) -->
+                        <% }); %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Object.keys(EPDSSurvey[0].responses).forEach((responseKey) => { %>
+                        <tr>
+                            <td><%= responseKey %></td>
+                            <% EPDSSurvey.forEach((question) => { 
+                                const responseValue = question.responses[responseKey];
+                                let backgroundColor = '';
+                                
+                                // Set background color based on the response value
+                                if (responseValue.includes('3/3')) {
+                                    backgroundColor = '#FF7F7F'; // 3/3 -> red
+                                } else if (responseValue.includes('2/3')) {
+                                    backgroundColor = '#FFCC80'; // 2/3 -> orange
+                                }
+                            %>
+                                <td style="background-color: <%= backgroundColor %>;">
+                                    <%= responseValue %>
+                                </td>
+                            <% }); %>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    <% } %>
+    
+   
+    <% if (patient.FORM_ID) { %>
+        <% Object.keys(patient.FORM_ID).forEach(formId => { %>
+            <% const form = patient.FORM_ID[formId]; %>
+    
+            <div>
+                <h3><%= form.assessments[0].scoreDetails.Name %></h3>
+    
+                <table class="fixed-width">
+                    <thead>
+                        <tr>
+                            <th>Questions</th>
+                            <% form.assessments.forEach((assessment, index) => { %>
+                                <% 
+                                    const timestamp = new Date(assessment.timestamp.$date || assessment.timestamp);
+                                    const formattedDate = timestamp.toLocaleDateString('en-US', {
+                                        day: 'numeric',
+                                        month: 'short',
+                                        year: 'numeric'
+                                    }).replace(/(\d+)(st|nd|rd|th)/, "$1<sup>$2</sup>");
+                                %>
+                                <th>Assessment <%= index + 1 %> <br>(<%= formattedDate %>, T-Score: <%= assessment.scoreDetails['T-Score'] %>)</th>
+                            <% }); %>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% form.assessments[0].scoreDetails.Items.forEach((item, itemIndex) => { %>
+                            <tr>
+                                <td><%= item.Elements[Math.floor(item.Elements.length / 2)].Description %></td>
+                                <% form.assessments.forEach(assessment => { %>
+                                    <% const response = assessment.scoreDetails.Items[itemIndex].Response; %>
+                                    <% const mapElement = assessment.scoreDetails.Items[itemIndex].Elements.find(el => el.Map); %>
+                                    <% const responseLabel = mapElement && mapElement.Map ? 
+                                        mapElement.Map.find(map => map.Value === response)?.Description : 'Unknown label'; %>
+                                    <td><%= responseLabel %> (<%= response %>)</td>
+                                <% }); %>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+    
+        <% }); %>
+    <% } else { %>
+        <p style="display: none;">No survey data available for this patient.</p> 
+    <% } %>
+    
+
+    <script>
+        function printSurvey() {
+            window.print();
+        }
+    </script>
+     
+
+</body>
+</html>

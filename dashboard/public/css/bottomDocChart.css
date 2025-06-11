@@ -1,0 +1,59 @@
+/* Style for the SVG container */
+svg {
+    background-color: #f9f9f9; /* Light background for the chart */
+    border: 1px solid #ccc;    /* Subtle border around the chart */
+    border-radius: 5px;        /* Rounded corners */
+}
+
+/* Style for the bars */
+.bar {
+    transition: fill 0.3s ease, height 0.3s ease; /* Smooth transition */
+}
+
+/* Bar hover effect */
+/* .bar:hover {
+    fill: #343a40;             
+} */
+
+/* Style for the bar labels */
+.bar-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    fill: #333;                /* Dark color for labels */
+    font-weight: bold;
+    pointer-events: none;      /* Prevent hover interactions */
+}
+
+/* Style for the axes */
+.axis-label path,
+.axis-label line {
+    stroke: #666;              /* Darker gray for axes lines */
+    stroke-width: 1;
+}
+
+.axis-label text {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    fill: #333;                /* Dark text color */
+    font-weight: bold;
+}
+
+/* Tooltip (if used later) */
+.tooltip {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 12px;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+    .bar-label {
+        font-size: 10px;       /* Smaller font for smaller screens */
+    }
+}

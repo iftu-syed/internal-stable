@@ -1,0 +1,13 @@
+2025-01-22 13:44:13 | Severity: INFO | Event: Authenticated Access | Action: User GIFTYsup accessed protected route
+2025-01-22 13:44:25 | Severity: INFO | Event: Hospital Form Accessed | Action: User GIFTYsup accessed add hospital form
+2025-01-22 13:44:25 | Severity: INFO | Event: Authenticated Access | Action: User GIFTYsup accessed protected route
+2025-01-22 13:44:27 | Severity: INFO | Event: Authenticated Access | Action: User GIFTYsup accessed protected route
+2025-01-22 13:47:41 | Severity: INFO | Event: Authenticated Access | Action: User GIFTYsup accessed protected route
+2025-01-22 13:53:14 | Severity: INFO | Event: Authenticated Access | Action: User GIFTYsup accessed protected route
+2025-01-22 13:54:10 | Severity: INFO | Event: Authenticated Access | Action: User GIFTYsup accessed protected route
+2025-01-22 13:55:02 | Severity: INFO | Event: Authenticated Access | Action: User GIFTYsup accessed protected route
+2025-01-22 13:55:40 | Severity: INFO | Event: Authenticated Access | Action: User GIFTYsup accessed protected route
+2025-01-23 05:04:01 | Severity: WARNING | Event: Unauthenticated Access | Action: User attempted to access protected route without being logged in
+2025-01-23 05:04:21 | Severity: WARNING | Event: Unauthenticated Access | Action: User attempted to access protected route without being logged in
+2025-01-23 05:04:43 | Severity: WARNING | Event: Unauthenticated Access | Action: User attempted to access protected route without being logged in
+2025-01-23 05:07:14 | Severity: WARNING | Event: Unauthenticated Access | Action: User attempted to access protected route without being logged in

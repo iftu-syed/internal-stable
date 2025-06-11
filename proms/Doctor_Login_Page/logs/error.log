@@ -1,0 +1,1566 @@
+2024-08-11T08:14:39.054Z - Error generating graph for Knee OA Fatigue for Mr_no: 55 - Error: Command failed: python python_scripts/script-d3.py 55 "Knee OA Fatigue"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1545, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-08-11T08:23:51.110Z - Error generating graph for Wexner for Mr_no: 66 - Error: Command failed: python python_scripts/script-d3.py 66 "Wexner"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1561, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-11T08:23:51.120Z - Error generating graph for PROMIS-10 for Mr_no: 66 - Error: Command failed: python python_scripts/script-d3.py 66 "PROMIS-10"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1561, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-11T08:23:51.122Z - Error generating graph for EPDS for Mr_no: 66 - Error: Command failed: python python_scripts/script-d3.py 66 "EPDS"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1561, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-11T08:23:51.130Z - Error generating graph for ICIQ-UI_SF for Mr_no: 66 - Error: Command failed: python python_scripts/script-d3.py 66 "ICIQ-UI_SF"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1561, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-11T08:23:53.274Z - Error generating graph for ICIQ-UI_SF for Mr_no: 66 - Error: Command failed: python python_scripts/script-d3.py 66 "ICIQ-UI_SF"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1561, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-11T08:23:53.275Z - Error generating graph for Wexner for Mr_no: 66 - Error: Command failed: python python_scripts/script-d3.py 66 "Wexner"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1561, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-11T08:23:53.278Z - Error generating graph for EPDS for Mr_no: 66 - Error: Command failed: python python_scripts/script-d3.py 66 "EPDS"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1561, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-11T08:23:53.278Z - Error generating graph for PROMIS-10 for Mr_no: 66 - Error: Command failed: python python_scripts/script-d3.py 66 "PROMIS-10"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1561, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-11T09:43:21.654Z - Error generating graph for Pain Interference for Mr_no: 66 - Error: Command failed: python python_scripts/script-d3.py 66 "Pain Interference"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1545, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-08-11T10:09:52.436Z - Error generating graph for Knee OA Fatigue for Mr_no: 66 - Error: Command failed: python python_scripts/script-d3.py 66 "Knee OA Fatigue"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1545, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-08-11T10:51:38.089Z - Error generating graph for PROMIS-10 for Mr_no: 66 - Error: Command failed: python python_scripts/script-d3.py 66 "PROMIS-10"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1545, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-08-13T16:19:16.045Z - Error generating graph for ICIQ-UI_SF for Mr_no: 66 - Error: Command failed: python python_scripts/script-d3.py 66 "ICIQ-UI_SF"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1545, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-08-13T16:48:33.481Z - Error generating graph for EPDS for Mr_no: 66 - Error: Command failed: python python_scripts/script-d3.py 66 "EPDS"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2301, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1545, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-08-15T06:43:51.305Z - Error during login for username Ravi_2: Doctor is not defined
+2024-08-15T06:45:46.042Z - Error during login for username Ravi_2: Operation `doctors.findOne()` buffering timed out after 10000ms
+2024-08-15T06:48:44.206Z - Error during login for username Ravi_2: Doctor is not defined
+2024-08-15T06:53:08.135Z - Error during login for username Ravi_2: Doctor is not defined
+2024-08-20T10:28:44.698Z - Error generating graph for PROMIS-10_d for Mr_no: 798 - Error: Command failed: python python_scripts/script-d3.py 798 "PROMIS-10_d"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-20T10:28:44.700Z - Error generating graph for PAID for Mr_no: 798 - Error: Command failed: python python_scripts/script-d3.py 798 "PAID"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:48:54.055Z - Error generating graph for Knee OA Depression for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Depression"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:48:54.058Z - Error generating graph for Knee OA Fatigue for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Fatigue"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:48:54.061Z - Error generating graph for Pain Interference for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Pain Interference"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:48:54.064Z - Error generating graph for Physical Function for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Physical Function"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:50:23.977Z - Error generating graph for Pain Interference for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Pain Interference"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:50:23.982Z - Error generating graph for Physical Function for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Physical Function"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:50:23.991Z - Error generating graph for Knee OA Depression for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Depression"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:50:23.992Z - Error generating graph for Knee OA Fatigue for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Fatigue"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:50:50.486Z - Error generating graph for Knee OA Fatigue for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Fatigue"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:50:50.489Z - Error generating graph for Pain Interference for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Pain Interference"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:50:50.494Z - Error generating graph for Physical Function for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Physical Function"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:50:50.496Z - Error generating graph for Knee OA Depression for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Depression"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:51:11.927Z - Error generating graph for Knee OA Fatigue for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Fatigue"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:51:11.932Z - Error generating graph for Physical Function for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Physical Function"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:51:11.937Z - Error generating graph for Pain Interference for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Pain Interference"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:51:11.937Z - Error generating graph for Knee OA Depression for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Depression"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:51:20.521Z - Error generating graph for Knee OA Depression for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Depression"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:51:20.522Z - Error generating graph for Knee OA Fatigue for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Fatigue"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:51:20.526Z - Error generating graph for Physical Function for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Physical Function"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:51:20.532Z - Error generating graph for Pain Interference for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Pain Interference"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:56:46.300Z - Error generating graph for Pain Interference for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Pain Interference"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:56:46.302Z - Error generating graph for Physical Function for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Physical Function"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:56:46.305Z - Error generating graph for Knee OA Depression for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Depression"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:56:46.307Z - Error generating graph for Knee OA Fatigue for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Fatigue"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:56:50.387Z - Error generating graph for Pain Interference for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Pain Interference"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:56:50.388Z - Error generating graph for Physical Function for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Physical Function"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:56:50.391Z - Error generating graph for Knee OA Fatigue for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Fatigue"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T06:56:50.394Z - Error generating graph for Knee OA Depression for Mr_no: 8788 - Error: Command failed: python python_scripts/script-d3.py 8788 "Knee OA Depression"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2367, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T17:19:04.846Z - Error generating graph for Knee OA Fatigue for Mr_no: 845 - Error: Command failed: python python_scripts/script-d3.py 845 "Knee OA Fatigue"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T17:19:04.854Z - Error generating graph for Knee OA Depression for Mr_no: 845 - Error: Command failed: python python_scripts/script-d3.py 845 "Knee OA Depression"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T17:19:04.853Z - Error generating graph for Pain Interference for Mr_no: 845 - Error: Command failed: python python_scripts/script-d3.py 845 "Pain Interference"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T17:19:04.861Z - Error generating graph for Physical Function for Mr_no: 845 - Error: Command failed: python python_scripts/script-d3.py 845 "Physical Function"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T17:19:15.357Z - Error generating graph for Knee OA Depression for Mr_no: 845 - Error: Command failed: python python_scripts/script-d3.py 845 "Knee OA Depression"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T17:19:15.362Z - Error generating graph for Physical Function for Mr_no: 845 - Error: Command failed: python python_scripts/script-d3.py 845 "Physical Function"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T17:19:15.364Z - Error generating graph for Knee OA Fatigue for Mr_no: 845 - Error: Command failed: python python_scripts/script-d3.py 845 "Knee OA Fatigue"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-23T17:19:15.365Z - Error generating graph for Pain Interference for Mr_no: 845 - Error: Command failed: python python_scripts/script-d3.py 845 "Pain Interference"
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'trace_name'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1616, in combine_all_csvs
+    combined_df['trace_name'] = combined_df['trace_name'].replace({
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/frame.py", line 3893, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'trace_name'
+
+2024-08-26T11:32:51.968Z - Error adding event for patient Mr_no: 6345 by Doctor wgh_mb_mdavis - Error: Cannot read properties of undefined (reading 'surveyTime')
+2024-08-28T07:46:03.687Z - Error generating graph for Knee OA Depression for Mr_no: 6345 - Error: Command failed: python python_scripts/script-d3.py 6345 "Knee OA Depression"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1670, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-08-28T09:35:58.679Z - Error generating graph for Knee OA Depression for Mr_no: 6345 - Error: Command failed: python python_scripts/script-d3.py 6345 "Knee OA Depression"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1670, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-08-28T09:49:32.438Z - Error generating graph for Knee OA Depression for Mr_no: 6345 - Error: Command failed: python python_scripts/script-d3.py 6345 "Knee OA Depression"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1670, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-09-25T05:24:16.502Z - Error generating graph for Wexner for Mr_no: 990 - Error: Command failed: python python_scripts/script-d3.py 990 "Wexner"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1670, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-09-25T11:21:03.398Z - Error generating graph for ICIQ_UI_SF for Mr_no: 88 - Error: Command failed: python python_scripts/script-d3.py 88 "ICIQ_UI_SF"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1670, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-10-01T10:32:29.297Z - Error generating graph for EPDS for Mr_no: 898 - Error: Command failed: python python_scripts/script-d3.py 898 "EPDS"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1670, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-11-02T09:25:45.543Z - Error generating graph for PAID for Mr_no: 991 - Error: Command failed: python python_scripts/script-d3.py 991 "PAID"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1670, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-11-05T11:27:43.729Z - Error generating graph for PROMIS-10 for Mr_no: 885 - Error: Command failed: python python_scripts/script-d3.py 885 "PROMIS-10"
+Traceback (most recent call last):
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 2444, in <module>
+    combine_all_csvs(mr_no)
+  File "/Users/vijaychagantipati/Documents/Developer/node projects/proms/Doctor_Login_Page/python_scripts/script-d3.py", line 1670, in combine_all_csvs
+    df = pd.read_csv(csv_file)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/readers.py", line 1723, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 586, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+
+2024-12-10T14:11:04.907Z - Error adding event for patient Mr_no: 987 by Doctor wsc01_dsmith - Error: Invalid URL
+2025-01-20T07:43:42.962Z - Error adding event for patient Mr_no: 666 by Doctor wsc01_tsample - Error: Request failed with status code 500
+2025-01-20T08:05:15.701Z - Error adding event for patient Mr_no: 666 by Doctor wsc01_tsample - Error: Request failed with status code 500
+2025-01-20T08:06:21.084Z - Error adding event for patient Mr_no: 666 by Doctor wsc01_tsample - Error: Request failed with status code 500
+2025-01-20T08:08:26.857Z - Error adding event for patient Mr_no: 666 by Doctor wsc01_tsample - Error: Request failed with status code 500
+2025-01-20T08:20:57.117Z - Error adding event for patient Mr_no: 666 by Doctor wsc01_tsample - Error: Request failed with status code 500
+2025-01-20T08:24:10.777Z - Error adding event for patient Mr_no: 666 by Doctor wsc01_tsample - Error: Request failed with status code 500
+2025-01-20T08:24:57.964Z - Error adding event for patient Mr_no: 666 by Doctor wsc01_tsample - Error: Request failed with status code 500
+2025-01-20T08:25:17.491Z - Error adding event for patient Mr_no: 666 by Doctor wsc01_tsample - Error: Request failed with status code 500
+2025-01-20T08:39:16.631Z - Error adding event for patient Mr_no: 666 by Doctor wsc01_tsample - Error: Request failed with status code 500
+2025-01-20T08:44:22.712Z - Error adding event for patient Mr_no: 666 by Doctor wsc01_tsample - Error: Request failed with status code 500
+2025-03-05T20:26:40.129Z - Error adding event for patient Mr_no: 600 by Doctor wsc01_tsample - Error: 
+2025-03-05T20:29:19.915Z - Error adding event for patient Mr_no: 600 by Doctor wsc01_tsample - Error: Request failed with status code 500
+2025-03-27T05:20:51.724Z - Error during login for username abdullah.al-fayez.wsc01: Survey is not defined
+2025-03-27T05:23:13.142Z - Error adding ICD code for patient Mr_no: 99 by Doctor abdullah.al-fayez.wsc01 - Error: Code is not defined

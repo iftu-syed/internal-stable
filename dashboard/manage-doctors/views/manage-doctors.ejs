@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Providers and Staff</title>
+    <link rel="stylesheet" href="<%= basePath %>/styles/styles.css">    
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<%= basePath %>/css/introjs.min.css">
+
+</head>
+<style>
+    #copied-animation i {
+    font-size: 20px; /* Icon size */
+    vertical-align: middle;
+    margin-right: 8px;
+}
+#staff-success-message-box i {
+    font-size: 14px; /* Adjust size of icons */
+    display: grid;
+    cursor: pointer;
+    color: #007bff; /* Default icon color */
+    transition: color 0.3s ease;
+    padding: 10px; /* Add padding around the icons */
+}
+
+#staff-success-message-box i:hover {
+    color: #0056b3; /* Change color on hover */
+}
+
+#staff-success-message-box i.bx-copy-alt {
+    color: #17a2b8; /* Different color for Copy icon */
+}
+
+#staff-success-message-box i.bx-printer {
+    color: #ffc107; /* Different color for Print icon */
+}
+
+#staff-success-message-box i.bx-check-circle {
+    color: #28a745; /* Different color for OK icon */
+}
+body[dir="rtl"] {
+      direction: rtl;
+      text-align: right;
+      font-family: "Arial", sans-serif;
+    }
+
+    body[dir="ltr"] {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .language-selector {
+      text-align: right;
+    }
+
+    .language-selector a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: #007BFF;
+    }
+
+    .language-selector a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .language-selector img {
+      margin-right: 5px;
+      width: 20px;
+      height: auto;
+      vertical-align: bottom;
+    }
+
+    
+#success-message-box i {
+    font-size: 14px; /* Adjust size of icons */
+    display: grid;
+    cursor: pointer;
+    color: #007bff; /* Default icon color */
+    transition: color 0.3s ease;
+    padding: 10px; /* Add padding around the icons */
+}
+
+#success-message-box i:hover {
+    color: #0056b3; /* Change color on hover */
+}
+
+#success-message-box i.bx-copy-alt {
+    color: #17a2b8; /* Different color for Copy icon */
+}
+
+#success-message-box i.bx-printer {
+    color: #ffc107; /* Different color for Print icon */
+}
+
+#success-message-box i.bx-check-circle {
+    color: #28a745; /* Different color for OK icon */
+}
+
+  .circle-list {
+    list-style-type: circle;
+  }
+
+  .introjs-tooltipbuttons {
+    text-align: right; /* Align buttons to the right */
+
+}
+
+.help-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.help-btn:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+}
+
+
+.help-button-container {
+    position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #12171e;
+  padding: 12px 0;
+  transition: all 0.5s ease;
+}
+
+/* Ensure the button aligns well with sidebar's active state */
+.sidebar.active .help-btn {
+    color: #fff;
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+}
+
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%;
+    animation: customModalAppear 0.3s ease-out;
+    overflow: hidden;
+}
+
+@keyframes customModalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.custom-modal-header {
+    background-color: #12171e;
+    color: white;
+    padding: 15px 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.custom-modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.custom-modal-body {
+    padding: 20px;
+    color: #333;
+}
+
+.custom-modal-footer {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid #eee;
+}
+
+.custom-modal-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.custom-cancel-btn {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.custom-cancel-btn:hover {
+    background-color: #e1e1e1;
+}
+
+.custom-delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.custom-delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* RTL Support */
+[dir="rtl"] .custom-modal-footer {
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+}
+
+body.custom-modal-open {
+    overflow: hidden;
+}
+
+</style>
+<body>
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+
+        <div class="user">
+            <div>
+                <!-- <p class="bold">Hospital Admin</p> -->
+                <p class="bold" id="adminRole">Admin</p>
+                <p class="bold"><%= hospitalName %></p>
+                <p class="bold"><%= site_code %></p>
+                <hr class="spacer">
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a href="http://localhost/hospitaladmin/admin-dashboard">
+                    <i class="bx bxs-grid-alt"></i>
+                    <span class="nav-item" id="dashboardLabel">Admin Dashboard</span>
+                </a>
+                <span class="tooltip" id="dashboardTooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="<%= basePath %>/doctors">
+                    <i class='bx bx-group'></i>
+                    <span class="nav-item" id="manageProviders">Manage Providers</span>
+                </a>
+                <span class="tooltip" id="allProviders">All Providers</span>
+            </li>
+            <li>
+                <a href="http://localhost/surveyapp/">
+                    <i class='bx bx-book-content'></i>
+                    <span class="nav-item" id="manageSurveys">Manage Surveys</span>
+                </a>
+                <span class="tooltip" id="allSurveys">All Surveys</span>
+            </li>
+
+            <li>
+                <a href="http://localhost/surveyapp/add">
+                    <i class='bx bx-folder-plus'></i>
+                    <span class="nav-item" id="addSpecialty">Add New Specialty</span>
+                </a>
+                <span class="tooltip" id="newSpecialty">New Specialty</span>
+            </li>
+            <li>
+                <a href="http://localhost/hospitaladmin/perf-dashboard">
+                    <i class='bx bxs-report'></i>
+                    <span class="nav-item" id="viewReports">View Reports</span>
+                </a>
+                <span class="tooltip" id="reports">Reports</span>
+            </li>
+            <li>
+                <a href="http://localhost/hospitaladmin/">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item" id="logoutLabel">Logout</span>
+                </a>
+                <span class="tooltip" id="logoutTooltip">Logout</span>
+            </li>
+        </ul>
+        <div class="help-button-container">
+            <button id="helpButton" class="help-btn" data-title="Reset" data-intro="You can view the tour guide again by clicking here">
+                <span class="nav-item" id="helpLabel">Help </span>
+                <i class='bx bx-help-circle'></i>
+            </button>
+            
+        
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+            <!-- <h1>Welcome, Hospital Admin</h1> -->
+            <h2 style="color: #333333;">
+                <%= lng === 'ar' 
+                    ? `مرحباً , ${firstName} ${lastName}` 
+                    : `Welcome, ${firstName} ${lastName}` 
+                %>
+            </h2>
+        </div>
+
+        <hr style="opacity: 0.5;">
+        <div class="language-selector" style="text-align: right; padding: 10px; background-color: #fff;">
+            <a href="?lng=en" class="<%= lng === 'en' ? 'active' : '' %>">
+                <img src="<%= basePath %>/assets/usa.png" alt="English Flag">English
+            </a> |
+            <a href="?lng=ar" class="<%= lng === 'ar' ? 'active' : '' %>">
+                <img src="<%= basePath %>/assets/flag.png" alt="Arabic Flag">العربية
+            </a>
+          </div>
+<div class="tables-container" style="display: flex; justify-content: space-between;">
+    <div class="column1">
+        <div class="top-options" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+        <br><h2 id="manageProvidersHeader" style="color: #333333;">Manage Providers</h2><br><div id="error-message" style="color: red; display: none;"></div>
+        <form action="<%= basePath %>/doctors" method="POST">
+            <!-- Replace the single name input with firstName and lastName -->
+            <input type="text" id="firstName" name="firstName" placeholder="First Name" required data-title="Add Doctor" data-intro="Add first and last name of doctor">
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+
+            <label id="specialityLabel" for="speciality">Speciality:</label>
+            <select id="speciality" name="speciality" aria-placeholder="Speciality/Department" required data-title="Speciality" data-intro="Assign speciality">
+                <% specialities.forEach(speciality => { %>
+                    <option value="<%= speciality %>"><%= speciality %></option>
+                <% }); %>
+            </select>
+            <!-- Hidden input to store hospitalName from the session, it will not be displayed in the UI -->
+<input type="hidden" name="hospitalName" value="<%= hospitalName %>">
+
+            <button id="addProviderButton" type="submit" data-title="Click" data-intro="A doctor will be added to your clinic"><i class='bx bx-user-check' ></i> Add Provider</button>
+        </form>
+    </div>
+        <div class="table-container">
+            <table dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+                <thead>
+                <tr style="position: sticky;" data-title="Data" data-intro="Here you can view the username,speciality and assigned surveys">
+                    <th id="doctorHeader" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Doctor</th>
+                    <th id="usernameHeader" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Username</th>
+                    <th id="specialityHeader" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Speciality</th>
+                    <th id="listOfSurveysHeader" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">List of Surveys</th>
+                    <th id="actionHeader" data-title="Edit/Delete" data-intro="Edit/Delete a doctor of your clinic here." style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Action</th>
+                </tr>
+            </thead>
+                <% doctors.forEach(doctor => { %>
+                    <tr>
+                        <!-- Replace doctor.name with doctor.firstName + ' ' + doctor.lastName -->
+                        <td style="max-width: 50px; text-align: <%= lng === 'ar' ? 'right' : 'left' %>; "><%= doctor.firstName + ' ' + doctor.lastName %></td>
+                        <td style="max-width:50px; text-align: <%= lng === 'ar' ? 'right' : 'left' %>;" ><%= doctor.username %></td>
+                        <td style="max-width: 50px; text-align: <%= lng === 'ar' ? 'right' : 'left' %>;"><%= doctor.speciality %></td>
+                        <td>
+                            <ul style="max-width:fit-content; padding-left: 0; text-align: justify; text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">
+                                <% if (doctor.surveyName && doctor.surveyName.length) { %>
+                                    <% doctor.surveyName.forEach(name => { %>
+                                        <li class="circle-list"><%- name %></li>
+                                    <% }); %>
+                                <% } else { %>
+                                    <li style="list-style-type: circle;">No surveys available</li>
+                                <% } %>
+                            </ul>
+                        </td>
+                                              
+                        
+                        <td style="width: 33%; text-align: <%= lng === 'ar' ? 'right' : 'left' %>;" >
+                            <a href="<%= basePath %>/doctors/edit/<%= doctor.id %>"><button class="edit-btn"><i class='bx bx-edit-alt'></i> <%= lng === 'ar' ? 'تعديل' : 'Edit' %></button></a>
+                            <form class="delete-style" action="<%= basePath %>/delete/<%= doctor.id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this record?');" style="display: inline;">
+                                <button class="delete-btn"><i class='bx bxs-message-square-minus'></i> <%= lng === 'ar' ? 'حذف' : 'Delete' %></button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </table>
+            <% if (successMessage.length > 0) { %>
+                <!-- <div class="flash-message success"><%= successMessage %></div> -->
+                <% } %>
+                <script>
+                    setTimeout(() => {
+                        document.querySelector('.flash-message.success').style.display = 'none';
+                    }, 3000);
+                </script>
+
+        </div>
+        <!-- Enhanced Success Message Box with Icons -->
+        <% if (adminCredentials) { %>
+            <div id="success-message-box" style="display: block; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background-color: #fff; border: 2px solid #ccc; padding: 30px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); z-index: 1000; width: 320px; border-radius: 10px;">
+                <button onclick="closeMessageBox()" style="position:absolute; top:3px; right:10px; border:none; background:none; font-size:25px; cursor:pointer;">&times;</button>
+                <h3 id="doctorAddedMessage" style="text-align: center; margin-bottom: 20px;">Doctor Added Successfully!</h3>
+                <p><strong>Username:</strong> <%= adminCredentials.username %></p>
+                <p><strong>Password:</strong> <%= adminCredentials.password %></p>
+            
+                <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+                    <i class="bx bx-copy-alt" onclick="copyToClipboard('<%= adminCredentials.username %>', '<%= adminCredentials.password %>')" title="Copy to Clipboard">Copy</i>
+                    <i class="bx bx-printer" onclick="printCredentials('<%= adminCredentials.username %>', '<%= adminCredentials.password %>')" title="Print">Print</i>
+                    <i class="bx bx-check-circle" onclick="closeMessageBox()" title="OK">OK</i>
+                </div>
+            </div>
+            <% } %>            
+        
+
+        <div id="copied-animation" style="display:none; position:fixed; top:45%; left:50%; transform:translate(-50%, -50%); background-color: #28a745; color: #fff; padding: 10px 20px; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); z-index: 1001;">
+            <i class='bx bx-check-circle' style="font-size: 20px; vertical-align: middle; margin-right: 8px;"></i>
+            Copied to Clipboard!
+        </div>
+        
+
+
+
+
+    </div><hr>
+<div class="column2">
+    
+    <!-- <% if (staffUsername && staffPassword) { %>
+        <div id="staff-success-message-box" style="display: block; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background-color: #fff; border: 2px solid #ccc; padding: 30px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); z-index: 1000; width: 320px; border-radius: 10px;">
+            <button onclick="closeStaffMessageBox()" style="position:absolute; top:3px; right:10px; border:none; background:none; font-size:25px; cursor:pointer;">&times;</button>
+            <h3 style="text-align: center; margin-bottom: 20px;">Staff Added Successfully!</h3>
+            <p><strong>Username:</strong> <%= staffUsername %></p>
+            <p><strong>Password:</strong> <%= staffPassword %></p>
+            <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+                <i class="bx bx-copy-alt" onclick="copyStaffCredentials()" title="Copy to Clipboard">Copy</i>
+                <i class="bx bx-printer" onclick="printStaffCredentials()" title="Print">Print</i>
+                <i class="bx bx-check-circle" onclick="closeStaffMessageBox()" title="OK">OK</i>
+            </div>
+        </div>
+    <% } %>
+        -->
+
+        <% if (staffCredentials) { %>
+            <div id="staff-success-message-box" style="display: block; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background-color: #fff; border: 2px solid #ccc; padding: 30px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); z-index: 1000; width: 320px; border-radius: 10px;">
+                <button onclick="closeStaffMessageBox()" style="position:absolute; top:3px; right:10px; border:none; background:none; font-size:25px; cursor:pointer;">&times;</button>
+                <h3 style="text-align: center; margin-bottom: 20px;">Staff Updated Successfully!</h3>
+                <p><strong>Username:</strong> <%= staffCredentials.username %></p>
+                <p><strong>Password:</strong> <%= staffCredentials.password %></p>
+                <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+                    <i class="bx bx-copy-alt" onclick="copyStaffCredentials('<%= staffCredentials.username %>', '<%= staffCredentials.password %>')" title="Copy to Clipboard">Copy</i>
+                    <i class="bx bx-printer" onclick="printStaffCredentials('<%= staffCredentials.username %>', '<%= staffCredentials.password %>')" title="Print">Print</i>
+                    <i class="bx bx-check-circle" onclick="closeStaffMessageBox()" title="OK">OK</i>
+                </div>
+            </div>
+        <% } %>
+        
+
+<!-- Animation for Copied Notification (Staff) -->
+<div id="staff-copied-animation" style="display:none; position:absolute; right:10%; top:35%; background-color: #28a745; color: #fff; padding: 10px 20px; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); z-index: 1001;">
+    <i class='bx bx-check-circle' style="font-size: 20px; vertical-align: middle; margin-right: 8px;"></i>
+    Copied to Clipboard!
+</div>
+
+<div class="top-options" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+    <!-- Manage Staff Section -->
+    <br><h2 id="manageStaffHeader" style="color: #333333;">Manage Staff</h2><br>
+    <form action="<%= basePath %>/staff" method="POST">
+        <input type="text" id="firstNamee" name="firstName" placeholder="First Name" required data-title="Add Staff" data-intro="Enter firstname and last name">
+        <input type="text" id="lastNamee" name="lastName" placeholder="Last Name" required>
+        <!-- <input type="password" id="password" name="password" placeholder="Password" required> -->
+        <input type="hidden" id="speciality" name="speciality" value="STAFF"> <!-- Set speciality to STAFF -->
+        <!-- Hidden input to store hospitalName from the session, it will not be displayed in the UI -->
+<input type="hidden" name="hospitalName" value="<%= hospitalName %>">
+
+        <button id="addStaffButton" type="submit" data-title="Click" data-intro="Assign reception staff to oversee collection rates & send reminders."><i class='bx bx-user-check'></i> Add Staff</button>
+    </form>  </div>
+<div class="table-container" style="background-color: #fdfcfc;" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+
+<table>
+<tr>
+    <th id="nameHeaderr" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Name</th>
+    <th id="usernameHeaderr" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Username</th>
+    <th id="actionHeaderr" data-title="Edit/Delete" data-intro="Edit/Delete a staff of your clinic here." style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Action</th>
+</tr>
+<% staff.forEach(member => { %>
+    <tr>
+        <!-- Combine firstName and lastName to display full name -->
+        <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;"><%= member.firstName + ' ' + member.lastName %></td>
+        <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;"><%= member.username %></td>
+        <td style="width: 50%; text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">
+            <a href="<%= basePath %>/staff/edit/<%= member._id %>"><button class="edit-btn"><i class='bx bx-edit-alt'></i> <%= lng === 'ar' ? 'تعديل' : 'Edit' %></button></a>
+            <form class="delete-style" action="<%= basePath %>/staff/delete/<%= member._id %>" method="POST"  style="display: inline;">
+                <button type="submit" class="delete-btn"><i class='bx bxs-message-square-minus'></i> <%= lng === 'ar' ? 'حذف' : 'Delete' %></button>
+            </form>
+        </td>
+    </tr>
+<% }); %>
+</table>
+                        
+                       
+        </div>
+    </div>
+</div>
+<script src="<%= basePath %>/js/intro.min.js"></script>
+<script>
+        
+    document.getElementById('helpButton').addEventListener('click', function () {
+// Determine the current language (default to English)
+const lang = new URLSearchParams(window.location.search).get('lng') || getCookie('lng') || 'en';
+
+// Define translations for the steps
+const translations = {
+    en: {
+        step1: "Add the first and last name of the doctor.",
+        step2: "Assign a speciality or department to the doctor.",
+        step3: "Click to add the doctor to your clinic.",
+        step4: "View username, speciality, and assigned surveys here.",
+        step5: "Edit or delete a doctor from your clinic here.",
+        step6: "Enter the first and last name of the staff.",
+        step7: "Click to assign reception staff to oversee collections and send reminders.",
+        step8: "Edit or delete a staff member from your clinic here."
+    },
+    ar: {
+        step1: "أدخل الاسم الأول واسم العائلة للطبيب.",
+        step2: "قم بتعيين تخصص أو قسم للطبيب.",
+        step3: "انقر لإضافة الطبيب إلى عيادتك.",
+        step4: "عرض اسم المستخدم، التخصص، والاستبيانات المخصصة هنا.",
+        step5: "تحرير أو حذف طبيب من عيادتك هنا.",
+        step6: "أدخل الاسم الأول واسم العائلة للموظف.",
+        step7: "انقر لتعيين موظفي الاستقبال للإشراف على معدلات التحصيل وإرسال التذكيرات.",
+        step8: "تحرير أو حذف موظف من عيادتك هنا.",
+        
+    }
+};
+
+// Define the steps for Intro.js
+const introSteps = [
+    {
+        element: '#firstName', // Add doctor's name
+        intro: translations[lang].step1
+    },
+    {
+        element: '#speciality', // Assign speciality
+        intro: translations[lang].step2
+    },
+    {
+        element: '#addProviderButton', // Add doctor button
+        intro: translations[lang].step3
+    },
+    {
+        element: 'tr[style="position: sticky;"]', // View data
+        intro: translations[lang].step4
+    },
+    {
+        element: '#actionHeader', // Edit/Delete doctor
+        intro: translations[lang].step5
+    },
+    {
+        element: '#firstNamee', // Add staff's name
+        intro: translations[lang].step6
+    },
+    {
+        element: '#addStaffButton', // Add staff button
+        intro: translations[lang].step7
+    },
+    {
+        element: '#actionHeaderr', // Edit/Delete staff
+        intro: translations[lang].step8
+    }
+];
+
+// Initialize and start Intro.js with dynamic labels for buttons
+introJs()
+    .setOptions({
+        steps: introSteps,
+        rtl: lang === 'ar', // Enable RTL if the language is Arabic
+        nextLabel: lang === 'ar' ? 'التالي' : 'Next',
+        prevLabel: lang === 'ar' ? 'السابق' : 'Back',
+        doneLabel: lang === 'ar' ? 'تم' : 'Done'
+    })
+    .start();
+});
+
+// Helper function to retrieve a cookie value by name
+function getCookie(name) {
+const value = `; ${document.cookie}`;
+const parts = value.split(`; ${name}=`);
+if (parts.length === 2) return parts.pop().split(';').shift();
+return null;
+}
+
+    
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const getCookie = (name) => {
+const value = `; ${document.cookie}`;
+const parts = value.split(`; ${name}=`);
+if (parts.length === 2) return parts.pop().split(';').shift();
+};
+const params = new URLSearchParams(window.location.search);
+let currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+
+// Set the language cookie
+document.cookie = `lng=${currentLanguage}; path=/`;
+      const fetchUrl = `/manageproviders/doctors/locales/${currentLanguage}/translation.json`;
+
+  
+      // Set the `lang` and `dir` attributes for the HTML document
+    //   document.documentElement.lang = currentLanguage;
+    //   document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+  
+      fetch(fetchUrl)
+        .then(response => {
+          if (!response.ok) {
+            console.warn(`Translation file not found for language: ${currentLanguage}. Falling back to English.`);
+            return fetch(`/hospitaladmin/locales/en/translation.json`);
+          }
+          return response.json();
+        })
+        .then(translations => {
+          console.log('Loaded translations:', translations);
+  
+          // Update the elements based on translation keys
+          Object.keys(translations).forEach(id => {
+            const element = document.getElementById(id);
+  
+            if (element) {
+                const translationValue = translations[id];
+
+                if (typeof translationValue === 'string') {
+                    // Update regular text or HTML content
+                    element.innerHTML = translationValue;
+                }
+                  if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+
+                    // Update placeholders for input elements
+
+                    console.log(`Updating placeholder for ${id}:`, translationValue);
+
+                    element.placeholder = translationValue;
+
+                  }
+                else if (typeof translationValue === 'object') {
+                                        // Handle nested object (e.g., lists)
+                                        element.innerHTML = ''; // Clear existing content
+                                        Object.values(translationValue).forEach(item => {
+                                            const listItem = document.createElement('li');
+                                            listItem.textContent = item;
+                                            element.appendChild(listItem);
+                                        });
+                } else {
+                    console.warn(`Unexpected translation value type for "${id}":`, translationValue);
+                }
+            }
+          });
+        })
+        .catch(error => console.error('Error loading translations:', error));
+    });
+  </script>
+    <script src="<%= basePath %>/script/script.js"></script>
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+
+            function removeCurrentPageClasses() {
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('CurrentPage');
+                });
+            }
+
+            function setCurrentPageLink(path) {
+                removeCurrentPageClasses();
+                const currentPageLink = Array.from(sidebarLinks).find(link => {
+                    const linkPath = new URL(link.href).pathname;
+                    return linkPath === path;
+                });
+                if (currentPageLink) {
+                    currentPageLink.classList.add('CurrentPage');
+                }
+            }
+
+            const currentPath = window.location.pathname;
+            setCurrentPageLink(currentPath);
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const targetPath = new URL(link.href).pathname;
+                    setCurrentPageLink(targetPath);
+                });
+            });
+        });
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        const password = urlParams.get('password');
+
+        if (username && password) {
+            // Populate the success message box
+            document.getElementById('success-username').textContent = username;
+            document.getElementById('success-password').textContent = password;
+
+            // Show the success message box
+            document.getElementById('success-message-box').style.display = 'block';
+
+            // Optionally clear the query parameters after displaying the message
+            const url = new URL(window.location);
+            url.searchParams.delete('username');
+            url.searchParams.delete('password');
+            window.history.replaceState({}, document.title, url);
+        }
+    });
+
+//     function copyToClipboard(username, password) {
+//     const textToCopy = `Username: ${username}\nPassword: ${password}`;
+//     navigator.clipboard.writeText(textToCopy).then(() => {
+//         alert('Copied to clipboard!');
+//     });
+// }
+const createFlashMessage = () => {
+    // Create container if it doesn't exist
+    let container = document.getElementById('flash-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'flash-container';
+        container.style.cssText = `
+            position: fixed;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -750%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        `;
+        document.body.appendChild(container);
+    }
+
+    return {
+        show: (message, type = 'success', duration = 3000) => {
+            // Create flash message element
+            const flash = document.createElement('div');
+            flash.className = `flash-message ${type}`;
+            flash.style.cssText = `
+                background-color: ${type === 'success' ? '#4CAF50' : '#f44336'};
+                color: white;
+                padding: 12px 24px;
+                border-radius: 7px;
+                margin: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.3s ease;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                min-width: 200px;
+                text-align: center;
+            `;
+
+            // Set message text
+            flash.textContent = message;
+
+            // Add to container
+            container.appendChild(flash);
+
+            // Trigger animation
+            requestAnimationFrame(() => {
+                flash.style.opacity = '1';
+                flash.style.transform = 'translateY(0)';
+            });
+
+            // Auto remove after duration
+            setTimeout(() => removeFlash(flash), duration);
+        }
+    };
+};
+
+// Helper function to remove flash message 
+const removeFlash = (flash) => {
+    flash.style.opacity = '0';
+    flash.style.transform = 'translateY(20px)';
+    setTimeout(() => flash.remove(), 3000);
+};
+
+// Modified copyToClipboard function
+function copyToClipboard(username, password) {
+    const textToCopy = `Username: ${username}\nPassword: ${password}`;
+    const flashMessage = createFlashMessage();
+    
+    navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+            flashMessage.show('Copied to clipboard!', 'success');
+        })
+        .catch((error) => {
+            flashMessage.show('Failed to copy to clipboard', 'error');
+            console.error('Copy failed:', error);
+        });
+}
+function printCredentials(username, password) {
+    const printContent = `
+        <div style="text-align: center;">
+            <h3>Doctor Credentials</h3>
+            <p><strong>Username:</strong> ${username}</p>
+            <p><strong>Password:</strong> ${password}</p>
+        </div>
+    `;
+    const printWindow = window.open('', '', 'height=400,width=600');
+    printWindow.document.write('<html><head><title>Print Credentials</title></head><body>');
+    printWindow.document.write(printContent);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
+}
+
+function closeMessageBox() {
+    document.getElementById('success-message-box').style.display = 'none';
+}
+
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        const password = urlParams.get('password');
+
+        if (username && password) {
+            document.getElementById('success-username').textContent = username;
+            document.getElementById('success-password').textContent = password;
+            document.getElementById('success-message-box').style.display = 'block';
+
+            // Optionally clear the query parameters after displaying the message
+            const url = new URL(window.location);
+            url.searchParams.delete('username');
+            url.searchParams.delete('password');
+            window.history.replaceState({}, document.title, url);
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the form element, input fields, and the error message container
+        const form = document.querySelector('form[action="/doctors"]');
+        const firstNameInput = document.getElementById('firstName');
+        const lastNameInput = document.getElementById('lastName');
+        const errorMessage = document.getElementById('error-message');
+
+        // Listen for form submission
+        form.addEventListener('submit', function (event) {
+            // Clear any previous error message
+            errorMessage.style.display = 'none';
+            errorMessage.textContent = '';
+
+            // Get the input values
+            const firstNameValue = firstNameInput.value;
+            const lastNameValue = lastNameInput.value;
+
+            // Check if either input contains spaces
+            if (/\s/.test(firstNameValue) || /\s/.test(lastNameValue)) {
+                // Prevent the form from being submitted
+                event.preventDefault();
+                
+                // Show the error message on the page
+                errorMessage.textContent = 'First Name and Last Name should not contain spaces.';
+                errorMessage.style.display = 'block';
+            }
+        });
+    });
+</script>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const staffUsername = urlParams.get('staffUsername');
+    const staffPassword = urlParams.get('staffPassword'); // Get decrypted password
+
+    if (staffUsername && staffPassword) {
+        // Populate the success message box for staff
+        document.getElementById('staff-success-username').textContent = staffUsername;
+        document.getElementById('staff-success-password').textContent = staffPassword; // Show decrypted password
+
+        // Show the success message box for staff
+        document.getElementById('staff-success-message-box').style.display = 'block';
+
+        // Optionally clear the query parameters after displaying the message
+        const url = new URL(window.location);
+        url.searchParams.delete('staffUsername');
+        url.searchParams.delete('staffPassword');
+        window.history.replaceState({}, document.title, url);
+    }
+});
+
+// function closeStaffMessageBox() {
+//         document.getElementById('staff-success-message-box').style.display = 'none';
+//     }
+
+//     function copyStaffCredentials() {
+//         const staffUsername = '<%= staffUsername %>';
+//         const staffPassword = '<%= staffPassword %>';
+//         const textToCopy = `Username: ${staffUsername}\nPassword: ${staffPassword}`;
+//         navigator.clipboard.writeText(textToCopy).then(() => {
+//             alert('Copied to clipboard!');
+//         });
+//     }
+
+//     function printStaffCredentials() {
+//         const staffUsername = '<%= staffUsername %>';
+//         const staffPassword = '<%= staffPassword %>';
+//         const printContent = `
+//             <div style="text-align: center;">
+//                 <h3>Staff Credentials</h3>
+//                 <p><strong>Username:</strong> ${staffUsername}</p>
+//                 <p><strong>Password:</strong> ${staffPassword}</p>
+//             </div>
+//         `;
+//         const printWindow = window.open('', '', 'height=400,width=600');
+//         printWindow.document.write('<html><head><title>Print Credentials</title></head><body>');
+//         printWindow.document.write(printContent);
+//         printWindow.document.write('</body></html>');
+//         printWindow.document.close();
+//         printWindow.print();
+//     }
+
+function closeStaffMessageBox() {
+        document.getElementById('staff-success-message-box').style.display = 'none';
+    }
+
+    // function copyStaffCredentials(username, password) {
+    //     const textToCopy = `Username: ${username}\nPassword: ${password}`;
+    //     navigator.clipboard.writeText(textToCopy).then(() => {
+    //         alert('Copied to clipboard!');
+    //     });
+    // }
+    function copyStaffCredentials(username, password) {
+    const textToCopy = `Username: ${username}\nPassword: ${password}`;
+    const flashMessage = createFlashMessage();
+    
+    navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+            flashMessage.show('Copied to clipboard!', 'success');
+        })
+        .catch((error) => {
+            flashMessage.show('Failed to copy to clipboard', 'error');
+            console.error('Copy failed:', error);
+        });
+}
+
+    function printStaffCredentials(username, password) {
+        const printContent = `
+            <div style="text-align: center;">
+                <h3>Staff Credentials</h3>
+                <p><strong>Username:</strong> ${username}</p>
+                <p><strong>Password:</strong> ${password}</p>
+            </div>
+        `;
+        const printWindow = window.open('', '', 'height=400,width=600');
+        printWindow.document.write('<html><head><title>Print Credentials</title></head><body>');
+        printWindow.document.write(printContent);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
+</script>
+
+<div id="customDeleteModal" class="custom-modal">
+    <div class="custom-modal-content">
+        <div class="custom-modal-header">
+            <h3 id="customDeleteTitle">Confirm Delete</h3>
+        </div>
+        <div class="custom-modal-body">
+            <p id="customDeleteMessage">Are you sure you want to delete this record?</p>
+        </div>
+        <div class="custom-modal-footer">
+            <button id="customDeleteCancel" class="custom-modal-btn custom-cancel-btn">Cancel</button>
+            <button id="customDeleteConfirm" class="custom-modal-btn custom-delete-btn">Delete</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Wait for the page to be fully loaded
+    window.addEventListener('load', function() {
+        
+        // Function to handle deletion for a specific record ID
+        function handleDeleteClick(doctorId) {
+            // Show the modal and set up handlers
+            showDeleteModal(doctorId);
+        }
+        
+        // Directly modify the delete buttons on the page
+        document.querySelectorAll('.delete-btn').forEach(function(button) {
+            // Remove any existing onclick attributes
+            button.removeAttribute('onclick');
+            
+            // Get the form containing this button
+            const form = button.closest('form');
+            if (form) {
+                // Get the action URL from the form
+                const formAction = form.getAttribute('action');
+                if (formAction) {
+                    // Extract the ID from the action URL
+                    const idMatch = formAction.match(/\/delete\/([^/]+)$/);
+                    if (idMatch && idMatch[1]) {
+                        const doctorId = idMatch[1];
+                        
+                        // Add our custom click handler
+                        button.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            handleDeleteClick(doctorId);
+                        });
+                        
+                        // Prevent form submission
+                        form.addEventListener('submit', function(event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            handleDeleteClick(doctorId);
+                        });
+                    }
+                }
+            }
+        });
+        
+        // Get modal elements
+        const modal = document.getElementById('customDeleteModal');
+        const confirmBtn = document.getElementById('customDeleteConfirm');
+        const cancelBtn = document.getElementById('customDeleteCancel');
+        let currentDoctorId = null;
+        const basePath = window.location.pathname.replace(/\/doctors.*$/, '');
+        
+        // Function to show delete modal
+        function showDeleteModal(doctorId) {
+            currentDoctorId = doctorId;
+            updateModalLanguage();
+            modal.style.display = 'flex';
+            document.body.classList.add('custom-modal-open');
+            console.log('Showing delete modal for doctor ID:', doctorId);
+            console.log('Base path:', basePath);
+        }
+        
+        // Function to hide delete modal
+        function hideDeleteModal() {
+            modal.style.display = 'none';
+            document.body.classList.remove('custom-modal-open');
+            currentDoctorId = null;
+        }
+        
+        // Function to update modal language
+        function updateModalLanguage() {
+            const titleElement = document.getElementById('customDeleteTitle');
+            const messageElement = document.getElementById('customDeleteMessage');
+            
+            // Detect language
+            const params = new URLSearchParams(window.location.search);
+            const lang = params.get('lng') || getCookie('lng') || 'en';
+            
+            if (lang === 'ar') {
+                titleElement.textContent = 'تأكيد الحذف';
+                messageElement.textContent = 'هل أنت متأكد أنك تريد حذف هذا السجل؟';
+                confirmBtn.textContent = 'حذف';
+                cancelBtn.textContent = 'إلغاء';
+                modal.setAttribute('dir', 'rtl');
+            } else {
+                titleElement.textContent = 'Confirm Delete';
+                messageElement.textContent = 'Are you sure you want to delete this record?';
+                confirmBtn.textContent = 'Delete';
+                cancelBtn.textContent = 'Cancel';
+                modal.setAttribute('dir', 'ltr');
+            }
+        }
+        
+        // Handle delete confirmation
+        confirmBtn.addEventListener('click', function() {
+            if (currentDoctorId) {
+                // Create and send a POST request to delete the record
+                const deleteUrl = `${basePath}/delete/${currentDoctorId}`;
+                console.log('Sending delete request to:', deleteUrl);
+                
+                // Create a form and submit it
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = deleteUrl;
+                form.style.display = 'none';
+                document.body.appendChild(form);
+                form.submit();
+            }
+            hideDeleteModal();
+        });
+        
+        // Handle delete cancellation
+        cancelBtn.addEventListener('click', hideDeleteModal);
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                hideDeleteModal();
+            }
+        });
+        
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal.style.display === 'flex') {
+                hideDeleteModal();
+            }
+        });
+        
+        // Helper function to get cookie
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+    });
+    </script>
+
+    <!-- Staff Delete Script -->
+<!--      
+<script>
+    // Create a separate staff delete modal to avoid conflicts
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create staff delete modal if it doesn't exist
+        if (!document.getElementById('staffDeleteModal')) {
+            const staffDeleteModal = document.createElement('div');
+            staffDeleteModal.id = 'staffDeleteModal';
+            staffDeleteModal.className = 'custom-modal';
+            staffDeleteModal.innerHTML = `
+                <div class="custom-modal-content">
+                    <div class="custom-modal-header">
+                        <h3 id="staffDeleteTitle">Confirm Staff Delete</h3>
+                    </div>
+                    <div class="custom-modal-body">
+                        <p id="staffDeleteMessage">Are you sure you want to delete this staff member?</p>
+                    </div>
+                    <div class="custom-modal-footer">
+                        <button id="staffDeleteCancel" class="custom-modal-btn custom-cancel-btn">Cancel</button>
+                        <button id="staffDeleteConfirm" class="custom-modal-btn custom-delete-btn">Delete</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(staffDeleteModal);
+        }
+    
+        // Find all staff delete forms
+        const staffDeleteForms = document.querySelectorAll('form.delete-style[action*="/staff/delete/"]');
+        console.log('Found staff delete forms:', staffDeleteForms.length);
+    
+        // Reference to current staff form
+        let currentStaffForm = null;
+    
+        // Modal elements
+        const staffDeleteModal = document.getElementById('staffDeleteModal');
+        const staffDeleteConfirm = document.getElementById('staffDeleteConfirm');
+        const staffDeleteCancel = document.getElementById('staffDeleteCancel');
+        const staffDeleteTitle = document.getElementById('staffDeleteTitle');
+        const staffDeleteMessage = document.getElementById('staffDeleteMessage');
+    
+        // Update modal language
+        function updateStaffModalLanguage() {
+            const params = new URLSearchParams(window.location.search);
+            const lang = params.get('lng') || getCookie('lng') || 'en';
+            
+            if (lang === 'ar') {
+                staffDeleteTitle.textContent = 'تأكيد حذف الموظف';
+                staffDeleteMessage.textContent = 'هل أنت متأكد أنك تريد حذف هذا الموظف؟';
+                staffDeleteConfirm.textContent = 'حذف';
+                staffDeleteCancel.textContent = 'إلغاء';
+                staffDeleteModal.setAttribute('dir', 'rtl');
+            } else {
+                staffDeleteTitle.textContent = 'Confirm Staff Delete';
+                staffDeleteMessage.textContent = 'Are you sure you want to delete this staff member?';
+                staffDeleteConfirm.textContent = 'Delete';
+                staffDeleteCancel.textContent = 'Cancel';
+                staffDeleteModal.setAttribute('dir', 'ltr');
+            }
+        }
+    
+        // Show modal
+        function showStaffDeleteModal(form) {
+            currentStaffForm = form;
+            updateStaffModalLanguage();
+            staffDeleteModal.style.display = 'flex';
+            document.body.classList.add('custom-modal-open');
+            console.log('Showing staff delete modal for form:', form.action);
+        }
+    
+        // Hide modal
+        function hideStaffDeleteModal() {
+            staffDeleteModal.style.display = 'none';
+            document.body.classList.remove('custom-modal-open');
+            currentStaffForm = null;
+        }
+    
+        // Process staff delete buttons
+        staffDeleteForms.forEach(function(form) {
+            // Remove any existing onsubmit handler
+            form.removeAttribute('onsubmit');
+            
+            // Get the delete button inside this form
+            const deleteButton = form.querySelector('button.delete-btn');
+            
+            if (deleteButton) {
+                // Change button type to prevent automatic form submission
+                deleteButton.type = 'button';
+                
+                // Add click handler
+                deleteButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    showStaffDeleteModal(form);
+                    console.log('Staff delete button clicked for:', form.action);
+                });
+            }
+        });
+    
+        // Handle confirm button
+        staffDeleteConfirm.addEventListener('click', function() {
+            if (currentStaffForm) {
+                console.log('Submitting staff delete form:', currentStaffForm.action);
+                currentStaffForm.submit();
+            }
+            hideStaffDeleteModal();
+        });
+    
+        // Handle cancel button
+        staffDeleteCancel.addEventListener('click', hideStaffDeleteModal);
+    
+        // Close modal when clicking outside
+        staffDeleteModal.addEventListener('click', function(event) {
+            if (event.target === staffDeleteModal) {
+                hideStaffDeleteModal();
+            }
+        });
+    
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && staffDeleteModal.style.display === 'flex') {
+                hideStaffDeleteModal();
+            }
+        });
+    
+        // Helper function to get cookie
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+    });
+    </script> -->
+
+
+<script>
+    // Revised code for staff deletion with single modal
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all delete buttons and forms for both doctors and staff
+    initializeDeleteButtons();
+    
+    function initializeDeleteButtons() {
+        // Process all delete forms on the page
+        const deleteForms = document.querySelectorAll('form.delete-style');
+        
+        deleteForms.forEach(function(form) {
+            // Remove any existing onsubmit handlers
+            form.removeAttribute('onsubmit');
+            
+            // Get the delete button inside the form
+            const deleteButton = form.querySelector('.delete-btn');
+            
+            if (deleteButton) {
+                // Change button type to prevent automatic form submission
+                deleteButton.type = 'button';
+                
+                // Determine whether this is a doctor or staff form
+                const isStaffForm = form.action.includes('/staff/delete/');
+                
+                // Add click handler based on form type
+                deleteButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    
+                    // Get the name of the record being deleted
+                    const row = deleteButton.closest('tr');
+                    const nameCell = row ? row.querySelector('td:first-child') : null;
+                    const name = nameCell ? nameCell.textContent.trim() : isStaffForm ? 'this staff member' : 'this record';
+                    
+                    // Show the appropriate modal
+                    showDeleteModal(form, name, isStaffForm);
+                });
+            }
+        });
+    }
+    
+    // Show the delete confirmation modal
+    function showDeleteModal(form, name, isStaff) {
+        // Get the custom modal
+        const modal = document.getElementById('customDeleteModal');
+        const titleElement = document.getElementById('customDeleteTitle');
+        const messageElement = document.getElementById('customDeleteMessage');
+        const confirmBtn = document.getElementById('customDeleteConfirm');
+        const cancelBtn = document.getElementById('customDeleteCancel');
+        
+        // Set up the form to be submitted when confirmed
+        modal.dataset.formAction = form.action;
+        
+        // Update modal content based on whether it's a doctor or staff
+        const params = new URLSearchParams(window.location.search);
+        const lang = params.get('lng') || getCookie('lng') || 'en';
+        
+        if (lang === 'ar') {
+            titleElement.textContent = isStaff ? 'تأكيد حذف الموظف' : 'تأكيد الحذف';
+            messageElement.textContent = isStaff 
+                ? `هل أنت متأكد أنك تريد حذف الموظف "${name}"؟`
+                : `هل أنت متأكد أنك تريد حذف الطبيب "${name}"؟`;
+            confirmBtn.textContent = 'حذف';
+            cancelBtn.textContent = 'إلغاء';
+            modal.setAttribute('dir', 'rtl');
+        } else {
+            titleElement.textContent = isStaff ? 'Confirm Staff Delete' : 'Confirm Delete';
+            messageElement.textContent = isStaff 
+                ? `Are you sure you want to delete staff member "${name}"?`
+                : `Are you sure you want to delete doctor "${name}"?`;
+            confirmBtn.textContent = 'Delete';
+            cancelBtn.textContent = 'Cancel';
+            modal.setAttribute('dir', 'ltr');
+        }
+        
+        // Show the modal
+        modal.style.display = 'flex';
+        document.body.classList.add('custom-modal-open');
+        
+        // Set focus on the cancel button (safer default)
+        setTimeout(() => cancelBtn.focus(), 50);
+        
+        // Ensure the confirmation button submits the correct form
+        confirmBtn.onclick = function() {
+            hideDeleteModal();
+            form.submit();
+        };
+        
+        // Make sure the cancel button closes the modal
+        cancelBtn.onclick = hideDeleteModal;
+    }
+    
+    // Hide the delete confirmation modal
+    function hideDeleteModal() {
+        const modal = document.getElementById('customDeleteModal');
+        modal.style.display = 'none';
+        document.body.classList.remove('custom-modal-open');
+        modal.dataset.formAction = '';
+    }
+    
+    // Close modal when clicking outside
+    document.getElementById('customDeleteModal').addEventListener('click', function(event) {
+        if (event.target === this) {
+            hideDeleteModal();
+        }
+    });
+    
+    // Close modal with ESC key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && document.getElementById('customDeleteModal').style.display === 'flex') {
+            hideDeleteModal();
+        }
+    });
+    
+    // Helper function to get cookie value
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+    }
+});
+</script>
+</body>
+</html>

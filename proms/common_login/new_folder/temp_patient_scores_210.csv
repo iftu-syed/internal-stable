@@ -1,0 +1,5 @@
+date,months_since_baseline,score,trace_name,title,ymin,ymax,event_date,event
+2025-02-07,1,23.5,Global-Health Physical,Global Physical Health Score,16,68,,
+2025-02-07,1,31.3,Global-Health Mental,Global Mental Health Score,21,68,,
+2025-02-07,1,52.5,Pain-Interference,Pain Interference,16,80,,
+2025-02-07,1,45.6,Physical-Function,Physical Function,16,80,,

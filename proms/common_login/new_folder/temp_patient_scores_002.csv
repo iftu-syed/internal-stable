@@ -1,0 +1,5 @@
+date,months_since_baseline,score,trace_name,title,ymin,ymax,event_date,event
+2025-01-31,1,47.7,Global-Health Physical,Global Physical Health Score,16,68,2025-01-08,Injection
+2025-01-31,1,45.8,Global-Health Mental,Global Mental Health Score,21,68,2025-01-08,Injection
+2025-01-31,1,57.1,Pain-Interference,Pain Interference,16,80,2025-01-08,Injection
+2025-01-31,1,40.2,Physical-Function,Physical Function,16,80,2025-01-08,Injection

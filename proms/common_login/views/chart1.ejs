@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PROMs Scores</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+   body {
+      font-family: Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px; /* Add padding to the body to avoid the charts sticking to the edges */
+    }
+    .chart {
+      margin: 20px; /* Add margin around each chart */
+    }
+    .line {
+      fill: none;
+      stroke: #8a8a8a;
+      stroke-width: 2.5px;
+    }
+    .axis-label {
+      font-size: 11px;
+      font-family: Verdana, sans-serif;
+    }
+    .annotation {
+      font-size: 12px;
+      font-family: Verdana, sans-serif;
+    }
+    .highlight-circle {
+      stroke: #4682b4;
+      stroke-width: 2.5px;
+    }
+    .data-circle {
+      fill: #ffffff;
+      stroke:  #8a8a8a;
+      stroke-width: 2.5px;
+    }
+    .grid-line {
+      stroke: #ddd;
+      stroke-width: 1px;
+    }
+    .tooltip {
+      position: absolute;
+      text-align: center;
+      width: 25px;
+      height: 18px;
+      padding: 2px;
+      font: 12px sans-serif;
+      background: lightsteelblue;
+      border: 0px;
+      border-radius: 8px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  // Load and process data
+  function loadData(csvPath, callback) {
+    d3.csv(csvPath).then(data => {
+      data.forEach(d => {
+        d.months = +d.months_since_baseline;
+        d.score = +d.score;
+        d.ymax = +d.ymax;
+        d.ymin = +d.ymin;
+      });
+      callback(data);
+    }).catch(error => {
+      console.error("Error loading data: ", error);
+    });
+  }
+
+  // Load and process severity levels
+  function loadSeverityLevels(csvPath, scale, callback) {
+    d3.csv(csvPath).then(data => {
+      const severityLevels = data
+        .filter(d => d.Scale === scale)
+        .map(d => ({
+          level: d.Severity,
+          color: d.Color,
+          range: [+d.Chart_Range_Min, +d.Chart_Range_Max]
+        }));
+      callback(severityLevels);
+    }).catch(error => {
+      console.error("Error loading severity levels: ", error);
+    });
+  }
+
+  // Create scales for the chart
+  function createScales(data, width, height) {
+    const x = d3.scaleLinear()
+      .domain([d3.min(data, d => d.months), d3.max(data, d => d.months)])
+      .range([0, width]);
+
+    const y = d3.scaleLinear()
+      .domain([+data[0].ymin, +data[0].ymax])
+      .range([height, 0]);
+
+    return { x, y };
+  }
+
+  // Draw axes for the chart
+  function drawAxes(svg, x, y, width, height) {
+    svg.append("g")
+      .attr("transform", `translate(0,${height})`)
+      .call(d3.axisBottom(x))
+      .selectAll("text")
+      .style("fill", "#777");
+
+    svg.append("g")
+      .call(d3.axisLeft(y))
+      .selectAll("text")
+      .style("fill", "#777");
+  }
+
+  // Draw grid lines for severity levels
+  function drawSeverityGridLines(svg, y, width, severityLevels) {
+    severityLevels.forEach(severity => {
+      svg.append("line")
+        .attr("class", "grid-line")
+        .attr("x1", 0)
+        .attr("x2", width)
+        .attr("y1", y(severity.range[0]))
+        .attr("y2", y(severity.range[0]));
+
+      svg.append("line")
+        .attr("class", "grid-line")
+        .attr("x1", 0)
+        .attr("x2", width)
+        .attr("y1", y(severity.range[1]))
+        .attr("y2", y(severity.range[1]));
+    });
+  }
+
+  // Draw severity labels
+  function drawSeverityLabels(svg, y, width, margin, severityLevels) {
+    severityLevels.forEach(severity => {
+      svg.append("rect")
+        .attr("x", width + margin.right - 100)
+        .attr("y", y(severity.range[1]))
+        .attr("width", 6)
+        .attr("height", y(severity.range[0]) - y(severity.range[1]))
+        .attr("fill", severity.color);
+
+      svg.append("text")
+        .attr("x", width + margin.right - 85)
+        .attr("y", (y(severity.range[0]) + y(severity.range[1])) / 2)
+        .attr("dy", ".35em")
+        .attr("text-anchor", "start")
+        .attr("class", "axis-label")
+        .text(severity.level);
+    });
+  }
+
+  // Draw line and data points
+  function drawLineAndPoints(svg, data, x, y, line, severityLevels) {
+    const tooltip = d3.select("body").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+    svg.append("path")
+      .datum(data)
+      .attr("class", "line")
+      .attr("d", line);
+
+    data.forEach(d => {
+      const circle = svg.append("circle")
+        .attr("class", "data-circle")
+        .attr("cx", x(d.months))
+        .attr("cy", y(d.score))
+        .attr("r", 4);
+
+      // Determine the severity color
+      let severityColor = "lightsteelblue";
+      severityLevels.forEach(severity => {
+        if (d.score >= severity.range[0] && d.score <= severity.range[1]) {
+          severityColor = severity.color;
+        }
+      });
+
+      // Add hover functionality
+      circle.on("mouseover", (event) => {
+        tooltip.transition().duration(200).style("opacity", .9);
+        tooltip.html(d.score)
+          .style("left", (event.pageX + 5) + "px")
+          .style("top", (event.pageY - 28) + "px")
+          .style("background", severityColor);
+      }).on("mouseout", () => {
+        tooltip.transition().duration(500).style("opacity", 0);
+      });
+    });
+
+    const lastDataPoint = data[data.length - 1];
+
+    svg.append("circle")
+      .attr("class", "highlight-circle")
+      .attr("cx", x(lastDataPoint.months))
+      .attr("cy", y(lastDataPoint.score))
+      .attr("r", 8)
+      .attr("fill", severityLevels.find(severity => lastDataPoint.score >= severity.range[0] && lastDataPoint.score <= severity.range[1]).color);
+
+    svg.append("text")
+      .attr("class", "annotation")
+      .attr("x", x(lastDataPoint.months) + 10)
+      .attr("y", y(lastDataPoint.score))
+      .text(lastDataPoint.score);
+  }
+
+  const scoreInterpretation = {
+  "PROMIS-10 Physical": "higher",
+  "PROMIS-10 Mental": "higher",
+  "WEXNER": "lower",
+  "ICIQ-UI SF": "lower",
+  "PAID": "lower",
+  "EPDS": "lower",
+  "PROMIS Bank v1.1 - Pain Interference" : "lower"
+};
+
+
+  // Draw annotations for change From baseline and last
+  // function drawAnnotations(svg, data, margin, width, height) {
+  //   const changeFromFirstVisit = Math.round((data[data.length - 1].score - data[0].score) * 100) / 100;
+  //   const changeFromLastVisit = Math.round((data[data.length - 1].score - data[data.length - 2].score) * 100) / 100;
+
+  //   svg.append("text")
+  //     .attr("class", "annotation")
+  //     .attr("x", margin.left / 2)
+  //     .attr("y", -margin.top / 2.5)
+  //     .text(changeFromFirstVisit > 0 ? `↑ ${changeFromFirstVisit} from first visit` : `↓ ${changeFromFirstVisit} from first visit`)
+  //     .style("fill", changeFromFirstVisit > 0 ? "green" : "red");
+
+  //   svg.append("text")
+  //     .attr("class", "annotation")
+  //     .attr("x", margin.left / 2)
+  //     .attr("y", -margin.top / 2 + 25)
+  //     .text(changeFromLastVisit < 0 ? `↓ ${changeFromLastVisit} from last visit` : `↑ ${changeFromLastVisit} from last visit`)
+  //     .style("fill", changeFromLastVisit < 0 ? "red" : "green");
+  // }
+
+  // Draw annotations for change From baseline and last
+function drawAnnotations(svg, data, margin, width, height, traceName) {
+  const scoreType = scoreInterpretation[traceName];
+  const changeFromFirstVisit = Math.round((data[data.length - 1].score - data[0].score) * 100) / 100;
+  const changeFromLastVisit = Math.round((data[data.length - 1].score - data[data.length - 2].score) * 100) / 100;
+
+  const getAnnotationText = (change, type, isFirstVisit) => {
+    if (type === "higher") {
+      return change > 0 ? `↑ ${change} from ${isFirstVisit ? "first" : "last"} visit` : `↓ ${Math.abs(change)} from ${isFirstVisit ? "first" : "last"} visit`;
+    } else {
+      return change < 0 ? `↑ ${Math.abs(change)} from ${isFirstVisit ? "first" : "last"} visit` : `↓ ${change} from ${isFirstVisit ? "first" : "last"} visit`;
+    }
+  };
+
+  const getColor = (change, type) => {
+    if (type === "higher") {
+      return change > 0 ? "green" : "red";
+    } else {
+      return change < 0 ? "green" : "red";
+    }
+  };
+
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", margin.left / 2)
+    .attr("y", -margin.top / 2.5)
+    .text(getAnnotationText(changeFromFirstVisit, scoreType, true))
+    .style("fill", getColor(changeFromFirstVisit, scoreType));
+
+  svg.append("text")
+    .attr("class", "annotation")
+    .attr("x", margin.left / 2)
+    .attr("y", -margin.top / 2 + 25)
+    .text(getAnnotationText(changeFromLastVisit, scoreType, false))
+    .style("fill", getColor(changeFromLastVisit, scoreType));
+}
+
+  // Draw chart title and labels
+  function drawTitleAndLabels(svg, title, margin, width, height) {
+    const xAxisLabel = "Months From Baseline";
+
+    svg.append("text")
+      .attr("class", "annotation")
+      .attr("x", width / 2)
+      .attr("y", height + margin.bottom - 10)
+      .attr("text-anchor", "middle")
+      .text(xAxisLabel);
+
+    svg.append("text")
+      .attr("class", "annotation")
+      .attr("x", width / 2)
+      .attr("y", -margin.top + 30)
+      .attr("text-anchor", "middle")
+      .style("font-size", "18px")
+      .text(title);
+  }
+
+  // Main function to draw the chart
+  // function drawChart(data, severityCsvPath, traceName, title) {
+  //   const margin = { top: 80, right: 150, bottom: 50, left: 50 };
+  //   const width = 600 - margin.left - margin.right;
+  //   const height = 400 - margin.top - margin.bottom;
+
+  //   const svg = d3.select("body")
+  //     .append("div")  // Wrap each SVG in a div
+  //     .append("svg")
+  //     .attr("class", "chart")  // Add this line
+  //     .attr("width", width + margin.left + margin.right)
+  //     .attr("height", height + margin.top + margin.bottom)
+  //     .append("g")
+  //     .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  //   const filteredData = data.filter(d => d.trace_name === traceName);
+  //   loadSeverityLevels(severityCsvPath, traceName, severityLevels => {
+  //     const { x, y } = createScales(filteredData, width, height);
+  //     const line = d3.line()
+  //       .x(d => x(d.months))
+  //       .y(d => y(d.score))
+  //       .curve(d3.curveCardinal);
+
+  //     drawAxes(svg, x, y, width, height);
+  //     drawSeverityGridLines(svg, y, width, severityLevels);
+  //     drawSeverityLabels(svg, y, width, margin, severityLevels);
+  //     drawLineAndPoints(svg, filteredData, x, y, line, severityLevels);
+  //     drawAnnotations(svg, filteredData, margin, width, height);
+  //     drawTitleAndLabels(svg, title, margin, width, height);
+  //   });
+  // }
+
+
+//   function drawChart(data, severityCsvPath, traceName, title) {
+//   const margin = { top: 80, right: 150, bottom: 50, left: 50 };
+//   const width = 600 - margin.left - margin.right;
+//   const height = 400 - margin.top - margin.bottom;
+
+//   const svg = d3.select("body")
+//     .append("svg")
+//     .attr("width", width + margin.left + margin.right)
+//     .attr("height", height + margin.top + margin.bottom)
+//     .append("g")
+//     .attr("transform", `translate(${margin.left},${margin.top})`);
+
+//   const filteredData = data.filter(d => d.trace_name === traceName);
+//   loadSeverityLevels(severityCsvPath, traceName, severityLevels => {
+//     const { x, y } = createScales(filteredData, width, height);
+//     const line = d3.line()
+//       .x(d => x(d.months))
+//       .y(d => y(d.score))
+//       .curve(d3.curveCardinal);
+
+//     drawAxes(svg, x, y, width, height);
+//     drawSeverityGridLines(svg, y, width, severityLevels);
+//     drawSeverityLabels(svg, y, width, margin, severityLevels);
+    
+//     // Always draw title and labels
+//     drawTitleAndLabels(svg, title, margin, width, height);
+
+//     if (filteredData.length > 0) {
+//       drawLineAndPoints(svg, filteredData, x, y, line, severityLevels);
+//       drawAnnotations(svg, filteredData, margin, width, height);
+//     }
+//   });
+// }
+
+function drawChart(data, severityCsvPath, traceName, title) {
+  const margin = { top: 80, right: 150, bottom: 50, left: 50 };
+  const width = 600 - margin.left - margin.right;
+  const height = 400 - margin.top - margin.bottom;
+
+  const svg = d3.select("body")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  const filteredData = data.filter(d => d.trace_name === traceName);
+  loadSeverityLevels(severityCsvPath, traceName, severityLevels => {
+    const { x, y } = createScales(filteredData, width, height);
+    const line = d3.line()
+      .x(d => x(d.months))
+      .y(d => y(d.score))
+      .curve(d3.curveCardinal);
+
+    drawAxes(svg, x, y, width, height);
+    drawSeverityGridLines(svg, y, width, severityLevels);
+    drawSeverityLabels(svg, y, width, margin, severityLevels);
+
+    // Always draw title and labels
+    drawTitleAndLabels(svg, title, margin, width, height);
+
+    if (filteredData.length > 0) {
+      drawLineAndPoints(svg, filteredData, x, y, line, severityLevels);
+      drawAnnotations(svg, filteredData, margin, width, height, traceName);
+    }
+  });
+}
+
+  // Load data and generate charts
+  loadData("<%= csvPath %>", data => {
+    const uniqueTraceNames = [...new Set(data.map(d => d.trace_name))];
+    uniqueTraceNames.forEach(traceName => {
+      const title = data.find(d => d.trace_name === traceName).title || traceName;
+      drawChart(data, "SeverityLevels.csv", traceName, title);
+    });
+  });
+
+</script>
+
+</body>
+</html>

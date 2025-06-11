@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body id="admin-dashboard">
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <img src="/assets/logo.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+
+        <div class="user">
+            <div>
+                <p class="bold">Hospital Admin</p>
+                <hr class="spacer">
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a href="/admin-dashboard">
+                    <i class="bx bxs-grid-alt"></i>
+                    <span class="nav-item">Admin Dashboard</span>
+                </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="/manage-doctors">
+                    <i class='bx bx-group'></i>
+                    <span class="nav-item">Manage Providers</span>
+                </a>
+                <span class="tooltip">All Providers </span>
+            </li>
+            <li>
+                <a href="/manage-surveys">
+                    <i class='bx bx-book-content'></i>
+                    <span class="nav-item">Manage Surveys</span>
+                </a>
+                <span class="tooltip">All Surveys </span>
+            </li>
+            <li>
+                <a href="http://localhost:4099/">
+                    <i class='bx bx-add-to-queue'></i>
+                    <span class="nav-item">Add New Survey</span>
+                </a>
+                <span class="tooltip">New Survey </span>
+            </li>
+            <li>
+                <a href="http://localhost:4050/add">
+                    <i class='bx bx-folder-plus'></i>
+                    <span class="nav-item">Add New Specialty</span>
+                </a>
+                <span class="tooltip">New Specialty</span>
+            </li>
+            <li>
+                <a href="/view-report">
+                    <i class='bx bxs-report'></i>
+                    <span class="nav-item">View Reports</span>
+                </a>
+                <span class="tooltip">Reports</span>
+            </li>
+            <li>
+                <a href="/">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item">Logout</span>
+                </a>
+                <span class="tooltip">Logout</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar">
+            <h1>Welcome, Hospital Admin</h1>
+            <!-- <form action="/search" method="GET" class="searchtopbar">
+                <input type="text" name="mrNo" placeholder="Search Anything">
+                <button type="submit" class="btn-search"><i class='bx bx-search-alt'></i></button>
+            </form> -->
+        </div>
+
+        <hr>
+        <div class="dashboard">
+            <div class="blurbs">
+                <div class="blurb">
+                    <img src="/assets/images/manage-Providers.png" alt="Manage Providers">
+                    <h3>Manage Providers</h3>
+                    <p>Keep track of all your healthcare providers in one place.</p>
+                    <a href="/manage-doctors">
+                        <button class="cta-blurb"><i class='bx bx-group'></i> Manage Providers</button>
+                    </a>
+                </div>
+                <div class="blurb">
+                    <img src="/assets/images/manage-surveys-final.png" alt="Manage Surveys">
+                    <h3>Manage Surveys</h3>
+                    <p>Create, distribute, and analyze patient surveys with ease.</p>
+                    <a href="/manage-surveys">
+                        <button class="cta-blurb"><i class='bx bx-book-content'></i> Manage Surveys</button></a>
+                </div>
+                <div class="blurb">
+                    <img src="/assets/images/View-Reports.png" alt="View Report">
+                    <h3>View Reports</h3>
+                    <p>Access detailed reports and insights to make informed decisions.</p>
+                    <a href="/view-report">
+                        <button class="cta-blurb"><i class='bx bxs-report'></i> View Reports</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="/scripts/main.js" type="text/javascript"></script>
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+
+            function removeCurrentPageClasses() {
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('CurrentPage');
+                });
+            }
+
+            function setCurrentPageLink(path) {
+                removeCurrentPageClasses();
+                console.log(`Setting CurrentPage link for path: ${path}`);
+                const currentPageLink = document.querySelector(`.sidebar ul li a[href="${path}"]`);
+                if (currentPageLink) {
+                    console.log(`CurrentPage link found: ${currentPageLink}`);
+                    currentPageLink.classList.add('CurrentPage');
+                } else {
+                    console.log(`No CurrentPage link found for path: ${path}`);
+                }
+            }
+
+            // Check the URL path and set the current page link on page load
+            const currentPath = window.location.pathname;
+            console.log(`Current path: ${currentPath}`);
+            if (currentPath) {
+                setCurrentPageLink(currentPath);
+            }
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    setCurrentPageLink(link.getAttribute('href'));
+                });
+            });
+        });
+    </script>
+</body>
+</html>

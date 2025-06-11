@@ -1,0 +1,353 @@
+<!-- views/login.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Login</title>
+    <!-- Updated stylesheet link to include basePath -->
+    <link rel="stylesheet" href="<%= basePath %>/styles/supadmlogin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+
+        <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+
+
+    <style>
+        @media (max-width: 800px) {
+  h1 {
+    font-size: 1.5rem; /* styling for mobile devices to behave like h2 */
+  }
+}
+
+h1 {
+    color: #333;
+}
+.input-container {
+    position: relative; /* Allows positioning of the icon inside the container */
+    width: 100%;
+    
+}
+
+.error-message {
+
+color: red;
+text-align: center;
+margin-bottom: 20px;
+}
+
+/* Style the input field */
+.input-container input {
+    font-family: 'Inter', sans-serif;
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Style the password visibility icon */
+.password-toggle-icon {
+    position: absolute;
+    right: 16px; /* Align the icon to the right inside the container */
+    top: 36%;
+    transform: translateY(-50%); /* Vertically center the icon */
+    cursor: pointer;
+    font-size: 20px; /* Adjust icon size */
+    color: #aaa; /* Change icon color */
+}
+
+.password-toggle-icon:hover {
+    color: #333; /* Darker color on hover */
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.5); /* Dark background overlay */
+  overflow-y: auto; /* Enable vertical scroll if needed */
+}
+
+/* Modal content box for clean look */
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px; /* Updated padding */
+  border: 1px solid #888;
+  width: 70%; /* We'll reduce this in the next step */
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+  position: relative;
+  border-radius: 10px; /* Added border-radius */
+  text-align: left; /* Align text to the left */
+}
+
+
+/* Close button styling */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* Terms and conditions styling similar to Android Studio */
+.terms-scrollable {
+  font-family: Arial, sans-serif; /* Cleaner font */
+  font-size: 14px; /* Make text easier to read */
+  line-height: 1.6; /* Increase line spacing for readability */
+  color: #333;
+}
+
+.terms-scrollable h2 {
+    font-weight: bold;
+    margin-top: 30px;
+    font-size: 24px; /* Larger headings */
+}
+
+.terms-scrollable h3 {
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.terms-scrollable h4 {
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.terms-scrollable p {
+    margin-bottom: 15px;
+}
+
+.terms-scrollable ul {
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+.terms-scrollable li {
+    margin-bottom: 10px;
+}
+
+/* Ensure no excessive white space below the content */
+.modal-content {
+  margin-bottom: 0;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <div><h1><span style="font-weight: normal;">Welcome,</span><br>Super Admin</h1></div>
+    <div class="login-container">
+        <!-- Updated form action to include basePath -->
+        <form action="<%= basePath %>/login" method="POST" class="login-form">
+            <hr class="spacer">
+            <!-- Updated image source to include basePath -->
+            <img src="<%= basePath %>/assets/images/logo.png">
+            <hr class="spacer">
+            <input type="text" id="username" placeholder="Username" name="username" required>
+            <div class="input-container">
+                <input type="password" id="password" placeholder="Password" name="password" required>
+                <i class="bx bx-show password-toggle-icon" onclick="togglePassword()"></i>
+    
+            </div>
+            <% if (messages.error && messages.error.length > 0) { %>
+                <div class="error-message" id="error-message">
+                    <%= messages.error[0] %>
+                </div>
+            <% } %>
+        
+            <button type="submit" class="lgbtn">Login</button>
+            <hr class="spacer">
+        </form>
+
+    </div>
+    <hr class="spacer">
+    <div style="display: flex; justify-content: space-around;"><h1>Let's power up with PROMs</h1></div>
+    <hr class="spacer">
+    <hr class="spacer">
+    <div style="display: flex;justify-content: center; color: grey; gap: 10px; min-height: 35px;"> 
+        © WeHealthify
+        <a href="mailto:support@wehealthify.org">Contact</a>   
+        <a href="#" onclick="openModal()">Privacy Policy</a>
+    </div>
+
+    
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <!-- Scrollable Terms and Conditions Section -->
+    <!-- Scrollable Terms and Conditions Section with Document (PDF) -->
+    <!-- Scrollable Rich Text Terms and Conditions Section -->
+    <div class="terms-scrollable">
+        <h2>Privacy Policy for PROMs App</h2>
+    
+        <h3>1. Introduction</h3>
+        <p>
+            This Privacy Policy explains how we collect, use, disclose, and protect your personal data when you use the PROMs app (<a href="<%= BASE_URL %>"><%= BASE_URL %>/</a>). The PROMs app is designed to measure patient-reported outcomes and manage hospital staff, doctor, and patient data securely and in compliance with data protection regulations.
+        </p>
+        <p>
+            By using our app, you agree to the collection and use of your information in accordance with this policy.
+        </p>
+    
+        <h3>2. Data We Collect</h3>
+    
+        <h4>2.1 Patient Data</h4>
+        <p><strong>Personal Information:</strong> Name, Date of Birth, Phone Number, Medical Record (MR) Number, and Appointment Details.</p>
+        <p><strong>Health Information:</strong> PROMs survey responses related to your health status, doctor’s notes, ICD codes, and medical history.</p>
+    
+        <h4>2.2 Doctor Data</h4>
+        <p><strong>Personal Information:</strong> Name, Username, and Password.</p>
+        <p><strong>Patient Data:</strong> Access to assigned patients’ details including personal and health information for analysis and decision-making.</p>
+    
+        <h4>2.3 Staff Data</h4>
+        <p><strong>Personal Information:</strong> Name, Username, and Password.</p>
+        <p><strong>Patient Management:</strong> Access to patient appointment scheduling, edits, and data uploads.</p>
+    
+        <h4>2.4 Hospital Admin and Super Admin Data</h4>
+        <p><strong>Personal Information:</strong> Name, Username, and Password.</p>
+        <p><strong>Hospital Management:</strong> Access to manage hospitals, specialties, and staff, and view anonymized hospital-level data.</p>
+    
+        <h3>3. How We Use Your Data</h3>
+        <p>We use your data to:</p>
+        <ul>
+            <li>Facilitate patient-doctor interactions through PROMs surveys.</li>
+            <li>Enable doctors to view and analyze patient progress.</li>
+            <li>Provide hospital-level insights for hospital and super admins.</li>
+            <li>Ensure the proper functioning of the app and improve healthcare outcomes.</li>
+        </ul>
+    
+        <h3>4. Legal Basis for Processing</h3>
+        <p>We process personal data in accordance with:</p>
+        <ul>
+            <li><strong>GDPR (General Data Protection Regulation)</strong> for users based in the EU.</li>
+            <li><strong>HIPAA (Health Insurance Portability and Accountability Act)</strong> for healthcare-related data in the US.</li>
+            <li>Explicit user consent is obtained before processing any personal data.</li>
+        </ul>
+    
+        <h3>5. Data Sharing and Disclosure</h3>
+        <p>We may share your data under the following circumstances:</p>
+        <ul>
+            <li><strong>Third Parties:</strong> We do not share your personal data with third parties unless necessary for app functionality (e.g., cloud hosting, data storage).</li>
+            <li><strong>Data Processors:</strong> We have signed Data Processing Agreements (DPA) with any third-party vendors that may handle your personal data, ensuring GDPR and HIPAA compliance.</li>
+        </ul>
+    
+        <h3>6. Security of Your Data</h3>
+        <p>We implement strict security measures to protect your data:</p>
+        <ul>
+            <li><strong>Encryption:</strong> All personal data is encrypted both at rest (AES-256) and in transit (SSL/TLS).</li>
+            <li><strong>Access Controls:</strong> Role-based access ensures that only authorized personnel can access sensitive information.</li>
+            <li><strong>Audit Logs:</strong> All actions are logged for security monitoring and accountability.</li>
+        </ul>
+    
+        <h3>7. Data Retention Policy</h3>
+        <ul>
+            <li><strong>Patient Data:</strong> Retained for a minimum of 5 years or as required by local health regulations. After this period, data will be anonymized or securely deleted.</li>
+            <li><strong>Staff, Doctor, Admin Data:</strong> Retained for the duration of employment or service and deleted 6 months after termination.</li>
+        </ul>
+    
+        <h3>8. Your Data Rights</h3>
+        <p>Under the GDPR and HIPAA, you have the following rights:</p>
+        <ul>
+            <li><strong>Access:</strong> You may request a copy of your personal data.</li>
+            <li><strong>Correction:</strong> You can request corrections to inaccurate or incomplete data.</li>
+            <li><strong>Deletion:</strong> You can request the deletion of your data where applicable.</li>
+            <li><strong>Data Portability:</strong> You can request a copy of your data in a portable format.</li>
+        </ul>
+        <p>
+            To exercise these rights, contact our support team at <a href="support@wehealthify.org">support@wehealthify.org</a>.
+        </p>
+    
+        <h3>9. Data Breach Notifications</h3>
+        <p>In the event of a data breach, we will notify affected users and relevant authorities within 72 hours as required by GDPR and HIPAA.</p>
+    
+        <h3>10. Changes to the Privacy Policy</h3>
+        <p>We may update this policy from time to time. You will be notified of any changes via email or through our app.</p>
+    
+        <h3>11. Contact Information</h3>
+        <p>For questions or concerns regarding this Privacy Policy, please contact us at:</p>
+        <p>Email: <a href="support@wehealthify.org">support@wehealthify.org</a></p>
+        <p>Webste: <a href="app.wehealthify.org">app.wehealthify.org</a></p>
+        
+        <p>Address: Suite 2 Parkway 5 Parkway Business Centre
+            300 Princess Road
+            Manchester
+            M14 7HR</p>
+    </div>
+    
+    
+    
+    
+        </div>
+      </div>
+    <script>
+function openModal() {
+      document.getElementById('termsModal').style.display = 'block';
+    }
+    function closeModal() {
+      document.getElementById('termsModal').style.display = 'none';
+    }
+
+    // Function to close the modal
+    window.onclick = function(event) {
+    const modal = document.getElementById('termsModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
+function togglePassword() {
+    const passwordField = document.getElementById("password");
+    const passwordIcon = document.querySelector(".password-toggle-icon");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        passwordIcon.classList.remove("bx-show");
+        passwordIcon.classList.add("bx-hide");
+    } else {
+        passwordField.type = "password";
+        passwordIcon.classList.remove("bx-hide");
+        passwordIcon.classList.add("bx-show");
+    }
+}
+        // // Hide the flash message after 3 seconds
+        // setTimeout(function() {
+        //     const flashMessage = document.getElementById('flashMessage');
+        //     if (flashMessage) {
+        //         flashMessage.style.display = 'none';
+        //     }
+        // }, 3000); // 3000ms = 3 seconds
+
+        const errorMessage = document.getElementById('error-message');
+        if (errorMessage) {
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 3000);
+        }
+
+    </script>
+</body>
+
+</html>

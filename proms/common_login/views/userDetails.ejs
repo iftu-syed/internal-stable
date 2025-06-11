@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Patient Details</title>
+    <link rel="stylesheet" href="<%= basePath %>/styles.css">
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="<%= basePath %>/css/introjs.min.css">
+    <style>
+
+    /* Styles for the EQ-5D VAS Chart - UPDATED SECTION */
+    .vas-chart-container {
+        display: none; /* Initially hidden - managed by JS */
+        align-items: center; 
+        box-sizing: border-box;
+    }
+
+    .vas-chart-svg {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: visible; /* Allow labels to go outside SVG bounds if needed */
+    }
+
+    /* Main vertical line of the scale for each instance */
+    .vas-scale-line {
+        stroke: #4A5568; /* You can change this to black if preferred like the new example's ticks */
+        stroke-width: 2.5px;
+    }
+
+    /* NEW/UPDATED Tick styles */
+    .vas-tick { /* Common base for ticks */
+        stroke: black;
+    }
+    .vas-tick.major { /* For ticks at 0, 10, 20, ..., 100 */
+        stroke-width: 0.8px; /* Thickness of major ticks */
+        /* Length is controlled by x1, x2 in JavaScript (target total 55px) */
+    }
+    .vas-tick.minor { /* For all other unit ticks */
+        stroke-width: 0.5px; /* Thickness of minor ticks */
+        /* Length is controlled by x1, x2 in JavaScript (target total 20px) */
+    }
+
+    /* Numeric labels (0, 5, 10, ...) beside the scale */
+    .vas-tick-label {
+        font-family: 'Urbanist', sans-serif; /* From new design's .label-area */
+        font-size: 10px;               /* From new design's .label-area */
+        fill: black;                   /* From new design's .label-area */
+        text-anchor: end; /* Aligns the end of the text to the x position */
+    }
+
+.vas-description-label {
+        font-family: 'Roboto', sans-serif;    /* Updated font family */
+        font-size: 12px;                      /* Updated font size */
+        fill: #000000;                        /* Updated fill color to black */
+        text-anchor: middle;                  /* Keep text-anchor as middle for centering */
+        /* line-height: 1.4; /* Handled by dy in tspans in SVG for multiline, adjust if needed for 12px font */
+    }
+
+    /* X-axis for "Assessment Instance" - typically unchanged by this request */
+    .vas-x-axis .domain { stroke: #CBD5E0; }
+    .vas-x-axis .tick line { stroke: #E2E8F0; }
+    .vas-x-axis .tick text { font-family: 'Roboto', sans-serif; font-size: 12px; fill: #4A5568; }
+    .vas-x-axis-label {
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        fill: #2D3748;
+        text-anchor: middle;
+        font-weight: 500;
+    }
+
+    /* Data point showing the actual VAS score - typically unchanged */
+    .vas-data-point {
+        fill: #4299E1; 
+        stroke: #ffffff;
+        stroke-width: 2px;
+        cursor: pointer;
+    }
+    .vas-data-point:hover { fill: #2B6CB0; }
+
+    .vas-data-label { /* Label for the data point (score value) */
+        font-family: 'Roboto', sans-serif;
+        font-size: 13px;
+        fill: #1A202C; 
+        text-anchor: middle;
+        font-weight: 500;
+    }
+
+    .vas-chart-title { /* Title like "EQ-5D VAS Score" - typically unchanged */
+        font-family: 'Urbanist', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        text-anchor: middle;
+        fill: #2D3748;
+        /* margin-bottom: 15px; /* CSS margin doesn't apply to SVG text, positioning is via y attribute */
+    }
+
+
+ai-message-container {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center the message 
+}
+
+.ai-message-box {
+    background-color: #E6E5EB;
+    padding: 10px;
+    border-radius: 8px;
+    width: auto; /* Adjust width as needed /
+    text-align: center; / Center the text within the box */
+}
+
+.ai-icon-container {
+    display: none; /* This will completely remove the AI icon from the layout */
+}
+.ai-message-box h3 {
+    display: none;
+
+}
+body[dir="rtl"] {
+      direction: rtl;
+      text-align: right;
+      font-family: "Arial", sans-serif;
+    }
+
+    body[dir="ltr"] {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .language-selector {
+      text-align: right;
+    }
+
+    .language-selector a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: #007BFF;
+    }
+
+    .language-selector a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .language-selector img {
+      margin-right: 5px;
+      width: 20px;
+      height: auto;
+      vertical-align: middle;
+    }
+h2.speciality-title {
+    font-style: italic;
+    width: 80%;
+    margin: auto;
+    font-weight: 400;
+}
+
+
+        .chart {
+      margin: 20px; /* Add margin around each chart */
+    }
+    .line {
+        fill: none;
+        stroke: #8a8a8a;
+        stroke-width: 2.5px;
+    }
+    .axis-label, .annotation {
+        font-family: 'Roboto', sans-serif;
+        font-size: 12px;
+    }
+    .highlight-circle {
+        stroke: #4682b4;
+        stroke-width: 2.5px;
+    }
+    .data-circle {
+        fill: #ffffff;
+        stroke: #8a8a8a;
+        stroke-width: 2.5px;
+    }
+/* BREATHING EFFECT TO CIRCLES */
+@keyframes breathing {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.highlight-circle {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: breathing 1.5s infinite ease-in-out;
+}
+
+
+/* END OF BREATHIGN EFFECT CSS */
+
+    .grid-line {
+        stroke: #ddd;
+        stroke-width: 1px;
+    }
+        /* body{
+            overflow: hidden;
+        } */
+        .user-details-container {
+            height: 100%;
+            max-width: 100%;
+            padding: 20px;
+            background-color: #E6E5EB;
+        }
+        h2 {
+            color: #333333;
+            text-align: left;
+            margin-bottom: 10px;
+            margin-top:10px
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+        .image {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-align: center;
+        }
+        .image:hover {
+            transform: scale(1.05);
+        }
+        .image img {
+            width: 100%;
+            height: auto;
+            vertical-align: middle;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        form button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            color: #ffffff;
+            border: 0.5px solid #000;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+        form button[type="submit"]:hover {
+            background-color: #c82333;
+        }
+        
+        input[type="text"], input[type="password"], button {
+            margin-bottom: 0px;
+        }
+
+
+        
+    .chart-iframe {
+    width: 100%;
+    height: calc(100vh - 20px); /* Adjust this value as needed */
+    border: none;
+    overflow: hidden; /* Hide any overflowing content */
+}
+
+
+.image-container {
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: space-between; */
+        justify-content: space-evenly;
+    }
+    .charts-grid {
+        padding-bottom: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Single column by default */
+        row-gap: 50px;
+        column-gap: 50px;
+        justify-items: center;
+        margin-inline: 180px;
+    }
+
+
+    .chart-container {
+        
+        /* width: 600px; */
+        /* border-radius: 10px; Add rounded corners */
+        /* box-shadow: -11px -8px 20px 1px rgba(0, 0, 0, 0.1);  */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+        width: 700px;
+        border-radius: 15px;
+    }
+
+    .chart-container:hover {
+        transform: scale(1.01); /* Slightly enlarge the chart on hover */
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    }
+    /* put this in your global stylesheet */
+.intro-center {
+  top: -30%     !important;
+  left: 50%    !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+
+    @media screen and (max-width: 1780px) {
+    .charts-grid {
+        grid-template-columns: 1fr; /* Switch to single-column layout */
+    }
+}
+
+.charts-grid:has(> *:only-child) {
+  grid-template-columns: 1fr;
+}
+
+    .image {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .image img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* .speciality-container {
+        margin-bottom: 40px;
+        margin-top: -18px;
+        margin-right: 10px;
+        
+    } */
+
+
+
+.tooltip {
+    position: absolute;
+    text-align: left;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border-radius: 8px;
+    pointer-events: none;
+    color: black;
+    z-index: 3000;
+}
+svg {
+    BACKGROUND-COLOR: #fff;
+    BORDER-RADIUS: 15PX;
+    max-width: 120%;
+}
+#language-switch-btn {
+    background-color: #CBFCC6; /* Green background */
+    border: none;
+    border-radius: 8px;
+    color: rgb(0, 0, 0); /* White text color */
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    font-family: 'Urbanist', sans-serif; /* Ensure the font matches your theme */
+    width: 100%; /* Full width */
+    max-width: 300px; /* Adjust max width as needed */
+}
+
+/* #language-switch-btn:hover {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #28a745;
+} */
+
+.language-switch {
+    text-align: right;
+    margin-right: 20px;
+}
+
+.introjs-tooltipbuttons {
+    text-align: right; /* Align buttons to the right */
+
+}
+
+.help-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0px !important;
+    transition: background-color 0.3s ease;
+}
+
+.help-btn:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+}
+
+
+.help-button-container {
+    position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #12171e;
+  padding: 12px 0;
+  transition: all 0.5s ease;
+}
+
+/* Ensure the button aligns well with sidebar's active state */
+.sidebar.active .help-btn {
+    color: #fff;
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+}
+        
+.char { display: block; /* default: charts full width */ }
+
+.char.with-vas {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.char.with-vas #charts-container {
+  flex: 2;    /* 2/3 of the space */
+}
+
+.char.with-vas #vas-chart-container {
+  flex: 1;    /* 1/3 of the space */
+  display: flex;
+  /* flex-direction: column; */
+}
+
+/* hide it by default */
+#vas-chart-container { display: none; }
+
+@media screen and (max-width: 768px) {
+  /* Stack vertically and center both panels */
+  .char.with-vas {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;      /* <-- center children horizontally */
+    gap: 20px;
+  }
+
+  /* Make the chart full-width but keep its contents centered */
+  .char.with-vas #charts-container {
+    width: 100% !important;
+    margin: 0;
+    padding-bottom: 0px;
+  }
+
+  /* Force the VAS panel full-width and center its SVG */
+  .char.with-vas #vas-chart-container {
+    width: 100% !important;
+    margin: 10px 0 0 !important;
+    display: flex;            /* ensure flex so justify-content works */
+    justify-content: center;  /* <-- center the scale graphic */
+  }
+}
+
+
+    </style>
+</head>
+<body style="background-color: #fff;">
+
+    <div class="sidebar">
+        <div class="top">
+             <div class="logo">
+                <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+                
+             </div>
+             <i class="bx bx-menu" id="btn"></i>
+        </div>
+    
+        <ul>
+            <hr class="spacer">  
+            <li>
+                <a href="<%= basePath %>/userDetails">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span id="charts-nav-item" class="nav-item">My Charts</span>
+                </a>
+                <span id="charts-tooltip" class="tooltip">My Charts</span>
+            </li>
+           
+            <!-- <li>
+                <a href="/survey-details/<%= user.Mr_no %>">
+                    <i class='bx bx-list-check'></i>
+                    <span class="nav-item">My Responses</span>
+                </a>
+                <span class="tooltip">My Responses</span>
+            </li> -->
+
+            <li>
+                <a id="profile-link" href="<%= basePath %>/edit-details?hashedMr_no=<%= user.hashedMrNo %>">
+                    <i class='bx bx-user-circle'></i>
+                    <span id="profile-nav-item" class="nav-item">My Profile</span>
+                </a>
+                <span id="profile-tooltip" class="tooltip">My Profile</span>
+            </li>
+            <li>
+                <a href="<%= basePath %>/logout">
+                    <i class="bx bx-log-out"></i>
+                    <span id="logoutNav" class="nav-item">Logout</span>
+                </a>
+                <span id="logout-tooltip" class="tooltip">Logout</span>
+            </li>                      
+        </ul>
+        <div class="help-button-container">
+            <button id="helpButton" class="help-btn">
+                <span id="helpLabel"  class="nav-item">Help </span>
+                <i class='bx bx-help-circle'></i>
+            </button>
+            
+        
+        </div>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav">
+        <ul>
+            <li>
+                <a href="<%= basePath %>/userDetails">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span id="charts-nav-itemm" class="nav-item">My Charts</span>
+                </a>
+            </li>
+            <li>
+                <a href="<%= basePath %>/edit-details?hashedMr_no=<%= user.hashedMrNo %>">
+                    <i class='bx bx-user-circle'></i>
+                    <span id="profile-nav-itemm" class="nav-item">My Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="<%= basePath %>/logout">
+                    <i class="bx bx-log-out"></i>
+                    <span id="logoutNavv" class="nav-item">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+  <div class="main-content">
+    <div class="topbar" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+
+        <!-- <h1>MR No: <%= user.Mr_no %></h1> -->
+         <h2 id="welcome-heading">Welcome to your Health Status Dashboard, <%=user.firstName %> <%=user.lastName %></h2>
+        <!-- Add this in the top right corner of the
+
+    </div> -->
+    <!-- <div class="language-switch" data-title="Language" data-intro="Easy to switch language modes">
+        <button id="language-switch-btn">Arabic</button>
+    </div> -->
+    </div>
+    <hr style="opacity: 0.5;">
+    <div class="language-selector" style="text-align: right; padding: 10px; background-color: #E6E5EB;">
+        <button id="printChartsButton" class="help-btn" style="margin-left: 15px; background-color: #007BFF; color: white; border: none; border-radius: 5px; padding: 8px 12px; cursor: pointer;">
+            <i class="bx bx-printer"></i> Print Charts
+        </button>
+        <a href="?lng=en" class="<%= lng === 'en' ? 'active' : '' %>">
+            <img src="<%= basePath %>/assets/usa.png" alt="English Flag">English
+        </a> |
+        <a href="?lng=ar" class="<%= lng === 'ar' ? 'active' : '' %>">
+            <img src="<%= basePath %>/assets/flag.png" alt="Arabic Flag">العربية
+        </a>
+        
+      </div>
+    
+
+
+
+        
+<div class="user-details-container">
+    <div class="speciality-container">
+        <h2 class="speciality-title" data-title="AI Message" data-intro="Summary of patient health status with actionable insights">
+            <br>
+            <br>
+            <% if (lng === 'ar') { %>
+                <%= aiMessageArabic %>
+            <% } else { %>
+                <%= aiMessage %>
+            <% } %>
+        </h2>
+        
+            <br>
+                <!-- AI Message Box -->
+                <div class="ai-message-container">
+                    <div class="ai-message-box" id="aiMessageBox">
+                        <h3>Summary</h3>
+                        <!-- <p id="aiMessageContent"><%= aiMessage %></p> -->
+                        <br>
+                    </div>
+                </div>                
+        
+<div class="char">
+  <!-- 1st column: all your D3 charts -->
+  <div id="charts-container" class="charts-grid" 
+       data-title="Charts" 
+       data-intro="Trends in outcomes compared to baseline and last visit.">
+    <!-- D3 will append each chart here -->
+  </div>
+
+  <!-- 2nd column: the EQ-5D VAS panel -->
+  <div id="vas-chart-container" class="vas-chart-container"></div>
+</div>
+
+    </div>
+    <!-- <button onclick="downloadCSV('<%= user.Mr_no %>')">Download CSV</button> -->
+</div>
+
+
+
+
+
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <img id="modalImage" src="" alt="Enlarged Image">
+    </div>
+
+</div>
+</body>
+<script>
+    window.user = {
+      firstName: "<%= user.firstName %>",
+      lastName: "<%= user.lastName %>",
+      hashedMrNo: "<%= user.hashedMrNo || '' %>"
+    };
+  </script>
+  
+<script src="<%= basePath %>/js/intro.min.js"></script>
+    <script>
+        document.getElementById('helpButton').addEventListener('click', function () {
+    // Determine the current language (default to English)
+    const lang = new URLSearchParams(window.location.search).get('lng') || getCookie('lng') || 'en';
+
+    // Define translations for the steps
+    const translations = {
+        en: {
+            step1: "Summary of patient health status with actionable insights.",
+            step2: "Trends in outcomes compared to baseline and last visit.",
+            step3: "Print your charts here",
+            step4: "Switch between arabic and english",
+            step5: "View your profile details"
+        },
+        ar: {
+            step1: "ملخص حالة المريض الصحية مع رؤى قابلة للتنفيذ.",
+            step2: "الاتجاهات في النتائج مقارنة بالخط الأساسي والزيارة الأخيرة.",
+            step3: "اطبع مخططاتك هنا",
+            step4: "التبديل بين العربية والانجليزية",
+            step5: "عرض تفاصيل ملفك الشخصي"
+        }
+    };
+
+    // Define the steps
+    const introSteps = [
+        {
+            element: '.speciality-title', // Select the h2 element
+            intro: translations[lang].step1 // Use the translated step text
+        },
+        {
+            element: '#charts-container .chart-container:nth-child(1) svg', // Select the charts container
+            intro: translations[lang].step2, // Use the translated step text
+            tooltipClass: 'intro-center'
+        },
+        {
+            element: '#printChartsButton',
+            intro: translations[lang].step3
+        },
+        {
+            element: 'a[href="?lng=en"]',
+            intro: translations[lang].step4
+        },
+        {
+            element: '#profile-link',
+            intro: translations[lang].step5
+        }
+    ];
+
+    // Initialize and start Intro.js with dynamic labels for buttons
+    introJs()
+    .setOptions({
+        steps: introSteps,
+        scrollToElement: true,
+        scrollPadding: 50,
+        nextLabel: lang === 'ar' ? 'التالي' : 'Next',
+        prevLabel: lang === 'ar' ? 'السابق' : 'Back',
+        doneLabel: lang === 'ar' ? 'تم' : 'Done'
+    })
+    .start();
+});
+        
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const getCookie = (name) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      };
+      const params = new URLSearchParams(window.location.search);
+      let currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+      
+      // Set the language cookie
+      document.cookie = `lng=${currentLanguage}; path=/`;
+          const fetchUrl = `/patientlogin/locales/${currentLanguage}/translation.json`;
+      
+      
+          // Set the `lang` and `dir` attributes for the HTML document
+        //   document.documentElement.lang = currentLanguage;
+        //   document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+      
+          fetch(fetchUrl)
+            .then(response => {
+              if (!response.ok) {
+                console.warn(`Translation file not found for language: ${currentLanguage}. Falling back to English.`);
+                return fetch(`/doctorlogin/locales/en/translation.json`);
+              }
+              return response.json();
+            })
+            .then(translations => {
+              console.log('Loaded translations:', translations);
+      
+              // Update the elements based on translation keys
+              Object.keys(translations).forEach(id => {
+                const element = document.getElementById(id);
+      
+                if (element) {
+                    const translationValue = translations[id];
+      
+                    if (typeof translationValue === 'string') {
+
+                        // ---- MODIFICATION START: Insert placeholders for user if present ----
+
+                        let finalValue = translationValue;
+
+                        if (window.user) {
+
+                            finalValue = finalValue
+
+                            .replace('{firstName}', window.user.firstName || '')
+
+                            .replace('{lastName}', window.user.lastName || '');
+
+                        }
+
+                        element.innerHTML = finalValue;
+
+                        // ---- MODIFICATION END ----
+
+                    }
+
+
+
+                if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+
+                console.log(`Updating placeholder for ${id}:`, translationValue);
+
+                element.placeholder = translationValue;
+
+                }
+                    else if (typeof translationValue === 'object') {
+                                            // Handle nested object (e.g., lists)
+                                            element.innerHTML = ''; // Clear existing content
+                                            Object.values(translationValue).forEach(item => {
+                                                const listItem = document.createElement('li');
+                                                listItem.textContent = item;
+                                                element.appendChild(listItem);
+                                            });
+                    } else {
+                        console.warn(`Unexpected translation value type for "${id}":`, translationValue);
+                    }
+                }  
+              });
+            })
+            .catch(error => console.error('Error loading translations:', error));
+        });
+      </script>
+<script>
+    
+    function downloadCSV(mr_no) {
+        window.location.href = `<%= basePath %>/download-csv?mr_no=${mr_no}`;
+    }
+</script>
+<script>
+function openModal(imageSrc, type, mr_no) {
+    const modal = document.getElementById('myModal');
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = imageSrc;
+    modal.style.display = 'block';
+
+    const iframe = document.getElementById(`iframe-${type}`);
+    iframe.src = `<%= basePath %>/chart?type=${type}&mr_no=${mr_no}`;
+}
+function openServer() {
+    const mr_no = "<%= user.Mr_no %>";
+    window.open(`<%= basePath %>/openServer?mr_no=${mr_no}`, '_blank');
+}
+function closeModal() {
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById('myModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
+function openServer() {
+    const mr_no = "<%= user.Mr_no %>";
+    window.open(`http://localhost:8080?mr_no=${mr_no}`, '_blank');
+}
+
+window.addEventListener('load', function() {
+    const iframes = document.querySelectorAll('.chart-iframe');
+    iframes.forEach(iframe => {
+        iframe.onload = () => resizeIframe(iframe);
+    });
+});
+
+
+window.addEventListener('load', function() {
+        // Create or select the viewport meta tag
+        let metaViewport = document.querySelector('meta[name="viewport"]');
+
+        if (!metaViewport) {
+            metaViewport = document.createElement('meta');
+            metaViewport.name = "viewport";
+            document.head.appendChild(metaViewport);
+        }
+
+        // Adjust zoom level based on screen width
+        if (window.innerWidth <= 768) { // For mobile
+            metaViewport.setAttribute('content', 'width=device-width, initial-scale=0.7, maximum-scale=3.0');
+        } else { // For desktop or larger screens
+            metaViewport.setAttribute('content', 'width=device-width, initial-scale=0.8, maximum-scale=1.0');
+        }
+    });
+
+</script>
+
+
+
+<script>
+    // function loadData(csvPath, callback) {
+    //     d3.csv(csvPath).then(data => {
+    //         console.log("Data loaded:", data); // Debugging line
+    //         data.forEach(d => {
+    //             d.months = +d.months_since_baseline;
+    //             d.score = +d.score;
+    //             d.ymax = +d.ymax;
+    //             d.ymin = +d.ymin;
+    //         });
+    //         callback(data);
+    //     }).catch(error => console.error("Error loading data:", error)); // Error handling
+    // }
+
+    // function loadSeverityLevels(csvPath, scale, callback) {
+    //     d3.csv(csvPath).then(data => {
+    //         const severityLevels = data
+    //             .filter(d => d.Scale === scale)
+    //             .map(d => ({
+    //                 level: d.Severity,
+    //                 color: d.Color,
+    //                 range: [+d.Chart_Range_Min, +d.Chart_Range_Max]
+    //             }));
+    //         console.log("Severity levels loaded:", severityLevels); // Debugging line
+    //         callback(severityLevels);
+    //     }).catch(error => console.error("Error loading severity levels:", error)); // Error handling
+    // }
+    function loadData(csvPath, callback) {
+        d3.csv(csvPath).then(data => {
+            console.log("Data loaded:", data); // Debugging line
+            data.forEach(d => {
+                d.months = +d.months_since_baseline;
+                d.score = +d.score;
+                d.ymax = +d.ymax;
+                d.ymin = +d.ymin;
+            });
+            callback(data);
+        }).catch(error => console.error("Error loading data:", error)); // Error handling
+    }
+
+    function loadSeverityLevels(csvPath, scale, callback) {
+        d3.csv(csvPath).then(data => {
+            const severityLevels = data
+                .filter(d => d.Scale === scale)
+                .map(d => ({
+                    level: d.Severity,
+                    color: d.Color,
+                    range: [+d.Chart_Range_Min, +d.Chart_Range_Max]
+                }));
+            console.log("Severity levels loaded:", severityLevels); // Debugging line
+            callback(severityLevels);
+        }).catch(error => console.error("Error loading severity levels:", error)); // Error handling
+    }
+
+    function createScales(data, width, height) {
+    let x;
+    if (data.length === 1) {
+        // Use scalePoint to center a single data point
+        x = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d.months)])
+    	    .range([0, width * 0.6]); // Compress the space between 0 and 1 (0.8 is an example, you can tweak this)
+    } else {
+        // Default linear scale for multiple data points
+        x = d3.scaleLinear()
+    
+            .domain([0, d3.max(data, d => d.months)])
+            .range([0, width * 0.8]);
+    }
+
+
+        const y = d3.scaleLinear()
+            .domain([+data[0].ymin, +data[0].ymax])
+            .range([height, 0]);
+
+        return { x, y };
+    }
+
+    // function drawAxes(svg, x, y, width, height) {
+    //     svg.append("g")
+    //         .attr("transform", `translate(0,${height})`)
+    //         .call(d3.axisBottom(x))
+    //         .selectAll("text")
+    //         .style("fill", "#777");
+
+    //     svg.append("g")
+    //         .call(d3.axisLeft(y))
+    //         .selectAll("text")
+    //         .style("fill", "#777");
+    // }
+
+    // Modify the drawAxes function to only show integer values on the x-axis
+function drawAxes(svg, x, y, width, height) {
+    // svg.append("g")
+    //     .attr("transform", `translate(0,${height})`)
+    //     .call(d3.axisBottom(x)
+    //         .tickFormat(d => Number.isInteger(d) ? d : "")) // Only display integer tick values
+    //     .selectAll("text")
+    //     .style("fill", "#777");
+    // svg.append("g")
+    // .attr("transform", `translate(0,${height})`)
+    // .call(d3.axisBottom(x)
+    //     .tickFormat(d => Number.isInteger(d) ? d : "") // Only display integer tick values
+    //     .ticks(3) // Keep the same number of ticks but compress the 0-1 space
+    // )
+    // .selectAll("text")
+    // .style("fill", "#777");
+    svg.append("g")
+    .attr("transform", `translate(0,${height})`)
+    .call(d3.axisBottom(x)
+        .tickFormat(d => Number.isInteger(d) ? d : "") // Only display integer tick values
+    )
+    .selectAll("text")
+    // .style("fill", "#777"); // Keep the labels
+
+// Hide the ticks
+svg.selectAll(".tick line")
+    .style("stroke-opacity", 0); // Make the ticks invisible
+
+
+
+    svg.append("g")
+        .call(d3.axisLeft(y))
+        .selectAll("text")
+        // .style("fill", "#777");
+
+        svg.append("line")
+        .attr("x1", 0)
+        .attr("x2", width) // Extend to full width
+        .attr("y1", height)
+        .attr("y2", height)
+        .style("stroke", "#777")
+        .style("stroke-width", 2);
+}
+
+
+    function drawSeverityGridLines(svg, y, width, severityLevels) {
+        severityLevels.forEach(severity => {
+            svg.append("line")
+                .attr("class", "grid-line")
+                .attr("x1", 0)
+                .attr("x2", width)
+                .attr("y1", y(severity.range[0]))
+                .attr("y2", y(severity.range[0]));
+
+            svg.append("line")
+                .attr("class", "grid-line")
+                .attr("x1", 0)
+                .attr("x2", width)
+                .attr("y1", y(severity.range[1]))
+                .attr("y2", y(severity.range[1]));
+        });
+    }
+
+    // function drawSeverityLabels(svg, y, width, margin, severityLevels) {
+    //     severityLevels.forEach(severity => {
+    //         svg.append("rect")
+    //             .attr("x", width + margin.right - 100)
+    //             .attr("y", y(severity.range[1]))
+    //             .attr("width", 6)
+    //             .attr("height", y(severity.range[0]) - y(severity.range[1]))
+    //             .attr("fill", severity.color);
+
+    //         svg.append("text")
+    //             .attr("x", width + margin.right - 85)
+    //             .attr("y", (y(severity.range[0]) + y(severity.range[1])) / 2)
+    //             .attr("dy", ".35em")
+    //             .attr("text-anchor", "start")
+    //             .attr("class", "axis-label")
+    //             .text(severity.level);
+    //     });
+    // }
+//     function drawSeverityLabels(svg, y, width, margin, severityLevels) {
+//     severityLevels.forEach(severity => {
+//         svg.append("rect")
+//             .attr("x", width + margin.right - 100)
+//             .attr("y", y(severity.range[1]))
+//             .attr("width", 6)
+//             .attr("height", y(severity.range[0]) - y(severity.range[1]))
+//             .attr("fill", severity.color);
+
+//         svg.append("text")
+//             .attr("x", width + margin.right - 85)
+//             .attr("y", (y(severity.range[0]) + y(severity.range[1])) / 2)
+//             .attr("dy", ".35em")
+//             .attr("text-anchor", "start")
+//             .attr("class", "axis-label")
+//             .text(severity.level);
+//     });
+// }
+
+function drawSeverityLabels(svg, y, width, margin, severityLevels) {
+    const maxCharsPerLine = 10; // Maximum characters per line before wrapping
+    const lineHeight = 13; // Line height for each line of wrapped text
+
+    severityLevels.forEach(severity => {
+        // Draw the rectangle for severity levels
+        svg.append("rect")
+            .attr("x", width + margin.right - 100)
+            .attr("y", y(severity.range[1]))
+            .attr("width", 6)
+            .attr("height", y(severity.range[0]) - y(severity.range[1]))
+            .attr("fill", severity.color);
+
+        // Handle long text for severity labels with wrapping
+        const labelText = severity.level;
+        const wrappedText = wrapText(labelText, maxCharsPerLine);
+
+        // Append each line of text, handling vertical positioning for multi-line labels
+        wrappedText.forEach((line, i) => {
+            svg.append("text")
+                .attr("x", width + margin.right - 85)
+                .attr("y", ((y(severity.range[0]) + y(severity.range[1])) / 2) + (i * lineHeight) - ((wrappedText.length - 1) * lineHeight) / 2) // Center vertically if wrapped
+                .attr("dy", ".35em")
+                .attr("text-anchor", "start")
+                .attr("class", "axis-label")
+                .text(line);
+        });
+    });
+}
+
+// Helper function to split text into multiple lines without breaking words
+function wrapText(text, maxCharsPerLine) {
+    const words = text.split(' ');
+    let currentLine = '';
+    const lines = [];
+
+    words.forEach(word => {
+        if (currentLine.length + word.length + 1 <= maxCharsPerLine) {
+            currentLine += word + ' ';
+        } else {
+            lines.push(currentLine.trim());
+            currentLine = word + ' ';
+        }
+    });
+
+    lines.push(currentLine.trim()); // Add the last line
+
+    return lines;
+}
+
+
+    const scoreInterpretation = {
+        "Global-Health Physical": "higher",
+        "Global-Health Mental": "higher",
+        "WEXNER": "lower",
+        "ICIQ-UI SF": "lower",
+        "PAID": "lower",
+        "PAID-5": "lower",
+        "EPDS": "lower",
+        "PROMIS Bank v1.1 - Pain Interference": "lower",
+        "PROMIS SF v1.0 - Fatigue-OA-Knee 8a" :"lower",
+        "PROMIS SF v1.0 - Depression-OA-Knee 4a" :"lower",
+        "Pain-Interference":"lower",
+        "Physical-Function":"higher",
+        "EQ-5D":"higher",
+        "PHQ-2": "lower",
+
+    };
+
+   
+
+
+
+function drawLineAndPoints(svg, data, x, y, line, severityLevels) {
+    const tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+    svg.append("path")
+        .datum(data)
+        .attr("class", "line")
+        .attr("d", line);
+
+    // Function to format the date as "13th July"
+    function formatDate(dateStr) {
+        const date = new Date(dateStr);
+        const day = date.getDate();
+        const month = date.toLocaleString('default', { month: 'long' }); // Full month name
+        const suffix = getOrdinalSuffix(day);
+        return `${day}${suffix} ${month}`;
+    }
+
+    // Function to determine the ordinal suffix for a given day
+    function getOrdinalSuffix(day) {
+        if (day > 3 && day < 21) return 'th'; // Handles 11th, 12th, 13th, etc.
+        switch (day % 10) {
+            case 1: return "st";
+            case 2: return "nd";
+            case 3: return "rd";
+            default: return "th";
+        }
+    }
+
+    data.forEach((d, i) => {
+        const circle = svg.append("circle")
+            .attr("class", i === data.length - 1 ? "highlight-circle" : "data-circle")
+            .attr("cx", x(d.months))
+            .attr("cy", y(d.score))
+            .attr("r", i === data.length - 1 ? 8 : 4)
+            .attr("fill", i === data.length - 1 ? severityLevels.find(severity => d.score >= severity.range[0] && d.score <= severity.range[1]).color : null)
+            .on("mouseover", (event) => {
+                tooltip.transition().duration(200).style("opacity", .9);
+
+                // Determine the severity color
+                let severityColor = "lightsteelblue"; // Default color
+                severityLevels.forEach(severity => {
+                    if (d.score >= severity.range[0] && d.score <= severity.range[1]) {
+                        severityColor = severity.color;
+                    }
+                });
+
+                // Tooltip to show both Date and Score for all data points
+                tooltip.html(`<strong>Date:</strong> ${formatDate(d.date)}<br><strong>Score:</strong> ${d.score}`)
+                    .style("left", (event.pageX + 15) + "px")
+                    .style("top", (event.pageY - 28) + "px")
+                    .style("background-color", severityColor); // Set the dynamic background color
+            }).on("mouseout", () => {
+                tooltip.transition().duration(500).style("opacity", 0);
+            });
+    });
+
+    svg.append("text")
+        .attr("class", "annotation")
+        .attr("x", x(data[data.length - 1].months) + 10)
+        .attr("y", y(data[data.length - 1].score))
+        .text(data[data.length - 1].score);
+}
+
+
+    function drawAnnotations(svg, data, margin, width, height, traceName) {
+        const scoreType = scoreInterpretation[traceName];
+        const changeFromFirstVisit = Math.round((data[data.length - 1].score - data[0].score) * 100) / 100;
+        const changeFromLastVisit = Math.round((data[data.length - 1].score - data[data.length - 2].score) * 100) / 100;
+
+        const getAnnotationText = (change, type, isFirstVisit) => {
+            if (type === "higher") {
+                return change > 0 ? `↑ ${change} from ${isFirstVisit ? "first" : "last"} visit` : `↓ ${Math.abs(change)} from ${isFirstVisit ? "first" : "last"} visit`;
+            } else {
+                return change < 0 ? `↑ ${Math.abs(change)} from ${isFirstVisit ? "first" : "last"} visit` : `↓ ${change} from ${isFirstVisit ? "first" : "last"} visit`;
+            }
+        };
+
+        const getColor = (change, type) => {
+            if (type === "higher") {
+                return change > 0 ? "green" : "red";
+            } else {
+                return change < 0 ? "green" : "red";
+            }
+        };
+
+        svg.append("text")
+            .attr("class", "annotation")
+            .attr("x", margin.left / 2)
+            .attr("y", -margin.top / 2.5)
+            .text(getAnnotationText(changeFromFirstVisit, scoreType, true))
+            .style("fill", getColor(changeFromFirstVisit, scoreType));
+
+        svg.append("text")
+            .attr("class", "annotation")
+            .attr("x", margin.left / 2)
+            .attr("y", -margin.top / 2 + 25)
+            .text(getAnnotationText(changeFromLastVisit, scoreType, false))
+            .style("fill", getColor(changeFromLastVisit, scoreType));
+    }
+
+    function drawTitleAndLabels(svg, title, margin, width, height) {
+        const xAxisLabel = "Months Since Baseline";
+
+        svg.append("text")
+            .attr("class", "annotation")
+            .attr("x", width / 2)
+            .attr("y", height + margin.bottom - 10)
+            .attr("text-anchor", "middle")
+            .text(xAxisLabel);
+
+        svg.append("text")
+            .attr("class", "annotation")
+            .attr("x", width / 1.75)
+            .attr("y", -margin.top + 30)
+            .attr("text-anchor", "middle")
+            .style("font-size", "18px")
+            .text(title);
+    }
+
+function drawVerticalEventLines(svg, data, x, y, height) {
+    // Define a tooltip for event details
+    const eventTooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+    data.forEach(d => {
+        if (d.event_date && d.event) {
+            const eventDate = new Date(d.event_date);
+            const dataDate = new Date(d.date);
+            
+            // Compare the months of date and event_date
+            if (eventDate.getMonth() === dataDate.getMonth()) {
+                const eventX = x(d.months); // Use the 'months' field for X coordinate
+
+                // Draw the vertical line with increased hit area
+                svg.append("line")
+                    .attr("class", "event-line")
+                    .attr("x1", eventX)
+                    .attr("x2", eventX)
+                    .attr("y1", y(y.domain()[0])) // y-axis minimum
+                    .attr("y2", y(y.domain()[1])) // y-axis maximum
+                    .style("stroke", "#FF4500") // Customize the line color
+                    .style("stroke-width", 10) // Increase the width for better hit area
+                    .style("stroke-opacity", 0) // Make the larger hit area invisible
+                    .style("pointer-events", "stroke") // Enable pointer events only on the stroke
+                    .on("mouseover", function (event) {
+                        eventTooltip.transition().duration(200).style("opacity", .9);
+                        eventTooltip.html(`<strong>Event:</strong> ${d.event}<br><strong>Date:</strong> ${d.event_date}`)
+                            .style("left", (event.pageX + 15) + "px")
+                            .style("top", (event.pageY - 28) + "px");
+                    })
+                    .on("mouseout", function () {
+                        eventTooltip.transition().duration(500).style("opacity", 0);
+                    });
+
+                // Draw the visible line
+                svg.append("line")
+                    .attr("class", "event-line-visible")
+                    .attr("x1", eventX)
+                    .attr("x2", eventX)
+                    .attr("y1", y(y.domain()[0])) // y-axis minimum
+                    .attr("y2", y(y.domain()[1])) // y-axis maximum
+                    .style("stroke", "#FF4500") // Customize the line color
+                    .style("stroke-width", 3)
+                    .style("stroke-dasharray", "4,4"); // Dashed line style
+            }
+        }
+    });
+}
+
+
+function drawChart(data, severityCsvPath, traceName, title) {
+    // Check if the screen is small (mobile)
+    const isMobile = window.innerWidth <= 768; // Adjust based on your breakpoint
+
+    // Set dimensions based on screen size
+    const margin = { top: 80, right: 150, bottom: 50, left: 50 };
+    const width = isMobile ? 500 - margin.left - margin.right : 700 - margin.left - margin.right;
+    const height = isMobile ? 350 - margin.top - margin.bottom : 450 - margin.top - margin.bottom;
+
+    const chartContainer = d3.select("#charts-container")
+        .append("div")
+        .attr("class", "chart-container");
+
+    const svg = chartContainer.append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const filteredData = data.filter(d => d.trace_name === traceName);
+    loadSeverityLevels(severityCsvPath, traceName, severityLevels => {
+        const { x, y } = createScales(filteredData, width, height);
+        const line = d3.line()
+            .x(d => x(d.months))
+            .y(d => y(d.score))
+            .curve(d3.curveCardinal);
+
+        drawAxes(svg, x, y, width, height);
+        drawSeverityGridLines(svg, y, width, severityLevels);
+        drawSeverityLabels(svg, y, width, margin, severityLevels);
+        drawVerticalEventLines(svg, filteredData, x, y, height); // Draw event lines
+
+        // Always draw title and labels
+        drawTitleAndLabels(svg, title, margin, width, height);
+
+        if (filteredData.length > 0) {
+            drawLineAndPoints(svg, filteredData, x, y, line, severityLevels);
+            drawAnnotations(svg, filteredData, margin, width, height, traceName);
+        }
+    });
+}
+
+const titleTranslations = {
+    "Problem Areas in Diabetes Score": "مناطق المشاكل في درجة السكري",
+    "Diabetes Related Emotional Distress":"دفعت-الضيق العاطفي المرتبط بمرض السكري",
+    "Depression Screening Score (PHQ-2)": "درجة فحص الاكتئاب (PHQ-2)",
+    "Global Mental Health Score": "النتيجة العالمية للصحة العقلية",
+    "Global Physical Health Score": "النتيجة العالمية للصحة البدنية",
+    "Months Since Baseline": "الأشهر منذ البداية",
+    "Urinary Incontinence Score (Pregnancy)": "درجة سلس البول (الحمل)",
+"Wexner Incontinence Score (Pregnancy)": "درجة سلس البراز ويكسنر (الحمل)",
+    "Postnatal Depression Score (Pregnancy)": "درجة اكتئاب ما بعد الولادة (الحمل)",
+    "Pain Interference": "تأثير الألم",
+    "Physical Function": "الوظيفة البدنية",
+    "Overall Quality Of Life": "جودة الحياة بشكل عام"
+};
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+
+function replaceTitlesToArabic() {
+    // Get the current language from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentLang = urlParams.get('lng') || getCookie('lng') || 'en';
+
+
+    // If the language is Arabic, replace the titles
+    if (currentLang === 'ar') {
+        // Select all chart titles
+        document.querySelectorAll("text.annotation").forEach(titleElement => {
+            const currentTitle = titleElement.textContent.trim();
+
+            // Check if the current title has an Arabic translation
+            if (titleTranslations[currentTitle]) {
+                titleElement.textContent = titleTranslations[currentTitle];
+            }
+        });
+    }
+}
+
+// Call the function after the DOM content is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    replaceTitlesToArabic();
+});
+function observeTitleChanges() {
+    const observer = new MutationObserver(() => {
+        replaceTitlesToArabic();
+    });
+
+    // Observe the charts container
+    const chartsContainer = document.getElementById("charts-container");
+    if (chartsContainer) {
+        observer.observe(chartsContainer, { childList: true, subtree: true });
+    }
+}
+
+// Call the observer on page load
+document.addEventListener("DOMContentLoaded", () => {
+    observeTitleChanges();
+});
+
+
+
+function switchLanguage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentLang = urlParams.get('lng') || getCookie('lng') || 'en';
+    const newLang = currentLang === 'en' ? 'ar' : 'en';
+
+    setCookie('lng', newLang, 30); // Persist language in cookies for 30 days
+    // Update the URL with the new language
+    urlParams.set('lng', newLang);
+    const newUrl = `<%= basePath %>/userDetails?${urlParams.toString()}`;
+    window.location.href = newUrl;
+}
+
+// Update button text on page load based on the current language
+function updateLanguageButton() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentLang = urlParams.get('lng') || getCookie('lng') || 'en';
+    const languageSwitchBtn = document.getElementById('language-switch-btn');
+
+    if (currentLang === 'en') {
+        languageSwitchBtn.textContent = 'العربية';
+    } else {
+        languageSwitchBtn.textContent = 'English';
+    }
+
+    languageSwitchBtn.addEventListener('click', switchLanguage);
+}
+
+
+        // Determine language
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lng') || getCookie('lng') || 'en';
+    setCookie('lng', lang, 30); // Ensure the cookie is set on page load
+    // Set the correct path for the CSV files
+    const severityCsvPath = lang === 'ar' ? 'SeverityLevels_ar.csv' : 'SeverityLevels.csv';
+
+    // Load data and draw charts for patient_health_scores CSV
+    loadData("<%= csvPath %>", data => {
+        console.log("Unique trace names:", [...new Set(data.map(d => d.trace_name))]); // Debugging line
+        const uniqueTraceNames = [...new Set(data.map(d => d.trace_name))];
+        uniqueTraceNames.forEach(traceName => {
+            const title = data.find(d => d.trace_name === traceName).title || traceName;
+            drawChart(data, severityCsvPath, traceName, title);
+        });
+    });
+
+    // Load data and draw charts for pain interference CSV
+    loadData("<%= painCsvPath %>", data => {
+        console.log("Unique trace names:", [...new Set(data.map(d => d.trace_name))]); // Debugging line
+        const uniqueTraceNames = [...new Set(data.map(d => d.trace_name))];
+        uniqueTraceNames.forEach(traceName => {
+            const title = data.find(d => d.trace_name === traceName).title || traceName;
+            drawChart(data, severityCsvPath, traceName, title);
+        });
+    });
+</script>
+
+
+<script>
+    let btn = document.querySelector('#btn');
+    let sidebar = document.querySelector('.sidebar');
+  
+    btn.onclick = function() {
+        sidebar.classList.toggle('active');
+    };
+  </script>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+  
+    function removeCurrentPageClasses() {
+        sidebarLinks.forEach(link => {
+            link.classList.remove('CurrentPage');
+        });
+    }
+  
+    function setCurrentPageLink(path) {
+        removeCurrentPageClasses();
+        console.log(`Setting CurrentPage link for path: ${path}`);
+        const currentPageLink = Array.from(sidebarLinks).find(link => {
+            const linkPath = new URL(link.href).pathname;
+            return linkPath === path;
+        });
+        if (currentPageLink) {
+            console.log(`CurrentPage link found: ${currentPageLink.href}`);
+            currentPageLink.classList.add('CurrentPage');
+        } else {
+            console.log(`No CurrentPage link found for path: ${path}`);
+        }
+    }
+  
+    // Check the URL path and set the current page link on page load
+    const currentPath = window.location.pathname;
+    console.log(`Current path: ${currentPath}`);
+    setCurrentPageLink(currentPath);
+  
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const targetPath = new URL(link.href).pathname;
+            console.log(`Navigating to: ${targetPath}`);
+            setCurrentPageLink(targetPath);
+        });
+    });
+  });
+  </script>
+  
+
+
+<script>
+    // After login, redirect to /userDetails
+    window.onload = function() {
+        // Check if the user has successfully logged in
+        // You can replace this with your condition (e.g., session check, login success flag, etc.)
+        if (window.location.pathname === '<%= basePath %>/login') {
+            window.location.href = "<%= basePath %>/userDetails";  // Redirect to the user details page
+        }
+    };
+</script>
+
+
+<!--This script is related to printing the charts to pdf-->
+
+
+
+<script>
+    document.getElementById('printChartsButton').addEventListener('click', function () {
+        // Select all chart containers
+        const chartsContainer = document.querySelector('.charts-grid');
+        
+        if (chartsContainer) {
+            // Create a new window for printing
+            const printWindow = window.open('charts', '_blank', 'width=800,height=600');
+            const styles = Array.from(document.styleSheets)
+                .map(styleSheet => {
+                    try {
+                        return Array.from(styleSheet.cssRules)
+                            .map(rule => rule.cssText)
+                            .join('\n');
+                    } catch (e) {
+                        return '';
+                    }
+                })
+                .join('\n');
+
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title> Charts</title>
+                    <style>
+                        ${styles} /* Copy all styles */
+                        body {
+                            font-family: Arial, sans-serif;
+                            margin: 0;
+                            padding: 0;
+                            background-color: #E6E5EB;
+                            display: flex; /* Center everything while printing */
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: flex-start;
+                            height: 100vh;
+                        }
+                        .chart-container {
+                            margin: 20px 0;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            border-radius: 10px;
+                        }
+                        svg {
+                            width: 100%;
+                            height: auto;
+                        }
+                        h1 {
+                            margin: 20px 0 10px; /* Adjust top margin */
+                            font-size: 24px;
+                            color: #333;
+                            text-align: center;
+                        }
+                        h2 {
+                            margin: 10px 0 20px; /* Adjust bottom margin */
+                            font-size: 18px;
+                            color: #555;
+                            text-align: center;
+                        }
+                        .charts-grid {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1>Your Health Status Charts</h1> <!-- Moved to the very top -->
+                    <div class="charts-grid">
+                        ${chartsContainer.innerHTML} <!-- Copy the charts grid -->
+                    </div>
+                </body>
+                </html>
+            `);
+
+            printWindow.document.close();
+
+            // Wait for the content to load before triggering print
+            printWindow.onload = function () {
+                printWindow.print();
+                printWindow.close();
+            };
+        } else {
+            alert('No charts available to print.');
+        }
+    });
+</script>
+
+<!-- ─── Replace your existing VAS fetch block with this JS ─── -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const charWrapper       = document.querySelector('.char');
+  const vasChartContainer = document.getElementById('vas-chart-container');
+  const hashedMrNo        = window.user.hashedMrNo;
+  const basePath          = "<%= basePath %>";
+  const fetchURL          = `${basePath}/eq5d-vas-data?hashedMr_no=${hashedMrNo}`;
+
+  // Show a loading placeholder (optional)
+  vasChartContainer.innerHTML = "<p style='text-align:center; padding:10px;'>Loading VAS chart…</p>";
+
+  fetch(fetchURL)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Status ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(vasData => {
+      // If we got valid data, draw the chart and enable flex layout
+      if (Array.isArray(vasData) && vasData.length) {
+        charWrapper.classList.add('with-vas');
+        vasChartContainer.style.display = 'flex';
+        vasChartContainer.innerHTML = '';       // clear placeholder
+        drawVasChart(vasData, "#vas-chart-container");
+      } else {
+        // No data → hide the VAS panel and revert layout
+        charWrapper.classList.remove('with-vas');
+        vasChartContainer.style.display = 'none';
+      }
+    })
+    .catch(error => {
+      console.error("VAS fetch error:", error);
+      // On error, also hide the panel
+      charWrapper.classList.remove('with-vas');
+      vasChartContainer.style.display = 'none';
+    });
+});
+</script>
+
+
+
+
+<script>
+    // --- SCRIPT FOR EQ-5D VAS CHART (Individual Scales Version) ---
+    function drawVasChart(vasData, containerSelector) {
+        // Pre-condition: vasData is guaranteed to be an array with length > 0 by the caller.
+
+        const container = d3.select(containerSelector);
+        container.html(''); // Clear previous content
+
+        // This title is for the whole VAS chart section if you have multiple instances.
+        // If you want a title above EACH scale, it would go inside dataInstances.each
+        container.append("h3")
+            .attr("class", "vas-chart-title") 
+            // .text("EQ-5D VAS Score"); // Uncomment and set text if needed
+
+        // const margin = { top: 30, right: 40, bottom: 60, left: 40 };
+        const margin = { top: 65, right: 40, bottom: 75, left: 40 };
+        const instanceWidth = 150; // Width allocated for each VAS instance/scale
+        const svgNominalWidth = vasData.length * instanceWidth;
+        const svgNominalHeight = 400; // Height of the VAS scale part (0-100 range)
+
+        const chartWidth = svgNominalWidth; // Total width for all instances combined
+        const chartHeight = svgNominalHeight;
+
+        const svgWidth = chartWidth + margin.left + margin.right;
+        const svgHeight = chartHeight + margin.top + margin.bottom;
+
+        const svg = container.append("svg")
+            .attr("width", svgWidth)
+            .attr("height", svgHeight)
+            .attr("class", "vas-chart-svg")
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const yScale = d3.scaleLinear()
+            .domain([0, 100])
+            .range([chartHeight, 0]);
+
+        const instanceNumbers = vasData.map(d => d.instance);
+        const xScale = d3.scalePoint()
+            .domain(instanceNumbers) 
+            .range([0, chartWidth])
+            // User's padding calculation:
+            .padding(instanceWidth / (chartWidth / instanceNumbers.length) * 0.5 ); 
+
+        const xAxis = d3.axisBottom(xScale).tickFormat(d => `${d}`);
+         svg.append("g")
+            .attr("class", "vas-x-axis")
+            .attr("transform", `translate(0, ${chartHeight})`)
+            .call(xAxis);
+
+        svg.append("text")
+           .attr("class", "vas-x-axis-label")
+           .attr("x", chartWidth / 2)
+           .attr("y", chartHeight + margin.bottom - 15)
+        //    .text("Assessment Instance"); // As per your provided code, this is commented
+
+        const dataInstances = svg.selectAll(".vas-instance-group")
+            .data(vasData)
+            .enter()
+            .append("g")
+            .attr("class", "vas-instance-group")
+            .attr("transform", d => `translate(${xScale(d.instance)}, 0)`);
+
+        dataInstances.each(function(d_instance) {
+            const individualScaleGroup = d3.select(this);
+            const scaleXPosition = 0; // Center of the current instance's scale
+
+            // Main vertical scale line for this instance
+            individualScaleGroup.append("line")
+                // .attr("class", "vas-scale-line") // As per your provided code, this is commented
+                // Applying default styles if class is not used, assuming your CSS might not style plain lines
+                // .attr("stroke", "#4A5568") // Default color from your CSS for vas-scale-line
+                // .attr("stroke-width", 2.5) // Default width from your CSS for vas-scale-line
+                .attr("x1", scaleXPosition)
+                .attr("x2", scaleXPosition)
+                .attr("y1", yScale(0))
+                .attr("y2", yScale(100));
+
+            // --- START OF Tick and Numeric Label Drawing Logic (as provided by you) ---
+            const allTickValues = d3.range(0, 101, 1); // Iterate for every unit from 0 to 100
+
+            allTickValues.forEach(val => {
+                let tickHalfWidth; // This is half of the total desired tick line width
+                let tickClass;
+
+                if (val % 10 === 0) { // Major tick (0, 10, 20,..., 100)
+                    tickClass = "vas-tick major"; // Styled by CSS
+                    tickHalfWidth = 55 / 2;       // Target total width 55px
+                } else { // Minor tick (all others)
+                    tickClass = "vas-tick minor"; // Styled by CSS
+                    tickHalfWidth = 20 / 2;       // Target total width 20px
+                }
+
+                individualScaleGroup.append("line")
+                    .attr("class", tickClass)
+                    .attr("x1", scaleXPosition - tickHalfWidth)
+                    .attr("x2", scaleXPosition + tickHalfWidth)
+                    .attr("y1", yScale(val))
+                    .attr("y2", yScale(val));
+
+                if (val % 5 === 0) { // Numeric labels for multiples of 5 (0, 5, 10, ...)
+                    individualScaleGroup.append("text")
+                        .attr("class", "vas-tick-label") // Styled by CSS (font, size, color, text-anchor)
+                        .attr("x", scaleXPosition - (55/2) - 5) 
+                        .attr("y", yScale(val))
+                        .attr("dy", "0.32em") // Vertical alignment
+                        .text(val);
+                }
+            });
+            // --- END OF Tick and Numeric Label Drawing Logic ---
+
+            // --- START OF UPDATED Description Labels ---
+            // Top description: "The best health you can imagine"
+            // Adjusted Y: (font-size for .vas-description-label is 16px)
+            // (16px * 1.4em line height for second line) approx 22.4px.
+            // Position text block so its bottom edge has a gap above the 100 mark.
+            const topDescY = yScale(100) - 15; // Sets baseline of "The best health" approx. 30px above the 100-line's y-coord.
+                                             // This ensures the two lines of text sit above the 100 mark with a gap.
+
+            const topDesc = individualScaleGroup.append("text")
+                .attr("class", "vas-description-label") // Styled by CSS
+                .attr("x", scaleXPosition) // Centered horizontally on the scale line
+                .attr("y", topDescY);
+
+            topDesc.selectAll("tspan")
+                .data(["The best health"]) // Correct text for top label
+                .enter().append("tspan")
+                    .attr("x", scaleXPosition)
+                    .attr("dy", (d,i) => i === 0 ? 0 : "1em") // Line spacing
+                    .text(d_text => d_text);
+
+            // Bottom description: "The worst health you can imagine"
+            // Adjusted Y to provide a clear gap below the 0 mark and its numeric label.
+const bottomDescInitialY = yScale(0) + 30; // Sets baseline of "The worst health" approx. 20px below the 0-line's y-coord.
+                                                     // This ensures the text starts below the 0 mark with a gap.
+
+            const bottomDesc = individualScaleGroup.append("text")
+                .attr("class", "vas-description-label") // Styled by CSS
+                .attr("x", scaleXPosition)
+                .attr("y", bottomDescInitialY);
+
+            bottomDesc.selectAll("tspan")
+                .data(["The worst health"]) // Correct text for bottom label
+                .enter().append("tspan")
+                    .attr("x", scaleXPosition)
+                    .attr("dy", (d,i) => i === 0 ? 0 : "1em") // Line spacing
+                    .text(d_text => d_text);
+            // --- END OF UPDATED Description Labels ---
+
+            // Data point circle showing the actual VAS score for this instance
+            individualScaleGroup.append("circle")
+                .attr("class", "vas-data-point") // Styled by CSS
+                .attr("cx", scaleXPosition)
+                .attr("cy", yScale(d_instance.vasScore))
+                .attr("r", 7); // Radius of the data point
+
+            // Text label for the data point (the score value)
+            individualScaleGroup.append("text")
+                .attr("class", "vas-data-label") // Styled by CSS
+                .attr("x", scaleXPosition + 45)   // Position to the right of the data point (as per your last code)
+                .attr("y", yScale(d_instance.vasScore))
+                .attr("dy", "0.32em") // Vertical alignment
+                .text(d_instance.vasScore);
+        });
+    }
+
+   document.addEventListener("DOMContentLoaded", () => {
+        console.log("[VAS SCRIPT INDIVIDUAL] DOMContentLoaded. Initializing.");
+
+        const hashedMrNo = (window.user && window.user.hashedMrNo) ? window.user.hashedMrNo : null;
+        const basePath = "<%= basePath %>"; // This will be replaced by EJS
+
+        console.log("[VAS SCRIPT INDIVIDUAL] Using hashedMrNo:", hashedMrNo);
+        console.log("[VAS SCRIPT INDIVIDUAL] Using basePath:", basePath);
+
+        const vasChartContainer = document.getElementById("vas-chart-container");
+
+        if (!vasChartContainer) {
+            console.error("[VAS SCRIPT INDIVIDUAL] CRITICAL: VAS Chart container (#vas-chart-container) NOT FOUND.");
+            return;
+        }
+        console.log("[VAS SCRIPT INDIVIDUAL] VAS Chart container found.");
+        vasChartContainer.innerHTML = "<p style='color:blue; text-align:center; padding:10px;'>Loading VAS chart…</p>"; // Temporary loading message
+        // vasChartContainer.style.display = 'flex'; // Visibility is controlled by data fetching logic below
+
+        if (hashedMrNo && hashedMrNo !== "undefined" && hashedMrNo !== "" && hashedMrNo !== "null") {
+            const fetchURL = `${basePath}/eq5d-vas-data?hashedMr_no=${hashedMrNo}`;
+            console.log("[VAS SCRIPT INDIVIDUAL] Fetching from URL:", fetchURL);
+
+            fetch(fetchURL)
+                .then(response => {
+                    console.log(`[VAS SCRIPT INDIVIDUAL] Fetch response status: ${response.status}`);
+                    if (!response.ok) {
+                        return response.text().then(text => {
+                           throw new Error(`HTTP error! Status: ${response.status}, Body: ${text}`);
+                        });
+                    }
+                    const contentType = response.headers.get("content-type");
+                    if (contentType && contentType.indexOf("application/json") !== -1) {
+                        return response.json();
+                    } else {
+                         return response.text().then(text => {
+                            throw new Error(`Expected JSON but received ${contentType}. Body: ${text}`);
+                        });
+                    }
+                })
+                .then(vasData => {
+                    console.log("[VAS SCRIPT INDIVIDUAL] Data received:", JSON.stringify(vasData, null, 2));
+                    
+                    if (vasData && Array.isArray(vasData) && vasData.length > 0) {
+                        console.log("[VAS SCRIPT INDIVIDUAL] Valid VAS data. Drawing chart.");
+                        vasChartContainer.innerHTML = ''; // Clear loading message
+                        vasChartContainer.style.display = 'flex'; // Make container visible for the chart
+                        drawVasChart(vasData, "#vas-chart-container"); // Call the updated drawing function
+                    } else {
+                        console.warn("[VAS SCRIPT INDIVIDUAL] No VAS data items. Chart will not be displayed.");
+                        vasChartContainer.style.display = 'none'; // Hide if no data
+                    }
+                })
+                .catch(error => {
+                    console.error("[VAS SCRIPT INDIVIDUAL] Error during fetch or processing VAS data:", error);
+                    vasChartContainer.style.display = 'none'; // Hide on error
+                });
+        } else {
+            console.warn("[VAS SCRIPT INDIVIDUAL] hashedMrNo is missing or invalid. Cannot fetch VAS data.");
+            vasChartContainer.style.display = 'none'; // Hide if no patient ID
+        }
+    });
+</script>
+
+</html>

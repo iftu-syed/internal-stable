@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Dashboard</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <!-- Specific chart-related styles -->
+    <link rel="stylesheet" href="/css/numberCard.css">
+    <link rel="stylesheet" href="/css/midLevelChart1.css">
+    <link rel="stylesheet" href="/css/midLevelChart2.css">
+    <link rel="stylesheet" href="/css/detailedChart1.css">
+    <link rel="stylesheet" href="/css/detailedChart2.css">
+    <link rel="stylesheet" href="/css/combinedChart.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="top">
+             <div class="logo">
+            <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+             </div>
+             <i class="bx bx-menu" id="btn"></i>
+        </div>
+    
+        
+        <div class="user">
+            <div>
+                <!-- <p class="bold"><%= doctor.username %></p> -->
+                <p class="bold"><%= doctor.speciality %></p>
+                <p class="bold"><%= doctor.hospitalName %></p>
+                <p class="bold"><%= doctor.site_code %></p>
+            </div>
+        </div>
+        <ul>
+          <li>
+            <a href="http://localhost:3011" target="_blank">
+              <i class="bx bx-bar-chart"></i> <!-- Icon for Analytics -->
+              <span class="nav-item">Analytics</span>
+            </a>
+            <span class="tooltip">Analytics</span>
+          </li>
+    
+            <li>
+              <a href="<%= basePath %>/home">
+                  <i class="bx bxs-grid-alt"></i>
+                  <span class="nav-item">Dashboard</span>
+              </a>
+              <span class="tooltip">Dashboard</span>
+          </li>
+          
+            <li>
+                <a href="<%= basePath %>">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item">Logout</span>
+                </a>
+                <span class="tooltip">Logout</span>
+            </li>
+        </ul>
+    </div>
+    
+    
+    <div class="mobile-nav" id="mobile-nav">
+      <ul>
+        <li>
+          <a href="http://localhost:3011" target="_blank">
+            <i class="bx bx-bar-chart"></i> <!-- Icon for Analytics -->
+            <span class="nav-item">Analytics</span>
+          </a>
+          <span class="tooltip">Analytics</span>
+        </li>
+    
+          <li>
+            <a href="<%= basePath %>/home">
+                <i class="bx bxs-grid-alt"></i>
+                <span class="nav-item">Dashboard</span>
+            </a>
+            <span class="tooltip">Dashboard</span>
+        </li>
+        
+          <li>
+              <a href="<%= basePath %>">
+                  <i class="bx bx-log-out"></i>
+                  <span class="nav-item">Logout</span>
+              </a>
+              <span class="tooltip">Logout</span>
+          </li>
+      </ul>
+    </div>
+    
+<div class="main-content">
+    <div class="topbar">
+        <h2 style="color: #333333;">Welcome, Dr. <%= doctor.firstName %> <%=doctor.lastName %></h2>
+        <form action="<%= basePath %>/search" method="GET" class="searchtopbar">
+            <input type="text" name="mrNo" placeholder="Quick MR Search">
+            <input type="hidden" name="username" value="<%= doctor.username %>">
+            <input type="hidden" name="speciality" value="<%= doctor.speciality %>">
+            <input type="hidden" name="name" value="<%= doctor.name %>">
+            <button type="submit" class="btn-search"><i class='bx bx-search-alt'></i></button>
+        </form>
+    </div>
+
+    <!-- Root container for the dashboard -->
+    <div id="dashboard">
+        <!-- Top Section: Number Cards -->
+        <div id="topLayer" class="number-cards-container">
+            <div id="numberCard1" class="number-card"></div>
+            <div id="numberCard2" class="number-card"></div>
+            <div id="numberCard3" class="number-card"></div>
+            <div id="numberCard4" class="number-card"></div>
+        </div>
+
+        <!-- Middle Section with Filter, 2x2 Grid, and Right Pane -->
+        <div class="middle-section">
+            <!-- Left Section: Filter and 2x2 Grid -->
+            <div class="left-section">
+                <!-- Filter Container -->
+                <div id="filterContainer">
+                    <!-- <label for="combinedDropdown">Select PROMs and Diagnosis:</label>
+                    <select id="combinedDropdown"></select> -->
+                    <label for="diagnosisDropdown">Select Diagnosis:</label>
+                    <select id="diagnosisDropdown">
+                        <option value="">Select Diagnosis</option>
+                    </select>
+
+                    <label for="instrumentDropdown">Select PROMs Instrument:</label>
+                    <select id="instrumentDropdown" disabled>
+                        <option value="">Select Instrument</option>
+                    </select>
+
+                    <label for="scaleDropdown">Select Scale:</label>
+                    <select id="scaleDropdown" disabled>
+                        <option value="">Select Scale</option>
+                    </select>
+                </div>
+
+                <!-- 2x2 Grid for Charts -->
+                <div class="left-pane">
+                    <div id="midLevelChart1Container" class="chart-card">
+                        <div id="midLevelChart1"></div>
+                    </div>
+                    <div id="midLevelChart2Container" class="chart-card">
+                        <div id="midLevelChart2"></div>
+                    </div>
+                    <div id="detailedChart1Container" class="chart-card">
+                        <div id="detailedChart1"></div>
+                    </div>
+                    <div id="detailedChart2Container" class="chart-card">
+                        <div id="detailedChart2"></div>
+                    </div>                    
+                </div>
+            </div>
+
+            <div class="right-section">
+            <!-- Right Pane: Combined Chart -->
+            <div class="right-pane">
+                <div id="combinedChart" class="combined-chart-card"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- Include JavaScript Files -->
+    <script src="/js/charts/numberCard1.js"></script>
+    <script src="/js/charts/numberCard2.js"></script>
+    <script src="/js/charts/numberCard3.js"></script>
+    <script src="/js/charts/numberCard4.js"></script>
+    <script src="/js/charts/combinedChart.js"></script>
+    <script src="/js/charts/midLevelChart1.js"></script>
+    <script src="/js/charts/midLevelChart2.js"></script>
+    <script src="/js/charts/detailedChart1.js"></script>
+    <script src="/js/charts/detailedChart2.js"></script>
+    <!-- <script src="/js/common/combinedDropdown.js"></script> For the drop down -->
+    <script src="/js/common/hierarchicalDropdown.js"></script> <!-- For the new hierarchical dropdown -->
+
+    <script src="/js/dashboard.js"></script> <!-- Main dashboard JS file -->
+
+    <script src="<%= basePath %>/script.js"></script>
+
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+      
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+      
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+      
+        function removeCurrentPageClasses() {
+            sidebarLinks.forEach(link => {
+                link.classList.remove('CurrentPage');
+            });
+        }
+      
+        function setCurrentPageLink(path) {
+            removeCurrentPageClasses();
+            const currentPageLink = Array.from(sidebarLinks).find(link => {
+                const linkPath = new URL(link.href).pathname;
+                return linkPath === path;
+            });
+            if (currentPageLink) {
+                currentPageLink.classList.add('CurrentPage');
+            }
+        }
+      
+        // Check the URL path and set the current page link on page load
+        const currentPath = window.location.pathname;
+        setCurrentPageLink(currentPath);
+      
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const targetPath = new URL(link.href).pathname;
+                setCurrentPageLink(targetPath);
+            });
+        });
+    });
+    </script>
+</body>
+</html>

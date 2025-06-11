@@ -1,15 +1,5 @@
-# Ignore all .log files inside logs directories
-logs/*.log
-**/logs/*.log
+# Ignore all log files in Super-Admin/logs
+Super-Admin/logs/*
 
-# But keep the logs/ folder itself
-!logs/
-!**/logs/
-
-# Optional: ignore Python bytecode and virtual environment
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.env
-.vscode/
+# Keep the logs folder itself
+!Super-Admin/logs/.gitkeep

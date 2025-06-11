@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stool incontinence Survey (Wexner)</title>
+  <link rel="stylesheet" href="<%= basePath %>/styles/survey.css">
+  <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+  <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <button class="lang-toggle" onclick="toggleLanguage()">العربية</button>
+  
+<div class="parentrow">
+    
+  <div class="parentcolumn left">
+
+    <div class="sidebar">
+      <hr class="spacer">
+      <img src="<%= basePath %>/assets/images/logo.png">
+      <hr class="spacer">
+      <% surveyStatus.forEach(survey => { %>
+        <div class="<%= survey.active ? 'sidebar-item-active' 
+                        : (survey.completed ? 'sidebar-item-done' 
+                                            : 'sidebar-item-inactive') %>">
+          <%= survey.name %>
+        </div>
+      <% }) %>
+    </div>
+      
+  </div>
+
+  <diipv class="parentcolumn right">
+    <div class="infobox">
+
+      <div class="mobile-container">
+
+        <img src="<%= basePath %>/assets/images/logo.png">
+
+        
+      </div>
+      <!-- Progress Bar -->
+      <h1 data-en="Stool incontinence Survey (Wexner)" data-ar="استطلاع سلس البراز (ويكسنر)">
+        Stool incontinence Survey (Wexner)
+    </h1>
+    <p id="text" class="info-text"
+    data-en="This Wexner PROMS is designed to help us understand your bowel habits and your symptoms and overall quality of life. By completing this survey, you provide valuable information that enables us to offer you the best possible care and support tailored to your needs."
+    data-ar="تم تصميم استطلاع ويكسنر هذا لمساعدتنا على فهم عاداتك المعوية وأعراضك وجودة حياتك بشكل عام. من خلال إكمال هذا الاستطلاع، تقدم معلومات قيمة تتيح لنا تقديم أفضل رعاية ودعم مخصصين لاحتياجاتك.">
+      <span id="dots" style="display:none;">...</span>
+      <span id="more-text" style="display:none;"></span>
+      <span id="toggle-btn" onclick="toggleText()" style="color: blue; cursor: pointer; display:none;"> Show More</span>
+    </p>
+    
+    
+<hr class="spacer">
+      <div class="progress-bar">
+        <div class="progress" id="progress-bar">
+        </div>
+      </div>
+    </div>
+    <form action="<%= basePath %>/submit_Wexner" method="post" class="surveyform">
+      <input type="hidden" name="Mr_no" value="<%= Mr_no %>">
+      <!-- <input type="hidden" id="selectedLang" name="selectedLang" value="en"> This line ensures that the current language is passed -->
+      <input type="hidden" id="selectedLang" name="lang" value="<%= currentLang %>"> 
+<!-- Question 1 -->
+<div class="question-container active" id="question-1">
+  <div class="back-button-first-question">
+    <button type="button" onclick="previousQuestion()" style="display:none;"><i class='bx bx-chevrons-left'></i>Previous</button>
+  </div>
+  <p class="question-text" data-en="Q.1: I have incontinence of solid stool" data-ar="لدي سلس في البراز الصلب">Q.1: I have incontinence of solid stool:</p><br>
+
+  <div id="form-wrapper">
+    <div class="responsive-grid-radio">
+        <div class="radio-grid">
+            <input type="radio" name="I have incontinence of solid stool" id="solid_6" value="0" required>
+            <label for="solid_6" data-en="Never" data-ar="أبدا">Never</label>
+        </div>
+        <div class="radio-grid">
+            <input type="radio" name="I have incontinence of solid stool" id="solid_7" value="1" required>
+            <label for="solid_7" data-en="Rarely" data-ar="نادرا">Rarely</label>
+        </div>
+        <div class="radio-grid">
+            <input type="radio" name="I have incontinence of solid stool" id="solid_8" value="2" required>
+            <label for="solid_8" data-en="Sometimes" data-ar="أحيانا">Sometimes</label>
+        </div>
+        <div class="radio-grid">
+            <input type="radio" name="I have incontinence of solid stool" id="solid_9" value="3" required>
+            <label for="solid_9" data-en="Usually" data-ar="عادة">Usually</label>
+        </div>
+        <div class="radio-grid">
+            <input type="radio" name="I have incontinence of solid stool" id="solid_0" value="4" required>
+            <label for="solid_0" data-en="Always" data-ar="دائما">Always</label>
+        </div>
+    </div>
+  </div>
+
+
+    
+  <div id="form-wrapper-desktop">
+      <div id="custom-radio">
+            <input type="radio" name="I have incontinence of solid stool" id="solid_1" value="0" required>
+            <label for="solid_1" data-en="Never" data-ar="أبدا">Never</label> 
+            <input type="radio" name="I have incontinence of solid stool" id="solid_2" value="1" required>
+            <label for="solid_2" data-en="Rarely" data-ar="نادرا">Rarely</label>
+            <input type="radio" name="I have incontinence of solid stool" id="solid_3" value="2" required>
+            <label for="solid_3" data-en="Sometimes" data-ar="أحيانا">Sometimes</label>
+            <input type="radio" name="I have incontinence of solid stool" id="solid_4" value="3" required>
+            <label for="solid_4" data-en="Usually" data-ar="عادة">Usually</label>
+            <input type="radio" name="I have incontinence of solid stool" id="solid_5" value="4" required>
+            <label for="solid_5" data-en="Always" data-ar="دائما">Always</label>
+        <div id="custom-radio-pos"></div>
+      </div>
+    </div>
+</div>
+  
+
+  
+  
+
+<!-- Question 2 -->
+<div class="question-container" id="question-2">
+      <div class="back-button">
+        <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+      </div>
+  <p data-en="Q.2: I have liquid stool incontinence" data-ar="لدي سلس في البراز السائل">Q.2: I have liquid stool incontinence:</p><br>
+
+  <div id="form-wrapper">
+    <div class="responsive-grid-radio">
+      <div class="radio-grid">
+          <input type="radio" name="I have liquid stool incontinence" id="solid1_6" value="0" required>
+          <label for="solid1_6" data-en="Never" data-ar="أبدا">Never</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="I have liquid stool incontinence" id="solid1_7" value="1" required>
+          <label for="solid1_7" data-en="Rarely" data-ar="نادرا">Rarely</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="I have liquid stool incontinence" id="solid1_8" value="2" required>
+          <label for="solid1_8" data-en="Sometimes" data-ar="أحيانا">Sometimes</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="I have liquid stool incontinence" id="solid1_9" value="3" required>
+          <label for="solid1_9" data-en="Usually" data-ar="عادة">Usually</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="I have liquid stool incontinence" id="solid1_0" value="4" required>
+          <label for="solid1_0" data-en="Always" data-ar="دائما">Always</label>
+      </div>
+    </div>
+  </div>
+
+  <div id="form-wrapper-desktop">
+      <div id="custom-radio">
+        <input type="radio" name="I have liquid stool incontinence" id="solid1_1" value="0" required>
+            <label for="solid1_1" data-en="Never" data-ar="أبدا">Never</label> 
+            <input type="radio" name="I have liquid stool incontinence" id="solid1_2" value="1" required>
+            <label for="solid1_2" data-en="Rarely" data-ar="نادرا">Rarely</label>
+            <input type="radio" name="I have liquid stool incontinence" id="solid1_3" value="2" required>
+            <label for="solid1_3" data-en="Sometimes" data-ar="أحيانا">Sometimes</label>
+            <input type="radio" name="I have liquid stool incontinence" id="solid1_4" value="3" required>
+            <label for="solid1_4" data-en="Usually" data-ar="عادة">Usually</label>
+            <input type="radio" name="I have liquid stool incontinence" id="solid1_5" value="4" required>
+            <label for="solid1_5" data-en="Always" data-ar="دائما">Always</label>
+        <div id="custom-radio-pos"></div>
+      </div>
+  </div>
+</div>
+
+
+
+
+<!-- Question 3 -->
+<div class="question-container" id="question-3">
+  <div class="back-button">
+    <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+  </div>
+  <p data-en="Q.3: I have 'gas' type incontinence" data-ar="لدي سلس غازي">Q.3: I have 'gas' type incontinence:</p><br>
+
+  <div id="form-wrapper">
+    <div class="responsive-grid-radio">
+      <div class="radio-grid">
+          <input type="radio" name="I have 'gas' type incontinence" id="solid2_6" value="0" required>
+          <label for="solid2_6" data-en="Never" data-ar="أبدا">Never</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="I have 'gas' type incontinence" id="solid2_7" value="1" required>
+          <label for="solid2_7" data-en="Rarely" data-ar="نادرا">Rarely</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="I have 'gas' type incontinence" id="solid2_8" value="2" required>
+          <label for="solid2_8" data-en="Sometimes" data-ar="أحيانا">Sometimes</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="I have 'gas' type incontinence" id="solid2_9" value="3" required>
+          <label for="solid2_9" data-en="Usually" data-ar="عادة">Usually</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="I have 'gas' type incontinence" id="solid2_0" value="4" required>
+          <label for="solid2_0" data-en="Always" data-ar="دائما">Always</label>
+      </div>
+    </div>
+  </div>
+
+
+    <div id="form-wrapper-desktop">
+      <div id="custom-radio">
+        <input type="radio" name="I have 'gas' type incontinence" id="solid2_1" value="0" required>
+            <label for="solid2_1" data-en="Never" data-ar="أبدا">Never</label> 
+            <input type="radio" name="I have 'gas' type incontinence" id="solid2_2" value="1" required>
+            <label for="solid2_2" data-en="Rarely" data-ar="نادرا">Rarely</label>
+            <input type="radio" name="I have 'gas' type incontinence" id="solid2_3" value="2" required>
+            <label for="solid2_3" data-en="Sometimes" data-ar="أحيانا">Sometimes</label>
+            <input type="radio" name="I have 'gas' type incontinence" id="solid2_4" value="3" required>
+            <label for="solid2_4" data-en="Usually" data-ar="عادة">Usually</label>
+            <input type="radio" name="I have 'gas' type incontinence" id="solid2_5" value="4" required>
+            <label for="solid2_5" data-en="Always" data-ar="دائما">Always</label>
+        <div id="custom-radio-pos"></div>
+      </div>
+    </div>
+</div>
+
+
+
+
+<!-- Question 4 -->
+<div class="question-container" id="question-4">
+  <div class="back-button">
+    <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+  </div>
+  <p data-en="Q.4: I have to wear pads due to incontinence" data-ar="علي أن أرتدي وسادات بسبب السلس">Q.4: I have to wear pads due to incontinence:</p><br>
+
+  <div id="form-wrapper">
+    <div class="responsive-grid-radio">
+      <div class="radio-grid">
+          <input type="radio" name="I have to wear pads due to incontinence" id="solid3_6" value="0" required>
+          <label for="solid3_6" data-en="Never" data-ar="أبدا">Never</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="I have to wear pads due to incontinence" id="solid3_7" value="1" required>
+          <label for="solid3_7" data-en="Rarely" data-ar="نادرا">Rarely</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="I have to wear pads due to incontinence" id="solid3_8" value="2" required>
+          <label for="solid3_8" data-en="Sometimes" data-ar="أحيانا">Sometimes</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="I have to wear pads due to incontinence" id="solid3_9" value="3" required>
+          <label for="solid3_9" data-en="Usually" data-ar="عادة">Usually</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="I have to wear pads due to incontinence" id="solid3_0" value="4" required>
+          <label for="solid3_0" data-en="Always" data-ar="دائما">Always</label>
+      </div>
+    </div>
+  </div>
+
+    <div id="form-wrapper-desktop">
+      <div id="custom-radio">
+        <input type="radio" name="I have to wear pads due to incontinence" id="solid3_1" value="0" required>
+            <label for="solid3_1" data-en="Never" data-ar="أبدا">Never</label> 
+            <input type="radio" name="I have to wear pads due to incontinence" id="solid3_2" value="1" required>
+            <label for="solid3_2" data-en="Rarely" data-ar="نادرا">Rarely</label>
+            <input type="radio" name="I have to wear pads due to incontinence" id="solid3_3" value="2" required>
+            <label for="solid3_3" data-en="Sometimes" data-ar="أحيانا">Sometimes</label>
+            <input type="radio" name="I have to wear pads due to incontinence" id="solid3_4" value="3" required>
+            <label for="solid3_4" data-en="Usually" data-ar="عادة">Usually</label>
+            <input type="radio" name="I have to wear pads due to incontinence" id="solid3_5" value="4" required>
+            <label for="solid3_5" data-en="Always" data-ar="دائما">Always</label>
+        <div id="custom-radio-pos"></div>
+      </div>
+    </div>
+</div>
+
+
+
+
+<!-- Question 5 -->
+<div class="question-container" id="question-5">
+  <div class="back-button">
+    <button type="button" data-en="<= Previous" data-ar="<= سابق" onclick="previousQuestion()"><i class='bx bx-chevrons-left'></i><= Previous</button>
+  </div>
+  <p data-en="Q.5: Feel my lifestyle is altered due to incontinence to stool" data-ar="أشعر أن نمط حياتي تغير بسبب السلس إلى البراز">Q.5: Feel my lifestyle is altered due to incontinence to stool:</p><br>
+
+  <div id="form-wrapper">
+    <div class="responsive-grid-radio">
+      <div class="radio-grid">
+          <input type="radio" name="Feel my lifestyle is altered due to incontinence to stool" id="solid4_6" value="0" required>
+          <label for="solid4_6" data-en="Never" data-ar="أبدا">Never</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="Feel my lifestyle is altered due to incontinence to stool" id="solid4_7" value="1" required>
+          <label for="solid4_7" data-en="Rarely" data-ar="نادرا">Rarely</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="Feel my lifestyle is altered due to incontinence to stool" id="solid4_8" value="2" required>
+          <label for="solid4_8" data-en="Sometimes" data-ar="أحيانا">Sometimes</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="Feel my lifestyle is altered due to incontinence to stool" id="solid4_9" value="3" required>
+          <label for="solid4_9" data-en="Usually" data-ar="عادة">Usually</label>
+      </div>
+      <div class="radio-grid">
+          <input type="radio" name="Feel my lifestyle is altered due to incontinence to stool" id="solid4_0" value="4" required>
+          <label for="solid4_0" data-en="Always" data-ar="دائما">Always</label>
+      </div>
+      
+    </div>
+  </div>
+
+
+    <div id="form-wrapper-desktop">
+      <div id="custom-radio">
+        <input type="radio" name="Feel my lifestyle is altered due to incontinence to stool" id="solid4_1" value="0" required>
+            <label for="solid4_1" data-en="Never" data-ar="أبدا">Never</label> 
+            <input type="radio" name="Feel my lifestyle is altered due to incontinence to stool" id="solid4_2" value="1" required>
+            <label for="solid4_2" data-en="Rarely" data-ar="نادرا">Rarely</label>
+            <input type="radio" name="Feel my lifestyle is altered due to incontinence to stool" id="solid4_3" value="2" required>
+            <label for="solid4_3" data-en="Sometimes" data-ar="أحيانا">Sometimes</label>
+            <input type="radio" name="Feel my lifestyle is altered due to incontinence to stool" id="solid4_4" value="3" required>
+            <label for="solid4_4" data-en="Usually" data-ar="عادة">Usually</label>
+            <input type="radio" name="Feel my lifestyle is altered due to incontinence to stool" id="solid4_5" value="4" required>
+            <label for="solid4_5" data-en="Always" data-ar="دائما">Always</label>
+        <div id="custom-radio-pos"></div>
+      </div>
+      
+    </div>
+
+    
+    <div class="nav-buttons">
+      <button data-en="Submit" data-ar="إرسال" type="submit">
+        <i class='bx bx-check-double'></i> Submit
+      </button>
+    </div>
+</div>
+
+
+
+
+
+
+</form>
+
+
+
+<script>
+  let isAnswering = false;
+  let currentLang = 'en'; // Default language
+  let currentQuestion = 0;
+
+  const questions = document.querySelectorAll('.question-container');
+  const progressBar = document.getElementById('progress-bar');
+  const selectedLangInput = document.getElementById('selectedLang'); // Hidden input for language
+
+  function updateProgressBar() {
+    const progress = ((currentQuestion + 1) / questions.length) * 100;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  function showQuestion(index) {
+    questions.forEach((question, i) => {
+      question.classList.toggle('active', i === index);
+    });
+    updateProgressBar();
+    isAnswering = false;
+    
+    // Check if we're at the last question
+    const submitButton = document.querySelector('.nav-buttons button[type="submit"]');
+    if (currentQuestion === questions.length - 1) {
+      submitButton.style.display = 'block'; // Show submit button
+    } else {
+      submitButton.style.display = 'none'; // Hide submit button
+    }
+  }
+
+
+
+  const charLimit = 80;
+
+  var isTextExpanded = false;
+
+
+  // Function to handle truncation based on screen size (mobile vs desktop)
+ function setInitialText() {
+  var fullTextEn = "This Wexner PROMS is designed to help us understand your bowel habits and your symptoms and overall quality of life. By completing this survey, you provide valuable information that enables us to offer you the best possible care and support tailored to your needs.";
+  var fullTextAr = "تم تصميم هذا البرنامج لمساعدتنا في فهم عادات الأمعاء الخاصة بك وأعراضك وجودة حياتك بشكل عام. من خلال إكمال هذا الاستبيان، تقدم معلومات قيمة تمكننا من تقديم أفضل رعاية ودعم ممكنين بما يتناسب مع احتياجاتك.";
+  
+  var fullText = currentLang === 'en' ? fullTextEn : fullTextAr;
+  var truncatedText = fullText.substring(0, charLimit);
+
+  if (window.innerWidth < 724) {
+    if (fullText.length > charLimit) {
+      // Set truncated text with 'Show More' button
+      document.getElementById("text").innerHTML = 
+        truncatedText + 
+        '<span id="dots">...</span>' +
+        '<span id="more-text" style="display:none;">' + 
+        fullText.substring(charLimit) + 
+        '</span>' + 
+        '<span id="toggle-btn" style="color: blue; cursor: pointer;">' + 
+        (currentLang === 'en' ? ' Show More' : ' عرض المزيد') + 
+        '</span>';
+
+      // If the text was previously expanded, show it as expanded
+      if (isTextExpanded) {
+        document.getElementById("more-text").style.display = "inline";
+        document.getElementById("dots").style.display = "none";
+        document.getElementById("toggle-btn").innerHTML = (currentLang === 'en' ? ' Show Less' : ' إخفاء');
+      }
+
+      // Attach the event listener to the toggle button after it's created
+      var toggleBtn = document.getElementById("toggle-btn");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", toggleText);
+      }
+    } else {
+      document.getElementById("text").innerHTML = fullText;
+    }
+  } else {
+    document.getElementById("text").innerHTML = fullText;
+  }
+}
+
+function toggleText() {
+  var moreText = document.getElementById("more-text");
+  var dots = document.getElementById("dots");
+  var toggleBtn = document.getElementById("toggle-btn");
+
+  if (moreText.style.display === "none") {
+    moreText.style.display = "inline";
+    dots.style.display = "none";
+    toggleBtn.innerHTML = (currentLang === 'en' ? ' Show Less' : ' إخفاء');
+    isTextExpanded = true;  // Store the state as expanded
+  } else {
+    moreText.style.display = "none";
+    dots.style.display = "inline";
+    toggleBtn.innerHTML = (currentLang === 'en' ? ' Show More' : ' عرض المزيد');
+    isTextExpanded = false;  // Store the state as collapsed
+  }
+}
+
+// Call the setInitialText function when the page loads
+window.onload = setInitialText;
+
+// Adjust text visibility when resizing the window
+window.onresize = function() {
+  setInitialText();
+};
+
+function adjustViewportForOrientation() {
+    const metaViewport = document.querySelector('meta[name="viewport"]');
+    if (window.matchMedia("(max-width: 1000px) and (orientation: landscape)").matches) {
+      metaViewport.setAttribute("content", "width=device-width, initial-scale=1.0");
+    } else {
+      metaViewport.setAttribute("content", "width=device-width, initial-scale=1.0");
+    }
+  }
+
+  // Adjust on page load
+  adjustViewportForOrientation();
+
+  
+
+  // Adjust on orientation change
+  window.addEventListener("resize", adjustViewportForOrientation);
+
+  function nextQuestion() {
+    const currentInputs = questions[currentQuestion].querySelectorAll('input[type="radio"]');
+    let answered = false;
+
+    currentInputs.forEach(input => {
+      if (input.checked) {
+        answered = true;
+      }
+    });
+
+    if (answered) {
+      if (currentQuestion < questions.length - 1) {
+        setTimeout(() => {
+          currentQuestion++;
+          showQuestion(currentQuestion);
+        }, 500);
+      }
+    }
+  }
+
+  function previousQuestion() {
+    if (currentQuestion > 0) {
+      currentQuestion--;
+      showQuestion(currentQuestion);
+  
+      // Reattach the event listeners after showing the previous question
+      addRadioEventListeners();
+    }
+  }
+  
+  function addRadioEventListeners() {
+    questions.forEach((question, questionIndex) => {
+      const radioInputs = question.querySelectorAll('input[type="radio"]');
+  
+      radioInputs.forEach(input => {
+        // Remove any existing event listener before adding a new one to avoid multiple triggers
+        input.removeEventListener('click', handleRadioClick);
+        input.addEventListener('click', handleRadioClick);
+      });
+    });
+  }
+  
+  function handleRadioClick() {
+    if (isAnswering) return; // Ignore if already processing an answer
+    isAnswering = true; // Set the flag to indicate processing has started
+    if (currentQuestion === questions.length - 1) {
+      return; // Do nothing if we are on the last question
+    }
+    nextQuestion();
+  }
+  
+  
+
+  // Function to toggle the language
+  function toggleLanguage() {
+  currentLang = currentLang === 'en' ? 'ar' : 'en';
+  selectedLangInput.value = currentLang;
+
+  // Update all text with data attributes
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.innerText = el.getAttribute(`data-${currentLang}`);
+  });
+
+  // Update radio button labels dynamically
+  document.querySelectorAll('label').forEach(label => {
+    if (label.hasAttribute('data-en') && label.hasAttribute('data-ar')) {
+      label.innerText = label.getAttribute(`data-${currentLang}`);
+    }
+  });
+
+  // Update the toggle button text
+  document.querySelector('.lang-toggle').innerText = currentLang === 'en' ? 'العربية' : 'English';
+
+  // Update URL parameter without reloading the page
+  const url = new URL(window.location.href);
+  url.searchParams.set('lang', currentLang);
+  window.history.pushState({}, '', url);
+
+  // Update description text dynamically
+  setInitialText();
+}
+
+  // Initialize to ensure correct language and show first question
+  document.addEventListener('DOMContentLoaded', function () {
+  const url = new URL(window.location.href);
+
+  let langParam = url.searchParams.get('lang') || 'en';
+  currentLang = langParam;
+  document.getElementById('selectedLang').value = currentLang;
+
+  // Set language for all text content
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.innerText = el.getAttribute(`data-${currentLang}`);
+  });
+
+  // Update radio button labels
+  document.querySelectorAll('label').forEach(label => {
+    if (label.hasAttribute('data-en') && label.hasAttribute('data-ar')) {
+      label.innerText = label.getAttribute(`data-${currentLang}`);
+    }
+  });
+
+  // Set toggle button text
+  document.querySelector('.lang-toggle').innerText = currentLang === 'en' ? 'العربية' : 'English';
+
+  // Show the first question and add event listeners
+  showQuestion(0);
+  addRadioEventListeners();
+
+  // Set the description text dynamically
+  setInitialText();
+});
+</script>
+
+
+</body>
+</html>
+

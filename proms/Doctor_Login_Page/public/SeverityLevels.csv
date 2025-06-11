@@ -1,0 +1,53 @@
+Scale,Severity,Color,Chart_Range_Min,Chart_Range_Max,Actual_Range_Min,Actual_Range_Max
+Global-Health Physical,Excellent,#00ff00,58,68,59,67.7
+Global-Health Physical,Very Good,#7fff00,50,58,51,58
+Global-Health Physical,Good,#ffff00,42,50,43,50
+Global-Health Physical,Fair,#ff7f00,35,42,36,42
+Global-Health Physical,Poor,#ff0000,16,35,16.2,35
+Global-Health Mental,Excellent,#00ff00,56,68,57,67.7
+Global-Health Mental,Very Good,#7fff00,48,56,49,56
+Global-Health Mental,Good,#ffff00,40,48,41,48
+Global-Health Mental,Fair,#ff7f00,29,40,30,40
+Global-Health Mental,Poor,#ff0000,21,29,21.2,29
+WEXNER,Mild,#00ff00,0,5,0,4
+WEXNER,Moderate,#ffff00,5,9,5,8
+WEXNER,Severe,#ff0000,9,20,9,+
+EPDS,None - Minimal,#00ff00,0,10,0,9
+EPDS,Mild,#7fff00,10,13,10,12
+EPDS,Moderate,#ff7f00,13,15,13,15
+EPDS,Severe,#ff0000,15,30,16,+
+ICIQ_UI SF,Slight,#7fff00,0,5,0,5
+ICIQ_UI SF,Moderate,#ffff00,5,12,6,12
+ICIQ_UI SF,Severe,#ff7f00,12,18,13,18
+ICIQ_UI SF,Very Severe,#ff0000,18,21,19,21
+PAID,Low Distress,#ffff00,0,16,0,16
+PAID,Moderate Distress,#ff7f00,16,39,17,39
+PAID,High Distress,#ff0000,39,100,40,+
+PAID-5,Low Distress,#ffff00,0,8,0,7
+PAID-5,Possible distress,#ff0000,8,25,8,+
+PROMIS Bank v1.1 - Pain Interference,Within Normal Limits,#00ff00,20,50,20,49
+PROMIS Bank v1.1 - Pain Interference,Mild,#7fff00,50,60,50,59
+PROMIS Bank v1.1 - Pain Interference,Moderate,#ff7f00,60,70,60,69
+PROMIS Bank v1.1 - Pain Interference,Severe,#ff0000,70,80,70,+
+PROMIS SF v1.0 - Fatigue-OA-Knee 8a,Within Normal Limits,#00ff00,20,50,20,49
+PROMIS SF v1.0 - Fatigue-OA-Knee 8a,Mild,#7fff00,50,60,50,59
+PROMIS SF v1.0 - Fatigue-OA-Knee 8a,Moderate,#ff7f00,60,70,60,69
+PROMIS SF v1.0 - Fatigue-OA-Knee 8a,Severe,#ff0000,70,80,70,+
+PROMIS SF v1.0 - Depression-OA-Knee 4a,Within Normal Limits,#00ff00,20,50,20,49
+PROMIS SF v1.0 - Depression-OA-Knee 4a,Mild,#7fff00,50,60,50,59
+PROMIS SF v1.0 - Depression-OA-Knee 4a,Moderate,#ff7f00,60,70,60,69
+PROMIS SF v1.0 - Depression-OA-Knee 4a,Severe,#ff0000,70,80,70,+
+Pain-Interference,Severe,#ff0000,70,80,70,80
+Pain-Interference,Moderate,#ff7f00,60,70,60,69
+Pain-Interference,Mild,#7fff00,50,60,50,59
+Pain-Interference,Within Normal Limits,#00ff00,20,50,20,49
+Physical-Function,Severe,#ff0000,20,30,20,29
+Physical-Function,Moderate,#ff7f00,30,40,30,39
+Physical-Function,Mild,#7fff00,40,50,40,49
+Physical-Function,Within Normal Limits,#00ff00,50,80,50,80
+EQ-5D,Mild / No Problems,#00FF00,0.7,1.0,0.700,1.000
+EQ-5D,Moderate Problems,#FFFF00,0.4,0.7,0.400,0.699
+EQ-5D,Significant Problems,#FF7F00,0.0,0.4,0.000,0.399
+EQ-5D,Very Severe Problems,#FF0000,-0.594,0.0,-0.594,-0.001
+PHQ-2,Mild or no depression,#00ff00,0,3,0,2
+PHQ-2,Likely major depressive disorder,#ff0000,3,6,3,6

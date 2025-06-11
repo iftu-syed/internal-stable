@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit your Details</title>
+    <link rel="stylesheet" href="<%= basePath %>/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="<%= basePath %>/css/introjs.min.css">
+        <style>
+          body {
+            font-family: 'Urbanist', sans-serif;
+            background-color: #f6f5fa;
+            background-image: url(/patientlogin/assets/lgbg.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+  
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 1200px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .container2 {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 1200px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            height: 630px;
+        }
+  
+        .profile-container,
+        .form-container {
+            width: 45%;
+            padding: 18px;
+        }
+
+        body[dir="rtl"] {
+            direction: rtl;
+            text-align: right;
+            font-family: "Arial", sans-serif;
+        }
+
+        body[dir="ltr"] {
+            direction: ltr;
+            text-align: left;
+        }
+
+        .language-selector {
+            text-align: right;
+        }
+
+        .language-selector a {
+            text-decoration: none;
+            margin: 0 10px;
+            color: #007BFF;
+        }
+
+        .language-selector a.active {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .language-selector img {
+            margin-right: 5px;
+            width: 20px;
+            height: auto;
+            vertical-align: middle;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the left */
+            padding-right: 20px;
+            border-right: 1px solid #ddd;
+            padding-top:0px;
+        }
+
+        .profile-pic {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+  
+        .profile-details {
+            text-align: left;
+            width: 100%;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+  
+        .profile-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+  
+        .profile-details li {
+            margin-bottom: 10px;
+        }
+  
+        .allergies {
+            text-align: left;
+            width: 100%;
+        }
+  
+        .allergies h3 {
+            margin-bottom: 10px;
+        }
+  
+        .form-group {
+            margin-bottom: 15px;
+        }
+  
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+        }
+  
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+  
+        .update-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+  
+        .update-btn:hover {
+            background-color: #45a049;
+        }
+  
+        .flash-message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+  
+        .flash-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+  
+        .flash-message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+  
+        h2 {
+            color: #333333;
+        }
+
+        h3,
+        p,
+        li {
+            text-align: left;
+        }
+
+        .dashed {
+            border: 1px dashed #ccc;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .introjs-tooltipbuttons {
+            text-align: right; /* Align buttons to the right */
+        }
+
+        .help-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0px !important;
+            transition: background-color 0.3s ease;
+        }
+
+        .help-btn:hover {
+            background-color: #0056b3; /* Slightly darker blue on hover */
+        }
+
+
+        .help-button-container {
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #12171e;
+            padding: 12px 0;
+            transition: all 0.5s ease;
+        }
+
+        /* Ensure the button aligns well with sidebar's active state */
+        .sidebar.active .help-btn {
+            color: #fff;
+            display: flex;
+            width: 100%;
+            gap: 5px;
+            align-items: center;
+            text-decoration: none;
+            border-radius: 0.8rem;
+        }
+
+        .cover {
+            display: flex; width: 100%; gap: 50px;
+        }
+        .cover-cover {
+            display: flex; 
+            width: 100%; 
+            justify-content: space-between;
+        }
+
+        .pi, .allergy, .history {
+            padding: 20px;
+        }
+
+
+        .tabs {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #ddd;
+            margin-right: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .tab.active {
+            background-color: #fff;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content {
+            flex: 3;
+            display: none;
+            padding: 20px; 
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+
+        .update-btn, .download-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        input[type="date"] {
+            appearance: none; /* Remove native styling */
+            -webkit-appearance: none; /* For Safari */
+            -moz-appearance: none; /* For Firefox */
+            width: 100%; /* Ensure it occupies the full width */
+            padding: 8px; /* Add consistent padding */
+            border: 1px solid #ddd; /* Match other input fields */
+            border-radius: 4px; /* Smooth edges */
+            background-color: #fff; /* Match the background */
+            font-size: 16px; /* Adjust font size */
+            box-sizing: border-box;
+        }
+
+        .update-btn:hover, .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width:800px) {
+            .language-selector{
+                margin-top: 10px;
+                padding-top: 10px !important;
+            }
+            
+            .tabs {
+                flex-direction: row; /* Arrange tabs horizontally */
+                border-right: none; /* Remove the vertical border */
+                margin-right: 0; /* Remove the right margin */
+            }
+
+            .tab {
+                flex: 1; /* Distribute tabs evenly */
+                margin-bottom: 0; /* Remove the margin between tabs */
+                margin-right: 5px; /* Add some spacing between tabs */
+                text-align: center;
+                padding: 10px; /* Ensure consistent padding */
+            }
+
+            .tab:last-child {
+                margin-right: 0; /* Remove margin for the last tab */
+            }
+
+            .tab.active {
+                border-bottom: 2px solid #007bff; /* Highlight the active tab */
+                box-shadow: none; /* Remove shadow for a cleaner look */
+            }
+            .tab-content.active {
+                display: grid;
+                /* justify-content: start; */
+            }
+            .container2 {
+                display: block;
+                /* height: 700px; */
+                height: 60%;
+            }
+            .dashed {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+        <ul>
+            <hr class="spacer">
+            <li>
+                <a href="<%= basePath %>/userDetails">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span id="charts-nav-item" class="nav-item">My Charts</span>
+                </a>
+                <span id="charts-tooltip" class="tooltip">My Charts</span>
+            </li>
+            <!-- <li>
+                <a href="/survey-details/<%= patient.hashedMr_no %>">
+                    <i class='bx bx-list-check'></i>
+                    <span class="nav-item">My Responses</span>
+                </a>
+                <span class="tooltip">My Responses</span>
+            </li> -->
+            <li>
+                <a href="<%= basePath %>/edit-details?hashedMr_no=<%= user.hashedMrNo %>">
+                    <i class='bx bx-user-circle'></i>
+                    <span id="profile-nav-item" class="nav-item">My Profile</span>
+                </a>
+                <span id="profile-tooltip" class="tooltip">My Profile</span>
+            </li>
+
+            <li>
+                <a href="<%= basePath %>">
+                    <i class="bx bx-log-out"></i>
+                    <span id="logoutNav" class="nav-item">Logout</span>
+                </a>
+                <span id="logout-tooltip" class="tooltip">Logout</span>
+            </li>
+        </ul>
+        <div class="help-button-container">
+            <button id="helpButton" class="help-btn">
+                <span id="helpLabel" class="nav-item">Help </span>
+                <i class='bx bx-help-circle'></i>
+            </button>
+            
+        
+        </div>
+    </div>
+    <div class="mobile-nav2" id="mobile-nav2">
+        <ul>
+            <li>
+                <a href="<%= basePath %>/userDetails">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span id="charts-nav-itemm" class="nav-item">My Charts</span>
+                </a>
+            </li>
+            <li>
+                <a href="<%= basePath %>/edit-details?hashedMr_no=<%= user.hashedMrNo %>">
+                    <i class='bx bx-user-circle'></i>
+                    <span id="profile-nav-itemm" class="nav-item">My Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="<%= basePath %>">
+                    <i class="bx bx-log-out"></i>
+                    <span id="logoutNavv" class="nav-item">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="main-content">
+        <div class="topbar" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+            <h2 style="margin-top: 10px; margin-bottom: 10px;">MR No: <%= patient.mrNo %></h2>
+        </div>
+        <hr style="opacity: 0.5;">
+        <div class="language-selector" style="text-align: right; padding: 10px;">
+            <a href="/patientlogin/edit-details?hashedMr_no=<%= patient.hashedMr_no %>&lng=en" class="<%= lng === 'en' ? 'active' : '' %>">
+                <img src="<%= basePath %>/assets/usa.png" alt="English Flag">English
+            </a> |
+            <a href="/patientlogin/edit-details?hashedMr_no=<%= patient.hashedMr_no %>&lng=ar" class="<%= lng === 'ar' ? 'active' : '' %>">
+                <img src="<%= basePath %>/assets/flag.png" alt="Arabic Flag">العربية
+            </a>
+        </div>
+        <div class="container">
+            <div class="cover">
+    
+                <div class="profile-picture">
+                    <img src="<%= basePath %>/assets/profile-pic.png" alt="Profile Picture" class="profile-pic">
+                </div>
+                <hr class="dashed" style="width: 1px;">
+                <div class="cover-cover">
+                    <div class="pi">
+                        <h3>Demographics</h3>
+                        <div><b id="name-detail">Name:</b> <%= patient.firstName %> <%= patient.lastName %></div>
+                        <div><b id="gender-detail">Gender:</b> <%= patient.gender %></div>
+                        <div><b id="dob-detail">Date of Birth:</b> <%=patient.displayDOB %></div>
+                    </div>
+                    
+                    <!-- <div class="allergy">
+                        <h3 id="allergies-heading">Allergies</h3>
+                        <ul>
+                            <li>Penicillin - High</li>
+                            <li>Another Allergy - Medium</li>
+                        </ul>
+                        <br>
+                    </div> -->
+                    <!-- <div class="history">
+                        <h3 id="medical-history-heading">Medical History</h3>
+                        <ul>
+                            <li>Past diagnoses</li>
+                            <li>Surgeries</li>
+                            <li>Immunizations</li>
+                        </ul>
+                    </div> -->
+    
+                </div>
+            </div>
+        </div>
+    
+    
+        <div class="container2">
+            <div class="tabs">
+                <div class="tab active" data-tab="tab1" id="edit-info-tab1">Edit Personal Info</div>
+                <div class="tab" data-tab="tab2" id="edit-info-tab2">Change Password</div>
+                <!-- <div class="tab" data-tab="tab3" id="edit-info-tab3">Allergies</div> -->
+                <!-- <div class="tab" data-tab="tab4" id="edit-info-tab4">Download Reports</div> -->
+            </div>
+    
+            <div class="tab-content active" id="tab1">
+                <h2 id="edit-info-heading" style="margin-bottom: 10px;">Edit Personal Information</h2>
+                <form id="dataForm" method="POST" action="<%= basePath %>/update-data">
+                    <div class="form-group">
+                        <label for="Mr_no">MR Number</label>
+                        <input style="background-color: #f0f0f0;" type="text" id="Mr_no" name="Mr_no" readonly required value="<%= patient.mrNo %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName" id="first-name-label">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required value="<%= patient.firstName %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="middleName" id="middle-name-label">Middle Name</label>
+                        <input type="text" id="middleName" name="middleName" value="<%= patient.middleName %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" id="last-name-label">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required value="<%= patient.lastName %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="DOB" id="dob-label" class="form-label">Date of Birth:</label>
+                        <input style="background-color: #f0f0f0;" type="date" class="form-input" id="DOB" name="DOB" required value="<%= patient.inputDOB %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber" id="phone-number-label">Phone Number</label>
+                        <input type="text" id="phoneNumber" name="phoneNumber" required value="<%= patient.phoneNumber %>">
+                    </div>
+                    <input type="hidden" name="hashedMr_no" value="<%= patient.hashedMr_no %>">
+                    <button type="submit" id="update-button1" class="update-btn"><i class='bx bx-check-double' style='font-size: 16px;' ></i> Update</button>
+                </form>
+            </div>
+    
+            <div class="tab-content" id="tab2">
+                <h2 style="margin-bottom: 10px;" id="change-password-tab">Change Password</h2>
+                <form method="POST" action="<%= basePath %>/update-data">
+                    <!-- <div class="form-group">
+                        <label for="currentPassword" id="currentPasswordLabel">Current Password</label>
+                        <input type="password" id="currentPassword" name="currentPassword" required>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="password" id="password-label" class="form-label">Password</label>
+                        <div style="position: relative;">
+                            <input type="password" class="form-input" id="password" name="password">
+                            <button type="button" id="togglePassword" class="password-toggle" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
+                                <i class='bx bx-hide'></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Confirm_Password" id="confirm-password-label" class="form-label">Confirm Password</label>
+                        <div style="position: relative;">
+                            <input type="password" class="form-input" id="Confirm_Password" name="Confirm_Password">
+                            <button type="button" id="toggleConfirmPassword" class="password-toggle" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
+                                <i class='bx bx-hide'></i>
+                            </button>
+                        </div>
+                    </div>
+                    <input type="hidden" name="hashedMr_no" value="<%= patient.hashedMr_no %>">
+                    <button type="submit" class="update-btn" id="update-button" ><i class='bx bx-check-double' style='font-size: 16px;' ></i> Change Password</button>
+                </form>
+            </div>
+    
+            <!-- Modified Allergies Section -->
+            <div class="tab-content" id="tab3">
+                <h2 style="margin-bottom: 10px;" id="allergies-tab">Allergies</h2>
+                <form method="POST" action="<%= basePath %>/update-allergies">
+                    <div class="form-group">
+                        <label for="allergy" id="allergies-dropdown">Select Allergy</label>
+                        <select id="allergy" name="allergy" disabled>
+                            <option value="penicillin">Penicillin</option>
+                            <option value="dust">Dust</option>
+                            <option value="nuts">Nuts</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="severity" id="severity-dropdown">Severity Level</label>
+                        <select id="severity" name="severity" disabled>
+                            <option value="low" id="levelLow">Low</option>
+                            <option value="medium" id="levelMedium">Medium</option>
+                            <option value="high" id="levelHigh">High</option>
+                        </select>
+                    </div>
+                    <p style="color: gray; margin-top: 10px;">Feature will be added soon.</p>
+                    <input type="hidden" name="_id" value="<%= patient.hashedMr_no %>">
+                </form>
+            </div>
+    
+            <!-- Modified Download Reports Section -->
+            <div class="tab-content" id="tab4">
+                <h2 style="margin-bottom: 10px;" id="downloadTab">Download Reports</h2>
+                <button class="download-btn" id="downloadCharts" disabled>Download Charts</button>
+                <button class="download-btn" id="downloadInfo" disabled>Download Personal Info</button>
+                <p style="color: gray; margin-top: 10px;">Feature will be added soon.</p>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="<%= basePath %>/js/intro.min.js"></script>
+    <script>
+        document.getElementById('helpButton').addEventListener('click', function () {
+    // Determine the current language (default to English)
+    const lang = new URLSearchParams(window.location.search).get('lng') || getCookie('lng') || 'en';
+
+    // Define translations for the steps
+    const translations = {
+        en: {
+            step2: "Overall view of your data",
+            step3: "Edit your personal info.",
+            step4: "Change your password"
+        },
+        ar: {
+            step2: "قم بتحرير المدخلات الخاصة بك.",
+            step3: "أضف معلوماتك الشخصية",
+            step4: "قم بتغيير كلمة المرور الخاصة بك"
+        }
+    };
+
+    // Define the steps
+    const introSteps = [
+        {
+            element: '.container', // Select the form container element
+            intro: translations[lang].step2 // Use the translated step text
+        },
+        {
+            element: '#edit-info-tab1', // Select the update button
+            intro: translations[lang].step3 // Use the translated step text
+        },
+        {
+            element: '#edit-info-tab2', // Select the update button
+            intro: translations[lang].step4 // Use the translated step text
+        }
+    ];
+
+    // Initialize and start Intro.js with dynamic labels for buttons
+    introJs()
+        .setOptions({
+            steps: introSteps,
+            nextLabel: lang === 'ar' ? 'التالي' : 'Next',
+            prevLabel: lang === 'ar' ? 'السابق' : 'Back',
+            doneLabel: lang === 'ar' ? 'تم' : 'Done'
+        })
+        .start();
+});
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+        
+    </script>
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(tc => tc.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+            });
+        });
+        document.addEventListener("DOMContentLoaded", () => {
+            const getCookie = (name) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      };
+      const params = new URLSearchParams(window.location.search);
+      let currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+      
+      // Set the language cookie
+      document.cookie = `lng=${currentLanguage}; path=/`;
+          const fetchUrl = `/patientlogin/locales/${currentLanguage}/translation.json`;
+      
+      
+          // Set the `lang` and `dir` attributes for the HTML document
+        //   document.documentElement.lang = currentLanguage;
+        //   document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+      
+          fetch(fetchUrl)
+            .then(response => {
+              if (!response.ok) {
+                console.warn(`Translation file not found for language: ${currentLanguage}. Falling back to English.`);
+                return fetch(`/doctorlogin/locales/en/translation.json`);
+              }
+              return response.json();
+            })
+            .then(translations => {
+              console.log('Loaded translations:', translations);
+      
+              // Update the elements based on translation keys
+              Object.keys(translations).forEach(id => {
+                const element = document.getElementById(id);
+      
+                if (element) {
+                    const translationValue = translations[id];
+      
+                    if (typeof translationValue === 'string') {
+                        // Update regular text or HTML content
+                        element.innerHTML = translationValue;
+                    }
+                      if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+      
+                        // Update placeholders for input elements
+      
+                        console.log(`Updating placeholder for ${id}:`, translationValue);
+      
+                        element.placeholder = translationValue;
+      
+                      }
+                    else if (typeof translationValue === 'object') {
+                                            // Handle nested object (e.g., lists)
+                                            element.innerHTML = ''; // Clear existing content
+                                            Object.values(translationValue).forEach(item => {
+                                                const listItem = document.createElement('li');
+                                                listItem.textContent = item;
+                                                element.appendChild(listItem);
+                                            });
+                    } else {
+                        console.warn(`Unexpected translation value type for "${id}":`, translationValue);
+                    }
+                }
+              });
+            })
+            .catch(error => console.error('Error loading translations:', error));
+        });
+    </script>
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+
+        btn.onclick = function () {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('dataForm');
+            form.addEventListener('submit', function (event) {
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('Confirm_Password').value;
+
+                if (password !== confirmPassword) {
+                    event.preventDefault();
+                    alert('Passwords do not match.');
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+
+            function removeCurrentPageClasses() {
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('CurrentPage');
+                });
+            }
+
+            function setCurrentPageLink(path) {
+                removeCurrentPageClasses();
+                console.log(`Setting CurrentPage link for path: ${path}`);
+                const currentPageLink = Array.from(sidebarLinks).find(link => {
+                    const linkPath = new URL(link.href).pathname;
+                    return linkPath === path;
+                });
+                if (currentPageLink) {
+                    console.log(`CurrentPage link found: ${currentPageLink.href}`);
+                    currentPageLink.classList.add('CurrentPage');
+                } else {
+                    console.log(`No CurrentPage link found for path: ${path}`);
+                }
+            }
+
+            // Check the URL path and set the current page link on page load
+            const currentPath = window.location.pathname;
+            console.log(`Current path: ${currentPath}`);
+            setCurrentPageLink(currentPath);
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    const targetPath = new URL(link.href).pathname;
+                    console.log(`Navigating to: ${targetPath}`);
+                    setCurrentPageLink(targetPath);
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // Add this to your existing script section
+document.addEventListener('DOMContentLoaded', function() {
+    // Password toggle functionality
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+    const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+    const confirmPassword = document.getElementById('Confirm_Password');
+    
+    // Toggle password visibility
+    togglePassword.addEventListener('click', function() {
+        // Toggle type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        
+        // Toggle icon
+        this.querySelector('i').classList.toggle('bx-hide');
+        this.querySelector('i').classList.toggle('bx-show');
+    });
+    
+    // Toggle confirm password visibility
+    toggleConfirmPassword.addEventListener('click', function() {
+        // Toggle type attribute
+        const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmPassword.setAttribute('type', type);
+        
+        // Toggle icon
+        this.querySelector('i').classList.toggle('bx-hide');
+        this.querySelector('i').classList.toggle('bx-show');
+    });
+});
+    </script>
+
+    <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    // First, add the modal HTML to your page
+    const modalHTML = `
+    <div id="unsavedChangesModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Unsaved Changes</h3>
+            </div>
+            <div class="modal-body">
+                <p id="modal-message">You have unsaved changes. Are you sure you want to leave without saving?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-cancel-btn" class="cancel-btn">Cancel</button>
+                <button id="modal-confirm-btn" class="proceed-btn">Leave anyway</button>
+            </div>
+        </div>
+    </div>
+    `;
+    
+    // Add modal styles
+    const modalStyle = `
+    <style>
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 450px;
+            overflow: hidden;
+        }
+        
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .cancel-btn {
+            background-color: #f1f1f1;
+            border: none;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .proceed-btn {
+            background-color: #dc3545;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        body[dir="rtl"] .modal-footer {
+            flex-direction: row-reverse;
+        }
+    </style>
+    `;
+    
+    // Append modal and styles to document
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    document.head.insertAdjacentHTML('beforeend', modalStyle);
+    
+    // Get modal elements
+    const modal = document.getElementById('unsavedChangesModal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalMessage = document.getElementById('modal-message');
+    const cancelBtn = document.getElementById('modal-cancel-btn');
+    const confirmBtn = document.getElementById('modal-confirm-btn');
+    
+    // Track form changes
+    let formChanged = false;
+    let pendingTabChange = null;
+    const passwordForm = document.querySelector('#tab2 form');
+    const passwordInput = document.getElementById('password');
+    const confirmInput = document.getElementById('Confirm_Password');
+    const tabs = document.querySelectorAll('.tab');
+    
+    // Function to check if form has unsaved changes
+    function checkFormChanges() {
+        return passwordInput.value !== '' || confirmInput.value !== '';
+    }
+    
+    // Function to clear form fields
+    function clearPasswordFields() {
+        passwordInput.value = '';
+        confirmInput.value = '';
+        formChanged = false;
+    }
+    
+    // Watch for form input changes
+    [passwordInput, confirmInput].forEach(input => {
+        input.addEventListener('input', function() {
+            formChanged = checkFormChanges();
+        });
+    });
+    
+    // Set modal text based on language
+    function setModalText() {
+        const isArabic = getCookie('lng') === 'ar';
+        
+        if (isArabic) {
+            modalTitle.textContent = 'تغييرات غير محفوظة';
+            modalMessage.textContent = 'لديك تغييرات غير محفوظة. هل أنت متأكد أنك تريد المغادرة دون حفظ التغييرات؟';
+            cancelBtn.textContent = 'إلغاء';
+            confirmBtn.textContent = 'المغادرة على أي حال';
+        } else {
+            modalTitle.textContent = 'Unsaved Changes';
+            modalMessage.textContent = 'You have unsaved changes. Are you sure you want to leave without saving?';
+            cancelBtn.textContent = 'Cancel';
+            confirmBtn.textContent = 'Leave anyway';
+        }
+    }
+    
+    // Show modal function
+    function showUnsavedChangesModal(callback) {
+        setModalText();
+        modal.style.display = 'flex';
+        
+        // Remove previous event listeners to prevent duplicates
+        const newCancelBtn = cancelBtn.cloneNode(true);
+        const newConfirmBtn = confirmBtn.cloneNode(true);
+        
+        cancelBtn.parentNode.replaceChild(newCancelBtn, cancelBtn);
+        confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
+        
+        // Set up new event listeners
+        newConfirmBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            
+            // IMPORTANT: Clear password fields immediately when "Leave anyway" is clicked
+            clearPasswordFields();
+            
+            // Execute callback if provided
+            if (callback && typeof callback === 'function') {
+                callback(true);
+            }
+        });
+        
+        newConfirmBtn.id = 'modal-confirm-btn';
+        newCancelBtn.id = 'modal-cancel-btn';
+        
+        newCancelBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            // Execute callback if provided
+            if (callback && typeof callback === 'function') {
+                callback(false);
+            }
+        });
+        
+        // Close on overlay click
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                if (callback && typeof callback === 'function') {
+                    callback(false);
+                }
+            }
+        });
+    }
+    
+    // Modify tab switching to use our custom modal
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(event) {
+            // Skip checks if clicking the currently active tab
+            if (tab.classList.contains('active')) return;
+            
+            // Check if we're on password tab and have unsaved changes
+            const activeTab = document.querySelector('.tab.active');
+            if (activeTab.getAttribute('data-tab') === 'tab2' && formChanged) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                // Store the tab we want to switch to
+                pendingTabChange = tab;
+                
+                // Show our custom modal
+                showUnsavedChangesModal(function(confirmed) {
+                    if (confirmed && pendingTabChange) {
+                        // Manually switch tabs
+                        tabs.forEach(t => t.classList.remove('active'));
+                        tabContents.forEach(tc => tc.classList.remove('active'));
+                        
+                        pendingTabChange.classList.add('active');
+                        document.getElementById(pendingTabChange.getAttribute('data-tab')).classList.add('active');
+                        
+                        pendingTabChange = null;
+                    }
+                });
+                
+                return false;
+            }
+        }, true); // Use capturing to intercept the event before your existing handlers
+    });
+    
+    // Handle beforeunload event with custom modal if possible
+    window.addEventListener('beforeunload', function(event) {
+        if (document.querySelector('.tab.active').getAttribute('data-tab') === 'tab2' && formChanged) {
+            event.preventDefault();
+            event.returnValue = '';
+            return '';
+        }
+    });
+    
+    // Reset form state when it's submitted
+    passwordForm.addEventListener('submit', function() {
+        formChanged = false;
+    });
+});
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Add both modal dialogs to your page
+    const modalsHTML = `
+    <!-- Unsaved Changes Modal -->
+    <div id="unsavedChangesModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Unsaved Changes</h3>
+            </div>
+            <div class="modal-body">
+                <p id="modal-message">You have unsaved changes. Are you sure you want to leave without saving?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-cancel-btn" class="cancel-btn">Cancel</button>
+                <button id="modal-confirm-btn" class="proceed-btn">Leave anyway</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div id="successModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content success-modal">
+            <div class="success-icon-container">
+                <div class="success-icon-circle">
+                    <i class='bx bx-check'></i>
+                </div>
+            </div>
+            <div class="success-body">
+                <h3 id="success-title">Success!</h3>
+                <p id="success-message">Password updated successfully</p>
+            </div>
+        </div>
+    </div>
+    `;
+    
+    // Add modal styles
+    const modalStyle = `
+    <style>
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 450px;
+            overflow: hidden;
+        }
+        
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .cancel-btn {
+            background-color: #f1f1f1;
+            border: none;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .proceed-btn {
+            background-color: #dc3545;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        body[dir="rtl"] .modal-footer {
+            flex-direction: row-reverse;
+        }
+        
+        /* Enhanced Success Modal Styling */
+        .success-modal {
+            background-color: transparent;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 300px;
+        }
+        
+        .success-icon-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .success-icon-circle {
+            background-color: #4CAF50;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 140, 0, 0.3);
+            animation: scale-up 0.3s ease-out;
+        }
+        
+        .success-icon-circle i {
+            color: white;
+            font-size: 40px;
+        }
+        
+        .success-body {
+            background-color: white;
+            width: 100%;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            animation: slide-up 0.4s ease-out;
+        }
+        
+        .success-body h3 {
+            color: #4CAF50;
+            margin: 0 0 10px 0;
+            font-size: 22px;
+        }
+        
+        .success-body p {
+            margin: 0;
+            color: #555;
+            font-size: 16px;
+        }
+        
+        @keyframes scale-up {
+            0% {
+                transform: scale(0);
+            }
+            70% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes slide-up {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    `;
+    
+    // Append modals and styles to document
+    document.body.insertAdjacentHTML('beforeend', modalsHTML);
+    document.head.insertAdjacentHTML('beforeend', modalStyle);
+    
+    // Get modal elements
+    const unsavedModal = document.getElementById('unsavedChangesModal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalMessage = document.getElementById('modal-message');
+    const cancelBtn = document.getElementById('modal-cancel-btn');
+    const confirmBtn = document.getElementById('modal-confirm-btn');
+    
+    const successModal = document.getElementById('successModal');
+    const successTitle = document.getElementById('success-title');
+    const successMessage = document.getElementById('success-message');
+    
+    // Track form changes
+    let formChanged = false;
+    let pendingTabChange = null;
+    const passwordForm = document.querySelector('#tab2 form');
+    const passwordInput = document.getElementById('password');
+    const confirmInput = document.getElementById('Confirm_Password');
+    const tabs = document.querySelectorAll('.tab');
+    
+    // Function to check if form has unsaved changes
+    function checkFormChanges() {
+        return passwordInput.value !== '' || confirmInput.value !== '';
+    }
+    
+    // Function to clear form fields
+    function clearPasswordFields() {
+        passwordInput.value = '';
+        confirmInput.value = '';
+        formChanged = false;
+    }
+    
+    // Watch for form input changes
+    [passwordInput, confirmInput].forEach(input => {
+        input.addEventListener('input', function() {
+            formChanged = checkFormChanges();
+        });
+    });
+    
+    // Set modal text based on language
+    function setModalText() {
+        const isArabic = getCookie('lng') === 'ar';
+        
+        if (isArabic) {
+            // Unsaved changes modal
+            modalTitle.textContent = 'تغييرات غير محفوظة';
+            modalMessage.textContent = 'لديك تغييرات غير محفوظة. هل أنت متأكد أنك تريد المغادرة دون حفظ التغييرات؟';
+            cancelBtn.textContent = 'إلغاء';
+            confirmBtn.textContent = 'المغادرة على أي حال';
+            
+            // Success modal
+            successTitle.textContent = 'تم بنجاح!';
+            successMessage.textContent = 'تم تحديث كلمة المرور بنجاح';
+        } else {
+            // Unsaved changes modal
+            modalTitle.textContent = 'Unsaved Changes';
+            modalMessage.textContent = 'You have unsaved changes. Are you sure you want to leave without saving?';
+            cancelBtn.textContent = 'Cancel';
+            confirmBtn.textContent = 'Leave anyway';
+            
+            // Success modal
+            successTitle.textContent = 'Success!';
+            successMessage.textContent = 'Password updated successfully';
+        }
+    }
+    
+    // Show unsaved changes modal function
+    function showUnsavedChangesModal(callback) {
+        setModalText();
+        unsavedModal.style.display = 'flex';
+        
+        // Remove previous event listeners to prevent duplicates
+        const newCancelBtn = cancelBtn.cloneNode(true);
+        const newConfirmBtn = confirmBtn.cloneNode(true);
+        
+        cancelBtn.parentNode.replaceChild(newCancelBtn, cancelBtn);
+        confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
+        
+        // Set up new event listeners
+        newConfirmBtn.addEventListener('click', function() {
+            unsavedModal.style.display = 'none';
+            
+            // Clear password fields immediately when "Leave anyway" is clicked
+            clearPasswordFields();
+            
+            // Execute callback if provided
+            if (callback && typeof callback === 'function') {
+                callback(true);
+            }
+        });
+        
+        newConfirmBtn.id = 'modal-confirm-btn';
+        newCancelBtn.id = 'modal-cancel-btn';
+        
+        newCancelBtn.addEventListener('click', function() {
+            unsavedModal.style.display = 'none';
+            // Execute callback if provided
+            if (callback && typeof callback === 'function') {
+                callback(false);
+            }
+        });
+        
+        // Close on overlay click
+        unsavedModal.addEventListener('click', function(e) {
+            if (e.target === unsavedModal) {
+                unsavedModal.style.display = 'none';
+                if (callback && typeof callback === 'function') {
+                    callback(false);
+                }
+            }
+        });
+    }
+    
+    // Show success modal function
+    function showSuccessModal() {
+        setModalText();
+        successModal.style.display = 'flex';
+        
+        // Auto close after 2.5 seconds
+        setTimeout(function() {
+            successModal.style.display = 'none';
+        }, 2500);
+    }
+    
+    // Modify tab switching to use our custom modal
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(event) {
+            // Skip checks if clicking the currently active tab
+            if (tab.classList.contains('active')) return;
+            
+            // Check if we're on password tab and have unsaved changes
+            const activeTab = document.querySelector('.tab.active');
+            if (activeTab.getAttribute('data-tab') === 'tab2' && formChanged) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                // Store the tab we want to switch to
+                pendingTabChange = tab;
+                
+                // Show our custom modal
+                showUnsavedChangesModal(function(confirmed) {
+                    if (confirmed && pendingTabChange) {
+                        // Manually switch tabs
+                        tabs.forEach(t => t.classList.remove('active'));
+                        tabContents.forEach(tc => tc.classList.remove('active'));
+                        
+                        pendingTabChange.classList.add('active');
+                        document.getElementById(pendingTabChange.getAttribute('data-tab')).classList.add('active');
+                        
+                        pendingTabChange = null;
+                    }
+                });
+                
+                return false;
+            }
+        }, true); // Use capturing to intercept the event before your existing handlers
+    });
+    
+    // Handle beforeunload event with custom modal if possible
+    window.addEventListener('beforeunload', function(event) {
+        if (document.querySelector('.tab.active').getAttribute('data-tab') === 'tab2' && formChanged) {
+            event.preventDefault();
+            event.returnValue = '';
+            return '';
+        }
+    });
+    
+    // Reset form state when it's submitted and show success modal
+    passwordForm.addEventListener('submit', function(event) {
+        // Only show success if passwords match and aren't empty
+        const password = passwordInput.value;
+        const confirmPassword = confirmInput.value;
+        
+        if (password && password === confirmPassword) {
+            // For demo purposes, prevent the actual form submission and show the success modal
+            // In real implementation, you would show this after a successful AJAX response
+            // event.preventDefault();
+            
+            // Set a flag to show success modal after the submission completes
+            localStorage.setItem('showPasswordSuccess', 'true');
+            
+            // Reset form change tracking
+            formChanged = false;
+        }
+    });
+    
+    // Check if we need to show the success modal (after page reload from form submit)
+    if (localStorage.getItem('showPasswordSuccess') === 'true') {
+        // Clean up the flag
+        localStorage.removeItem('showPasswordSuccess');
+        
+        // Show the success modal
+        showSuccessModal();
+    }
+});
+    </script>
+</body>
+
+</html>

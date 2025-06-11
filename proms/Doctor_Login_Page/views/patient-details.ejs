@@ -1,0 +1,2841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Patient Details</title>
+    <link rel="stylesheet" href="<%= basePath %>/patientdetails.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="<%= basePath %>/css/introjs.min.css">
+
+<style>
+
+
+/* Keep existing CSS */
+.tooltip-chart {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    background-color: lightsteelblue; /* Or your preferred style */
+    color: black;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 14px; /* Adjust as needed */
+    z-index: 1010; /* Ensure it's above chart elements */
+    transition: opacity 0.3s;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    max-width: 300px; /* Prevent it becoming too wide */
+    line-height: 1.4;
+}
+.tooltip-chart strong {
+    font-weight: bold;
+}
+.tooltip-chart hr {
+    margin: 4px 0;
+    border: 0;
+    border-top: 1px solid #bbb;
+}
+.tooltip-chart ul {
+    margin: 5px 0 0 0;
+    padding-left: 18px;
+    list-style: disc;
+}
+.tooltip-chart li {
+    margin-bottom: 4px;
+}
+/* Add any other necessary styles */
+
+
+.language-selector {
+      text-align: right;
+      /* margin: 10px; */
+    }
+
+    .language-selector a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: #007BFF;
+    }
+
+    .language-selector a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .language-selector img {
+      margin-right: 5px;
+      margin-left: 5px;
+      width: 20px;
+      margin-left: 5px;
+      height: auto;
+      vertical-align: bottom;
+    }
+
+@media (min-width: 768px) { /* Adjust the breakpoint as per your design */
+    #close-btn {
+        display: none;
+    }
+}
+
+/* Show the close button on mobile */
+@media (max-width: 767px) { /* Adjust the breakpoint as per your design */
+    #close-btn {
+        display: inline-block; /* or other preferred display style */
+    }
+}
+
+.log-note {
+    white-space: normal; /* Prevent text wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Show ellipsis (...) when text overflows */
+}
+
+
+.ai-message-box {
+    background-color: #f0f8ff; /* Light blue background */
+    border: 2px solid #4682b4; /* Blue border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Padding inside the box */
+    margin-bottom: 20px; /* Space below the box */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 300px; /* Maximum width */
+    position: absolute; /* Positioned absolute to place it on the right */
+    right: 20px; /* Distance from the right side of the container */
+    top: 20px; /* Distance from the top of the container */
+    z-index: 100; /* Ensure it appears above other elements */
+}
+
+.ai-message-box h3 {
+    font-size: 18px; /* Slightly larger font size for the title */
+    color: #333; /* Darker color for the title */
+    margin-bottom: 10px; /* Space below the title */
+    text-align: center; /* Center the title */
+}
+
+.ai-message-box p {
+    font-size: 14px; /* Font size for the content */
+    color: #555; /* Darker gray for the content text */
+    line-height: 1.5; /* Line height for better readability */
+    text-align: center; /* Center the text */
+}
+
+          .chart {
+      margin: 20px; /* Add margin around each chart */
+    }
+    .line {
+        fill: none;
+        stroke: #8a8a8a;
+        stroke-width: 2.5px;
+    }
+    .axis-label, .annotation {
+        font-family: 'Roboto', sans-serif;
+        font-size: 12px;
+    }
+    .highlight-circle {
+        stroke: #4682b4;
+        stroke-width: 2.5px;
+    }
+    .data-circle {
+        fill: #ffffff;
+        stroke: #8a8a8a;
+        stroke-width: 2.5px;
+    }
+/* BREATHING EFFECT TO CIRCLES */
+@keyframes breathing {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.highlight-circle {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: breathing 2s infinite ease-in-out;
+}
+
+/* TABS */
+
+
+
+/* .chart-container {
+    width: 100%;
+    overflow: auto;
+    flex-grow: 1;
+} */
+
+/* Loading GIF */
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none; /* Initially hide the loading container */
+}
+
+.loading-container img {
+    width: 70%;  /* Adjust the width to make the GIF smaller */
+    height: 70%; /* Adjust the height to make the GIF smaller */
+}
+
+#mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #12171e;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 999; /* Ensures it stays above the content */
+}
+
+.mobile-nav ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.mobile-nav ul li {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.mobile-nav ul li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 23px;
+}
+
+.mobile-nav ul li a i {
+    font-size: 28px;
+    vertical-align: text-bottom;
+}
+
+.mobile-nav ul li a.active {
+
+  background-color: #fff;
+  color: #12171e;
+}
+
+@media (max-width: 800px) {
+    .success-message {
+    color: green;
+    display: none; 
+    left: 6%;
+}
+
+  #mobile-nav {
+display: block;
+padding-block: 4px;
+}
+
+.topbar a.btn-dashboard{
+    display: none !important;
+}
+.sidebar {
+   display: none;
+}
+.main-content {
+    width: 100% !important;
+    left: 0 !important;
+    margin-top: 50px;
+    
+  }
+  .topbar {
+position: fixed !important;
+width: 100%;
+/* justify-content: space-around !important; */
+}
+
+.column2 {
+    display: none;
+    width: 0;
+    background-color: #f6f5fa;
+}
+
+svg {
+  BACKGROUND-COLOR: #fff;
+  BORDER-RADIUS: 15PX;
+  transform: scale(0.85);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.charts-grid {
+  grid-template-columns: 1fr !important; /* Two columns for larger screens */
+  margin-inline: 0px !important;
+  padding-inline: 0px !important;
+  row-gap: 0px !important;
+  padding-bottom: 75px !important;
+}
+
+.chart-container {
+       
+        background-color:#f6f5fa !important;
+        box-shadow: 0px 0px 0px 0px !important;
+       
+        
+    }
+  
+
+    .searchtopbar {
+        border:1px solid black;
+        border-radius: 4px;
+        display: flex;
+        height: fit-content;
+      }
+
+      .column1 {width: 100%;
+      }
+
+      .column2 {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        /* Styling for overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Show the pop-up and overlay */
+        .show {
+            display: block;
+            width: 100%;
+        }
+
+        /* Close button styling */
+        .close-btn {
+            float: right;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+       
+}
+
+
+
+
+@media (max-width:600px) {
+.loading-container img {width: 100%!important;
+
+}
+}
+.sidebar .nav-item {
+  display: none;
+}
+
+.sidebar.active .nav-item {
+  opacity: 1;
+  display: block;
+}
+
+/* END OF BREATHIGN EFFECT CSS */
+
+    .grid-line {
+        stroke: #ddd;
+        stroke-width: 1px;
+    }
+
+    .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: space-between; */
+        justify-content: space-evenly;
+    }
+    .charts-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Single column by default */
+        row-gap: 50px;
+        column-gap: 50px;
+        justify-items: center;
+        margin-inline: 100px;
+        padding-bottom: 30px;
+    }
+
+    @media screen and (max-width: 1600px) {
+    .charts-grid {
+        grid-template-columns: 1fr; /* Switch to single-column layout */
+    }
+    }
+
+
+    .chart-container {
+        /* width: 600px; */
+        border-radius: 10px; 
+        background-color: white;
+        /* box-shadow: -11px -8px 20px 1px rgba(0, 0, 0, 0.1);  */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+        border-radius: 15px;
+    }
+
+    .chart-container:hover {
+        transform: scale(1.01); /* Slightly enlarge the chart on hover */
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    }
+        .chart-iframe {
+    width: 1300px;
+    height: 100vh;
+    border: none;
+    overflow: hidden; 
+}
+
+    /* Loading GIF */
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none; /* Initially hide the loading container */
+}
+
+.loading-container img {
+    width: 70%;  /* Adjust the width to make the GIF smaller */
+    height: 70%; /* Adjust the height to make the GIF smaller */
+}
+
+
+    .log-entry.doctor-note-entry {
+        background-color: #f0f8ff; /* Light blue for doctor's notes */
+        border-left: 5px solid blue; /* Blue strip for doctor's notes */
+    }
+
+    .log-entry.intervention-entry {
+        background-color: #e6ffe6; /* Light green for interventions */
+        border-left: 5px solid green; /* Green strip for interventions */
+    }
+
+    .log-entry.icd-code-entry {
+        background-color: #fff5e6; /* Light orange for ICD codes */
+        border-left: 5px solid orange; /* Orange strip for ICD codes */
+    }
+
+    .tooltip {
+    position: absolute;
+    text-align: left;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    font: 12px sans-serif;
+
+    border-radius: 8px;
+    pointer-events: none;
+    color: black;
+    z-index: 3000;
+}
+
+    .tooltip-chart {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    background-color: lightsteelblue;
+    color: black;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 14px;
+    z-index: 10;
+    transition: opacity 0.3s;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.log-note .description {
+    display: inline-block;
+    margin-right: 20px; 
+    flex-wrap: wrap;
+}
+
+.edit-note, .delete-note {
+    margin-left: 10px; /* Adjust the spacing between the icons as well */
+}
+
+.edit-note i {
+    color: #7079f8;
+    &:hover {
+        color: #4c53e2;
+    }
+}
+
+.delete-note i {
+    color: #d9534f;
+    &:hover {
+        color: #d32f2f;
+    }
+}
+
+
+.edit-code, .delete-code {
+    margin-left: 10px; /* Adjust spacing between icons */
+}
+
+.edit-code i {
+    color: #7079f8;
+    &:hover {
+        color: #4c53e2;
+    }
+}
+
+.delete-code i {
+    color: #d9534f;
+    &:hover {
+        color: #d32f2f;
+    }
+}
+
+.introjs-tooltipbuttons {
+    text-align: right; /* Align buttons to the right */
+
+}
+
+.help-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0px !important;
+    transition: background-color 0.3s ease;
+}
+
+.help-btn:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+}
+
+
+.help-button-container {
+    position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #12171e;
+  padding: 12px 0;
+  transition: all 0.5s ease;
+}
+
+/* Ensure the button aligns well with sidebar's active state */
+.sidebar.active .help-btn {
+    color: #fff;
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+}
+
+input [type="select"]
+{
+    color: #8f7e7e;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.topbar a.btn-dashboard {
+    display: inline-flex;
+    align-items: center;
+    font-weight: bold;
+    color: #333333;
+    background-color: #F7E799;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin-right: 15px;
+    margin-left: 15px;
+    border-radius: 5px;
+}
+
+.topbar a.btn-dashboard:hover {
+    background-color: #EAD873;
+    border-radius: 5px;
+}
+
+.topbar .nav-item {
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+#printChartsButton {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#printChartsButton:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+}
+#flash-message-container {
+    position: fixed;
+    top: 20px; /* Adjust as needed for vertical positioning */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    z-index: 1000;
+}
+
+.flash-message {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    font-size: 20px; /* Adjust as needed */
+    background-color: rgb(80, 165, 80); /* Default success color */
+}
+
+.flash-message.error {
+    background-color: red;
+}
+
+.flash-message.info {
+    background-color: gray;
+}
+
+.log-note {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically align items */
+    /* justify-content: space-between; Distribute space between input and icons */
+    /* gap: 10px; Add spacing between elements */
+}
+
+.edit-input {
+    flex: 1; /* Allow the input field to take up available space */
+    max-width: 70%; /* Optional: Set maximum width for input */
+    padding: 5px; /* Add padding inside the input field */
+    font-size: 14px; /* Adjust font size */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 4px; /* Add border radius */
+}
+
+.edit-textarea {
+    flex: 1; /* Allow the textarea to stretch */
+    padding: 10px; /* Add padding for readability */
+    font-size: 14px; /* Adjust font size */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 4px; /* Rounded corners */
+    resize: none; /* Prevent resizing */
+    width: 100%; /* Full width of the container */
+    height: auto; /* Adjust height automatically based on rows */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+    margin-left: 0px;
+    margin-left: -20px;
+}
+
+
+/* Alert dialog styling */
+.alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.alert-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.alert-modal {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 450px;
+    max-width: 90%;
+    overflow: hidden;
+    color: #000;
+}
+
+.alert-body {
+    padding: 25px 20px;
+    color: black;
+    font-size: 14px;
+    line-height: 1.4;
+    font-family: 'Urbanist', sans-serif;
+}
+
+.alert-message {
+    margin: 0;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.alert-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 20px;
+}
+
+.alert-btn {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: none;
+    font-family: 'Urbanist', sans-serif;
+    background-color: #CBFCC6;
+    color: black;
+}
+
+.alert-btn:hover {
+    background-color: #218838;
+    color: #fff;
+}
+
+</style>
+
+
+   
+</head>
+
+<body style="background-color: #fff;">
+    <div class="sidebar">
+        <div class="top">
+             <div class="logo">
+            <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+             </div>
+             <i class="bx bx-menu" id="btn"></i>
+        </div>
+
+        <div class="user">
+            <div class="bold">
+            <p><%= doctor.speciality %></p>
+            <p><%= doctor.hospitalName %></p>
+            <p><%= doctor.site_code %></p>
+            </div>
+        </div>
+        
+        <ul>
+            <li>
+                <a href="<%= basePath %>/home">
+                    <i class='bx bx-group'></i>
+                    <span class="nav-item" id="list_of_patients_label">List of Patients</span>
+                </a>
+                <span class="tooltip" id="list_of_patients_tooltip">List of Patients</span>
+            </li>
+            <li>
+                <!-- Using basePath for Analytics/Dashboard link as per reference -->
+                <a href="<%= basePath %>/dashboard" target="_self">
+                    <i class="bx bxs-grid-alt"></i>
+                  <span class="nav-item" id="dashboardLabel">Dashboard</span>
+                </a>
+                <span class="tooltip" id="dashboardTooltip">Dashboard</span>
+              </li>
+    
+            <li>
+                <a id="surveyLink" href="#" target="_blank" data-title="Survey Details" data-intro="View pateint's survey details.">
+                    <i class="bx bx-list-ul"></i>
+                    <span class="nav-item" id="surveyDetailsNav">Survey Details</span>
+                </a>
+                <span class="tooltip" id="surveyDetailsTooltip">Survey Details</span>
+            </li>
+            <script>
+                // Assume you have a variable 'patient' in EJS with the property Mr_no.
+                const patient = <%- JSON.stringify(patient) %>;
+              
+                document.addEventListener('DOMContentLoaded', function() {
+                  const basePath = '<%= basePath %>';  // So we can re-use basePath in JS
+                  const link = document.getElementById('surveyLink');
+              
+                  // Set the href using patient.Mr_no
+                  link.href = `${basePath}/survey-details/${patient.hashedMrNo}`;
+                });
+              </script>
+            <li>
+                <a href="<%= basePath %>" class="logout-button">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item" id="logoutNav">Logout</span>
+                </a>
+                <span class="tooltip" id="logoutTooltip">Logout</span>
+            </li>
+        </ul>
+        <div class="help-button-container">
+            <button id="helpButton" class="help-btn">
+                <span class="nav-item" id="helpLabel">Help </span>
+                <i class='bx bx-help-circle'></i>
+            </button>
+            
+        
+        </div>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav">
+        
+        
+        <ul>
+            <li>
+                <a href="<%= basePath %>/home">
+                    <i class="bx bxs-grid-alt"></i>
+                    <span class="nav-item" id="list_of_patients_labell">List of Patients</span>
+                </a>
+                <span class="tooltip">List of Patients</span>
+            </li>
+            <li>
+                <a href="#" id="actions-link">
+                    <i class='bx bx-book-add'></i>
+                    <span class="nav-item" id="actionsNavv">Actions</span>
+                </a>
+            </li>
+            <div class="overlay" id="overlay"></div>
+            <li>
+                <a href="<%= basePath %>" class="logout-button">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item" id="logoutNavv">Logout</span>
+                </a>
+                <span class="tooltip" id="logoutTooltip">Logout</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="column1">
+            <div class="topbar" dir="<%= dir || 'ltr' %>">
+                <div class="back-button" style="display: flex; align-items: center;">
+                    <a href="<%= basePath %>/home" class="btn-dashboard">
+                        <% if (dir === 'rtl') { %>
+                            <i class='bx bx-arrow-forward'></i> <!-- Right arrow for RTL -->
+                        <% } else { %>
+                            <i class='bx bx-arrow-back'></i> <!-- Left arrow for LTR -->
+                        <% } %>
+                        <span class="nav-item" id="backButton"><%= t('Back') %></span>
+                    </a>
+                
+                    <h2 style="color: #333333;">
+                        <%= lng === 'ar' 
+                            ? `مرحباً, Dr. ${doctor.firstName} ${doctor.lastName}` 
+                            : `Welcome,Dr. ${doctor.firstName} ${doctor.lastName}` 
+                        %>
+                      </h2>
+                </div>
+                <div id="flash-message-container"></div>
+                <form id="searchForm" action="<%= basePath %>/search" method="GET" class="searchtopbar">
+                    <input type="text" id="mrNoInput" placeholder="<%= t('Quick MR Search') %>">
+                    <input type="hidden" name="mrNo" id="hashedMrNoInput"> <!-- Hidden input to store hashedMrNo -->
+                    <input type="hidden" name="username" value="<%= doctor.username %>">
+                    <input type="hidden" name="speciality" value="<%= doctor.speciality %>">
+                    <input type="hidden" name="name" value="<%= doctor.name %>">
+                    <button type="submit" class="btn-search">
+                        <i class='bx bx-search-alt'></i>
+                    </button>
+                </form>
+            </div>
+            
+        <hr style="opacity: 0.5;">
+        <div class="language-selector" style="text-align: right; padding: 10px; background-color: #f6f5fa;">
+            <!-- Switch to English -->
+            <a href="javascript:void(0);" onclick="switchLanguage('en')"
+               class="<%= lng === 'en' ? 'active' : '' %>">
+              <img src="<%= basePath %>/assets/usa.png" alt="English Flag">English
+            </a>
+            |
+            <!-- Switch to Arabic -->
+            <a href="javascript:void(0);" onclick="switchLanguage('ar')"
+               class="<%= lng === 'ar' ? 'active' : '' %>">
+              <img src="<%= basePath %>/assets/flag.png" alt="Arabic Flag">العربية
+            </a>
+          </div>
+          
+        <br><br>
+        
+            <div id="charts-container" class="charts-grid" data-title="Charts" data-intro="Standardised severity scale unqiue to each PROM tool.">
+                <!-- Each chart will be appended here by D3 -->
+            </div>
+
+        </div>
+        <div class="column2" id="popup" dir="<%= dir || 'ltr' %>">
+            <span class="close-btn" id="close-btn"><i class='bx bx-x-circle'></i></span>
+            <div class="ai-message" style="padding-top:5px">
+                <h2 id="summaryTitle" style="color: #333333; line-height: 2.2; display: inline-block;">Summary</h2>
+                <button id="printChartsButton" style="display: inline-block; float:right; margin-top:10px; vertical-align: super;">Print Charts</button>
+                
+
+                <br>
+                <div id="summary-en" class="summary" style="<%= lng === 'en' ? '' : 'display: none;' %>">
+                    <p>
+                        <% if (aiMessageEnglish) { %>
+                            <%- aiMessageEnglish
+                              .replace(/<ol>/g, '<ul>')  
+                              .replace(/<\/ol>/g, '</ul>')  
+                              .replace(/<li>/g, '<li style="list-style-type: none;">')  
+                              .replace(/<ul>/g, '<ul style="padding-left: 0;">') 
+                              .replace(/<strong>Positive Changes<\/strong>/g, '<strong>Positive Changes</strong><br>')
+                              .replace(/<strong>Negative Changes<\/strong>/g, '<strong>Negative Changes</strong><br>')
+                            %>
+                        <% } else { %>
+                            <span></span>
+                        <% } %>
+                    </p>
+                </div>
+                
+                <!-- Arabic Summary -->
+                <div id="summary-ar" class="summary" style="<%= lng === 'ar' ? '' : 'display: none;' %>">
+                    <p dir="rtl">
+                        <% if (aiMessageArabic) { %>
+                            <%- aiMessageArabic
+                              .replace(/<ol>/g, '<ul>')  
+                              .replace(/<\/ol>/g, '</ul>')  
+                              .replace(/<li>/g, '<li style="list-style-type: none;">')  
+                              .replace(/<ul>/g, '<ul style="padding-left: 0;">') 
+                              .replace(/<strong>التغييرات الإيجابية<\/strong>/g, '<strong>التغييرات الإيجابية</strong><br>')
+                              .replace(/<strong>التغييرات السلبية<\/strong>/g, '<strong>التغييرات السلبية</strong><br>')
+                            %>
+                        <% } else { %>
+                            <span>لا يتوفر ملخص AI بعد. يرجى إكمال الاستبيان لتوليد الملخص.</span>
+                        <% } %>
+                    </p>
+                </div>
+                      
+            </div><br>
+            
+            
+            
+        <div class="tabs-container">
+            <div class="tab" id="notesTab" onclick="showTabContent('doctor-notes')" data-title="Notes" data-intro="Ability to add notes & interventions based on ICD codes.">Notes</div>
+            <div class="tab" onclick="showTabContent('intervention')" data-title="ICD Code" data-intro="Diagnoses as per ICD codes" id="interventionTab">Intervention</div>
+            <div class="tab" id="patientInfoTab" onclick="showTabContent('patient-info')">Info</div>
+
+
+        </div>
+
+        <div id="doctor-notes" class="tab-content">
+            <h3 id="addNotesTitle">Add Notes:</h3><br>
+            <div class="note-form">
+                <form id="doctor-note-form" action="<%= basePath %>/addDoctorNote" method="POST" onsubmit="submitForm(event, 'doctor-note-form', 'note-doctor')">
+                    <input type="hidden" name="Mr_no" value="<%= patient.Mr_no %>">
+                    <div class="textarea-container">
+                        <textarea id="doctor-note" name="doctorNote" placeholder="Enter doctor's note here" required ></textarea><br><br>
+                        <button type="submit" id="addInterventionButton"><i class='bx bx-plus'></i> Add</button>
+                    </div>
+                    <span class="success-message" id="note-doctor">Successfully added!</span>
+                </form>
+            </div>
+
+        </div>
+        <div class="tab-content-container">
+
+
+            <div id="intervention" class="tab-content">
+                <div class="inforow">
+
+                    <div class="column">
+                        <div class="form-container">
+                            <div class="note-form">
+                                <form id="note-form" action="<%= basePath %>/addNote" method="POST" onsubmit="submitForm(event, 'note-form', 'note-message')">
+                                    <input type="hidden" name="Mr_no" value="<%= patient.Mr_no %>">
+                                    <div class="intervention-date-type" style="display: flex;">
+                                        <select id="treatment_plan" name="treatment_plan" required style="color: #8f7e7e; border: 1px solid #ccc; border-radius: 4px; margin-right: 5px;width: 60%;">
+                                            <option value="" disabled selected style="color: #8f7e7e;" id="treatmentPlanLabel">Select Treatment Plan</option>
+                                            <option value="Surgery" style="color: #000;" id="optionSurgery">Surgery</option>
+                                            <option value="Lifestyle Modifications" style="color: #000;" id="optionLifestyle">Lifestyle Modifications</option>
+                                            <option value="Medication" style="color: #000;" id="optionMedication">Medication</option>
+                                            <option value="Physical Therapy" style="color: #000;" id="optionTherapy">Physical Therapy</option>
+                                        </select>
+                                        
+                                    <input type="date" placeholder="Select Date" id="date" name="date" required style="width: 40%; margin-right: 0px!important;"></div><br>
+                                    <input type="text" id="note" name="event" placeholder="Enter your Intervention here" required>
+
+                                    <br><br><button id="addInterventionButtomn" type="submit" class="add-button"><i class='bx bx-plus'></i> Add</button>
+                                    <span class="success-message" id="note-message">Successfully added!</span>
+                                  
+                                </form>
+                            </div><br>
+
+                            <form id="code-form" action="<%= basePath %>/addCode" method="POST" onsubmit="submitForm(event, 'code-form', 'code-message')">
+                                <input type="hidden" name="Mr_no" value="<%= patient.Mr_no %>">
+                                <select id="code" name="code" required>
+                                    <option value="" disabled selected >Select ICD code</option>
+                                </select>
+                                <input type="hidden" id="code_date" name="code_date" value="<%= new Date().toISOString().split('T')[0] %>">
+                                <br><br><button id="addInterventionButtomnn" type="submit" class="add-button"><i class='bx bx-plus'></i> Add</button>
+                                <span class="success-message" id="code-message">Successfully added!</span>
+                            </form> 
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="patient-info" class="tab-content">
+                <div class="inforow">
+                    <div class="column">
+                        <p><b>Name: </b><%= patient.firstName %> <%= patient.lastName %></p><br>
+                        <p><b>MR No:</b> <%= patient.Mr_no %></p><br>
+                        <p><b>Phone No: </b><%= patient.phoneNumber %></p><br>
+                        <p><b>Speciality: </b><%= patient.speciality %></p><br>
+                        <p><b>Date of Birth: </b><%= patient.DOB %></p><br>
+                        <p><b>Date and Time: </b><%= patient.datetime %></p><br>
+                        <br>
+                        <div>
+                            <form id="surveyForm" action="#" method="get" target="_blank">
+                                <button type="submit" id="showSurveyDetailsButton">Show Survey Details</button>
+                            </form>
+                        </div>
+                        <script>
+                            // Convert server-side patient object into a JS object
+                            // const patient = <%- JSON.stringify(patient) %>;
+                          
+                            // Listen for DOM to load
+                            document.addEventListener('DOMContentLoaded', function() {
+                              // Grab basePath from server (if needed)
+                              const basePath = '<%= basePath %>';
+                          
+                              // Select the form by ID
+                              const form = document.getElementById('surveyForm');
+                          
+                              // Dynamically set the form's action using hashedMrNo
+                              form.action = `${basePath}/survey-details/${patient.hashedMrNo}`;
+                            });
+                          </script>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        
+<br><hr><br>
+        <h3 id="doctorsNotesTitle">Doctor's Notes:</h3><br>
+        <input type="text" id="search-bar" placeholder="Search notes..." class="search-bar"><br><br>
+        <% function formatDate(dateString) { 
+            const dateParts = dateString.split('-'); 
+            return `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`; 
+        } %>
+
+        <div class="doctor-notes">
+            <!-- <% if (doctorNotes.length > 0) { %>
+                <% doctorNotes.forEach(function(note) { %>
+                    <div class="log-entry doctor-note-entry">
+                        <div class="log-date">Doctor - <%= formatDate(note.date) %></div>
+                        <div class="log-note"><%= note.note %></div>
+                    </div>
+                <% }); %>
+            <% } %> -->
+            <% if (doctorNotes.length > 0) { %>
+                <% doctorNotes.forEach(function(note) { %>
+                    <div class="log-entry doctor-note-entry">
+                        <div class="log-date">Doctor - <%= formatDate(note.date) %></div>
+                        <div class="log-note">
+                            <span class="description">
+                                <span class="short-desc"><%= note.note.trim() %>...</span>
+                                <span class="full-desc" style="display: none;"><%= note.note.trim() %></span>
+                            </span>
+                            <!-- <% if(note.note.length > 30){ %>
+                            <a href="javascript:void(0)"  id="toggleDescriptionLink" class="toggle-desc" onclick="toggleDescription(this)">Show More</a>
+                           <% } %> -->
+                           <a href="javascript:void(0)" class="edit-note" title="Edit" onclick="editNoteHandler('<%= note.id %>')">
+                            <i class="fas fa-edit"></i></a>
+                            <a href="javascript:void(0)" class="delete-note" title="Delete" onclick="deleteNoteHandler('<%= note.id %>')">
+                                <i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </div>
+                <% }); %>                
+            <% } %>
+            
+            <% if (interventions.length > 0) { %>
+                <% interventions.forEach(function(intervention) { %>
+                    <div class="log-entry intervention-entry">
+                        <div class="log-date">Intervention - <%= intervention.treatment_plan %> - <%= formatDate(intervention.date) %></div>
+                        <div class="log-note">
+                            <%= intervention.event %>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } %>
+            <!-- <% if (codes.length > 0) { %>
+                <% codes.forEach(function(code) { %>
+                    <div class="log-entry icd-code-entry">
+                        <div class="log-date">ICD Code - <%= formatDate(code.date) %></div>
+                        <div class="log-note"><%= code.code %></div>
+                    </div>
+                <% }); %>
+            <% } %> -->
+            <% if (codes.length > 0) { %>
+                <% codes.forEach(function(code) { %>
+                    <div class="log-entry icd-code-entry">
+                        <div class="log-date">ICD Code - <%= formatDate(code.date) %></div>
+                        <div class="log-note">
+                            <strong><%= code.code.trim() %></strong> - 
+                            <span class="description">
+                                <span class="short-desc"><%= code.description.trim().substring(0, 30) %>...</span>
+                                <span class="full-desc" style="display: none;"><%= code.description.trim() %></span>
+                            </span>
+
+                            
+                            <a href="javascript:void(0)" class="toggle-desc" onclick="toggleDescription(this)">Show More</a>
+                            <!-- <a href="javascript:void(0)" class="edit-code" title="Edit" onclick="editCodeHandler('<%= code.id %>')">
+                                <i class="fas fa-edit"></i></a>
+                            <a href="javascript:void(0)" class="delete-code" title="Delete" onclick="deleteCodeHandler('<%= code.id %>')"> -->
+                                <!-- <i class="fas fa-trash-alt"></i>  -->
+                            <!-- </a> -->
+
+                            
+                        </div>
+                    </div>                                                       
+                <% }); %>
+            <% } %>                       
+            
+        </div>
+
+    </div>
+
+    <!-- Loading GIF -->
+    <div class="loading-container" id="loadingContainer">
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const getCookie = (name) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  };
+  const params = new URLSearchParams(window.location.search);
+  let currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+  
+  // Set the language cookie
+  document.cookie = `lng=${currentLanguage}; path=/`;
+      const fetchUrl = `/doctorlogin/locales/${currentLanguage}/translation.json`;
+  
+  
+      // Set the `lang` and `dir` attributes for the HTML document
+  
+      fetch(fetchUrl)
+        .then(response => {
+          if (!response.ok) {
+            console.warn(`Translation file not found for language: ${currentLanguage}. Falling back to English.`);
+            return fetch(`/doctorlogin/locales/en/translation.json`);
+          }
+          return response.json();
+        })
+        .then(translations => {
+          console.log('Loaded translations:', translations);
+  
+          // Update the elements based on translation keys
+          Object.keys(translations).forEach(id => {
+            const element = document.getElementById(id);
+  
+            if (element) {
+                const translationValue = translations[id];
+  
+                if (typeof translationValue === 'string') {
+                    // Update regular text or HTML content
+                    element.innerHTML = translationValue;
+                }
+                  if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+  
+                    // Update placeholders for input elements
+  
+                    console.log(`Updating placeholder for ${id}:`, translationValue);
+  
+                    element.placeholder = translationValue;
+  
+                  }
+                else if (typeof translationValue === 'object') {
+                                        // Handle nested object (e.g., lists)
+                                        element.innerHTML = ''; // Clear existing content
+                                        Object.values(translationValue).forEach(item => {
+                                            const listItem = document.createElement('li');
+                                            listItem.textContent = item;
+                                            element.appendChild(listItem);
+                                        });
+                } else {
+                    console.warn(`Unexpected translation value type for "${id}":`, translationValue);
+                }
+            }
+          });
+        })
+        .catch(error => console.error('Error loading translations:', error));
+    });
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/en.js"></script>
+
+<script src="<%= basePath %>/js/intro.min.js"></script>
+<script>
+    document.getElementById('helpButton').addEventListener('click', function () {
+        // Determine the current language (default to English)
+        const lang = new URLSearchParams(window.location.search).get('lng') || getCookie('lng') || 'en';
+
+        // Define translations for the steps
+        const translations = {
+            en: {
+                step1: "View patient's survey details.",
+                step2: "Standardized severity scale unique to each PROM tool.",
+                step3: "Ability to add notes & interventions based on ICD codes.",
+                step4: "Diagnoses as per ICD codes.",
+                step5: "You can view more details about the patient here."
+            },
+            ar: {
+                step1: "عرض تفاصيل استبيان المريض.",
+                step2: "مقياس شدة موحد فريد لكل أداة PROM.",
+                step3: "إمكانية إضافة ملاحظات وتدخلات بناءً على رموز ICD.",
+                step4: "التشخيصات وفقًا لرموز ICD.",
+                step5: "يمكنك عرض المزيد من التفاصيل حول المريض هنا."
+            }
+        };
+
+        // Define the steps for Intro.js
+        const introSteps = [
+            {
+                element: 'a[target="_blank"]', // Link for survey details
+                intro: translations[lang].step1
+            },
+            {
+                element: '#charts-container', // Charts container
+                intro: translations[lang].step2
+            },
+            {
+                element: '#notesTab', // Notes tab
+                intro: translations[lang].step3
+            },
+            {
+                element: '#interventionTab', // Intervention tab
+                intro: translations[lang].step4
+            },
+            {
+                element: '#patientInfoTab', // Patient Info tab
+                intro: translations[lang].step5
+            }
+        ];
+
+        // Initialize and start Intro.js with dynamic labels for buttons
+        introJs()
+            .setOptions({
+                steps: introSteps,
+                rtl: lang === 'ar', // Enable RTL if the language is Arabic
+                nextLabel: lang === 'ar' ? 'التالي' : 'Next',
+                prevLabel: lang === 'ar' ? 'السابق' : 'Back',
+                doneLabel: lang === 'ar' ? 'تم' : 'Done'
+            })
+            .start();
+    });
+
+    // Helper function to retrieve a cookie value by name
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+    }
+</script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        let currentPage = 1;
+        const limit = 50;
+
+
+
+
+        $(document).ready(function() {
+
+//         $('#code').select2({
+//     ajax: {
+//         url: '<%= basePath %>/codes',
+//         dataType: 'json',
+//         delay: 250, // Debounce the request by 250ms to prevent too many requests
+//         data: function(params) {
+//             return {
+//                 searchTerm: params.term,  // Pass the search term to the API
+//                 page: params.page || 1,   // Pass the current page for pagination
+//                 limit: 50                 // Limit the results per request to 50
+//             };
+//         },
+//         processResults: function(data, params) {
+//             params.page = params.page || 1;
+//             return {
+//                 results: data.map(code => ({
+//                     id: code.code,        // Use the code as the value
+//                     text: code.description // Use the description as the label
+//                 })),
+//                 pagination: {
+//                     more: data.length === 50 // Check if more data is available for next page
+//                 }
+//             };
+//         },
+//         cache: true // Cache the results to avoid redundant requests
+//     },
+//     placeholder: 'Select ICD Code',
+//     minimumInputLength: 3, // Require at least 3 characters before searching
+//     templateResult: formatCode,  // Custom display for code results
+//     templateSelection: formatCodeSelection // Custom display for selected code
+// });
+
+$('#code').select2({
+  ajax: {
+    url: '<%= basePath %>/codes',
+    dataType: 'json',
+    delay: 250,
+    data: function(params) {
+      return {
+        searchTerm: params.term,
+        page: params.page || 1,
+        limit: 50
+      };
+    },
+    processResults: function(data, params) {
+      params.page = params.page || 1;
+      return {
+        results: data.map(code => ({
+          id: code.code, 
+          text: `${code.code} - ${code.description}`
+        })),
+        pagination: {
+          more: data.length === 50
+        }
+      };
+    },
+    cache: true
+  },
+  placeholder: 'Select ICD Code',
+  // minimumInputLength: 3,  // REMOVE THIS
+  templateResult: formatCode,
+  templateSelection: formatCodeSelection
+});
+
+
+    });
+
+    function formatCode(code) {
+        if (code.loading) {
+            return code.text;
+        }
+        var $container = $(
+            "<div class='select2-result-code clearfix'>" +
+            "<div class='select2-result-code__meta'>" +
+            "<div class='select2-result-code__description'></div>" +
+            "</div>" +
+            "</div>"
+        );
+        $container.find(".select2-result-code__description").text(code.text);
+        return $container;
+    }
+
+    function formatCodeSelection(code) {
+        return code.text || code.id;
+    }
+
+        function showMessage(messageId) {
+            const message = document.getElementById(messageId);
+            message.style.display = 'inline';
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 2000);
+        }
+
+
+        window.addEventListener('load', function() {
+        // Create or select the viewport meta tag
+        let metaViewport = document.querySelector('meta[name="viewport"]');
+
+        if (!metaViewport) {
+            metaViewport = document.createElement('meta');
+            metaViewport.name = "viewport";
+            document.head.appendChild(metaViewport);
+        }
+
+        // Adjust zoom level based on screen width
+        if (window.innerWidth <= 768) { // For mobile
+            metaViewport.setAttribute('content', 'width=device-width, initial-scale=0.7, maximum-scale=3.0');
+        } else { // For desktop or larger screens
+            metaViewport.setAttribute('content', 'width=device-width, initial-scale=0.8, maximum-scale=1.0');
+        }
+    });
+
+    const titleTranslations = {
+    "Problem Areas in Diabetes Score": "مناطق المشاكل في درجة السكري",
+    "Diabetes Related Emotional Distress":"دفعت-الضيق العاطفي المرتبط بمرض السكري",
+    "Depression Screening Score (PHQ-2)": "درجة فحص الاكتئاب (PHQ-2)",
+    "Global Mental Health Score": "النتيجة العالمية للصحة العقلية",
+    "Global Physical Health Score": "النتيجة العالمية للصحة البدنية",
+    "Months Since Baseline": "الأشهر منذ البداية",
+    "Urinary Incontinence Score (Pregnancy)": "درجة سلس البول (الحمل)",
+"Wexner Incontinence Score (Pregnancy)": "درجة سلس البراز ويكسنر (الحمل)",
+    "Postnatal Depression Score (Pregnancy)": "درجة اكتئاب ما بعد الولادة (الحمل)",
+    "Pain Interference": "تأثير الألم",
+    "Physical Function": "الوظيفة البدنية",
+    "Overall Quality Of Life": "جودة الحياة بشكل عام"
+};
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+
+function replaceTitlesToArabic() {
+    // Get the current language from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentLang = urlParams.get('lng') || getCookie('lng') || 'en';
+
+
+    // If the language is Arabic, replace the titles
+    if (currentLang === 'ar') {
+        // Select all chart titles
+        document.querySelectorAll("text.annotation").forEach(titleElement => {
+            const currentTitle = titleElement.textContent.trim();
+
+            // Check if the current title has an Arabic translation
+            if (titleTranslations[currentTitle]) {
+                titleElement.textContent = titleTranslations[currentTitle];
+            }
+        });
+    }
+}
+
+// Call the function after the DOM content is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    replaceTitlesToArabic();
+});
+function observeTitleChanges() {
+    const observer = new MutationObserver(() => {
+        replaceTitlesToArabic();
+    });
+
+    // Observe the charts container
+    const chartsContainer = document.getElementById("charts-container");
+    if (chartsContainer) {
+        observer.observe(chartsContainer, { childList: true, subtree: true });
+    }
+}
+
+// Call the observer on page load
+document.addEventListener("DOMContentLoaded", () => {
+    observeTitleChanges();
+});
+
+
+
+function switchLanguage() {
+  // Read current URL
+  const currentUrl = new URL(window.location.href);
+
+  // Figure out the new language
+  const currentLang = currentUrl.searchParams.get("lng") || getCookie("lng") || "en";
+  const newLang = currentLang === "en" ? "ar" : "en";
+
+  // Save new language to cookie
+  setCookie("lng", newLang, 30);
+
+  // Update only the 'lng' param, preserving everything else (mrNo, username, etc.)
+  currentUrl.searchParams.set("lng", newLang);
+
+  // Replace the current page URL with the updated URL (same path, new query param)
+  window.location.href = currentUrl.toString();
+}
+
+
+// Update button text on page load based on the current language
+function updateLanguageButton() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentLang = urlParams.get('lng') || getCookie('lng') || 'en';
+    const languageSwitchBtn = document.getElementById('language-switch-btn');
+
+    if (currentLang === 'en') {
+        languageSwitchBtn.textContent = 'العربية';
+    } else {
+        languageSwitchBtn.textContent = 'English';
+    }
+
+    languageSwitchBtn.addEventListener('click', switchLanguage);
+}
+
+const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lng') || getCookie('lng') || 'en';
+    setCookie('lng', lang, 30); // Ensure the cookie is set on page load
+    // Set the correct path for the CSV files
+    const severityCsvPath = lang === 'ar' ? 'SeverityLevels_ar.csv' : 'SeverityLevels.csv';
+
+function openPopup() {
+            const popup = document.querySelector('#popup');
+            const overlay = document.querySelector('#overlay');
+            popup.classList.add('show');
+            overlay.classList.add('show');
+        }
+
+        // Function to close the pop-up
+        function closePopup() {
+            const popup = document.querySelector('#popup');
+            const overlay = document.querySelector('#overlay');
+            popup.classList.remove('show');
+            overlay.classList.remove('show');
+        }
+
+        // Attach event listeners
+        document.querySelector('#actions-link').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default link behavior
+            openPopup();
+        });
+
+        document.querySelector('#close-btn').addEventListener('click', closePopup);
+        document.querySelector('#overlay').addEventListener('click', closePopup);
+
+
+
+function submitForm(event, formId, messageId) {
+    event.preventDefault();
+    const form = document.getElementById(formId);
+    const formData = $(form).serialize();
+
+    const date = new Date().toISOString().split('T')[0];
+    let note = '';
+    let type = '';
+
+    if (formId === 'doctor-note-form') {
+        note = document.getElementById('doctor-note').value;
+        type = 'doctor-note';
+    } else if (formId === 'note-form') {
+        const interventionNote = document.getElementById('note').value;
+        const treatmentPlan = document.getElementById('treatment_plan').value;
+        note = `${interventionNote} - ${treatmentPlan}`; // Combine intervention and treatment plan
+        type = 'intervention';
+    } else if (formId === 'code-form') {
+        note = $('#code').val(); // Get the ICD code number
+        type = 'icd-code';
+    }
+
+    // Immediately add the note to the log for real-time update
+    addDoctorNoteToLog(date, note, type);
+
+    $.ajax({
+        type: "POST",
+        url: form.action,  // Use the form action for the correct endpoint
+        data: formData,
+        success: function(response) {
+            showMessage(messageId);
+            if (formId === 'doctor-note-form') {
+                document.getElementById('doctor-note').value = '';  // Clear the input field after submission
+            } else if (formId === 'note-form') {
+                document.getElementById('note').value = '';
+                document.getElementById('treatment_plan').value = ''; // Clear the treatment plan
+                document.getElementById('date').value = '';
+            } else if (formId === 'code-form') {
+                $('#code').val('').trigger('change');
+
+                // Dynamically update ICD code with description from the response
+                const description = response.description || 'No description available';
+                const truncatedDescription = description.length > 30 ? description.substring(0, 30) + '...' : description;
+                addDoctorNoteToLog(response.date, `${response.code} - ${truncatedDescription}`, 'icd-code');
+            }
+        },
+        error: function() {
+            console.error('An error occurred. Please try again.');
+        }
+    });
+}
+
+
+function formatDate(dateString) {
+    const dateParts = dateString.split('-');
+    return `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`; // Convert YYYY-MM-DD to DD-MM-YYYY
+}
+
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const suffix = getOrdinalSuffix(day);
+    return `${day}${suffix} ${month}`;
+}
+
+function getOrdinalSuffix(day) {
+    if (day > 3 && day < 21) return 'th';
+    switch (day % 10) {
+        case 1: return "st";
+        case 2: return "nd";
+        case 3: return "rd";
+        default: return "th";
+    }
+}
+
+
+
+function addDoctorNoteToLog(date, note, type) {
+    const logContainer = document.querySelector('.doctor-notes');
+
+    // Check if the same log entry already exists to prevent duplication
+    const existingEntries = Array.from(logContainer.querySelectorAll('.log-entry'));
+    const isDuplicate = existingEntries.some(entry => entry.querySelector('.log-note')?.textContent === note);
+
+    if (isDuplicate) {
+        return; // Prevent adding the same note twice
+    }
+
+    const newLogEntry = document.createElement('div');
+    newLogEntry.className = 'log-entry';
+
+    // Add a class based on the type for styling purposes
+    let title = '';
+    let displayNote = note;
+
+    if (type === 'doctor-note') {
+        newLogEntry.classList.add('doctor-note-entry');
+        title = 'Doctor';
+    } else if (type === 'intervention') {
+        newLogEntry.classList.add('intervention-entry');
+        title = 'Intervention';
+
+        // Split the note into event and treatment plan
+        const [event, treatmentPlan] = note.split(' - ');
+        title += ` - ${treatmentPlan.trim()}`; // Add treatment plan to the title
+        displayNote = `${event.trim()}`; // Only show the event in the content
+    } else if (type === 'icd-code') {
+        newLogEntry.classList.add('icd-code-entry');
+        title = 'ICD Code';
+
+        // Handle ICD code and description
+        let [code, description] = note.split(' - ');
+        description = description ? description.trim() : "No description available";
+
+        // Skip this entry if there's no valid description
+        if (description === "No description available") {
+            return;
+        }
+
+        if (description.length > 30) {
+            description = description.substring(0, 30) + '...';
+        }
+        displayNote = `${code.trim()} - ${description}`;
+    }
+
+    const formattedDate = formatDate(date);
+
+    newLogEntry.innerHTML = `
+        <div class="log-date">${title} - ${formattedDate}</div>
+        <div class="log-note">${displayNote}</div>
+    `;
+
+    logContainer.prepend(newLogEntry); // Append new log entry at the top
+
+    // Apply fade-in effect using animation
+    newLogEntry.classList.add('fadeIn');
+    setTimeout(() => {
+        newLogEntry.classList.remove('fadeIn');
+    }, 500);
+
+    // Scroll to the top of the container smoothly
+    logContainer.scrollTop = 0;
+}
+
+// Add the fadeIn class for new entries
+document.styleSheets[0].insertRule(`
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+`, document.styleSheets[0].cssRules.length);
+
+document.styleSheets[0].insertRule(`
+    .log-entry.fadeIn {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+`, document.styleSheets[0].cssRules.length);
+
+
+        function openModal(imageSrc, type, mr_no) {
+        const modal = document.getElementById('myModal');
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = imageSrc;
+        modal.style.display = 'block';
+        
+        // Load the corresponding iframe content
+        const iframe = document.getElementById(`iframe-${type}`);
+        iframe.src = `<%= basePath %>/chart?type=${type}&mr_no=${mr_no}`;
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('myModal');
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('myModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+
+
+
+function handleGenerateGraph(event, mrNo, surveyType) {
+    event.preventDefault();
+    
+    // Show the loading GIF
+    document.getElementById('loadingContainer').style.display = 'flex';
+
+    $.ajax({
+        type: "POST",
+        url: "<%= basePath %>/generateGraph",
+        data: { Mr_no: mrNo, surveyType: surveyType },
+        success: function(response) {
+            const port = 3003;
+            // Adjust the logic to handle specific file paths for different surveys
+            let graphUrl = `<%= basePath %>/Doctor_Login_Page/new_folder_1/${surveyType}.html`;
+            
+            // Special case for Global-Health to open both physical and mental health graphs
+            if (surveyType === 'Global-Health') {
+                const physicalGraphUrl = `<%= basePath %>/Doctor_Login_Page/new_folder_1/plot_physical_health_${mrNo}.html`;
+                const mentalGraphUrl = `<%= basePath %>/Doctor_Login_Page/new_folder_1/plot_mental_health_${mrNo}.html`;
+                window.open(physicalGraphUrl, '_blank');
+                window.open(mentalGraphUrl, '_blank');
+            } else {
+                window.open(graphUrl, '_blank');
+            }
+            
+            // Hide the loading GIF after graphs are opened
+            document.getElementById('loadingContainer').style.display = 'none';
+        },
+        error: function() {
+            alert('An error occurred while generating the graph. Please try again.');
+            
+            // Hide the loading GIF in case of error
+            document.getElementById('loadingContainer').style.display = 'none';
+        }
+    });
+}
+
+
+        let btn = document.querySelector('#btn');
+    let sidebar = document.querySelector('.sidebar');
+
+    btn.onclick = function() {
+        sidebar.classList.toggle('active');
+    };
+
+    
+
+    </script>
+    <script>
+    function loadData(csvPath, callback) {
+     d3.csv(csvPath).then(data => {
+         console.log("Data loaded:", data); // Debugging line
+         data.forEach(d => {
+             d.months = +d.months_since_baseline;
+             d.score = +d.score;
+             d.ymax = +d.ymax;
+             d.ymin = +d.ymin;
+         });
+         callback(data);
+     }).catch(error => console.error("Error loading data:", error)); // Error handling
+ }
+        function loadSeverityLevels(csvPath, scale, callback) {
+            d3.csv(csvPath).then(data => {
+                const severityLevels = data
+                    .filter(d => d.Scale === scale)
+                    .map(d => ({
+                        level: d.Severity,
+                        color: d.Color,
+                        range: [+d.Chart_Range_Min, +d.Chart_Range_Max]
+                    }));
+                console.log("Severity levels loaded:", severityLevels); // Debugging line
+                callback(severityLevels);
+            }).catch(error => console.error("Error loading severity levels:", error)); // Error handling
+        }
+    
+        function createScales(data, width, height) {
+            // const x = d3.scaleLinear()
+            //     .domain([d3.min(data, d => d.months), d3.max(data, d => d.months)])
+            //     .range([0, width]);
+
+            const x = d3.scaleLinear()
+    .domain([0, d3.max(data, d => d.months)])
+    .range([0, width * 0.8]); // Compress the space between 0 and 1 (0.8 is an example, you can tweak this)
+
+    
+            const y = d3.scaleLinear()
+                .domain([+data[0].ymin, +data[0].ymax])
+                .range([height, 0]);
+    
+            return { x, y };
+        }
+    
+       
+        // Modify the drawAxes function to only show integer values on the x-axis
+function drawAxes(svg, x, y, width, height) {
+    // svg.append("g")
+    //     .attr("transform", `translate(0,${height})`)
+    //     .call(d3.axisBottom(x)
+    //         .tickFormat(d => Number.isInteger(d) ? d : "")) // Only display integer tick values
+    //     .selectAll("text")
+    //     .style("fill", "#777");
+    // svg.append("g")
+    // .attr("transform", `translate(0,${height})`)
+    // .call(d3.axisBottom(x)
+    //     .tickFormat(d => Number.isInteger(d) ? d : "") // Only display integer tick values
+    //     .ticks(3) // Keep the same number of ticks but compress the 0-1 space
+    // )
+    // .selectAll("text")
+    // .style("fill", "#777");
+    svg.append("g")
+    .attr("transform", `translate(0,${height})`)
+    .call(d3.axisBottom(x)
+        .tickFormat(d => Number.isInteger(d) ? d : "") // Only display integer tick values
+    )
+    .selectAll("text")
+    .style("fill", "#777"); // Keep the labels
+
+// Hide the ticks
+svg.selectAll(".tick line")
+    .style("stroke-opacity", 0); // Make the ticks invisible
+
+
+    svg.append("g")
+        .call(d3.axisLeft(y))
+        .selectAll("text")
+        .style("fill", "#777");
+}
+
+    
+        function drawSeverityGridLines(svg, y, width, severityLevels) {
+            severityLevels.forEach(severity => {
+                svg.append("line")
+                    .attr("class", "grid-line")
+                    .attr("x1", 0)
+                    .attr("x2", width)
+                    .attr("y1", y(severity.range[0]))
+                    .attr("y2", y(severity.range[0]));
+    
+                svg.append("line")
+                    .attr("class", "grid-line")
+                    .attr("x1", 0)
+                    .attr("x2", width)
+                    .attr("y1", y(severity.range[1]))
+                    .attr("y2", y(severity.range[1]));
+            });
+        }
+    
+        // function drawSeverityLabels(svg, y, width, margin, severityLevels) {
+        //     severityLevels.forEach(severity => {
+        //         svg.append("rect")
+        //             .attr("x", width + margin.right - 100)
+        //             .attr("y", y(severity.range[1]))
+        //             .attr("width", 6)
+        //             .attr("height", y(severity.range[0]) - y(severity.range[1]))
+        //             .attr("fill", severity.color);
+    
+        //         svg.append("text")
+        //             .attr("x", width + margin.right - 85)
+        //             .attr("y", (y(severity.range[0]) + y(severity.range[1])) / 2)
+        //             .attr("dy", ".35em")
+        //             .attr("text-anchor", "start")
+        //             .attr("class", "axis-label")
+        //             .text(severity.level);
+        //     });
+        // }
+
+
+        function drawSeverityLabels(svg, y, width, margin, severityLevels) {
+    const maxCharsPerLine = 10; // Maximum characters per line before wrapping
+    const lineHeight = 13; // Line height for each line of wrapped text
+
+    severityLevels.forEach(severity => {
+        // Draw the rectangle for severity levels
+        svg.append("rect")
+            .attr("x", width + margin.right - 100)
+            .attr("y", y(severity.range[1]))
+            .attr("width", 6)
+            .attr("height", y(severity.range[0]) - y(severity.range[1]))
+            .attr("fill", severity.color);
+
+        // Handle long text for severity labels with wrapping
+        const labelText = severity.level;
+        const wrappedText = wrapText(labelText, maxCharsPerLine);
+
+        // Append each line of text, handling vertical positioning for multi-line labels
+        wrappedText.forEach((line, i) => {
+            svg.append("text")
+                .attr("x", width + margin.right - 85)
+                .attr("y", ((y(severity.range[0]) + y(severity.range[1])) / 2) + (i * lineHeight) - ((wrappedText.length - 1) * lineHeight) / 2) // Center vertically if wrapped
+                .attr("dy", ".35em")
+                .attr("text-anchor", "start")
+                .attr("class", "axis-label")
+                .text(line);
+        });
+    });
+}
+
+// Helper function to split text into multiple lines without breaking words
+function wrapText(text, maxCharsPerLine) {
+    const words = text.split(' ');
+    let currentLine = '';
+    const lines = [];
+
+    words.forEach(word => {
+        if (currentLine.length + word.length + 1 <= maxCharsPerLine) {
+            currentLine += word + ' ';
+        } else {
+            lines.push(currentLine.trim());
+            currentLine = word + ' ';
+        }
+    });
+
+    lines.push(currentLine.trim()); // Add the last line
+
+    return lines;
+}
+
+    
+const scoreInterpretation = {
+        "Global-Health Physical": "higher",
+        "Global-Health Mental": "higher",
+        "WEXNER": "lower",
+        "ICIQ-UI SF": "lower",
+        "PAID": "lower",
+        "PAID-5": "lower",
+        "EPDS": "lower",
+        "PROMIS Bank v1.1 - Pain Interference": "lower",
+        "PROMIS SF v1.0 - Fatigue-OA-Knee 8a" :"lower",
+        "PROMIS SF v1.0 - Depression-OA-Knee 4a" :"lower",
+        "Pain-Interference":"lower",
+        "Physical-Function":"higher",
+        "EQ-5D":"higher",
+        "PHQ-2": "lower"
+};
+
+    
+
+//     function drawLineAndPoints(svg, data, x, y, line, severityLevels) {
+//     const tooltip = d3.select("body").append("div")
+//         .attr("class", "tooltip-chart")
+//         .style("opacity", 0);
+
+//     svg.append("path")
+//         .datum(data)
+//         .attr("class", "line")
+//         .attr("d", line);
+
+//     data.forEach((d, i) => {
+//         const circle = svg.append("circle")
+//             .attr("class", i === data.length - 1 ? "highlight-circle" : "data-circle")
+//             .attr("cx", x(d.months))
+//             .attr("cy", y(d.score))
+//             .attr("r", i === data.length - 1 ? 8 : 4)
+//             .attr("fill", i === data.length - 1 ? severityLevels.find(severity => d.score >= severity.range[0] && d.score <= severity.range[1]).color : null)
+//             .on("mouseover", (event) => {
+//                 tooltip.transition().duration(200).style("opacity", .9);
+
+//                 let severityColor = "lightsteelblue";
+//                 severityLevels.forEach(severity => {
+//                     if (d.score >= severity.range[0] && d.score <= severity.range[1]) {
+//                         severityColor = severity.color;
+//                     }
+//                 });
+
+//                 tooltip.html(`<strong>Date:</strong> ${formatDate(d.date)}<br><strong>Score:</strong> ${d.score}`)
+//                     .style("left", (event.pageX + 20) + "px") // 20px offset to the right
+//                     .style("top", (event.pageY - 20) + "px") // Align tooltip vertically with a slight upward offset
+//                     .style("background-color", severityColor);
+//             }).on("mouseout", () => {
+//                 tooltip.transition().duration(500).style("opacity", 0);
+//             });
+//     });
+// }
+
+    
+
+// function drawLineAndPoints(svg, data, x, y, line, severityLevels) {
+//     const tooltip = d3.select("body").append("div")
+//         .attr("class", "tooltip-chart")
+//         .style("opacity", 0);
+
+//     svg.append("path")
+//         .datum(data)
+//         .attr("class", "line")
+//         .attr("d", line);
+
+//     data.forEach((d, i) => {
+//         const isLastPoint = i === data.length - 1;
+
+//         const circle = svg.append("circle")
+//             .attr("class", isLastPoint ? "highlight-circle" : "data-circle")
+//             .attr("cx", x(d.months))
+//             .attr("cy", y(d.score))
+//             .attr("r", isLastPoint ? 8 : 4)
+//             .attr("fill", isLastPoint ? severityLevels.find(severity => d.score >= severity.range[0] && d.score <= severity.range[1]).color : null);
+
+//         // Display score next to the point by default if it's the last point
+//         if (isLastPoint) {
+//             svg.append("text")
+//                 .attr("class", "annotation")
+//                 .attr("x", x(d.months) + 10)
+//                 .attr("y", y(d.score))
+//                 .text(d.score);
+//         }
+
+//         // Add hover functionality to show both score and date
+//         circle.on("mouseover", (event) => {
+//             tooltip.transition().duration(200).style("opacity", .9);
+
+//             // Determine the color for severity level
+//             let severityColor = "lightsteelblue";
+//             severityLevels.forEach(severity => {
+//                 if (d.score >= severity.range[0] && d.score <= severity.range[1]) {
+//                     severityColor = severity.color;
+//                 }
+//             });
+
+//             tooltip.html(`<strong>Date:</strong> ${formatDate(d.date)}`)
+//                 .style("left", (event.pageX + 20) + "px")
+//                 .style("top", (event.pageY - 20) + "px")
+//                 .style("background-color", severityColor);
+//         }).on("mouseout", () => {
+//             tooltip.transition().duration(500).style("opacity", 0);
+//         });
+//     });
+// }
+
+
+function drawLineAndPoints(svg, data, x, y, line, severityLevels) {
+    const tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip-chart")
+        .style("opacity", 0);
+
+    svg.append("path")
+        .datum(data)
+        .attr("class", "line")
+        .attr("d", line);
+
+    data.forEach((d, i) => {
+        const isLastPoint = i === data.length - 1;
+
+        const circle = svg.append("circle")
+            .attr("class", isLastPoint ? "highlight-circle" : "data-circle")
+            .attr("cx", x(d.months))
+            .attr("cy", y(d.score))
+            .attr("r", isLastPoint ? 8 : 4)
+            .attr("fill", isLastPoint ? severityLevels.find(severity => d.score >= severity.range[0] && d.score <= severity.range[1]).color : null);
+
+        // Display score next to the point by default if it's the last point
+        if (isLastPoint) {
+            svg.append("text")
+                .attr("class", "annotation")
+                .attr("x", x(d.months) + 10)
+                .attr("y", y(d.score))
+                .text(d.score);
+        }
+
+        // Add hover functionality to show both score and date
+        circle.on("mouseover", (event) => {
+            tooltip.transition().duration(200).style("opacity", .9);
+
+            // Determine the color for severity level
+            let severityColor = "lightsteelblue";
+            severityLevels.forEach(severity => {
+                if (d.score >= severity.range[0] && d.score <= severity.range[1]) {
+                    severityColor = severity.color;
+                }
+            });
+
+            tooltip.html(`<strong>Date:</strong> ${formatDate(d.date)}<br><strong>Score:</strong> ${d.score}`)
+                .style("left", (event.pageX + 20) + "px")
+                .style("top", (event.pageY - 20) + "px")
+                .style("background-color", severityColor);
+        }).on("mouseout", () => {
+            tooltip.transition().duration(500).style("opacity", 0);
+        });
+    });
+}
+
+
+function drawAnnotations(svg, data, margin, width, height, traceName) {
+            const scoreType = scoreInterpretation[traceName];
+            const changeFromFirstVisit = Math.round((data[data.length - 1].score - data[0].score) * 100) / 100;
+            const changeFromLastVisit = Math.round((data[data.length - 1].score - data[data.length - 2].score) * 100) / 100;
+    
+            const getAnnotationText = (change, type, isFirstVisit) => {
+                if (type === "higher") {
+                    return change > 0 ? `↑ ${change} from ${isFirstVisit ? "first" : "last"} visit` : `↓ ${Math.abs(change)} from ${isFirstVisit ? "first" : "last"} visit`;
+                } else {
+                    return change < 0 ? `↑ ${Math.abs(change)} from ${isFirstVisit ? "first" : "last"} visit` : `↓ ${change} from ${isFirstVisit ? "first" : "last"} visit`;
+                }
+            };
+    
+            const getColor = (change, type) => {
+                if (type === "higher") {
+                    return change > 0 ? "green" : "red";
+                } else {
+                    return change < 0 ? "green" : "red";
+                }
+            };
+    
+            svg.append("text")
+                .attr("class", "annotation")
+                .attr("x", margin.left / 2)
+                .attr("y", -margin.top / 2.5)
+                .text(getAnnotationText(changeFromFirstVisit, scoreType, true))
+                .style("fill", getColor(changeFromFirstVisit, scoreType));
+    
+            svg.append("text")
+                .attr("class", "annotation")
+                .attr("x", margin.left / 2)
+                .attr("y", -margin.top / 2 + 25)
+                .text(getAnnotationText(changeFromLastVisit, scoreType, false))
+                .style("fill", getColor(changeFromLastVisit, scoreType));
+        }
+    
+        function drawTitleAndLabels(svg, title, margin, width, height) {
+            const xAxisLabel = "Months Since Baseline";
+    
+            svg.append("text")
+                .attr("class", "annotation")
+                .attr("x", width / 2)
+                .attr("y", height + margin.bottom - 10)
+                .attr("text-anchor", "middle")
+                .text(xAxisLabel);
+    
+            svg.append("text")
+                .attr("class", "annotation")
+                .attr("x", width / 1.6)
+                .attr("y", -margin.top + 30)
+                .attr("text-anchor", "middle")
+                .style("font-size", "18px")
+                .text(title);
+        }
+
+// Function to draw vertical lines for events and handle enhanced tooltip
+function drawVerticalEventLines(svg, data, x, y, height) {
+    // Define a tooltip for event details
+    // This tooltip will appear when hovering over an event line.
+    const eventTooltip = d3.select("body").append("div")
+        .attr("class", "tooltip-chart") // Apply existing tooltip styling
+        .style("opacity", 0) // Initially hidden
+        .style("pointer-events", "none"); // Tooltip should not interfere with mouse events
+
+    // Access patient.Events from the global scope.
+    // Fallback to an empty array if patient or patient.Events is not defined.
+    const patientEvents = typeof patient !== 'undefined' && patient.Events ? patient.Events : [];
+
+    // --- Date Helper Functions ---
+    // These functions are used to parse and format dates for comparison and display.
+
+    /**
+     * Converts a date string to 'YYYY-MM' format.
+     * Handles various date string formats.
+     * @param {string} dateString The date string to parse.
+     * @returns {string|null} The date in 'YYYY-MM' format, or null if parsing fails.
+     */
+    const getYearMonth = (dateString) => {
+        if (!dateString) return null;
+        try {
+            let dateObj = new Date(dateString);
+            // Attempt to parse common date formats if initial parsing fails
+            if (isNaN(dateObj.getTime())) { // Try MM/DD/YYYY fallback
+                const parts = dateString.match(/(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})/);
+                if (parts) { dateObj = new Date(parts[3], parseInt(parts[1], 10) - 1, parseInt(parts[2], 10)); }
+            }
+            if (isNaN(dateObj.getTime())) { // Try 'DD Month YYYY' (e.g., 1st Jan 2023) fallback
+                const monthNames = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+                const parts = dateString.match(/(\d{1,2})(?:st|nd|rd|th)?\s+(\w+)\s+(\d{4})/i);
+                if(parts) {
+                    const monthIndex = monthNames.findIndex(m => m === parts[2].toLowerCase());
+                    if (monthIndex !== -1) { dateObj = new Date(parseInt(parts[3], 10), monthIndex, parseInt(parts[1], 10)); }
+                }
+            }
+             if (isNaN(dateObj.getTime())) { // Try YYYY-MM-DD fallback if others fail
+                const isoParts = dateString.match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+                if (isoParts) {dateObj = new Date(parseInt(isoParts[1],10), parseInt(isoParts[2],10) - 1, parseInt(isoParts[3],10));}
+            }
+            if (isNaN(dateObj.getTime())) {
+                console.warn("Could not parse date for getYearMonth:", dateString);
+                return null;
+            }
+            const year = dateObj.getFullYear();
+            const month = (dateObj.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-indexed
+            return `${year}-${month}`;
+        } catch (e) {
+            console.error("Error parsing date string in getYearMonth:", dateString, e);
+            return null;
+        }
+    };
+
+    /**
+     * Formats a date string to 'DD-MM-YYYY' for display.
+     * @param {string} dateString The date string to format.
+     * @returns {string} The formatted date string, or the original string if parsing fails.
+     */
+    const formatDisplayDate = (dateString) => {
+        if (!dateString) return 'N/A';
+        try {
+            let dateObj = new Date(dateString);
+            // Attempt to parse common date formats
+             if (isNaN(dateObj.getTime())) { // Try YYYY-MM-DD fallback first
+                const isoParts = dateString.match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+                if (isoParts) {dateObj = new Date(parseInt(isoParts[1],10), parseInt(isoParts[2],10) - 1, parseInt(isoParts[3],10));}
+            }
+            if (isNaN(dateObj.getTime())) { // Then try MM/DD/YYYY
+                const generalParts = dateString.match(/(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})/); // Changed variable name to avoid conflict
+                if (generalParts) { dateObj = new Date(parseInt(generalParts[3],10), parseInt(generalParts[1],10)-1, parseInt(generalParts[2],10));} // Corrected indexing for MM/DD/YYYY
+            }
+            if (isNaN(dateObj.getTime())) { return dateString; } // Return original if still unparseable
+
+            const day = dateObj.getDate().toString().padStart(2, '0');
+            const month = (dateObj.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-indexed
+            const year = dateObj.getFullYear();
+            return `${day}-${month}-${year}`;
+        } catch (e) {
+            return dateString; // Fallback to original string on error
+        }
+    };
+
+    /**
+     * Converts a date string to 'YYYY-MM-DD' format for reliable comparison/signatures.
+     * @param {string} dateString The date string to parse.
+     * @returns {string|null} The date in 'YYYY-MM-DD' format, or null if parsing fails.
+     */
+    const getYYYYMMDD = (dateString) => {
+        if (!dateString) return null;
+        try {
+            let dateObj = new Date(dateString);
+            // Attempt to parse common date formats
+             if (isNaN(dateObj.getTime())) { // Try YYYY-MM-DD fallback
+                const isoParts = dateString.match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+                if (isoParts) {dateObj = new Date(parseInt(isoParts[1],10), parseInt(isoParts[2],10) - 1, parseInt(isoParts[3],10));}
+            }
+            if (isNaN(dateObj.getTime())) { // Try MM/DD/YYYY fallback
+                const parts = dateString.match(/(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})/);
+                if (parts) { dateObj = new Date(parseInt(parts[3], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10)); }
+            }
+            if (isNaN(dateObj.getTime())) {
+                console.warn("Could not parse date for getYYYYMMDD:", dateString);
+                return null;
+            }
+            const year = dateObj.getFullYear();
+            const month = (dateObj.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-indexed
+            const day = dateObj.getDate().toString().padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        } catch (e) {
+            console.error("Error parsing date string in getYYYYMMDD:", dateString, e);
+            return null;
+        }
+    };
+    // --- End Date Helper Functions ---
+
+    // Iterate over each data point in the chart's score data.
+    // Each 'd' represents a score recorded at a specific time ('d.months_since_baseline', 'd.date').
+    data.forEach(d => {
+        const eventX = x(d.months); // Calculate the x-coordinate for the event line based on 'months_since_baseline'.
+        const scoreRecordDate = d.date;    // Get the date of the current score record.
+        const currentScoreYearMonth = getYearMonth(scoreRecordDate); // Convert to 'YYYY-MM' for monthly grouping of events.
+
+        // If the score's date cannot be parsed, skip processing events for this point.
+        if (!currentScoreYearMonth) {
+            // console.warn("Skipping event line for a score point due to invalid scoreRecordDate:", scoreRecordDate);
+            return;
+        }
+
+        let potentialEventsForThisMonth = [];
+
+        // SECTION REMOVED: The following block was removed as per the requirement
+        // to only source events from `patient.Events` and not from the CSV data (`d.event`, `d.event_date`).
+        /*
+        // 1. Check event from the score data point 'd' itself (FROM CSV - NOW REMOVED)
+        // This event is relevant if its own event_date falls into the currentScoreYearMonth
+        if (d.event && d.event_date) {
+            const scoreDataEventYearMonth = getYearMonth(d.event_date);
+            if (scoreDataEventYearMonth === currentScoreYearMonth) {
+                potentialEventsForThisMonth.push({
+                    event: d.event,
+                    date: d.event_date,
+                    treatment_plan: d.treatment_plan || null
+                });
+            }
+        }
+        */
+
+        // Collect events from the global `patientEvents` array that fall into the `currentScoreYearMonth`.
+        patientEvents.forEach(patientEvt => {
+            if (patientEvt.date && patientEvt.event) { // Ensure essential event data fields exist.
+                const patientEventYearMonth = getYearMonth(patientEvt.date);
+                if (patientEventYearMonth === currentScoreYearMonth) {
+                    potentialEventsForThisMonth.push({
+                        event: patientEvt.event,
+                        date: patientEvt.date,
+                        treatment_plan: patientEvt.treatment_plan || null // Include treatment plan if available
+                    });
+                }
+            }
+        });
+        
+        // Deduplicate the collected events for the current month to avoid drawing multiple lines/tooltips for the same event.
+        const combinedEvents = [];
+        const addedSignatures = new Set(); // Use a Set to keep track of unique event signatures.
+        potentialEventsForThisMonth.forEach(evtData => {
+            const yyyymmdd = getYYYYMMDD(evtData.date); // Get full date for a more precise signature.
+            // An event is considered unique based on its date, event text, and treatment plan.
+            if (evtData.event && yyyymmdd) { 
+                const signature = `${yyyymmdd}_${(evtData.event || '').trim().toLowerCase()}_${(evtData.treatment_plan || '').trim().toLowerCase()}`;
+                if (!addedSignatures.has(signature)) {
+                    combinedEvents.push(evtData);
+                    addedSignatures.add(signature);
+                }
+            }
+        });
+
+        // If there are any consolidated (deduplicated) events for this month, draw the event line and set up hover interactions.
+        if (combinedEvents.length > 0) {
+            // Append an invisible, wider line to act as a hover target.
+            // This makes it easier for the user to trigger the tooltip.
+            svg.append("line")
+                .attr("class", "event-line-hover-target")
+                .attr("x1", eventX)
+                .attr("x2", eventX)
+                .attr("y1", 0) // Line spans the full height of the chart area
+                .attr("y2", height)
+                .style("stroke", "transparent") // Invisible
+                .style("stroke-width", 10)      // Wide hover area
+                .style("cursor", "default")     // Standard cursor
+                .style("pointer-events", "stroke") // Event triggers only on the stroke
+                .on("mouseover", function (event) { // Show tooltip on mouseover
+                    let tooltipHtml = "";
+                    // Construct HTML for the tooltip, listing all events for this month.
+                    combinedEvents.forEach((evtData, index) => {
+                        if (index > 0) { // Add a horizontal rule as a separator for multiple events
+                            tooltipHtml += "<hr style='margin: 4px 0; border-top: 1px solid #fff;'>";
+                        }
+                        const treatmentPlanText = evtData.treatment_plan ? ` (${evtData.treatment_plan})` : '';
+                        tooltipHtml += `<strong>Event:</strong> ${evtData.event}${treatmentPlanText}<br><strong>Date:</strong> ${formatDisplayDate(evtData.date)}`;
+                    });
+
+                    eventTooltip.transition().duration(200).style("opacity", .9); // Fade in tooltip
+                    eventTooltip.html(tooltipHtml) // Set tooltip content
+                        .style("left", (event.pageX + 15) + "px") // Position tooltip near the cursor
+                        .style("top", (event.pageY - 15) + "px");
+                })
+                .on("mouseout", function () { // Hide tooltip on mouseout
+                    eventTooltip.transition().duration(500).style("opacity", 0); // Fade out tooltip
+                });
+
+            // Draw the visible dashed line representing the event(s).
+            svg.append("line")
+                .attr("class", "event-line-visible")
+                .attr("x1", eventX)
+                .attr("x2", eventX)
+                .attr("y1", 0)
+                .attr("y2", height)
+                .style("stroke", "#FF4500") // OrangeRed color for visibility
+                .style("stroke-width", 2)
+                .style("stroke-dasharray", "4,4") // Dashed line style
+                .style("pointer-events", "none"); // Visible line should not interfere with hover target
+        }
+        // If combinedEvents.length is 0, no event line or hover target is drawn for this score data point's month.
+    });
+}
+
+        function drawChart(data, severityCsvPath, traceName, title) {
+            const margin = { top: 80, right: 150, bottom: 50, left: 50 };
+            const width = 500 - margin.left - margin.right;
+            const height = 350 - margin.top - margin.bottom;
+    
+            const chartContainer = d3.select("#charts-container")
+                .append("div")
+                .attr("class", "chart-container");
+    
+            const svg = chartContainer.append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+    
+            const filteredData = data.filter(d => d.trace_name === traceName);
+            loadSeverityLevels(severityCsvPath, traceName, severityLevels => {
+                const { x, y } = createScales(filteredData, width, height);
+                const line = d3.line()
+                    .x(d => x(d.months))
+                    .y(d => y(d.score))
+                    .curve(d3.curveCardinal);
+    
+                drawAxes(svg, x, y, width, height);
+                drawSeverityGridLines(svg, y, width, severityLevels);
+                drawSeverityLabels(svg, y, width, margin, severityLevels);
+                drawVerticalEventLines(svg, filteredData, x, y, height); // Draw event lines
+    
+                // Always draw title and labels
+                drawTitleAndLabels(svg, title, margin, width, height);
+    
+                if (filteredData.length > 0) {
+                    drawLineAndPoints(svg, filteredData, x, y, line, severityLevels);
+                    drawAnnotations(svg, filteredData, margin, width, height, traceName);
+                }
+            });
+        }
+    
+// Load data and draw charts for patient_health_scores CSV
+loadData("<%= basePath %><%= csvPath %>", data => {
+     console.log("Unique trace names:", [...new Set(data.map(d => d.trace_name))]); // Debugging line
+     const uniqueTraceNames = [...new Set(data.map(d => d.trace_name))];
+     uniqueTraceNames.forEach(traceName => {
+         const title = data.find(d => d.trace_name === traceName).title || traceName;
+         drawChart(data, severityCsvPath, traceName, title);
+     });
+ });
+
+ // Load data and draw charts for API_SURVEYS_Mr_no CSV
+ loadData("<%= basePath %><%= csvApiSurveysPath %>", data => {
+     console.log("Unique trace names:", [...new Set(data.map(d => d.trace_name))]); // Debugging line
+     const uniqueTraceNames = [...new Set(data.map(d => d.trace_name))];
+     uniqueTraceNames.forEach(traceName => {
+         const title = data.find(d => d.trace_name === traceName).title || traceName;
+         drawChart(data, severityCsvPath, traceName, title);
+     });
+ });
+    </script>
+
+<script>
+    function searchNotes() {
+      const searchTerm = document.getElementById("search-bar").value.toLowerCase();
+      const logEntries = document.querySelectorAll(".log-entry");
+    
+      if (searchTerm === "") {
+        // If search is cleared, show all entries
+        logEntries.forEach(entry => {
+          entry.style.display = "block";
+        });
+      } else {
+        const exactMatchRegex = /^"(.*)"$/;
+        const match = searchTerm.match(exactMatchRegex);
+    
+        if (match) {
+          // Exact match search
+          const exactSearchTerm = match[1]; // Extract the term within quotes
+          for (const entry of logEntries) {
+            const noteText = entry.querySelector(".log-note").textContent.toLowerCase();
+            entry.style.display = noteText === exactSearchTerm ? "block" : "none";
+          }
+        } else {
+          // Partial match search
+          for (const entry of logEntries) {
+            const noteText = entry.querySelector(".log-note").textContent.toLowerCase();
+            entry.style.display = noteText.includes(searchTerm) ? "block" : "none";
+          }
+        }
+      }
+    }
+    
+    document.getElementById("search-bar").addEventListener("keyup", searchNotes);
+    
+      </script>
+
+    <script>
+        function showTabContent(id) {
+            const contents = document.querySelectorAll('.tab-content');
+            const tabs = document.querySelectorAll('.tab');
+            
+            contents.forEach(content => content.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            document.getElementById(id).classList.add('active');
+            document.querySelector(`[onclick="showTabContent('${id}')"]`).classList.add('active');
+        }
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show the first tab by default
+            showTabContent('doctor-notes');
+        });
+    </script>
+<script>
+
+function toggleDescription(element) {
+    const description = element.previousElementSibling;
+    const shortDesc = description.querySelector('.short-desc');
+    const fullDesc = description.querySelector('.full-desc');
+    
+    if (fullDesc.style.display === "none") {
+        shortDesc.style.display = "none";
+        fullDesc.style.display = "inline";
+        element.innerText = "Show Less";
+    } else {
+        shortDesc.style.display = "inline";
+        fullDesc.style.display = "none";
+        element.innerText = "Show More";
+    }
+}
+
+    </script>
+    
+<!--         
+    <script>
+        // Assuming `patients` is available as a JSON array in the template
+        const patients = <%- JSON.stringify(allPatients) %>;
+      
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            const mrNoInput = document.getElementById('mrNoInput').value.trim();
+            const hashedMrNoField = document.getElementById('hashedMrNoInput');
+            
+            // Find the patient by `Mr_no`
+            const patient = patients.find(p => p.Mr_no === mrNoInput);
+            
+            if (patient) {
+                hashedMrNoField.value = patient.hashedMrNo; // Set the hidden input with `hashedMrNo`
+                
+                // Show the loading GIF only if a patient is found
+                document.getElementById('loadingContainer').style.display = 'flex';
+      
+                this.submit(); // Submit the form after setting the hashed value
+            } else {
+                alert('No matching patient found for the entered MR Number');
+            }
+        });
+      </script> -->
+
+
+      <script>
+        flatpickr("#date", {
+  maxDate: "today",
+  disableMobile: true,
+    });
+      </script>
+
+
+<script>
+  const patients = <%- JSON.stringify(allPatients) %>;
+
+  // Function to show the alert dialog with a custom message
+  function showAlertDialog(message) {
+      const dialog = document.getElementById('alertDialog');
+      const messageElement = document.getElementById('alertMessage');
+      
+      // Set the message
+      if (message) messageElement.textContent = message;
+      
+      // Show the dialog
+      dialog.classList.add('active');
+      
+      // Focus on the OK button
+      setTimeout(() => {
+          document.getElementById('alertOkBtn').focus();
+      }, 100);
+  }
+  
+  // Set up event listeners for the alert dialog
+  document.addEventListener('DOMContentLoaded', function() {
+      // First, check if the element already exists to avoid duplicates
+      if (!document.getElementById('alertDialog')) {
+          console.error('Alert dialog not found in the DOM');
+          return;
+      }
+  
+      // OK button
+      document.getElementById('alertOkBtn').addEventListener('click', function() {
+          document.getElementById('alertDialog').classList.remove('active');
+      });
+      
+      // Close when clicking outside the modal
+      document.getElementById('alertDialog').addEventListener('click', function(event) {
+          if (event.target === this) {
+              this.classList.remove('active');
+          }
+      });
+      
+      // Close on escape key
+      document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && document.getElementById('alertDialog').classList.contains('active')) {
+              document.getElementById('alertDialog').classList.remove('active');
+          }
+      });
+  });
+  
+  // Modify your search form event listener
+  document.getElementById('searchForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      
+      const mrNoInput = document.getElementById('mrNoInput').value.trim();
+      const hashedMrNoField = document.getElementById('hashedMrNoInput');
+      
+      // Find the patient by `Mr_no`
+      const patient = patients.find(p => p.Mr_no === mrNoInput);
+      
+      if (patient) {
+          hashedMrNoField.value = patient.hashedMrNo; // Set the hidden input with `hashedMrNo`
+          
+          // Show the loading GIF only if a patient is found
+          document.getElementById('loadingContainer').style.display = 'flex';
+  
+          this.submit(); // Submit the form after setting the hashed value
+      } else {
+          // Use the custom alert instead of the browser alert
+          showAlertDialog('No matching patient found for the entered MR Number');
+      }
+  });
+  </script>
+
+  <!-- HTML for the alert dialog - without the header -->
+  <div id="alertDialog" class="alert-overlay">
+    <div class="alert-modal">
+        <div class="alert-body">
+            <p id="alertMessage" class="alert-message">No matching patient found for the entered MR Number</p>
+        </div>
+        <div class="alert-footer">
+            <button id="alertOkBtn" class="alert-btn">OK</button>
+        </div>
+    </div>
+  </div>
+
+
+<!--This script is related to printing the charts to pdf-->
+
+
+
+<script>
+    document.getElementById('printChartsButton').addEventListener('click', function () {
+        // Select all chart containers
+        const chartsContainer = document.querySelector('.charts-grid');
+        
+        if (chartsContainer) {
+            // Create a new window for printing
+            const printWindow = window.open('charts', '_blank', 'width=800,height=600');
+            const styles = Array.from(document.styleSheets)
+                .map(styleSheet => {
+                    try {
+                        return Array.from(styleSheet.cssRules)
+                            .map(rule => rule.cssText)
+                            .join('\n');
+                    } catch (e) {
+                        return '';
+                    }
+                })
+                .join('\n');
+
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>Charts</title>
+                    <style>
+                        ${styles} /* Copy all styles */
+                        body {
+                            font-family: Arial, sans-serif;
+                            text-align: center;
+                            margin: 0;
+                            padding: 0;
+                            background-color: #E6E5EB;
+                        }
+                        .chart-container {
+                            margin: 20px auto;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            border-radius: 10px;
+                        }
+                        svg {
+                            width: 100%;
+                            height: auto;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1 style="margin: 20px; font-size: 20px; color: #333;">
+                        Your Health Status Charts
+                    </h1>
+                    <div class="charts-grid">
+                        ${chartsContainer.innerHTML} <!-- Copy the charts grid -->
+                    </div>
+                </body>
+                </html>
+            `);
+
+            printWindow.document.close();
+
+            // Wait for the content to load before triggering print
+            printWindow.onload = function () {
+                printWindow.print();
+                printWindow.close();
+            };
+        } else {
+            alert('No charts available to print.');
+        }
+    });
+</script>
+<script>
+    function deleteNoteHandler(noteId) {
+        console.log('Attempting to delete note with ID:', noteId);
+        const deleteURL = '<%= basePath %>/deleteNote';
+        console.log('A:', deleteURL);
+        
+    
+        fetch(deleteURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ noteId }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server response:', data);
+                if (data.success) {
+                showFlashMessage('Note deleted successfully!', 'error');
+                // Optionally remove the note from the UI
+                const noteElement = document.getElementById(`note-${noteId}`);
+                if (noteElement) {
+                    noteElement.remove();
+                }
+            } else {
+                showFlashMessage('Failed to delete the note.', 'error');
+            }
+
+            })
+            .catch(error => {
+                console.error('Error during fetch:', error);
+                alert('An error occurred.');
+            });
+    }
+</script>
+
+<script>
+    function showFlashMessage(message, type = 'success') {
+    const container = document.getElementById('flash-message-container');
+    const flashMessage = document.createElement('div');
+
+    flashMessage.textContent = message;
+    flashMessage.className = `flash-message ${type}`;
+    container.appendChild(flashMessage);
+
+    setTimeout(() => {
+        flashMessage.style.opacity = '0'; // Fade out
+        setTimeout(() => flashMessage.remove(), 500); // Remove after fade-out
+    }, 3000);
+}
+</script>
+
+<script>
+    function editNoteHandler(noteId) {
+        const editButton = document.querySelector(`.edit-note[onclick="editNoteHandler('${noteId}')"]`);
+        const logNoteDiv = editButton.closest('.log-note');
+        const shortDesc = logNoteDiv.querySelector('.short-desc');
+
+        // Create a textarea if it doesn't already exist
+        let textarea = logNoteDiv.querySelector('.edit-textarea');
+        if (!textarea) {
+            textarea = document.createElement('textarea');
+            textarea.className = 'edit-textarea';
+            textarea.rows = 3; // Default number of rows for the textarea
+            textarea.value = shortDesc.textContent.trim();
+            shortDesc.style.display = 'none';
+            logNoteDiv.insertBefore(textarea, editButton);
+        }
+
+        // Toggle button behavior
+        if (editButton.classList.contains('save-mode')) {
+            // Save the updated note
+            const updatedNote = textarea.value.trim();
+            if (!updatedNote) {
+                showFlashMessage('Note cannot be empty!', 'error');
+                return;
+            }
+            const saveURL = '<%= basePath %>/updateNote';
+            // Send updated note to server (example fetch request)
+            fetch(saveURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ noteId, note: updatedNote }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showFlashMessage('Note updated successfully!', 'success');
+                        shortDesc.textContent = updatedNote;
+                        shortDesc.style.display = 'inline';
+                        textarea.remove();
+
+                        // Switch back to edit mode
+                        editButton.innerHTML = '<i class="fas fa-edit"></i>';
+                        editButton.classList.remove('save-mode');
+                    } else {
+                        alert('Failed to update the note.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating note:', error);
+                    alert('An error occurred. Please try again.');
+                });
+        } else {
+            // Switch to save mode
+            editButton.innerHTML = '<i class="fas fa-check text-success"></i>';
+            editButton.classList.add('save-mode');
+            textarea.style.display = 'inline-block';
+        }
+    }
+</script>
+
+</html>

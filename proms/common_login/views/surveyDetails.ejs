@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Details</title>
+    <link rel="stylesheet" href="/styles.css">
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        .user-details-container {
+            max-width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 40px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .timestamp-row {
+            text-align: center;
+            font-weight: bold;
+            background-color: #f9f9f9;
+        }
+        .items-list {
+            text-align: left;
+            margin-left: 20px;
+        }
+        .items-list li {
+            margin-bottom: 5px;
+        }
+        .item-table {
+            width: 100%;
+            margin: 10px 0;
+            border-collapse: collapse;
+        }
+        .item-table th, .item-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        .item-table th {
+            background-color: #e2e2e2;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+               <img src="assets/logo.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+       </div>
+           
+        <ul>
+             <hr class="spacer">   
+            <li>
+                <a href="/userDetails">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="nav-item">My Charts</span>
+                </a>
+                <span class="tooltip">My Charts</span>
+            </li>
+           
+            <li>
+                <a href="/survey-details/<%= user.Mr_no %>">
+                    <i class='bx bx-list-check'></i>
+                    <span class="nav-item">My Responses</span>
+                </a>
+                <span class="tooltip">My Responses</span>
+            </li>
+
+            <li>
+                <a href="/edit-details?Mr_no=<%= user.Mr_no %>">
+                    <i class='bx bx-user-circle'></i>
+                    <span class="nav-item">My Profile</span>
+                </a>
+                <span class="tooltip">My Profile</span>
+            </li>
+
+
+            <li>
+                <a href="/">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item">Logout</span>
+                </a>
+                <span class="tooltip">Logout</span>
+            </li>
+        </ul>
+    </div>
+
+  <div class="main-content">
+    <div class="topbar">
+        <h1>MR No: <%= user.Mr_no %></h1>
+    </div>
+    <div class="user-details-container">
+        <h2>Survey Details for <%= user.firstName %> <%= user.lastName %></h2>
+        <% const surveyTypes = ['EPDS', 'ICIQ-UI_SF', 'Wexner', 'PROMIS-10', 'PAID']; %>
+        <% surveyTypes.forEach(type => { %>
+            <% if (user[type]) { %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Survey Type</th>
+                            <th>Field</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% Object.keys(user[type]).forEach(key => { %>
+                            <tr class="timestamp-row">
+                                <td colspan="3">
+                                    <%= type %> - Timestamp: <%= user[type][key].timestamp %>
+                                </td>
+                            </tr>
+                            <% const surveyData = user[type][key]; %>
+                            <% Object.keys(surveyData).forEach(field => { %>
+                                <% if (field !== 'timestamp' && field !== 'Mr_no') { %>
+                                    <tr>
+                                        <td><%= type %></td>
+                                        <td><%= field %></td>
+                                        <td>
+                                            <% if (field === 'Items' && Array.isArray(surveyData[field])) { %>
+                                                <table class="item-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% surveyData[field].forEach(item => { %>
+                                                            <% item.Elements.forEach(element => { %>
+                                                                <tr>
+                                                                    <td><%= element.Description %></td>
+                                                                </tr>
+                                                            <% }); %>
+                                                        <% }); %>
+                                                    </tbody>
+                                                </table>
+                                            <% } else { %>
+                                                <%= JSON.stringify(surveyData[field]) %>
+                                            <% } %>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            <% }); %>
+                        <% }); %>
+                    </tbody>
+                </table>
+            <% } %>
+        <% }); %>
+
+        <% if (user.FORM_ID) { %>
+            <h2>Form Details</h2>
+            <% Object.keys(user.FORM_ID).forEach(formId => { %>
+                <% const form = user.FORM_ID[formId]; %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="3">Form ID: <%= formId %></th>
+                        </tr>
+                        <tr>
+                            <th>Assessment ID</th>
+                            <th>Field</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% form.assessments.forEach(assessment => { %>
+                            <tr class="timestamp-row">
+                                <td colspan="3">Timestamp: <%= assessment.timestamp %></td>
+                            </tr>
+                            <% const fields = Object.keys(assessment.scoreDetails).filter(f => f !== 'Interpretations' && f !== 'UID' && f !== 'Status'); %>
+                            <% fields.forEach((field, index) => { %>
+                                <tr>
+                                    <% if (index === 0) { %>
+                                        <td rowspan="<%= fields.length + (assessment.Items ? assessment.Items.length * 2 : 0) %>"><%= assessment.assessmentID %></td>
+                                    <% } %>
+                                    <td><%= field %></td>
+                                    <td><%= JSON.stringify(assessment.scoreDetails[field]) %></td>
+                                </tr>
+                            <% }); %>
+
+                            <% if (assessment.Items) { %>
+                                <tr>
+                                    <td colspan="3">
+                                        <ul class="items-list">
+                                            <% assessment.Items.forEach(item => { %>
+                                                <li>
+                                                    "<%= item.Elements.find(e => e.ElementOrder === "2").Description %>" - Response: <%= JSON.stringify(item.Response) %>
+                                                    <table class="item-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <% item.Elements.forEach(element => { %>
+                                                                <tr>
+                                                                    <td><%= element.Description %></td>
+                                                                </tr>
+                                                            <% }); %>
+                                                        </tbody>
+                                                    </table>
+                                                </li>
+                                            <% }); %>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        <% }); %>
+                    </tbody>
+                </table>
+            <% }); %>
+        <% } %>
+        <form action="/export-survey-csv" method="GET">
+            <input type="hidden" name="mr_no" value="<%= user.Mr_no %>">
+            <button type="submit">Export to CSV</button>
+        </form>
+
+    </div>
+  </div>
+</body>
+<script>
+    let btn = document.querySelector('#btn');
+    let sidebar = document.querySelector('.sidebar');
+  
+    btn.onclick = function() {
+        sidebar.classList.toggle('active');
+    };
+  </script>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+  
+    function removeCurrentPageClasses() {
+        sidebarLinks.forEach(link => {
+            link.classList.remove('CurrentPage');
+        });
+    }
+
+    function setCurrentPageLink(path) {
+        removeCurrentPageClasses();
+        console.log(`Setting CurrentPage link for path: ${path}`);
+        const currentPageLink = Array.from(sidebarLinks).find(link => {
+            const linkPath = new URL(link.href).pathname;
+            return linkPath === path;
+        });
+        if (currentPageLink) {
+            console.log(`CurrentPage link found: ${currentPageLink.href}`);
+            currentPageLink.classList.add('CurrentPage');
+        } else {
+            console.log(`No CurrentPage link found for path: ${path}`);
+        }
+    }
+  
+    // Check the URL path and set the current page link on page load
+    const currentPath = window.location.pathname;
+    console.log(`Current path: ${currentPath}`);
+    setCurrentPageLink(currentPath);
+  
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const targetPath = new URL(link.href).pathname;
+            console.log(`Navigating to: ${targetPath}`);
+            setCurrentPageLink(targetPath);
+        });
+    });
+  });
+  </script>
+</html>

@@ -1,0 +1,12 @@
+Task,Details,Status
+WhatsApp Template Submission (Direct Approach),"Review guidelines, resubmit template submission for 'WeHealthify Proms' and 'WeHealthify'.",Pending
+WhatsApp Template Submission (ISV Approach),"Twilio ISV approach for WhatsApp integration, meeting with Twilio support for approval.",In Progress
+Survey Frequency Settings,Set frequency for patient survey triggers on WhatsApp.,Pending
+Survey Frequency Update for Raheel,Adjust frequency settings based on feedback from Raheel for better alignment.,Pending
+Survey Licensing (EQ5D3L License),Obtain the EQ5D3L license from Raheel and approval from EuroQol if required.,Pending
+Survey Licensing Approval from EuroQol,Request approval from EuroQol to finalize the EQ5D3L license for survey use.,Pending
+Twilio ISV Onboarding Meeting,"Follow up with Twilio support for ISV onboarding, including integration and licensing.",In Progress
+SMS Trigger Implementation,"Trigger SMS 24 hours before appointment, follow-up automation after 2 days.",Pending
+SMS Failure Error Handling,Implement handling for SMS failure errors.,Pending
+Communication between Staff and Patient,Add feature for staff-patient communication on the platform via WhatsApp.,Pending
+Communication between Doctor and Staff,Add feature for doctor-staff communication through the platform via WhatsApp.,Pending

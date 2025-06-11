@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Hospital and Sites</title>
+    <!-- Updated stylesheet link to include basePath -->
+    <link rel="stylesheet" href="<%= basePath %>/styles/styles.css"> 
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+/* .main-content {
+    padding: 20px;
+} */
+
+
+
+.topbar {
+    display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1rem;
+}
+
+.addAdmin {
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0 auto;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 10px; /* Reduced margin-bottom for headings */
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Reduced space between form groups */
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.column {
+    width: 48%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 600px) {
+    .form-group {
+        flex-direction: column;
+    }
+
+    .column {
+        width: 100%;
+    }
+}
+
+</style>
+
+</head>
+<body>
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <!-- Updated image source to include basePath -->
+                <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn" style="color: #fff; font-size: 24px;"></i>
+        </div>
+
+        <div class="user">
+            <div>
+                <p class="bold">Super Admin</p>
+                <hr class="spacer">
+            </div>
+        </div>
+        <ul>
+            <li>
+                <!-- Updated link to include basePath -->
+                <a href="<%= basePath %>/dashboard">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="nav-item">Add Hospital Admin</span>
+                </a>
+                <span class="tooltip">Add</span>
+            </li>
+            
+            
+            <li>
+                <!-- Updated link to include basePath -->
+                <a href="<%= basePath %>/addHospital">
+                    <i class='bx bx-add-to-queue'></i>
+                    <span class="nav-item">Add Hospital & Site</span>
+                </a>
+                <span class="tooltip">Add Hospital & Site</span>
+            </li>
+            <li>
+                <!-- Updated link to include basePath -->
+                <a href="<%= basePath %>/">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item">Logout</span>
+                </a>
+                <span class="tooltip">Logout</span>
+            </li>
+        </ul>
+    </div>
+    
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+        <div class="topbar">
+            <h2 style="color: #333333;">Add Hospital and Sites</h2>
+        </div>
+        <hr style="opacity: 0.5;">
+        <div class="page3">
+            <!-- Updated form action to include basePath -->
+            <form action="<%= basePath %>/addHospital" method="POST" class="addAdmin">
+                <h2 style="color: #333333;">Add Hospital</h2>
+
+                <div class="form-group">
+                    <div class="column">
+                        <input type="text" id="hospital_code" name="hospital_code" placeholder="Hospital Code" required>
+                    </div>
+                    <div class="column">
+                        <input type="text" id="hospital_name" name="hospital_name" placeholder="Hospital Name" required>
+                    </div>
+                </div>
+
+                <h3>Site Information</h3>
+
+                <div class="form-group">
+                    <div class="column">
+                        <input type="text" id="site_code" name="site_code" placeholder="Site Code" required>
+                    </div>
+                    <div class="column">
+                        <input type="text" id="site_name" name="site_name" placeholder="Site Name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="full-width">
+                        <input type="text" id="address" name="address" placeholder="Address" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="column">
+                        <input type="text" id="city" name="city" placeholder="City" required>
+                    </div>
+                    <div class="column">
+                        <input type="text" id="state" name="state" placeholder="State" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="column">
+                        <input type="text" id="country" name="country" placeholder="Country" required>
+                    </div>
+                    <div class="column">
+                        <input type="text" id="zip" name="zip" placeholder="Zip Code" required>
+                    </div>
+                </div>
+
+                <!-- <h3>Notification Preference</h3>
+                <div class="form-group">
+                    <label>
+                        <input type="radio" name="notification_preference" value="sms" required>
+                        SMS
+                    </label>
+                    <label>
+                        <input type="radio" name="notification_preference" value="email">
+                        Email
+                    </label>
+                    <label>
+                        <input type="radio" name="notification_preference" value="both">
+                        SMS and Email
+                    </label>
+                </div> -->
+
+                <h3>Notification Preference</h3>
+            <div class="form-group">
+                <select name="notification_preference" required>
+                    <option value="" disabled selected>Select Notification Method</option>
+                    <option value="sms">SMS</option>
+                    <option value="email">Email</option>
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="both">SMS and Email</option>
+                </select>
+            </div>
+                <button type="submit"> <i class='bx bx-book-add'></i> Add Hospital and Site</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Updated script path to include basePath -->
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+
+        btn.onclick = function () {
+            sidebar.classList.toggle('active');
+        };
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+    const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+
+    // Function to remove 'current' class from all links
+    function removeCurrentPageClasses() {
+        sidebarLinks.forEach(link => {
+            link.classList.remove('current');
+        });
+    }
+
+    // Function to add 'current' class to the active link based on path
+    function setCurrentPageLink(path) {
+        removeCurrentPageClasses();
+        const currentPageLink = Array.from(sidebarLinks).find(link => {
+            const linkPath = new URL(link.href, window.location.origin).pathname; // Compare full path
+            return linkPath === path; // Check if current path matches link path
+        });
+        if (currentPageLink) {
+            currentPageLink.classList.add('current');
+        }
+    }
+
+    // Check the URL path and set the current page link on page load
+    const currentPath = window.location.pathname;
+    setCurrentPageLink(currentPath);
+
+    // Add event listener to each sidebar link
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            const targetPath = new URL(link.href, window.location.origin).pathname;
+            setCurrentPageLink(targetPath);
+
+            // Navigate to the clicked link after setting the class
+            window.location.href = link.href;
+        });
+    });
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Dashboard</title>
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<%= basePath %>/css/introjs.min.css">
+    <link rel="stylesheet" href="<%= basePath %>/css/styles.css">
+    <link rel="stylesheet" href="<%= basePath %>/css/bottomDocChart.css">
+    <link rel="stylesheet" href="<%= basePath %>/css/topDocChart.css">
+    <style>
+        /* tool tip styles */
+
+.introjs-tooltipbuttons {
+    text-align: right; /* Align buttons to the right */
+
+}
+
+.help-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.help-btn:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+}
+
+
+.help-button-container {
+    position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #12171e;
+  padding: 12px 0;
+  transition: all 0.5s ease;
+}
+
+/* Ensure the button aligns well with sidebar's active state */
+.sidebar.active .help-btn {
+    color: #fff;
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+}
+.tooltip {
+    z-index: 1000; /* High z-index to appear on top of other elements */
+    padding: 8px;
+    position: absolute;
+    border-radius: 4px;
+    pointer-events: none; /* Prevent mouse interaction */
+    font-size: 12px;
+}
+    </style>
+</head>
+
+<body>
+    
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <img src="<%= basePath %>/assets/<%= hospital_code %>.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+
+        <div class="user">
+            <div>
+                <!-- Display hospitalName, site_code, and Admin -->
+                <p class="bold">Admin</p>
+                <p class="bold"><%= hospitalName %></p>
+                <p class="bold"><%= site_code %></p>
+                <hr class="spacer">
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a href="<%= basePath %>/admin-dashboard">
+                    <i class="bx bxs-grid-alt"></i>
+                    <span class="nav-item">Admin Dashboard</span>
+                </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="http://localhost/manageproviders">
+                    <i class='bx bx-group'></i>
+                    <span class="nav-item">Manage Providers</span>
+                </a>
+                <span class="tooltip">All Providers</span>
+            </li>
+            <li>
+                <a href="http://localhost/surveyapp">
+                    <i class='bx bx-book-content'></i>
+                    <span class="nav-item">Manage Surveys</span>
+                </a>
+                <span class="tooltip">All Surveys</span>
+            </li>
+            <li>
+                <a href="http://localhost/surveyapp/add">
+                    <i class='bx bx-folder-plus'></i>
+                    <span class="nav-item">Add New Specialty</span>
+                </a>
+                <span class="tooltip">New Specialty</span>
+            </li>
+            <li>
+                <a href="<%= basePath %>/perf-dashboard">
+                    <i class='bx bxs-report'></i>
+                    <span class="nav-item">View Reports</span>
+                </a>
+                <span class="tooltip">Reports</span>
+            </li>
+            <li>
+                <a href="<%= basePath %>">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item">Logout</span>
+                </a>
+                <span class="tooltip">Logout</span>
+            </li>
+        </ul>
+        <div class="help-button-container">
+            <button id="helpButton" class="help-btn">
+                <span class="nav-item">Help </span>
+                <i class='bx bx-help-circle'></i>
+            </button>
+            
+        
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="topbar">
+            <!-- Display firstName and lastName -->
+            <h2 style="color: #333333;">Welcome, <%= firstName %> <%= lastName %></h2>
+        </div>
+
+        <hr style="opacity: 0.5;">
+    <div class="dashboard-layout">
+
+
+            <div id="number-card-1" class="number-card"></div>
+            <div id="number-card-2" class="number-card"></div>
+            <div id="number-card-3" class="number-card"></div>
+
+
+
+            <div class="treemap-container chart-section" style="min-width: 100%;">
+                <h2>Treemap View</h2>
+                
+                <div id="tree-map" class="treemap-content"></div>
+            </div>
+
+            <div class="bottom-top-chart-container">
+
+                <div class="bottomDocContainer chart-section">
+                    <h2>Bottom 5 Doctors</h2>
+                    <div id="bottomDocChart" class="chart-content"></div>
+                </div>
+
+                <div class="topDocContainer chart-section">
+                    <h2>Top 5 Doctors</h2>
+
+                    <div id="topDocChart" class="chart-content"></div>
+                </div>
+            </div>
+            <div class="bottom-top-chart-container">
+            <div class="site-dropdown-container">
+                <h2>Site Name:</h2>
+                <select id="site-dropdown" style="margin-left: 10px;">
+                </select>
+            </div>
+            
+
+            <div class="donut-chart-section chart-section">
+                <h2>Survey Response Rate</h2>
+                <div id="combinedChart" class="donut-content"></div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <script>
+        const basePath = "<%= basePath %>";
+    </script>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="<%= basePath %>/js/charts/numberCard1.js"></script>
+    <script src="<%= basePath %>/js/charts/numberCard2.js"></script>
+    <script src="<%= basePath %>/js/charts/numberCard3.js"></script>
+    <script src="<%= basePath %>/js/charts/topDocChart.js"></script>
+    <script src="<%= basePath %>/js/charts/bottomDocChart.js"></script>
+    <script src="<%= basePath %>/js/charts/treemap.js"></script>
+    <script src="<%= basePath %>/js/charts/combinedChart.js"></script>
+    <script src="<%= basePath %>/js/dashboard.js"></script>
+    <script src="<%= basePath %>/js/intro.min.js"></script>
+    <script>
+        document.getElementById('helpButton').addEventListener('click', function() {
+            introJs().start();
+        });
+        
+    </script>
+
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+        
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+    
+    <!-- /* current page on sidebar */ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+            
+            function removeCurrentPageClasses() {
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('CurrentPage');
+                });
+            }
+
+            function setCurrentPageLink(path) {
+                removeCurrentPageClasses();
+                const currentPageLink = Array.from(sidebarLinks).find(link => {
+                    const linkPath = new URL(link.href).pathname;
+                    return linkPath === path;
+                });
+                if (currentPageLink) {
+                    currentPageLink.classList.add('CurrentPage');
+                }
+            }
+
+            // Check the URL path and set the current page link on page load
+            const currentPath = window.location.pathname;
+            setCurrentPageLink(currentPath);
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const targetPath = new URL(link.href).pathname;
+                    setCurrentPageLink(targetPath);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1202 @@
+
+<!-- Add this inside the body tag of home.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>List of Patients</title>
+  <link rel="stylesheet" href="<%= basePath %>/style.css">
+  <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+  <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="<%= basePath %>/css/introjs.min.css">
+
+
+  <style>
+    .language-selector {
+      text-align: right;
+      /* margin: 10px; */
+    }
+
+    .language-selector a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: #007BFF;
+    }
+
+    .language-selector a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .language-selector img {
+      margin-right: 5px;
+      width: 20px;
+      margin-left: 5px;
+      height: auto;
+      vertical-align: bottom;
+    }
+.CurrentPage {
+    background-color:#fff; /* Add your desired current page style here */
+    color: #000!important;
+  }
+
+    /* Loading GIF */
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none; /* Initially hide the loading container */
+}
+
+.loading-container img {
+    width: 35%;  /* Adjust the width to make the GIF smaller */
+    height: 35%; /* Adjust the height to make the GIF smaller */
+}
+
+
+    .user-img {
+        width: 50px;
+        border-radius: 100%;
+        border: 1px solid #eee;
+    }
+    
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        
+    }
+    /* SIDEBAR AND MAIN CONTENT STYLES */
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80px;
+    background-color: #12171e;
+    padding: 0.4rem 0.8rem;
+    transition: all 0.5s ease;
+    z-index: 1000; /* Added z-index to sidebar */
+  }
+  
+  .sidebar.active ~ .main-content {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+  
+  .sidebar.active {
+    width: 250px;
+  }
+  
+  .sidebar #btn {
+    position: absolute;
+    color: #fff;
+    top: .4rem;
+    left: 50%;
+    font-size: 1.2rem;
+    line-height: 50px;
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+  
+  .sidebar.active #btn {
+    left: 90%;
+  }
+  
+  .sidebar .top .logo {
+    justify-content: center;
+    color: #fff;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    margin-top: 2rem !important;
+  }
+  
+  .sidebar.active .top .logo {
+    opacity: 1;
+  }
+  
+  .top .logo i {
+    font-size: 2rem;
+    margin-right: 5px;
+  }
+  
+  .user {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+  }
+  
+  .user p {
+    color: #fff;
+    opacity: 1;
+    margin-left: 1rem;
+  }
+  
+  .bold {
+    font-weight: 600;
+  }
+  
+  .tooltip {
+    position: absolute;
+    text-align: left;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    font: 12px sans-serif;
+
+    border-radius: 8px;
+    pointer-events: none;
+    color: black;
+    z-index: 3000;
+  }
+  
+  .sidebar p {
+    opacity: 0;
+  }
+  
+  .sidebar.active p {
+    opacity: 1;
+    text-align: center;
+  }
+  
+  .sidebar ul li {
+    position: relative;
+    list-style-type: none;
+    height: 50px;
+    width: 90%;
+    margin: 0.8rem auto;
+    line-height: 50px;
+  }
+  
+  .sidebar ul li a {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+  }
+  
+  .sidebar ul li a:hover,
+  .sidebar ul li a.active {
+    background-color: #fff;
+    color: #12171e;
+  }
+  
+  .sidebar ul li a i {
+    min-width: 50px;
+    text-align: center;
+    height: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+  }
+  
+  .sidebar .nav-item {
+    display: none;
+  }
+  
+  .sidebar.active .nav-item {
+    opacity: 1;
+    display: block;
+  }
+  
+  .sidebar ul li .tooltip {
+    position: absolute;
+    left: 85px; /* Adjusted to position closer to the icon */
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2);
+    border-radius: .6rem;
+    padding: .4rem 1.2rem;
+    line-height: 1.8rem;
+    z-index: 2000; /* Ensure tooltip is above main content */
+    opacity: 0;
+    background-color: #fff;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    visibility: hidden; /* Initially hidden */
+  }
+  
+  .sidebar ul li:hover .tooltip {
+    opacity: 1;
+    visibility: visible; /* Visible on hover */
+  }
+  
+  .sidebar.active ul li .tooltip {
+    display: none;
+  }
+  
+  .main-content {
+    position: relative;
+    min-height: 100vh;
+    top: 0;
+    left: 80px;
+    transition: all 0.5s ease;
+    width: calc(100% - 80px);
+    z-index: 1; /* Lower z-index than sidebar and tooltip */
+    scroll-behavior: smooth;
+  }
+  
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 1rem;
+  }
+    
+  #mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #12171e;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 999; /* Ensures it stays above the content */
+}
+
+.mobile-nav ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.mobile-nav ul li {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.mobile-nav ul li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 23px;
+}
+
+.mobile-nav ul li a i {
+    font-size: 28px;
+    vertical-align: text-bottom;
+}
+
+.mobile-nav ul li a.active {
+
+  background-color: #fff;
+  color: #12171e;
+}
+
+
+@media (max-width: 800px) {
+
+#mobile-nav {
+display: block !important;
+padding-block: 4px !important; 
+}
+
+.sidebar {
+ display: none;
+}
+.main-content {
+  width: 100% !important;
+  left: 0;
+  margin-top: 50px;
+  
+}
+.topbar {
+position: fixed !important;
+width: 100%;
+/* justify-content: space-around !important; */
+}
+
+.column2 {
+  display: none;
+  width: 0;
+  background-color: #f6f5fa;
+}
+
+svg {
+BACKGROUND-COLOR: #fff;
+BORDER-RADIUS: 15PX;
+transform: scale(0.85);
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.charts-grid {
+grid-template-columns: 1fr !important; /* Two columns for larger screens */
+margin-inline: 0px !important;
+padding-inline: 0px !important;
+row-gap: 0px !important;
+padding-bottom: 75px;
+}
+
+.chart-container {
+     
+      background-color:#f6f5fa !important;
+      box-shadow: 0px 0px 0px 0px !important;
+     
+      
+  }
+
+
+  .searchtopbar {
+      border:1px solid black;
+      border-radius: 4px;
+      display: flex;
+      height: fit-content;
+    }
+
+    .column1 {width: 100%;
+    }
+
+    .column2 {
+          display: none;
+          position: fixed;
+          z-index: 1000;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          max-width: 90%;
+          max-height: 80%;
+          overflow-y: auto;
+      }
+
+      /* Styling for overlay */
+      .overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 999;
+      }
+
+      /* Show the pop-up and overlay */
+      .show {
+          display: block;
+          width: 100%;
+      }
+
+      /* Close button styling */
+      .close-btn {
+          float: right;
+          font-size: 20px;
+          font-weight: bold;
+          cursor: pointer;
+      }
+
+     
+}
+    
+    
+    ul.promslist  { display:flex; list-style-type:circle; margin-left: 20px; min-width: 10ch;}
+    #dontshow {visibility: hidden;}
+    
+    hr.spacer {
+                border: 0px dashed;
+                padding-bottom: 30px;
+            
+            }
+    
+
+            .promslist1{
+                padding-left: 2rem;
+                margin-top: -2rem;
+                font-size: 14px;
+
+            }
+    .widget-container{display:flex; justify-content: space-between;padding: 50px;}
+    .widgets{box-shadow: 0px 3.712px 20px 0px rgba(0, 0, 0, 0.05); border-radius: 5px;}
+
+    .introjs-tooltipbuttons {
+    text-align: right; /* Align buttons to the right */
+
+}
+
+.help-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0px !important;
+    transition: background-color 0.3s ease;
+}
+
+.help-btn:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+}
+
+
+.help-button-container {
+    position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #12171e;
+  padding: 12px 0;
+  transition: all 0.5s ease;
+}
+
+/* Ensure the button aligns well with sidebar's active state */
+.sidebar.active .help-btn {
+    color: #fff;
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+}
+
+
+/* Alert dialog styling */
+.alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.alert-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.alert-modal {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 450px;
+    max-width: 90%;
+    overflow: hidden;
+    color: #000;
+}
+
+.alert-body {
+    padding: 25px 20px;
+    color: black;
+    font-size: 14px;
+    line-height: 1.4;
+    font-family: 'Urbanist', sans-serif;
+}
+
+.alert-message {
+    margin: 0;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.alert-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 20px;
+}
+
+.alert-btn {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: none;
+    font-family: 'Urbanist', sans-serif;
+    background-color: #CBFCC6;
+    color: black;
+}
+
+.alert-btn:hover {
+    background-color: #218838;
+    color: #fff;
+}
+        </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="top">
+         <div class="logo">
+        <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+         </div>
+         <i class="bx bx-menu" id="btn"></i>
+    </div>
+
+    
+    <div class="user">
+        <div>
+            <!-- <p class="bold"><%= doctor.username %></p> -->
+            <p class="bold"><%= doctor.speciality %></p>
+            <p class="bold"><%= doctor.hospitalName %></p>
+            <p class="bold"><%= doctor.site_code %></p>
+        </div>
+    </div>
+    <ul>
+      <li>
+        <a href="<%= basePath %>/home">
+          <i class='bx bx-group'></i>
+            <span class="nav-item" id="list_of_patients_label">List of Patients</span>
+        </a>
+        <span class="tooltip" id="list_of_patients_tooltip">List of Patients</span>
+    </li>
+    
+    <li>
+      <a href="<%= basePath %>/dashboard" target="_self" id="dashboardLinkDesktop">
+        <i class="bx bxs-grid-alt"></i>
+        <span class="nav-item" id="dashboardLabel">Dashboard</span>
+      </a>
+      <span class="tooltip" id="dashboardTooltip">Dashboard</span>
+    </li>
+
+
+        <li>
+            <a href="<%= basePath %>">
+                <i class="bx bx-log-out"></i>
+                <span class="nav-item" id="logoutNav">Logout</span>
+            </a>
+            <span class="tooltip" id="logoutTooltip">Logout</span>
+        </li>
+    </ul>
+    <div class="help-button-container">
+      <button id="helpButton" class="help-btn">
+          <span class="nav-item" id="helpLabel">Help </span>
+          <i class='bx bx-help-circle'></i>
+      </button>
+      
+  
+  </div>
+</div>
+
+
+<div class="mobile-nav" id="mobile-nav">
+  <ul>
+    <li>
+      <a href="<%= basePath %>/dashboard" target="_self" id="dashboardLinkMobile">
+       <i class="bx bx-bar-chart"></i> <span class="nav-item" id="dashboardLabell">Dashboard</span>
+     </a>
+     <span class="tooltip" id="dashboardTooltip">Dashboard</span>
+   </li>
+
+      <li>
+        <a href="<%= basePath %>/home">
+            <i class="bx bxs-grid-alt"></i>
+            <span class="nav-item" id="list_of_patients_labell">List of Patients</span>
+        </a>
+        <span class="tooltip" id="list_of_patients_tooltip">List of Patients</span>
+    </li>
+    
+      <li>
+          <a href="<%= basePath %>">
+              <i class="bx bx-log-out"></i>
+              <span class="nav-item" id="logoutNavv">Logout</span>
+          </a>
+          <span class="tooltip" id="logoutTooltip">Logout</span>
+      </li>
+  </ul>
+</div>
+
+<div class="main-content">
+
+
+
+    <div class="topbar" dir="<%= dir || 'ltr' %>">
+      <h2 style="color: #333333;">
+        <%= lng === 'ar' 
+            ? `مرحباً, Dr. ${doctor.firstName} ${doctor.lastName}` 
+            : `Welcome,Dr. ${doctor.firstName} ${doctor.lastName}` 
+        %>
+      </h2>
+        
+<!-- Search Form in home.ejs -->
+<form id="searchForm" action="<%= basePath %>/search" method="GET" class="searchtopbar">
+  <input type="text" id="mrNoInput" placeholder="Quick MR Search">
+  <input type="hidden" name="mrNo" id="hashedMrNoInput"> <!-- Hidden input to store hashedMrNo -->
+  <input type="hidden" name="username" value="<%= doctor.username %>">
+  <input type="hidden" name="speciality" value="<%= doctor.speciality %>">
+  <input type="hidden" name="name" value="<%= doctor.name %>">
+  <button type="submit" class="btn-search"><i class='bx bx-search-alt'></i></button>
+</form>
+
+      
+      
+
+        
+    </div>
+    <div class="promslist1">
+    <ul class="promslist">
+      <% surveys.custom.forEach(survey => { %>  <!-- Changed surveyName to custom -->
+        <li><%= survey %> </li>
+        <li id="dontshow">DDDDD</li>
+      <% }); %>      
+      </ul>
+      <br>
+    </div>
+
+    <hr style="opacity: 0.5;">
+    <div class="language-selector" style="text-align: right; padding: 10px; background-color: #f6f5fa;">
+      <a href="?lng=en" class="<%= lng === 'en' ? 'active' : '' %>">
+          <img src="<%= basePath %>/assets/usa.png" alt="English Flag">English
+      </a> |
+      <a href="?lng=ar" class="<%= lng === 'ar' ? 'active' : '' %>">
+          <img src="<%= basePath %>/assets/flag.png" alt="Arabic Flag">العربية
+      </a>
+    </div>
+    <!-- <div class="widget-container" data-title="Dashboard" data-intro="PROMS completion & engagement rates by individual providers & specialities."> 
+        
+        <img src="<%= basePath %>/assets/total_interventions.png" class="widgets" style="width: 20%;">
+        <img src="<%= basePath %>/assets/overallpatientperformance.png" class="widgets" style="width: 20%;">
+        <img src="<%= basePath %>/assets/DiagnosesAssigned.png" class="widgets"style="width: 20%;">
+        <img src="<%= basePath %>/assets/ScatterPlot.png" class="widgets"style="width: 20%";>
+
+
+    </div> -->
+        <div class="patient-details" class="search-container" style="padding:50px ;" dir="<%= dir || 'ltr' %>">
+
+            <h2 id="patientListTitle" style="color: #333333;">Your List of Patients</h2>
+            <input type="text" id="patientSearch" placeholder="Quick Search" style="margin-top: 10px;margin-bottom: 10px; padding: 10px;border-radius: 30px;border: 1px solid;" data-title="Search" data-intro="Customizable search for your patients.">
+            <table>
+              <thead>
+                <tr>
+                  <th id="mrNoHeader" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">MR No.</th>
+                  <th id="nameHeader" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Name</th>
+                  <th id="dobHeader" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Date of Birth</th>
+                  <th id="appointmentHeader" data-title="Appointment" data-intro="Convenient visibility based on your clinic schedule." style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Appointment Date & Time</th>
+                  <th id="phoneNumberHeader" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Phone Number</th>
+                  <th id="surveyStatusHeader" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Survey Status</th>
+                  <th id="actionHeader" data-title="Charts" data-intro="Deep drive into individual pateint outcomes." style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Action</th>
+                </tr>
+              </thead>
+              <%
+              const today = new Date();
+              const todayAppointments = [];
+              const futureAppointments = [];
+              const pastAppointments = [];
+          
+          patients.forEach(function(patient) {
+              const appointmentDate = new Date(patient.specialityTimestamp);
+              if (appointmentDate.toDateString() === today.toDateString()) {
+                  todayAppointments.push(patient); 
+              } else if (appointmentDate > today) {
+                  futureAppointments.push(patient); 
+              } else {
+                  pastAppointments.push(patient); 
+              }
+          });
+          todayAppointments.sort((a, b) => new Date(a.specialityTimestamp) - new Date(b.specialityTimestamp));
+          futureAppointments.sort((a, b) => new Date(b.specialityTimestamp) - new Date(a.specialityTimestamp));
+          pastAppointments.sort((a, b) => new Date(b.specialityTimestamp) - new Date(a.specialityTimestamp));
+          const sortedAppointments = todayAppointments.concat(futureAppointments, pastAppointments);
+          %>
+  <tbody>
+    <% sortedAppointments.forEach(patient => { %>
+        <tr>
+            <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;"><%= patient.Mr_no %></td>
+            <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;"><%= patient.firstName + ' ' + patient.lastName %></td>
+            <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;"><%= patient.DOB %></td>
+            <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;"><span class="<%= highlightRow(patient) %>"><%= formatDate(patient.specialityTimestamp) %></span></td>
+            <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;"><%= patient.phoneNumber %></td>
+            <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">
+                <span style="background-color: <%= patient.surveyStatus === 'Completed' ? '#CBFCC6' : '#FF7F7F' %>; color: black; padding: 5px; border-radius: 5px;">
+                    <%= patient.surveyStatus %>
+                </span>
+            </td>
+            <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">
+              <form action="<%= basePath %>/search" method="GET" class="view-more-form">
+                  <input type="hidden" name="mrNo" value="<%= patient.hashedMrNo %>"> <!-- Changed Mr_no to hashedMrNo -->
+                  <input type="hidden" name="username" value="<%= doctor.hashedusername %>">
+                  <input type="hidden" name="speciality" value="<%= doctor.speciality %>">
+                  <input type="hidden" name="name" value="<%= doctor.name %>">
+                  <button type="submit"><i class='bx bx-expand-alt' style='font-size:14px;margin-inline: 3px;' ></i><%= lng === 'ar' ? 'عرض المزيد' : 'View More' %></button data-intro="Deep drive into individual pateint outcomes.">
+              </form>
+          </td>
+          
+        </tr>
+    <% }); %>
+</tbody>
+
+
+            </table>
+            
+            
+</div>
+</div>
+
+<!-- Loading GIF -->
+<!-- <div class="loading-container" id="loadingContainer">
+
+</div> -->
+
+<script src="<%= basePath %>/js/intro.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+      const getCookie = (name) => {
+const value = `; ${document.cookie}`;
+const parts = value.split(`; ${name}=`);
+if (parts.length === 2) return parts.pop().split(';').shift();
+};
+const params = new URLSearchParams(window.location.search);
+let currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+
+// Set the language cookie
+document.cookie = `lng=${currentLanguage}; path=/`;
+    const fetchUrl = `/doctorlogin/locales/${currentLanguage}/translation.json`;
+
+
+    // Set the `lang` and `dir` attributes for the HTML document
+
+    fetch(fetchUrl)
+      .then(response => {
+        if (!response.ok) {
+          console.warn(`Translation file not found for language: ${currentLanguage}. Falling back to English.`);
+          return fetch(`/doctorlogin/locales/en/translation.json`);
+        }
+        return response.json();
+      })
+      .then(translations => {
+        console.log('Loaded translations:', translations);
+
+        // Update the elements based on translation keys
+        Object.keys(translations).forEach(id => {
+          const element = document.getElementById(id);
+
+          if (element) {
+              const translationValue = translations[id];
+
+              if (typeof translationValue === 'string') {
+                  // Update regular text or HTML content
+                  element.innerHTML = translationValue;
+              }
+                if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+
+                  // Update placeholders for input elements
+
+                  console.log(`Updating placeholder for ${id}:`, translationValue);
+
+                  element.placeholder = translationValue;
+
+                }
+              else if (typeof translationValue === 'object') {
+                                      // Handle nested object (e.g., lists)
+                                      element.innerHTML = ''; // Clear existing content
+                                      Object.values(translationValue).forEach(item => {
+                                          const listItem = document.createElement('li');
+                                          listItem.textContent = item;
+                                          element.appendChild(listItem);
+                                      });
+              } else {
+                  console.warn(`Unexpected translation value type for "${id}":`, translationValue);
+              }
+          }
+        });
+      })
+      .catch(error => console.error('Error loading translations:', error));
+  });
+</script>
+    <script>
+        document.getElementById('helpButton').addEventListener('click', function () {
+    // Determine the current language (default to English)
+    const lang = new URLSearchParams(window.location.search).get('lng') || getCookie('lng') || 'en';
+
+    // Define translations for the steps
+    const translations = {
+        en: {
+            step1: "Customizable search for your patients.",
+            step2: "Convenient visibility based on your clinic schedule.",
+            step3: "Deep dive into individual patient outcomes."
+        },
+        ar: {
+            step1: "بحث قابل للتخصيص عن مرضاك.",
+            step2: "رؤية مريحة بناءً على جدول عيادتك.",
+            step3: "التعمق في نتائج المريض الفردية."
+        }
+    };
+
+    // Define the steps for Intro.js
+    const introSteps = [
+        {
+            element: '#patientSearch', // Search input field
+            intro: translations[lang].step1
+        },
+        {
+            element: '#appointmentHeader', // Appointment header
+            intro: translations[lang].step2
+        },
+        {
+            element: '#actionHeader', // Action header for charts
+            intro: translations[lang].step3
+        }
+    ];
+
+    // Initialize and start Intro.js with dynamic labels for buttons
+    introJs()
+        .setOptions({
+            steps: introSteps,
+            rtl: lang === 'ar', // Enable RTL if the language is Arabic
+            nextLabel: lang === 'ar' ? 'التالي' : 'Next',
+            prevLabel: lang === 'ar' ? 'السابق' : 'Back',
+            doneLabel: lang === 'ar' ? 'تم' : 'Done'
+        })
+        .start();
+});
+
+// Helper function to retrieve a cookie value by name
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+        
+    </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+  
+    function removeCurrentPageClasses() {
+        sidebarLinks.forEach(link => {
+            link.classList.remove('CurrentPage');
+        });
+    }
+  
+    function setCurrentPageLink(path) {
+        removeCurrentPageClasses();
+        console.log(`Setting CurrentPage link for path: ${path}`);
+        const currentPageLink = Array.from(sidebarLinks).find(link => {
+            const linkPath = new URL(link.href).pathname;
+            return linkPath === path;
+        });
+        if (currentPageLink) {
+            console.log(`CurrentPage link found: ${currentPageLink.href}`);
+            currentPageLink.classList.add('CurrentPage');
+        } else {
+            console.log(`No CurrentPage link found for path: ${path}`);
+        }
+    }
+  
+    // Check the URL path and set the current page link on page load
+    const currentPath = window.location.pathname;
+    console.log(`Current path: ${currentPath}`);
+    setCurrentPageLink(currentPath);
+  
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const targetPath = new URL(link.href).pathname;
+            console.log(`Navigating to: ${targetPath}`);
+            setCurrentPageLink(targetPath);
+        });
+    });
+  });
+
+
+  window.addEventListener('load', function() {
+        // Create or select the viewport meta tag
+        let metaViewport = document.querySelector('meta[name="viewport"]');
+
+        if (!metaViewport) {
+            metaViewport = document.createElement('meta');
+            metaViewport.name = "viewport";
+            document.head.appendChild(metaViewport);
+        }
+
+        // Adjust zoom level based on screen width
+        if (window.innerWidth <= 768) { // For mobile
+            metaViewport.setAttribute('content', 'width=device-width, initial-scale=0.7, maximum-scale=1.0, user-scalable=no');
+        } else { // For desktop or larger screens
+            metaViewport.setAttribute('content', 'width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no');
+        }
+    });
+
+
+  </script>
+      <script>
+        const searchInput = document.getElementById('patientSearch');
+        const tableBody = document.querySelector('tbody');
+        searchInput.addEventListener('keyup', function() {
+            const filterQuery = searchInput.value.toLowerCase();
+            const tableRows = tableBody.querySelectorAll('tr');
+        
+            for (const row of tableRows) {
+                const mrNumberCell = row.querySelector('td:nth-child(1)'); 
+                const nameCell = row.querySelector('td:nth-child(2)'); 
+                const phoneNumberCell = row.querySelector('td:nth-child(5)');
+        
+                let textToMatch = mrNumberCell.textContent.toLowerCase() + " " + nameCell.textContent.toLowerCase() + " " + phoneNumberCell.textContent.toLowerCase();
+        
+                if (textToMatch.indexOf(filterQuery) !== -1) {
+                    row.style.display = ''; // Show row if it matches the filter
+                } else {
+                    row.style.display = 'none'; // Hide row if it doesn't match
+                }
+            }
+        });
+        
+                let btn = document.querySelector('#btn');
+                let sidebar = document.querySelector('.sidebar');
+            
+                btn.onclick = function() {
+                    sidebar.classList.toggle('active');
+                };
+            
+                // Show the loading GIF when the form is submitted
+                // document.querySelectorAll('form').forEach(form => {
+                //     form.addEventListener('submit', function() {
+                //         document.getElementById('loadingContainer').style.display = 'flex';
+                //     });
+                // });
+            
+                // Function to check if the timestamp is the current date
+                const isCurrentDate = (timestamp) => {
+                    const date = new Date(timestamp);
+                    const today = new Date();
+                    return date.getDate() === today.getDate() && date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear();
+                };
+            
+                // Function to highlight rows based on the speciality timestamp
+                const highlightRow = (patient) => {
+                    return patient.specialityTimestamp && isCurrentDate(patient.specialityTimestamp) ? 'highlight-green' : '';
+                };
+            
+                // Function to format the date
+                const formatDate = (timestamp) => {
+                    const date = new Date(timestamp);
+                    const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
+                    return date.toLocaleString(undefined, options);
+                };
+            </script>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                // Check if the page is the login page
+                if (window.location.pathname === '<%= basePath %>/login') {
+                  // Redirect to home page
+                  window.location.href = '<%= basePath %>/home';
+                }
+            
+                const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+              
+                function removeCurrentPageClasses() {
+                    sidebarLinks.forEach(link => {
+                        link.classList.remove('CurrentPage');
+                    });
+                }
+              
+                function setCurrentPageLink(path) {
+                    removeCurrentPageClasses();
+                    console.log(`Setting CurrentPage link for path: ${path}`);
+                    const currentPageLink = Array.from(sidebarLinks).find(link => {
+                        const linkPath = new URL(link.href).pathname;
+                        return linkPath === path;
+                    });
+                    if (currentPageLink) {
+                        console.log(`CurrentPage link found: ${currentPageLink.href}`);
+                        currentPageLink.classList.add('CurrentPage');
+                    } else {
+                        console.log(`No CurrentPage link found for path: ${path}`);
+                    }
+                }
+              
+                // Check the URL path and set the current page link on page load
+                const currentPath = window.location.pathname;
+                console.log(`Current path: ${currentPath}`);
+                setCurrentPageLink(currentPath);
+              
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        const targetPath = new URL(link.href).pathname;
+                        console.log(`Navigating to: ${targetPath}`);
+                        setCurrentPageLink(targetPath);
+                    });
+                });
+              });
+            </script>
+            
+
+            <!-- <script>
+              // Assuming `patients` is available as a JSON array in the template
+              const patients = <%- JSON.stringify(patients) %>;
+          
+              document.getElementById('searchForm').addEventListener('submit', function(event) {
+                  event.preventDefault(); // Prevent default form submission
+                  
+                  const mrNoInput = document.getElementById('mrNoInput').value.trim();
+                  const hashedMrNoField = document.getElementById('hashedMrNoInput');
+                  
+                  // Find the patient by `Mr_no`
+                  const patient = patients.find(p => p.Mr_no === mrNoInput);
+                  
+                  if (patient) {
+                      hashedMrNoField.value = patient.hashedMrNo; // Set the hidden input with `hashedMrNo`
+                      this.submit(); // Submit the form after setting the hashed value
+                  } else {
+                      alert('No matching patient found for the entered MR Number');
+                  }
+              });
+          </script> -->
+          <!-- <script>
+            // Assuming `patients` is available as a JSON array in the template
+            const patients = <%- JSON.stringify(patients) %>;
+          
+            document.getElementById('searchForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+                
+                const mrNoInput = document.getElementById('mrNoInput').value.trim();
+                const hashedMrNoField = document.getElementById('hashedMrNoInput');
+                
+                // Find the patient by `Mr_no`
+                const patient = patients.find(p => p.Mr_no === mrNoInput);
+                
+                if (patient) {
+                    hashedMrNoField.value = patient.hashedMrNo; // Set the hidden input with `hashedMrNo`
+                    
+                    // Show the loading GIF only if a patient is found
+                    document.getElementById('loadingContainer').style.display = 'flex';
+          
+                    this.submit(); // Submit the form after setting the hashed value
+                } else {
+                    alert('No matching patient found for the entered MR Number');
+                }
+            });
+          </script> -->
+
+
+<script>
+  document.querySelectorAll('.view-more-form').forEach(form => {
+    form.addEventListener('submit', function() {
+        // Show the loading GIF only for View More actions
+        document.getElementById('loadingContainer').style.display = 'flex';
+    });
+});
+
+</script>
+
+<script>
+  const patients = <%- JSON.stringify(patients) %>;
+
+  // Function to show the alert dialog with a custom message
+  function showAlertDialog(message) {
+      const dialog = document.getElementById('alertDialog');
+      const messageElement = document.getElementById('alertMessage');
+      
+      // Set the message
+      if (message) messageElement.textContent = message;
+      
+      // Show the dialog
+      dialog.classList.add('active');
+      
+      // Focus on the OK button
+      setTimeout(() => {
+          document.getElementById('alertOkBtn').focus();
+      }, 100);
+  }
+  
+  // Set up event listeners for the alert dialog
+  document.addEventListener('DOMContentLoaded', function() {
+      // First, check if the element already exists to avoid duplicates
+      if (!document.getElementById('alertDialog')) {
+          console.error('Alert dialog not found in the DOM');
+          return;
+      }
+  
+      // OK button
+      document.getElementById('alertOkBtn').addEventListener('click', function() {
+          document.getElementById('alertDialog').classList.remove('active');
+      });
+      
+      // Close when clicking outside the modal
+      document.getElementById('alertDialog').addEventListener('click', function(event) {
+          if (event.target === this) {
+              this.classList.remove('active');
+          }
+      });
+      
+      // Close on escape key
+      document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && document.getElementById('alertDialog').classList.contains('active')) {
+              document.getElementById('alertDialog').classList.remove('active');
+          }
+      });
+  });
+  
+  // Modify your search form event listener
+  document.getElementById('searchForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      
+      const mrNoInput = document.getElementById('mrNoInput').value.trim();
+      const hashedMrNoField = document.getElementById('hashedMrNoInput');
+      
+      // Find the patient by `Mr_no`
+      const patient = patients.find(p => p.Mr_no === mrNoInput);
+      
+      if (patient) {
+          hashedMrNoField.value = patient.hashedMrNo; // Set the hidden input with `hashedMrNo`
+          
+          // Show the loading GIF only if a patient is found
+          document.getElementById('loadingContainer').style.display = 'flex';
+  
+          this.submit(); // Submit the form after setting the hashed value
+      } else {
+          // Use the custom alert instead of the browser alert
+          showAlertDialog('No matching patient found for the entered MR Number');
+      }
+  });
+  </script>
+
+  <!-- HTML for the alert dialog - without the header -->
+  <div id="alertDialog" class="alert-overlay">
+    <div class="alert-modal">
+        <div class="alert-body">
+            <p id="alertMessage" class="alert-message">No matching patient found for the entered MR Number</p>
+        </div>
+        <div class="alert-footer">
+            <button id="alertOkBtn" class="alert-btn">OK</button>
+        </div>
+    </div>
+  </div>
+
+  
+</body>
+
+
+    
+</html>

@@ -1,0 +1,7 @@
+date,months_since_baseline,score,trace_name,title,ymin,ymax,event_date,event
+2025-01-03,1,29.6,Global-Health Physical,Global Physical Health Score,16,68,2025-01-08,Injection
+2025-04-03,4,37.4,Global-Health Physical,Global Physical Health Score,16,68,2025-04-03,Knee
+2025-01-03,1,31.3,Global-Health Mental,Global Mental Health Score,21,68,2025-01-08,Injection
+2025-04-03,4,33.8,Global-Health Mental,Global Mental Health Score,21,68,2025-04-03,Knee
+2025-01-03,1,12.5,PAID-5,PAID-5,0,25,2025-01-08,Injection
+2025-04-03,4,7.5,PAID-5,PAID-5,0,25,2025-04-03,Knee

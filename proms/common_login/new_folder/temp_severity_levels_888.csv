@@ -1,0 +1,8 @@
+Scale,Severity,Color,Chart_Range_Min,Chart_Range_Max,Actual_Range_Min,Actual_Range_Max
+WEXNER,Mild,#00ff00,0,5,0,4
+WEXNER,Moderate,#ffff00,5,9,5,8
+WEXNER,Severe,#ff0000,9,20,9,+
+EPDS,None - Minimal,#00ff00,0,10,0,9
+EPDS,Mild,#7fff00,10,13,10,12
+EPDS,Moderate,#ff7f00,13,15,13,15
+EPDS,Severe,#ff0000,15,30,16,+

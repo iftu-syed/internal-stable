@@ -1,0 +1,11 @@
+#midLevelChart1Container {
+    padding: 10px;
+}
+
+#midLevelChart1Container label {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    vertical-align: middle;
+}

@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Survey</title>
+    <link rel="stylesheet" href="<%= basePath %>/styles/styles.css">
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<%= basePath %>/css/introjs.min.css">
+    <style>
+        .survey-container {
+            display: flex;
+            width: 100%;
+        }
+        
+
+        .survey-column {
+            width: 60%; /* Adjust the width as necessary */
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            height: 500px;
+            overflow-y: auto;
+        }
+        
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .checkbox {
+            margin-top: 10px;
+        }
+
+        .submit-button {
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-button i {
+            margin-right: 5px;
+        }
+
+        .introjs-tooltipbuttons {
+    text-align: right; /* Align buttons to the right */
+
+}
+body[dir="rtl"] {
+      direction: rtl;
+      text-align: right;
+      font-family: "Arial", sans-serif;
+    }
+
+    body[dir="ltr"] {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .language-selector {
+      text-align: right;
+    }
+
+    .language-selector a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: #007BFF;
+    }
+
+    .language-selector a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .language-selector img {
+      margin-right: 5px;
+      width: 20px;
+      height: auto;
+      vertical-align: bottom;
+    }
+.help-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.help-btn:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+}
+
+
+.help-button-container {
+    position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #12171e;
+  padding: 12px 0;
+  transition: all 0.5s ease;
+}
+
+/* Ensure the button aligns well with sidebar's active state */
+.sidebar.active .help-btn {
+    color: #fff;
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+}
+/* .survey-column:hover {
+    transform: translateY(-5px);} /* Hover effect for interactivity */
+
+    .tabs {
+    display: flex;
+    justify-content: flex-start; /* Align tabs to the left */
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+.survey-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.survey-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 1rem;
+    flex: 1;
+}
+.survey-card {
+    width: 300px;        /* Fixed width */
+    height: 185px;       /* Fixed height */
+    overflow-y: auto;    /* Enables scrolling if content exceeds height */
+    box-sizing: border-box; /* Ensures padding/border are included in the width/height */
+}
+
+.extra-container {
+    width: 315px;        /* Fixed width */
+    height: 185px;       /* Fixed height */
+    overflow-y: auto;    /* Enables scrolling if content exceeds height */
+    box-sizing: border-box;
+}
+
+
+.extra-container {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1rem;
+    /* min-width: 250px; */
+}
+
+/* Fix the month selector layout */
+.markers-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Ensure buttons align in the center */
+    width: 100%;
+    gap: 5px; /* Add spacing between month selectors */
+}
+
+/* Ensure timeline markers (month buttons) are inline */
+.timeline-marker {
+    background-color: #e2e8f0;
+    width: 2.5rem; /* Make sure it's wide enough */
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #fff;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Make sure the container doesn't expand unnecessarily */
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Month labels (Baseline, 1 month, etc.) should align properly */
+.label-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.85rem;
+    color: #4a5568;
+    margin-top: 5px;
+}
+
+/* Fix the extra-container to align properly */
+.extra-container {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1rem;
+    align-self: flex-start; /* Keep it aligned */
+}
+
+/* Ensure selected month badges are inline */
+.month-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+
+.green-tick {
+    background-color: #4caf50 !important;
+    color: white;
+    font-weight: bold;
+}
+
+.green-tick::after {
+    content: "✓";
+    font-size: 1rem;
+    animation: tickFadeIn 0.3s ease-in-out;
+}
+
+/* .month-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(80px, 1fr));
+    gap: 6px;
+    padding: 8px;
+} */
+
+.month-item {
+    font-size: 14px;
+    color: #333;
+    background: #f1f8ff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.marker-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    color: #4a5568;
+}
+
+
+        .tab {
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .tab:hover {
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+        }
+
+        .tab.active {
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            color:black;
+        }
+        #editSpecialtyHeader {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333333;
+    text-align: left; /* Align to the left */
+    margin-bottom: 20px;
+}
+
+.form-containers{
+        /* max-width: 60%; */
+        /* min-height: 75vh; */
+        width: 100%;
+        /* margin: auto; */
+        /* padding: 20px; */
+        /* border: 1px solid #ddd; */
+        border-radius: 10px;
+        /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        text-align: left;
+      }
+
+.specialty-value {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #4CAF50; /* Change the color to match the primary color */
+    background-color: #f1f1f1; /* Subtle background color */
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+p {
+    text-align: left;  /* Align the paragraph text to the left */
+    margin: 0;         /* Remove any default margin */
+}
+
+
+/* Hover effect for the specialty value */
+.specialty-value:hover {
+    color: #fff;
+    background-color: #4CAF50; /* Accent color when hovered */
+}
+
+.survey-content {
+            flex-grow: 1;
+            padding: 20px;
+            background: white;
+            margin-top: 20px;
+            border-radius: 8px;
+            margin-inline: auto;
+            width: 85%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        /* Container for the entire form */
+.survey-container {
+    gap: 20px;
+}
+
+/* Styling for both survey selection columns */
+.survey-column {
+    width: 50%; /* Adjust the width if needed */
+    background-color: #F9FAFB;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    height: 500px;
+    overflow-y: auto;
+}
+
+/* Styling for the search input fields */
+.survey-column input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Survey titles */
+.survey-column h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Checkbox container styling */
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    padding: 5px;
+    cursor: pointer;
+}
+
+/* Checkbox input */
+.checkbox input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+/* Checkbox labels */
+.checkbox label {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Buttons styling */
+.submit-button, .edit-btn {
+    padding: 12px 18px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Save button */
+.submit-button {
+    background-color: #CBFCC6;
+    color: white;
+}
+
+/* Cancel button */
+.edit-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Hover effects */
+.submit-button:hover {
+    background-color: #1e4db7;
+}
+
+.edit-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .survey-container {
+        flex-direction: column;
+    }
+    .survey-column {
+        width: 100%;
+    }
+}
+
+.timeline-container {
+        margin-top: 24px; /* mt-6 */
+        }
+        .tab.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#flashMessage {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    z-index: 9999; /* Ensures it's always on top */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+
+        <div class="user">
+           <div>
+                <p class="bold" style="text-align: center;" id="adminRole">Admin</p>
+                <p class="bold" style="text-align: center;"><%= hospitalName %></p>
+                <p class="bold" style="text-align: center;"><%= site_code %></p>
+                <hr class="spacer">
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a href="http://localhost/hospitaladmin/admin-dashboard">
+                    <i class="bx bxs-grid-alt"></i>
+                    <span class="nav-item" id="dashboardLabel">Admin Dashboard</span>
+                </a>
+                <span class="tooltip" id="dashboardTooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="http://localhost/manageproviders">
+                    <i class='bx bx-group'></i>
+                    <span class="nav-item" id="manageProviders">Manage Providers</span>
+                </a>
+                <span class="tooltip" id="allProviders">All Providers</span>
+            </li>
+            <li>
+                <a href="<%= basePath %>/">
+                    <i class='bx bx-book-content'></i>
+                    <span class="nav-item" id="manageSurveys">Manage Surveys</span>
+                </a>
+                <span class="tooltip" id="allSurveys">All Surveys</span>
+            </li>
+            <li>
+                <a href="<%= basePath %>/add">
+                    <i class='bx bx-folder-plus'></i>
+                    <span class="nav-item" id="addSpecialty">Add New Specialty</span>
+                </a>
+                <span class="tooltip" id="newSpecialty">New Specialty</span>
+            </li>
+            <li>
+                <a href="http://localhost/hospitaladmin/perf-dashboard">
+                    <i class='bx bxs-report'></i>
+                    <span class="nav-item" id="viewReports">View Reports</span>
+                </a>
+                <span class="tooltip" id="reports">Reports</span>
+            </li>
+            <li>
+                <a href="http://localhost/hospitaladmin/">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item" id="logoutLabel">Logout</span>
+                </a>
+                <span class="tooltip" id="logoutTooltip">Logout</span>
+            </li>
+        </ul>
+        <div class="help-button-container">
+            <button id="helpButton" class="help-btn">
+                <span class="nav-item" id="helpLabel">Help </span>
+                <i class='bx bx-help-circle'></i>
+            </button>
+            
+        
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+            <!-- <h2 id="welcomeAdmin">Welcome, <%= firstName %> <%= lastName %></h2> -->
+            <h2 style="color: #333333;">
+                <%= lng === 'ar' 
+                    ? `مرحباً , ${firstName} ${lastName}` 
+                    : `Welcome, ${firstName} ${lastName}` 
+                %>
+            </h2>
+            <div class="language-selector" style="text-align: right; padding: 10px;">
+                <a href="?lng=en" class="<%= lng === 'en' ? 'active' : '' %>">
+                    <img src="<%= basePath %>/assets/usa.png" alt="English Flag">English
+                </a> |
+                <a href="?lng=ar" class="<%= lng === 'ar' ? 'active' : '' %>">
+                    <img src="<%= basePath %>/assets/flag.png" alt="Arabic Flag">العربية
+                </a>
+              </div>
+        </div>
+
+        <hr style="opacity: 0.5;">
+        <div id="flashMessage" style="display:none; background-color:#f8d7da; color:#721c24; border:1px solid #f5c6cb; padding:10px; border-radius:5px; margin-bottom:15px;"></div>
+
+        
+          <div class="survey-content">
+          <h2 dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>" id="editSpecialtyHeader" style="color: #333333;">
+              Editing Specialty: <span id="specialtyValue" class="specialty-value"><%= survey.specialty %></span>
+          </h2>
+          <p>Edit specialty details, assign or remove PROMs surveys, and set the frequency for each survey to match your specialty's requirements.</p>
+          <br>          
+        <div class="tabs">
+            <div class="tab active" data-tab="tab1">Assign/Remove Surveys</div>
+            <div class="tab" data-tab="tab2">Set Survey Frequencies</div>
+        </div>
+        <div id="tab1" class="tab-content active">
+        <div class="form-containers" data-title="Edit Speciality" data-intro="This for is for editing the speciality.">
+            <form id="surveyForm" action="<%= basePath %>/edit/<%= survey._id %>" method="POST" onsubmit="return submitSelectedSurveys()">
+                <!-- Hidden inputs for hospital_code and site_code -->
+                <input type="hidden" name="specialty" value="<%= survey.specialty %>">
+                <input type="hidden" name="hospital_code" value="<%= survey.hospital_code %>">
+                <input type="hidden" name="site_code" value="<%= survey.site_code %>">
+
+
+                <!-- Surveys section with two columns -->
+                <div class="survey-container" data-title="Assign/Remove Surveys" data-intro="You can assign/remove surveys of the speciality in this section.">
+                    <!-- API Survey Column -->
+                    <div class="survey-column" id="apiSurveyGroup">
+                        <input type="text" id="apiSurveySearch" onkeyup="filterSurveys('apiSurveySearch', 'apiSurveyGroup')" placeholder="Search API Surveys..." dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>"><hr class="spacer">
+                        <h3 id="selectApiSurveysHeader">Select API Surveys:</h3>
+                        <% apiSurveys.forEach(apiSurvey => { %>
+                            <div class="checkbox">
+                                <input type="checkbox" id="apiSurvey_<%= apiSurvey.form_id %>" name="apiSurvey" value="<%= apiSurvey.form_id %>"
+                                data-selected-months="<%= JSON.stringify(apiSurvey.selected_months || []) %>"
+                                <%= survey.API && survey.API.some(s => s.id === apiSurvey.form_id) ? 'checked' : '' %>>
+                                <label for="apiSurvey_<%= apiSurvey.form_id %>"><%= apiSurvey.survey_name %></label>
+                            </div>
+                        <% }); %>                        
+                    </div>
+
+                    <!-- Custom Survey Column -->
+                    <div class="survey-column" id="customSurveyGroup">
+                        <input type="text" id="customSurveySearch" onkeyup="filterSurveys('customSurveySearch', 'customSurveyGroup')" placeholder="Search Custom Surveys..." dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>"><hr class="spacer">
+                        <h3 id="selectCustomSurveysHeader">Select Custom Surveys:</h3>
+                        <% allSurveys.forEach(customSurvey => { %>
+                            <div class="checkbox">
+                                <input type="checkbox" id="customSurvey_<%= customSurvey._id %>" name="customSurvey" 
+                                value="<%= customSurvey.surveyName %>"
+                                data-selected-months="<%= JSON.stringify(customSurvey.selected_months || []) %>"
+                                <%= survey.custom && survey.custom.includes(customSurvey.surveyName) ? 'checked' : '' %>>
+                                <label for="customSurvey_<%= customSurvey._id %>"><%= customSurvey.surveyName %></label>
+                            </div>
+                        <% }); %>                        
+                    </div>
+                </div>
+
+            
+                <input type="hidden" name="customSurveyData" id="customSurveyData"> <!-- Will store custom data -->
+                <input type="hidden" name="apiSurveyData" id="apiSurveyData"> <!-- Will store API data -->
+                <input type="hidden" name="surveyData" id="surveyData"> <!-- Stores selected months -->
+
+            
+
+                
+        </div>
+        <div class="form-group" style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px;">
+            <a href="<%= basePath %>/">
+                <button id="cancelButton" type="button" class="edit-btn" style="background-color: #f0ad4e; color: #fff; transition: background-color 0.3s" onmouseover="this.style.backgroundColor='#ec971f'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.2)';" onmouseout="this.style.backgroundColor='#f0ad4e'; this.style.boxShadow='none';">
+                  <i class='bx bx-edit-alt'></i> Cancel
+                </button>
+              </a>
+              
+              <div class="form-group">
+                <button id="addButton" type="button" class="submit-button" style="margin-top: 0px; background-color:#007BFF;"><i class='bx bx-book-add' ></i> Add</button>
+            </div>
+        </div>
+        </div>
+        <div id="tab2" class="tab-content">
+        
+            <div id="selectedSurveysList"></div>
+            <div class="form-group" style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px;">
+                <a href="<%= basePath %>/">
+                    <button id="cancelButton" type="button" class="edit-btn" style="background-color: #f0ad4e; color: #fff; transition: background-color 0.3s" onmouseover="this.style.backgroundColor='#ec971f'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.2)';" onmouseout="this.style.backgroundColor='#f0ad4e'; this.style.boxShadow='none';">
+                      <i class='bx bx-edit-alt'></i> Cancel
+                    </button>
+                  </a>
+                  
+                  <button id="saveChangesButton" type="submit" class="submit-button" style="margin-top: 0px;"><i class='bx bx-save'></i> Save Changes</button>
+
+            </div>
+        
+        </div>
+        
+        
+
+        
+    </form>
+    </div>
+    </div>
+
+    <script src="<%= basePath %>/js/intro.min.js"></script>
+    <script>
+        document.getElementById('helpButton').addEventListener('click', function () {
+    // Determine the current language (default to English)
+    const lang = new URLSearchParams(window.location.search).get('lng') || getCookie('lng') || 'en';
+
+    // Define translations for the steps
+    const translations = {
+        en: {
+            step1: "This form is for editing the speciality.",
+            step2: "You can assign or remove surveys of the speciality in this section.",
+            step3: "Save the changes after editing the speciality."
+        },
+        ar: {
+            step1: "هذا النموذج مخصص لتحرير التخصص.",
+            step2: "يمكنك تعيين أو إزالة الاستبيانات الخاصة بالتخصص في هذا القسم.",
+            step3: "احفظ التغييرات بعد تحرير التخصص."
+        }
+    };
+
+    // Define the steps for Intro.js
+    const introSteps = [
+        {
+            element: '.form-containers', // Form for editing speciality
+            intro: translations[lang].step1
+        },
+        {
+            element: '.survey-container', // Section for assigning/removing surveys
+            intro: translations[lang].step2
+        },
+        {
+            element: '#saveChangesButton', // Save button
+            intro: translations[lang].step3
+        }
+    ];
+
+    // Initialize and start Intro.js with dynamic labels for buttons
+    introJs()
+        .setOptions({
+            steps: introSteps,
+            rtl: lang === 'ar', // Enable RTL if the language is Arabic
+            nextLabel: lang === 'ar' ? 'التالي' : 'Next',
+            prevLabel: lang === 'ar' ? 'السابق' : 'Back',
+            doneLabel: lang === 'ar' ? 'تم' : 'Done'
+        })
+        .start();
+});
+
+// Helper function to retrieve a cookie value by name
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+        
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  };
+  const params = new URLSearchParams(window.location.search);
+  let currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+
+  // Set the language cookie
+  document.cookie = `lng=${currentLanguage}; path=/`;
+          const fetchUrl = `/surveyapp/locales/${currentLanguage}/translation.json`;
+
+      
+          // Set the `lang` and `dir` attributes for the HTML document
+        //   document.documentElement.lang = currentLanguage;
+        //   document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+      
+          fetch(fetchUrl)
+            .then(response => {
+              if (!response.ok) {
+                console.warn(`Translation file not found for language: ${currentLanguage}. Falling back to English.`);
+                return fetch(`/hospitaladmin/locales/en/translation.json`);
+              }
+              return response.json();
+            })
+            .then(translations => {
+              console.log('Loaded translations:', translations);
+      
+              // Update the elements based on translation keys
+              Object.keys(translations).forEach(id => {
+                const element = document.getElementById(id);
+      
+                if (element) {
+                    const translationValue = translations[id];
+
+                    if (typeof translationValue === 'string') {
+                        // Update regular text or HTML content
+                        element.innerHTML = translationValue;
+                    }
+                      if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+
+                        // Update placeholders for input elements
+
+                        console.log(`Updating placeholder for ${id}:`, translationValue);
+
+                        element.placeholder = translationValue;
+
+                      }
+                    else if (typeof translationValue === 'object') {
+                                            // Handle nested object (e.g., lists)
+                                            element.innerHTML = ''; // Clear existing content
+                                            Object.values(translationValue).forEach(item => {
+                                                const listItem = document.createElement('li');
+                                                listItem.textContent = item;
+                                                element.appendChild(listItem);
+                                            });
+                    } else {
+                        console.warn(`Unexpected translation value type for "${id}":`, translationValue);
+                    }
+                }
+              });
+            })
+            .catch(error => console.error('Error loading translations:', error));
+        });
+      </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+
+            function removeCurrentPageClasses() {
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('CurrentPage');
+                });
+            }
+
+            function setCurrentPageLink(path) {
+                removeCurrentPageClasses();
+                const currentPageLink = Array.from(sidebarLinks).find(link => {
+                    const linkPath = new URL(link.href).pathname;
+                    return linkPath === path;
+                });
+                if (currentPageLink) {
+                    currentPageLink.classList.add('CurrentPage');
+                }
+            }
+
+            const currentPath = window.location.pathname;
+            setCurrentPageLink(currentPath);
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const targetPath = new URL(link.href).pathname;
+                    setCurrentPageLink(targetPath);
+                });
+            });
+        });
+
+        // Function to get selected checkboxes
+        function getSelectedCheckboxes(checkboxName) {
+            const checkboxes = document.querySelectorAll(`input[name="${checkboxName}"]:checked`);
+            const selected = [];
+            checkboxes.forEach(checkbox => {
+                const label = document.querySelector(`label[for="${checkbox.id}"]`);
+
+                if (checkboxName === 'apiSurvey') {
+                    selected.push({
+                        name: label.innerText,
+                        id: checkbox.value
+                    });
+                } else {
+                    selected.push(label.innerText);
+                }
+            });
+            return selected;
+        }
+
+        
+
+        function filterSurveys(searchInputId, surveyGroupId) {
+            const input = document.getElementById(searchInputId);
+            const filter = input.value.toLowerCase();
+            const surveyGroup = document.getElementById(surveyGroupId);
+            const checkboxes = surveyGroup.getElementsByClassName('checkbox');
+
+            for (let i = 0; i < checkboxes.length; i++) {
+                const label = checkboxes[i].getElementsByTagName('label')[0];
+                const textValue = label.textContent || label.innerText;
+
+                if (textValue.toLowerCase().indexOf(filter) > -1) {
+                    checkboxes[i].style.display = "";
+                } else {
+                    checkboxes[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+       <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+    </script>
+    <script>
+       document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll(".tab");
+    const addButton = document.getElementById("addButton");
+    const tab1 = document.querySelector(".tab[data-tab='tab1']");
+    const tab2 = document.querySelector(".tab[data-tab='tab2']");
+    
+    let tab2Unlocked = false; // Flag to track whether tab2 is accessible
+
+    // Initially disable Tab 2 navigation
+    tab2.classList.add("disabled");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", function (event) {
+            if (tab.classList.contains("disabled")) {
+                event.preventDefault();
+                return;
+            }
+
+            // Handle normal tab switching
+            document.querySelector(".tab.active").classList.remove("active");
+            document.querySelector(".tab-content.active").classList.remove("active");
+
+            tab.classList.add("active");
+            document.getElementById(tab.getAttribute("data-tab")).classList.add("active");
+
+            // If user switches back to Tab 1, disable Tab 2 again
+            if (tab === tab1) {
+                tab2.classList.add("disabled");
+                tab2Unlocked = false;
+            }
+        });
+    });
+
+    addButton.addEventListener("click", function () {
+        const apiSelected = getSelectedCheckboxes("apiSurvey");
+        const customSelected = getSelectedCheckboxes("customSurvey");
+
+        if (apiSelected.length === 0 && customSelected.length === 0) {
+            alert("Please select at least one survey.");
+            return;
+        }
+
+        document.getElementById("apiSurveyData").value = JSON.stringify(apiSelected);
+        document.getElementById("customSurveyData").value = JSON.stringify(customSelected);
+
+        // Enable Tab 2 and allow switching to it
+        tab2.classList.remove("disabled");
+        tab2Unlocked = true;
+
+        // Move to Tab 2
+        document.querySelector(".tab.active").classList.remove("active");
+        document.querySelector(".tab-content.active").classList.remove("active");
+
+        tab2.classList.add("active");
+        document.getElementById("tab2").classList.add("active");
+
+        renderTimelineMarkers();
+    });
+
+    const surveyData = <%- JSON.stringify(survey) %>;
+            const selectedSurveysList = document.getElementById("selectedSurveysList");
+            function initializeSelectedMonths() {
+    document.querySelectorAll('.timeline-marker').forEach(marker => {
+        const surveyId = marker.getAttribute('data-survey-id');
+        const month = parseInt(marker.getAttribute('data-month'));
+
+        // Find the matching survey from surveyData
+        const survey = surveyData.surveys.find(s => 
+            s.survey_id === surveyId || s.survey_name === surveyId
+        );
+
+        if (survey && survey.selected_months.includes(month)) {
+            marker.classList.add('green-tick');
+            marker.innerHTML = ""; // Show tick
+            marker.setAttribute("data-selected", "true"); // Prevent re-selection
+        }
+    });
+}
+
+
+
+function renderTimelineMarkers() {
+    selectedSurveysList.innerHTML = "";
+    const months = Array.from({ length: 13 }, (_, i) => i);
+    const monthLabels = ["Baseline", "1 months", "2 months", "3 months", "4 months", "5 months", "6 months", "7 months", "8 months", "9 months", "10 months", "11 months", "12 months"];
+
+    // Combine both survey types into one array
+    const allSurveys = [...getSelectedCheckboxes("apiSurvey"), ...getSelectedCheckboxes("customSurvey")];
+
+    allSurveys.forEach(survey => {
+        const isApiSurvey = survey.hasOwnProperty('id');
+        // Get preselected months from survey data and initialize currentMonths as a mutable copy.
+        const preSelectedMonths = surveyData.surveys.find(s => s.survey_name === survey.name)?.selected_months.map(m => parseInt(m, 10)) || [];
+        const currentMonths = [...preSelectedMonths];
+
+        const surveyRow = document.createElement("div");
+        surveyRow.className = "survey-row";
+
+        const card = document.createElement("div");
+        card.className = "survey-card";
+        if (survey.id) {
+            // API Survey
+            card.setAttribute('data-survey-id', survey.id);
+            card.setAttribute('data-survey-name', survey.name);
+            card.setAttribute('data-survey-type', 'api');
+        } else {
+            // Custom Survey
+            card.setAttribute('data-survey-id', 'custom');
+            card.setAttribute('data-survey-name', survey);
+            card.setAttribute('data-survey-type', 'custom');
+        }
+
+        const surveyTitle = document.createElement("h2");
+        surveyTitle.className = "survey-title";
+        surveyTitle.innerText = `Select month(s) to send ${survey.name} survey.`;
+
+        const timelineContainer = document.createElement("div");
+        timelineContainer.className = "timeline-container";
+
+        const markersWrapper = document.createElement("div");
+        markersWrapper.className = "markers-wrapper";
+
+        months.forEach(m => {
+            const markerWrapper = document.createElement("div");
+            markerWrapper.className = "marker-wrapper";
+
+            const markerBtn = document.createElement("button");
+            markerBtn.className = "timeline-marker";
+            markerBtn.setAttribute("data-month", m);
+            
+            markerBtn.innerHTML = `<span>${m}</span>`;
+
+            // If month is already selected, mark it as active.
+            if (preSelectedMonths.includes(m)) {
+                markerBtn.classList.add("green-tick");
+                markerBtn.innerHTML = ""; // Show tick instead of month number
+            }
+
+            // Pass the currentMonths array into toggleMarker.
+            markerBtn.addEventListener("click", function (e) {
+                toggleMarker(e, surveyRow, currentMonths);
+            });
+
+            const markerLabel = document.createElement("div");
+            markerLabel.className = "marker-label";
+            markerLabel.innerText = monthLabels[m];
+
+            markerWrapper.appendChild(markerBtn);
+            markerWrapper.appendChild(markerLabel);
+            markersWrapper.appendChild(markerWrapper);
+        });
+
+        timelineContainer.appendChild(markersWrapper);
+        card.appendChild(surveyTitle);
+        card.appendChild(timelineContainer);
+        
+
+        const detailsContainer = document.createElement("div");
+        detailsContainer.className = "extra-container";
+        detailsContainer.innerHTML = `<h3>Survey Details</h3><div class="selected-months-list"></div>`;
+
+        // Initialize the extra container with the preselected months.
+        updateExtraContainerList(detailsContainer.querySelector(".selected-months-list"), currentMonths);
+
+        surveyRow.appendChild(card);
+        surveyRow.appendChild(detailsContainer);
+        selectedSurveysList.appendChild(surveyRow);
+    });
+}
+
+
+            
+function toggleMarker(event, surveyRow, currentMonths) {
+    const marker = event.currentTarget;
+    const detailsContainer = surveyRow.querySelector(".extra-container .selected-months-list");
+    const month = parseInt(marker.getAttribute("data-month"), 10);
+
+    // If marker is already selected, unselect it.
+    if (marker.classList.contains("green-tick")) {
+        marker.classList.remove("green-tick");
+        marker.innerHTML = `<span>${month}</span>`;
+        const index = currentMonths.indexOf(month);
+        if (index !== -1) {
+            currentMonths.splice(index, 1);
+        }
+    } else {
+        // If marker is not selected, add it (if not already present)
+        if (currentMonths.indexOf(month) === -1) {
+            marker.classList.add("green-tick");
+            marker.innerHTML = ""; // Show tick
+            currentMonths.push(month);
+        }
+    }
+
+    // Sort the current selections and update the extra container.
+    const sortedMonths = [...currentMonths].sort((a, b) => a - b);
+    updateExtraContainerList(detailsContainer, sortedMonths);
+}
+
+function updateExtraContainerList(container, months) {
+    container.innerHTML = "";
+    if (months.length === 0) {
+        container.innerHTML = "<p style='color: gray;'>No months selected.</p>";
+        return;
+    }
+    const grid = document.createElement("div");
+    grid.className = "month-grid";
+    months.forEach(month => {
+        const div = document.createElement("div");
+        div.className = "month-item";
+        // Adjust the text as needed
+        div.innerHTML = `<i class='bx bx-check-circle'></i> ${month}${month !== 1 ? ' months' : ' month'}`;
+        grid.appendChild(div);
+    });
+    container.appendChild(grid);
+}
+
+
+function getSelectedCheckboxes(checkboxName) {
+    const selected = [];
+    const checkboxes = document.querySelectorAll(`input[name="${checkboxName}"]:checked`);
+
+    checkboxes.forEach(checkbox => {
+        const label = document.querySelector(`label[for="${checkbox.id}"]`);
+        if (checkboxName === 'apiSurvey') {
+            selected.push({
+                name: label.innerText,
+                id: checkbox.value
+            });
+        } else if (checkboxName === 'customSurvey') {
+            selected.push({
+                name: label.innerText,
+                id: 'custom' 
+            });
+        }
+    });
+
+    return selected;
+}       
+    
+});
+
+       
+function submitSelectedSurveys(event) {
+    event.preventDefault(); // Important: prevent default form submission
+
+    const cards = document.querySelectorAll("#selectedSurveysList .survey-card");
+    const apiData = [];
+    const customData = [];
+    const surveyDataArray = [];
+    let validationFailed = false;
+
+    cards.forEach(card => {
+        const surveyName = card.getAttribute('data-survey-name');
+        const surveyId = card.getAttribute('data-survey-id');
+
+        const selectedMarkers = card.querySelectorAll(".green-tick");
+        const months = Array.from(selectedMarkers).map(btn => parseInt(btn.getAttribute("data-month")));
+
+        if (months.length === 0) {
+            validationFailed = true;
+            showFlashMessage(`Please select at least one month for the survey "${surveyName}".`);
+            return false; // Exit loop immediately if validation fails
+        }
+
+        const formattedMonths = months.map(month => month === 0 ? "0 months" : `${month} months`);
+
+        surveyDataArray.push({
+            survey_name: surveyName,
+            selected_months: formattedMonths
+        });
+
+        if (surveyId === "custom") {
+            customData.push(surveyName);
+        } else {
+            apiData.push({
+                name: surveyName,
+                id: surveyId
+            });
+        }
+    });
+
+    if (!validationFailed) {
+        document.getElementById("apiSurveyData").value = JSON.stringify(apiData);
+        document.getElementById("customSurveyData").value = JSON.stringify(customData);
+        document.getElementById("surveyData").value = JSON.stringify(surveyDataArray);
+
+        document.getElementById("surveyForm").submit();
+    }
+}
+
+// Flash message function
+function showFlashMessage(message) {
+    const flash = document.getElementById('flashMessage');
+    flash.innerText = message;
+    flash.style.display = 'block';
+
+    // Automatically hide flash message after 3 seconds
+    setTimeout(() => {
+        flash.style.display = 'none';
+    }, 3000);
+}
+
+
+document.getElementById("surveyForm").addEventListener("submit", submitSelectedSurveys);
+   
+</script>
+    
+</body>
+</html>

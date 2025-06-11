@@ -1,0 +1,11 @@
+Scale,Severity,Color,Chart_Range_Min,Chart_Range_Max,Actual_Range_Min,Actual_Range_Max
+Global-Health Physical,Excellent,#00ff00,58,68,59,67.7
+Global-Health Physical,Very Good,#7fff00,50,58,51,58
+Global-Health Physical,Good,#ffff00,42,50,43,50
+Global-Health Physical,Fair,#ff7f00,35,42,36,42
+Global-Health Physical,Poor,#ff0000,16,35,16.2,35
+Global-Health Mental,Excellent,#00ff00,56,68,57,67.7
+Global-Health Mental,Very Good,#7fff00,48,56,49,56
+Global-Health Mental,Good,#ffff00,40,48,41,48
+Global-Health Mental,Fair,#ff7f00,29,40,30,40
+Global-Health Mental,Poor,#ff0000,21,29,21.2,29

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeHealthify API Documentation</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding-top: 20px;
+    }
+    pre {
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-primary">WeHealthify - Patient Reported Outcome Measures API</h1>
+    <p class="lead">This documentation provides detailed information about how to use the WeHealthify API to manage patient-related information securely.</p>
+
+    <hr>
+
+    <h2 class="mt-4">How to Use This API</h2>
+
+    <h3>What is This API For?</h3>
+    <p>This API allows applications to:</p>
+    <ul>
+      <li>Authenticate clients and generate tokens.</li>
+      <li>Refresh access tokens when they expire.</li>
+      <li>Validate tokens to ensure secure communication.</li>
+      <li>Manage patient data (add, update, retrieve, and delete patient records).</li>
+    </ul>
+
+    <hr>
+
+    <h3>Getting Started</h3>
+    <h4>Base URLs</h4>
+    <p>Depending on your requirement, use one of the following base URLs:</p>
+    <ul>
+      <li><strong>API Connection Server:</strong> <code>http://localhost:3005</code> - For connecting to the API.</li>
+      <li><strong>Patient Server:</strong> <code>http://localhost/staff/api/v1</code> - For patient related operations.</li>
+    </ul>
+
+    <hr>
+
+    <h3>Authentication</h3>
+    <p>This API uses <strong>JWT (JSON Web Token)</strong> for authentication. Follow these steps:</p>
+    <ol>
+      <li>Call the <code>/token</code> endpoint with valid client credentials to obtain your tokens.</li>
+      <li>Include the <code>accessToken</code> in the <code>Authorization</code> header of subsequent requests.</li>
+    </ol>
+
+    <h4>Example Authentication Request</h4>
+    <pre><code>curl -X POST http://localhost:3005/token \
+-H "Content-Type: application/json" \
+-d '{
+    "clientId": "your-client-id",
+    "clientSecret": "your-client-secret"
+}'</code></pre>
+
+    <h4>Example Response</h4>
+    <pre><code>{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "expiresIn": 3600,
+  "refreshExpiresIn": 2592000
+}</code></pre>
+
+    <hr>
+
+    <h3>Endpoints</h3>
+    <h4>Authentication Endpoints</h4>
+    <ul>
+      <li><strong>Generate Tokens:</strong> <code>/token</code></li>
+      <li><strong>Refresh Tokens:</strong> <code>/refresh-token</code></li>
+      <li><strong>Validate Tokens:</strong> <code>/validate</code></li>
+    </ul>
+
+    <h4>Patient Management Endpoints</h4>
+    <ul>
+      <li><strong>Add Appointment:</strong> <code>/add-appointment</code></li>
+      <li><strong>Update Patient:</strong> <code>/update</code></li>
+      <li><strong>Get Patient:</strong> <code>/get-patient</code></li>
+      <li><strong>Delete Patient:</strong> <code>/delete-patient</code></li>
+    </ul>
+
+    <hr>
+
+    <h3>Detailed Steps to Use the API</h3>
+    <ol>
+      <li><strong>Authenticate:</strong> Call <code>/token</code> to get your tokens.</li>
+      <li><strong>Call Secured Endpoints:</strong> Use <code>accessToken</code> in the <code>Authorization</code> header.</li>
+      <li><strong>Refresh Tokens:</strong> Use <code>/refresh-token</code> when <code>accessToken</code> expires.</li>
+      <li><strong>Validate Tokens:</strong> Use <code>/validate</code> to check token validity.</li>
+    </ol>
+
+    <hr>
+
+    <h3>Common Errors and Solutions</h3>
+    <dl>
+      <dt>401 Unauthorized</dt>
+      <dd>Cause: Missing or invalid <code>accessToken</code>. Solution: Ensure the token is included in the <code>Authorization</code> header.</dd>
+      <dt>400 Bad Request</dt>
+      <dd>Cause: Missing required fields. Solution: Double-check the request body.</dd>
+      <dt>500 Internal Server Error</dt>
+      <dd>Cause: Server issue. Solution: Retry or contact support.</dd>
+    </dl>
+
+    <hr>
+
+    <h3>Support</h3>
+    <p>If you have questions or encounter issues, contact us at <a href="mailto:admin@giftysolutions.com">admin@giftysolutions.com</a>.</p>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Hospital and Sites</title>
+    <!-- Updated stylesheet link to include basePath -->
+    <link rel="stylesheet" href="<%= basePath %>/styles/styles.css"> 
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+/* .main-content {
+    padding: 20px;
+} */
+
+#hospital-list {
+    max-height: 80vh; /* Adjust height as needed */
+    overflow-y: auto; /* Enables scrolling inside the container */
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.topbar {
+    display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1rem;
+}
+
+.hospital-container {
+            background: white;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hospital-logo {
+            width: 120px;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .hospital-details {
+            text-align: left;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .hospital-details h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .hospital-details p {
+            margin: 5px 0;
+        }
+
+        .download-btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .download-btn i {
+            margin-left: 5px;
+            font-size: 18px;
+        }
+
+h3 {
+    text-align: center;
+    margin-bottom: 10px; /* Reduced margin-bottom for headings */
+    font-weight: 600;
+    color: #333;
+}
+
+
+
+.full-width {
+    width: 100%;
+}
+
+
+
+@media (max-width: 600px) {
+    .form-group {
+        flex-direction: column;
+    }
+
+    .column {
+        width: 100%;
+    }
+}
+
+</style>
+
+</head>
+<body>
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <!-- Updated image source to include basePath -->
+                <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn" style="color: #fff; font-size: 24px;"></i>
+        </div>
+
+        <div class="user">
+            <div>
+                <p class="bold">Hospital</p>
+                <hr class="spacer">
+            </div>
+        </div>
+        <ul>
+            
+        </ul>
+    </div>
+    
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+        <div class="topbar">
+            <h2 style="color: #333333;">Hospital Directory</h2>
+        </div>
+        
+        
+        <div id="hospital-list">
+            <!-- Hospital records will be dynamically inserted here -->
+        </div>
+        
+    </div>
+    <script>
+        // Fetch hospital data from API
+        async function fetchHospitals() {
+            try {
+                let response = await fetch('<%= basePath %>/api/hospitals'); // Replace with actual API endpoint
+                let hospitals = await response.json();
+                displayHospitals(hospitals);
+            } catch (error) {
+                console.error("Error fetching hospital data:", error);
+            }
+        }
+
+        // Display hospitals dynamically
+        function displayHospitals(hospitals) {
+    const container = document.getElementById('hospital-list');
+    container.innerHTML = ''; // Clear existing content
+
+    hospitals.forEach(hospital => {
+        let logoPath = hospital.hospitalLogo 
+        ? `<%= basePath %>/${hospital.hospitalLogo}`  // Ensure full URL path
+        : "<%= basePath %>/assets/uploads/default-logo.png";
+
+        let patientDataFile = hospital.patientDataFile 
+        ? `<%= basePath %>/${hospital.patientDataFile}`  // Ensure full URL path
+        : "Not Available";
+        // Check if fields exist, otherwise set empty values
+        let specialtiesHtml = hospital.specialties && hospital.specialties.length
+            ? hospital.specialties.map(spec => `<strong>${spec.name}:</strong> ${spec.surveys.join(", ")}`).join("<br>")
+            : "<i>No Specialties Assigned</i>";
+
+        let usersHtml = hospital.users && hospital.users.length
+            ? hospital.users.map(user => `
+                <strong>First Name:</strong> ${user.firstName}<br>
+                <strong>Last Name:</strong> ${user.lastName}<br>
+                <strong>Phone Number:</strong> ${user.phoneNumber}<br>
+                <strong>Email:</strong> ${user.email}<br><br>
+            `).join("")
+            : "<i>No PROMs Leads Assigned</i>";
+
+
+        let doctorsHtml = hospital.doctors && hospital.doctors.length
+            ? hospital.doctors.map(doctor => `<strong>${doctor.firstName} ${doctor.lastName}</strong> (Specialty: ${doctor.specialty})`).join("<br>")
+            : "<i>No Doctors Assigned</i>";
+
+        let staffHtml = hospital.staff && hospital.staff.length
+            ? hospital.staff.map(staff => `${staff.firstName} ${staff.lastName}`).join("<br>")
+            : "<i>No Staff Assigned</i>";
+
+        let hospitalDiv = document.createElement('div');
+        hospitalDiv.classList.add('hospital-container');
+
+        hospitalDiv.innerHTML = `
+            <img src="${logoPath}" class="hospital-logo" alt="${hospital.hospitalName} Logo">
+            <div class="hospital-details">
+                <h3>${hospital.hospitalName} (${hospital.hospitalCode})</h3>
+                <p><strong>Site:</strong> ${hospital.siteName} (${hospital.siteCode})</p>
+                <p><strong>Location:</strong> ${hospital.city}, ${hospital.state}, ${hospital.country}</p>
+                <p><strong>ZIP Code:</strong> ${hospital.zip}</p>
+                <p><strong>Specialties & Surveys:</strong><br>${specialtiesHtml}</p>
+                <p><strong>PROMs Leads:</strong><br>${usersHtml}</p>
+                <p><strong>Doctors:</strong><br>${doctorsHtml}</p>
+                <p><strong>Staff:</strong><br>${staffHtml}</p>
+                <p><strong>Patient Details:</strong><a href="${patientDataFile}" download>Download CSV</a></div>
+        `;
+
+        container.appendChild(hospitalDiv);
+    });
+}
+
+        // Load hospitals when the page loads
+        document.addEventListener("DOMContentLoaded", fetchHospitals);
+    </script>
+    <!-- Updated script path to include basePath -->
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+
+        btn.onclick = function () {
+            sidebar.classList.toggle('active');
+        };
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+    const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+
+    // Function to remove 'current' class from all links
+    function removeCurrentPageClasses() {
+        sidebarLinks.forEach(link => {
+            link.classList.remove('current');
+        });
+    }
+
+    // Function to add 'current' class to the active link based on path
+    function setCurrentPageLink(path) {
+        removeCurrentPageClasses();
+        const currentPageLink = Array.from(sidebarLinks).find(link => {
+            const linkPath = new URL(link.href, window.location.origin).pathname; // Compare full path
+            return linkPath === path; // Check if current path matches link path
+        });
+        if (currentPageLink) {
+            currentPageLink.classList.add('current');
+        }
+    }
+
+    // Check the URL path and set the current page link on page load
+    const currentPath = window.location.pathname;
+    setCurrentPageLink(currentPath);
+
+    // Add event listener to each sidebar link
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            const targetPath = new URL(link.href, window.location.origin).pathname;
+            setCurrentPageLink(targetPath);
+
+            // Navigate to the clicked link after setting the class
+            window.location.href = link.href;
+        });
+    });
+});
+    </script>
+    
+</body>
+</html>

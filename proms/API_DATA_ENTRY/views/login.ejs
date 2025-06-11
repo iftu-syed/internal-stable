@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="<%= lng || 'en' %>" dir="<%= dir || 'ltr' %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Login</title>
+    <link rel="stylesheet" href="<%= basePath %>/dataentrylogin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+    <style>
+        @media (max-width: 800px) {
+  h1 {
+    font-size: 1.5rem; /* styling for mobile devices to behave like h2 */
+  }
+}
+
+h1 {
+    color: #333;
+}
+.flash-message {
+    text-align: center;
+    margin-bottom: 10px;
+    animation: fadeOut 1s forwards 3s; /* Animation lasts 1s, starts after 3s delay */
+  }
+
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+        .input-container {
+    position: relative; 
+    width: 100%;
+    
+}
+
+/* Style the input field */
+.input-container input {
+  font-family: 'Inter', sans-serif;
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    position: relative;
+}
+[dir="rtl"] .password-toggle-icon {
+    left: 16px; /* Align icon to the left for Arabic */
+    right: auto; /* Remove right alignment */
+}
+
+/* Style the password visibility icon */
+.password-toggle-icon {
+    position: absolute;
+    right: 16px; /* Align the icon to the right inside the container */
+    top: 36%;
+    transform: translateY(-50%); /* Vertically center the icon */
+    cursor: pointer;
+    font-size: 20px; /* Adjust icon size */
+    color: #aaa; /* Change icon color */
+}
+
+.password-toggle-icon:hover {
+    color: #333; /* Darker color on hover */
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.5); /* Dark background overlay */
+  overflow-y: auto; /* Enable vertical scroll if needed */
+}
+
+/* Modal content box for clean look */
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 70%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  border-radius: 10px;
+  text-align: left;
+}
+
+
+.modal-content[dir="rtl"] {
+  direction: rtl; /* RTL for Arabic */
+  text-align: right;
+}
+
+.modal-content[dir="ltr"] {
+  direction: ltr; /* LTR for English */
+  text-align: left;
+}
+
+.close[dir="ltr"] {
+  right: 10px; /* Align to the right for LTR languages */
+}
+
+.close[dir="rtl"] {
+  left: 10px; /* Align to the left for RTL languages */
+}
+
+body[dir="rtl"] {
+      direction: rtl;
+      text-align: right;
+      font-family: "Arial", sans-serif;
+    }
+
+    body[dir="ltr"] {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .language-selector {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      text-align: right;
+      margin: 0; 
+      padding: 10px;
+      background-color: #f6f5fa; 
+    }
+
+    .language-selector a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: #007BFF;
+    }
+
+    .language-selector a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .language-selector img {
+      margin-right: 5px;
+      margin-left:5px;
+      width: 20px;
+      margin-left: 5px;
+      height: auto;
+      vertical-align: bottom;
+    }
+
+/* Close button styling */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* Terms and conditions styling similar to Android Studio */
+.terms-scrollable {
+  font-family: Arial, sans-serif; /* Cleaner font */
+  font-size: 14px; /* Make text easier to read */
+  line-height: 1.6; /* Increase line spacing for readability */
+  color: #333;
+}
+
+.terms-scrollable h2 {
+    font-weight: bold;
+    margin-top: 30px;
+    font-size: 24px; /* Larger headings */
+}
+
+.terms-scrollable h3 {
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.terms-scrollable h4 {
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.terms-scrollable p {
+    margin-bottom: 15px;
+}
+
+.terms-scrollable ul {
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+.terms-scrollable li {
+    margin-bottom: 10px;
+}
+
+/* Ensure no excessive white space below the content */
+.modal-content {
+  margin-bottom: 0;
+}
+
+.flash-message {
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+  <div class="language-selector" style="text-align: right; padding: 10px; background-color: #f6f5fa;">
+    <a href="?lng=en" class="<%= lng === 'en' ? 'active' : '' %>">
+        <img src="<%= basePath %>/assets/usa.png" alt="English Flag">English
+    </a> |
+    <a href="?lng=ar" class="<%= lng === 'ar' ? 'active' : '' %>">
+        <img src="<%= basePath %>/assets/flag.png" alt="Arabic Flag">العربية
+    </a>
+  </div>
+    <div><h1 id="welcome"><span style="font-weight: normal;">Welcome,</span> Staff.</h1></div>
+    <div class="login-container">
+        <form action="<%= basePath %>/login?lng=<%= lng %>" method="POST">
+            <hr class="spacer">
+            <img src="<%= basePath %>/assets/images/logo.png">
+            <hr class="spacer">
+            <input type="text" name="username" id="userName"placeholder="Username" required>
+            <div class="input-container">
+                <input type="password" id="password" placeholder="Password" name="password" required>
+                <i class="bx bx-show password-toggle-icon" onclick="togglePassword()"></i>
+    
+            </div>
+
+            <% if (errorMessage && errorMessage.length > 0) { %>
+                <div class="flash-message"><%= errorMessage %></div>
+            <% } %>
+            
+
+            <button type="submit" id="login" class="lgbtn">Login</button>
+            <hr class="spacer">
+        </form>
+    </div>
+    <hr class="spacer">
+    <div style="display: flex; justify-content: space-around;">
+        <h1 id="promsTitle">Let's power up with PROMs</h1>
+      </div>
+    <hr class="spacer">
+    <div style="display: flex; justify-content: center; color: grey; gap: 10px; min-height: 35px;">
+        <span id="copyright">© WeHealthify</span>
+        <a href="mailto:support@wehealthify.org" id="contact">Contact</a>
+        <a href="#" id="privacyPolicy" onclick="openModal()">Privacy Policy</a>
+      </div>
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()" id="closeModal">&times;</span>
+            <div class="terms-scrollable">
+              <h2 id="privacyPolicyTitle">Privacy Policy for PROMs App</h2>
+              <h3 id="introTitle">1. Introduction</h3>
+              <p id="introText">
+                This Privacy Policy explains how we collect, use, disclose, and protect your personal data when you use the PROMs app (<a href="https://proms-2.giftysolutions.com/proms" id="promsLink">PROMs App Link</a>). The PROMs app is designed to measure patient-reported outcomes and manage hospital staff, doctor, and patient data securely and in compliance with data protection regulations.
+              </p>
+              <p id="introAgreement">
+                By using our app, you agree to the collection and use of your information in accordance with this policy.
+              </p>
+        
+              <h3 id="dataWeCollectTitle">2. Data We Collect</h3>
+        
+              <h4 id="patientDataTitle">2.1 Patient Data</h4>
+              <p id="patientDataPersonal">Personal Information: Name, Date of Birth, Phone Number, Medical Record (MR) Number, and Appointment Details.</p>
+              <p id="patientDataHealth">Health Information: PROMs survey responses related to your health status, doctor’s notes, ICD codes, and medical history.</p>
+        
+              <h4 id="doctorDataTitle">2.2 Doctor Data</h4>
+              <p id="doctorDataPersonal">Personal Information: Name, Username, and Password.</p>
+              <p id="doctorDataPatient">Patient Data: Access to assigned patients’ details including personal and health information for analysis and decision-making.</p>
+        
+              <h4 id="staffDataTitle">2.3 Staff Data</h4>
+              <p id="staffDataPersonal">Personal Information: Name, Username, and Password.</p>
+              <p id="staffDataManagement">Patient Management: Access to patient appointment scheduling, edits, and data uploads.</p>
+        
+              <h4 id="adminDataTitle">2.4 Hospital Admin and Super Admin Data</h4>
+              <p id="adminDataPersonal">Personal Information: Name, Username, and Password.</p>
+              <p id="adminDataManagement">Hospital Management: Access to manage hospitals, specialties, and staff, and view anonymized hospital-level data.</p>
+        
+              <h3 id="dataUsageTitle">3. How We Use Your Data</h3>
+              <ul id="dataUsageList">
+                <li id="dataUsage1">Facilitate patient-doctor interactions through PROMs surveys.</li>
+                <li id="dataUsage2">Enable doctors to view and analyze patient progress.</li>
+                <li id="dataUsage3">Provide hospital-level insights for hospital and super admins.</li>
+                <li id="dataUsage4">Ensure the proper functioning of the app and improve healthcare outcomes.</li>
+              </ul>
+        
+              <h3 id="legalBasisTitle">4. Legal Basis for Processing</h3>
+              <ul id="legalBasisList">
+                <li id="legalBasis1">GDPR (General Data Protection Regulation) for users based in the EU.</li>
+                <li id="legalBasis2">HIPAA (Health Insurance Portability and Accountability Act) for healthcare-related data in the US.</li>
+                <li id="legalBasis3">Explicit user consent is obtained before processing any personal data.</li>
+              </ul>
+        
+              <h3 id="dataSecurityTitle">6. Security of Your Data</h3>
+              <ul id="dataSecurityList">
+                <li id="dataSecurity1">Encryption: All personal data is encrypted both at rest (AES-256) and in transit (SSL/TLS).</li>
+                <li id="dataSecurity2">Access Controls: Role-based access ensures that only authorized personnel can access sensitive information.</li>
+                <li id="dataSecurity3">Audit Logs: All actions are logged for security monitoring and accountability.</li>
+              </ul>
+    
+              <h3 id="dataRetentionTitle">7. Data Retention Policy</h3>
+              <ul id="dataRetentionList">
+                <li id="dataRetentionPatient">
+                  <strong>Patient Data:</strong> Retained for a minimum of 5 years or as required by local health regulations. After this period, data will be anonymized or securely deleted.
+                </li>
+                <li id="dataRetentionStaff">
+                  <strong>Staff, Doctor, Admin Data:</strong> Retained for the duration of employment or service and deleted 6 months after termination.
+                </li>
+              </ul>
+              
+              <h3 id="dataRightsTitle">8. Your Data Rights</h3>
+              <p id="dataRightsDescription">Under the GDPR and HIPAA, you have the following rights:</p>
+              <ul id="dataRightsList">
+                <li id="dataRightAccess"><strong>Access:</strong> You may request a copy of your personal data.</li>
+                <li id="dataRightCorrection"><strong>Correction:</strong> You can request corrections to inaccurate or incomplete data.</li>
+                <li id="dataRightDeletion"><strong>Deletion:</strong> You can request the deletion of your data where applicable.</li>
+                <li id="dataRightPortability"><strong>Data Portability:</strong> You can request a copy of your data in a portable format.</li>
+              </ul>
+              <p id="dataRightsContact">
+                To exercise these rights, contact our support team at <a id="privacyEmail" href="mailto:support@wehealthify.org">support@wehealthify.org</a>.
+              </p>
+              
+              <h3 id="dataBreachTitle">9. Data Breach Notifications</h3>
+              <p id="dataBreachDescription">
+                In the event of a data breach, we will notify affected users and relevant authorities within 72 hours as required by GDPR and HIPAA.
+              </p>
+              
+              <h3 id="policyChangesTitle">10. Changes to the Privacy Policy</h3>
+              <p id="policyChangesDescription">
+                We may update this policy from time to time. You will be notified of any changes via email or through our app.
+              </p>
+              
+              <h3 id="contactInfoTitle">11. Contact Information</h3>
+              <p id="contactInfoDescription">For questions or concerns regarding this Privacy Policy, please contact us at:</p>
+              <p id="contactEmail">
+                Email: <a href="mailto:support@wehealthify.org" id="emailLink">support@wehealthify.org</a>
+            </p>
+          
+          <p id="contactWebsite">
+              Website: <a href="http://localhost" id="websiteLink">app.wehealthify.org</a>
+          </p>
+              <p id="contactAddress">
+                Address: Suite 2 Parkway 5 Parkway Business Centre, 300 Princess Road, Manchester, M14 7HR
+              </p>
+    </div>
+    
+    
+    
+    
+        </div>
+      </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  };
+  const params = new URLSearchParams(window.location.search);
+  let currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+
+  // Set the language cookie
+  document.cookie = `lng=${currentLanguage}; path=/`;
+          const fetchUrl = `/staff/locales/${currentLanguage}/translation.json`;
+
+      
+          // Set the `lang` and `dir` attributes for the HTML document
+          document.documentElement.lang = currentLanguage;
+          document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+      
+          fetch(fetchUrl)
+            .then(response => {
+              if (!response.ok) {
+                console.warn(`Translation file not found for language: ${currentLanguage}. Falling back to English.`);
+                return fetch(`/staff/locales/en/translation.json`);
+              }
+              return response.json();
+            })
+            .then(translations => {
+              console.log('Loaded translations:', translations);
+      
+              // Update the elements based on translation keys
+              Object.keys(translations).forEach(id => {
+                const element = document.getElementById(id);
+      
+                if (element) {
+                    const translationValue = translations[id];
+
+                    if (typeof translationValue === 'string') {
+                        // Update regular text or HTML content
+                        element.innerHTML = translationValue;
+                    }
+                      if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+
+                        // Update placeholders for input elements
+
+                        console.log(`Updating placeholder for ${id}:`, translationValue);
+
+                        element.placeholder = translationValue;
+
+                      }
+                    else if (typeof translationValue === 'object') {
+                                            // Handle nested object (e.g., lists)
+                                            element.innerHTML = ''; // Clear existing content
+                                            Object.values(translationValue).forEach(item => {
+                                                const listItem = document.createElement('li');
+                                                listItem.textContent = item;
+                                                element.appendChild(listItem);
+                                            });
+                    } else {
+                        console.warn(`Unexpected translation value type for "${id}":`, translationValue);
+                    }
+                }
+              });
+            })
+            .catch(error => console.error('Error loading translations:', error));
+        });
+      </script>
+      
+    <!-- JavaScript to hide flash messages after 3 seconds -->
+    <script>
+         function openModal() {
+    const modal = document.getElementById('termsModal');
+    const modalContent = document.querySelector('.modal-content');
+    const closeButton = document.querySelector('.close');
+
+    // Dynamically set the direction based on the current language
+    const currentDir = document.documentElement.dir || 'ltr';
+    modalContent.setAttribute('dir', currentDir); // Set the direction for modal content
+    closeButton.setAttribute('dir', currentDir); // Set the direction for close button styling
+
+    modal.style.display = 'block'; // Show the modal
+}
+
+function closeModal() {
+    const modal = document.getElementById('termsModal');
+    modal.style.display = 'none'; // Hide the modal
+}
+
+// Close the modal when clicking outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('termsModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+};
+
+
+        function togglePassword() {
+    const passwordField = document.getElementById("password");
+    const passwordIcon = document.querySelector(".password-toggle-icon");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        passwordIcon.classList.remove("bx-show");
+        passwordIcon.classList.add("bx-hide");
+    } else {
+        passwordField.type = "password";
+        passwordIcon.classList.remove("bx-hide");
+        passwordIcon.classList.add("bx-show");
+    }
+}
+
+// JavaScript to hide flash messages after 3 seconds
+setTimeout(function() {
+    const flashMessages = document.querySelectorAll('.flash-message');
+    flashMessages.forEach(function(flash) {
+        flash.style.transition = 'opacity 1s ease-out';
+        flash.style.opacity = '0';
+        setTimeout(() => flash.remove(), 1000); // Remove element after fade-out
+    });
+}, 3000); // 3 seconds before fading out
+
+    </script>
+</body>
+<script>
+     // Function to remove the flash message after animation ends
+  document.addEventListener('DOMContentLoaded', function() {
+    const flashMessage = document.querySelector('.flash-message');
+    if (flashMessage) {
+      flashMessage.addEventListener('animationend', function() {
+        flashMessage.remove();
+      });
+    }
+  });
+</script>
+</html>

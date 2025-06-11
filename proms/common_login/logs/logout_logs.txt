@@ -1,0 +1,1 @@
+Mr_no: 55, firstName: vijay, lastName: chagantipati, hospital: ABCD, speciality: Orthopaedic Surgery, timestamp: 2024-08-08T11:08:23.330Z, action: logout, session_duration: 21.208 seconds

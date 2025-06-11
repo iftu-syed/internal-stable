@@ -1,0 +1,30 @@
+/* Gradient colors */
+#heatmapGradient .start-color {
+    stop-color: #e0e0e0;
+}
+
+#heatmapGradient .end-color {
+    stop-color: #4B57F9;
+}
+
+/* Heatmap cells */
+.heatmap-cell {
+    stroke: #ffffff;
+}
+
+/* Axis text alignment */
+.axis-text-end {
+    text-anchor: end;
+}
+
+/* Legend styling */
+.legend-gradient {
+    fill: url(#heatmapGradient);
+}
+
+/* Cell text alignment */
+.cell-text {
+    text-anchor: middle;
+    alignment-baseline: middle;
+    font-size: 14px;  /* Add font size to match original */
+}

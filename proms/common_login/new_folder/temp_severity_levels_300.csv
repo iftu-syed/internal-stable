@@ -1,0 +1,3 @@
+Scale,Severity,Color,Chart_Range_Min,Chart_Range_Max,Actual_Range_Min,Actual_Range_Max
+PAID-5,Low Distress,#ffff00,0,8,0,7
+PAID-5,High Distress,#ff0000,8,25,8,+

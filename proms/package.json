@@ -1,0 +1,28 @@
+{
+  "name": "proms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server1.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.21.1",
+    "http": "^0.0.1-security",
+    "i18next": "^23.11.5",
+    "i18next-browser-languagedetector": "^8.0.0",
+    "i18next-fs-backend": "^2.3.1",
+    "i18next-http-middleware": "^3.6.0",
+    "nodemon": "^3.1.0",
+    "open": "^10.1.0",
+    "path": "^0.12.7"
+  }
+}

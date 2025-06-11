@@ -1,0 +1,5 @@
+Scale,Severity,Color,Chart_Range_Min,Chart_Range_Max,Actual_Range_Min,Actual_Range_Max
+EQ-5D,Mild / No Problems,#00FF00,0.7,1.0,0.700,1.000
+EQ-5D,Moderate Problems,#FFFF00,0.4,0.7,0.400,0.699
+EQ-5D,Significant Problems,#FF7F00,0.0,0.4,0.000,0.399
+EQ-5D,Very Severe Problems,#FF0000,-0.594,0.0,-0.594,-0.001

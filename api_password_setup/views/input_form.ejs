@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="<%= lng || 'ar' %>" dir="<%= dir || 'ltr' %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/patientpassword/styles/register.css">
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/air-datepicker@3.3.2/air-datepicker.css">
+
+  <title>Register</title>
+  <style>
+@media (max-width: 800px) {
+  h1 {
+    font-size: 1.5rem; /* styling for mobile devices to behave like h2 */
+    margin-inline: 20px;
+  }
+  .language-selector {
+      position: relative !important;
+      background-color: transparent !important;
+    }
+}
+
+h1 {
+    color: #333;
+}
+    .flash-message {
+      margin-bottom: 10px;
+      color: red;
+      text-align: center;
+    }
+    .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.5); /* Dark background overlay */
+  overflow-y: auto; /* Enable vertical scroll if needed */
+}
+
+/* Modal content box for clean look */
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px; /* Updated padding */
+  border: 1px solid #888;
+  width: 70%; /* We'll reduce this in the next step */
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+  position: relative;
+  border-radius: 10px; /* Added border-radius */
+  text-align: left; /* Align text to the left */
+}
+.modal-content[dir="rtl"] {
+  direction: rtl; /* RTL for Arabic */
+  text-align: right;
+}
+
+.modal-content[dir="ltr"] {
+  direction: ltr; /* LTR for English */
+  text-align: left;
+}
+
+.close[dir="ltr"] {
+  right: 10px; /* Align to the right for LTR languages */
+}
+
+.close[dir="rtl"] {
+  left: 10px; /* Align to the left for RTL languages */
+}
+
+body[dir="rtl"] {
+      direction: rtl;
+      text-align: right;
+      font-family: "Arial", sans-serif;
+    }
+
+    body[dir="ltr"] {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .language-selector {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      text-align: right;
+      margin: 0; 
+      padding: 10px;
+      background-color: #f6f5fa; 
+    }
+    .language-selector a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: #007BFF;
+    }
+
+    .language-selector a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .language-selector img {
+      margin-right: 5px;
+      width: 20px;
+      margin-left: 5px;
+      height: auto;
+      vertical-align: bottom;
+    }
+
+/* Close button styling */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* Terms and conditions styling similar to Android Studio */
+.terms-scrollable {
+  font-family: Arial, sans-serif; /* Cleaner font */
+  font-size: 14px; /* Make text easier to read */
+  line-height: 1.6; /* Increase line spacing for readability */
+  color: #333;
+}
+
+.terms-scrollable h2 {
+    font-weight: bold;
+    margin-top: 30px;
+    font-size: 24px; /* Larger headings */
+}
+
+.terms-scrollable h3 {
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.terms-scrollable h4 {
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.terms-scrollable p {
+    margin-bottom: 15px;
+}
+
+.terms-scrollable ul {
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+.terms-scrollable li {
+    margin-bottom: 10px;
+}
+
+/* Ensure no excessive white space below the content */
+.modal-content {
+  margin-bottom: 0;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="language-selector" style="text-align: right; padding: 10px; background-color: #f6f5fa;">
+    <a href="?lng=en">
+        <img src="/patientpassword/assets/usa.png" alt="English Flag">English
+    </a> |
+    <a href="?lng=ar">
+        <img src="/patientpassword/assets/flag.png" alt="Arabic Flag">العربية
+    </a>
+  </div>
+
+  <div class="login-container">
+    <!-- Flash message for errors -->
+
+
+    <form action="/patientpassword/password?lng=<%= lng %>" method="post">
+      <hr class="spacer">
+      <img src="/patientpassword/assets/images/logo.png">
+      <p id="registerReset">Register / Reset</p>
+      <hr class="spacer">
+<input type="text" id="identifierInputPlaceholder" placeholder="Medical Record No. or Phone No." name="Mr_no" required>
+      <input type="text" id="DOB" placeholder="MM / DD / YYYY" name="dob" required>
+
+      <% if (message && message.length) { %>
+        <div class="flash-message">
+          <%= message %>
+        </div>
+      <% } %>
+
+      <button type="submit" class="lgbtn" id="submitButton">Submit</button>
+
+      <hr class="spacer">  
+      <p id="registeredNew" style="margin: 0; font-size: 14px;"><span>Already Registered? </span><a href="http://localhost/patientlogin/" id="resetPasswordLink">Login</a></p>
+    </form>
+  </div>
+  <hr class="spacer">
+  <div style="display: flex; justify-content: space-around;">
+    <h1 id="promsTitle">Let's power up with PROMs</h1>
+  </div>  
+  <hr class="spacer">
+  <div style="display: flex; justify-content: center; color: grey; gap: 10px; min-height: 35px;">
+    <span id="copyright">© WeHealthify</span>
+    <a href="mailto:support@wehealthify.org" id="contact">Contact</a>
+    <a href="#" id="privacyPolicy" onclick="openModal()">Privacy Policy</a>
+  </div>
+
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()" id="closeModal">&times;</span>
+        <div class="terms-scrollable">
+          <h2 id="privacyPolicyTitle">Privacy Policy for PROMs App</h2>
+          <h3 id="introTitle">1. Introduction</h3>
+          <p id="introText">
+            <span id="introTextContentStart">This Privacy Policy explains how we collect, use, disclose, and protect your personal data when you use the PROMs app (</span>
+            <a href="https://proms-2.giftysolutions.com/proms" id="promsLink">PROMs App Link</a>
+            <span id="introTextContentEnd">). The PROMs app is designed to measure patient-reported outcomes and manage hospital staff, doctor, and patient data securely and in compliance with data protection regulations.</span>
+        </p>
+          <p id="introAgreement">
+            By using our app, you agree to the collection and use of your information in accordance with this policy.
+          </p>
+    
+          <h3 id="dataWeCollectTitle">2. Data We Collect</h3>
+    
+          <h4 id="patientDataTitle">2.1 Patient Data</h4>
+          <p id="patientDataPersonal">Personal Information: Name, Date of Birth, Phone Number, Medical Record (MR) Number, and Appointment Details.</p>
+          <p id="patientDataHealth">Health Information: PROMs survey responses related to your health status, doctor’s notes, ICD codes, and medical history.</p>
+    
+          <h4 id="doctorDataTitle">2.2 Doctor Data</h4>
+          <p id="doctorDataPersonal">Personal Information: Name, Username, and Password.</p>
+          <p id="doctorDataPatient">Patient Data: Access to assigned patients’ details including personal and health information for analysis and decision-making.</p>
+    
+          <h4 id="staffDataTitle">2.3 Staff Data</h4>
+          <p id="staffDataPersonal">Personal Information: Name, Username, and Password.</p>
+          <p id="staffDataManagement">Patient Management: Access to patient appointment scheduling, edits, and data uploads.</p>
+    
+          <h4 id="adminDataTitle">2.4 Hospital Admin and Super Admin Data</h4>
+          <p id="adminDataPersonal">Personal Information: Name, Username, and Password.</p>
+          <p id="adminDataManagement">Hospital Management: Access to manage hospitals, specialties, and staff, and view anonymized hospital-level data.</p>
+    
+          <h3 id="dataUsageTitle">3. How We Use Your Data</h3>
+          <ul id="dataUsageList">
+            <li id="dataUsage1">Facilitate patient-doctor interactions through PROMs surveys.</li>
+            <li id="dataUsage2">Enable doctors to view and analyze patient progress.</li>
+            <li id="dataUsage3">Provide hospital-level insights for hospital and super admins.</li>
+            <li id="dataUsage4">Ensure the proper functioning of the app and improve healthcare outcomes.</li>
+          </ul>
+    
+          <h3 id="legalBasisTitle">4. Legal Basis for Processing</h3>
+          <ul id="legalBasisList">
+            <li id="legalBasis1">GDPR (General Data Protection Regulation) for users based in the EU.</li>
+            <li id="legalBasis2">HIPAA (Health Insurance Portability and Accountability Act) for healthcare-related data in the US.</li>
+            <li id="legalBasis3">Explicit user consent is obtained before processing any personal data.</li>
+          </ul>
+    
+          <h3 id="dataSecurityTitle">6. Security of Your Data</h3>
+          <ul id="dataSecurityList">
+            <li id="dataSecurity1">Encryption: All personal data is encrypted both at rest (AES-256) and in transit (SSL/TLS).</li>
+            <li id="dataSecurity2">Access Controls: Role-based access ensures that only authorized personnel can access sensitive information.</li>
+            <li id="dataSecurity3">Audit Logs: All actions are logged for security monitoring and accountability.</li>
+          </ul>
+
+          <h3 id="dataRetentionTitle">7. Data Retention Policy</h3>
+          <ul id="dataRetentionList">
+            <li id="dataRetentionPatient">
+              <strong>Patient Data:</strong> Retained for a minimum of 5 years or as required by local health regulations. After this period, data will be anonymized or securely deleted.
+            </li>
+            <li id="dataRetentionStaff">
+              <strong>Staff, Doctor, Admin Data:</strong> Retained for the duration of employment or service and deleted 6 months after termination.
+            </li>
+          </ul>
+          
+          <h3 id="dataRightsTitle">8. Your Data Rights</h3>
+          <p id="dataRightsDescription">Under the GDPR and HIPAA, you have the following rights:</p>
+          <ul id="dataRightsList">
+            <li id="dataRightAccess"><strong>Access:</strong> You may request a copy of your personal data.</li>
+            <li id="dataRightCorrection"><strong>Correction:</strong> You can request corrections to inaccurate or incomplete data.</li>
+            <li id="dataRightDeletion"><strong>Deletion:</strong> You can request the deletion of your data where applicable.</li>
+            <li id="dataRightPortability"><strong>Data Portability:</strong> You can request a copy of your data in a portable format.</li>
+          </ul>
+          <p id="dataRightsContact">
+            To exercise these rights, contact our support team at 
+            <a id="privacyEmail" href="mailto:support@wehealthify.org">support@wehealthify.org</a>.
+        </p>
+          
+          <h3 id="dataBreachTitle">9. Data Breach Notifications</h3>
+          <p id="dataBreachDescription">
+            In the event of a data breach, we will notify affected users and relevant authorities within 72 hours as required by GDPR and HIPAA.
+          </p>
+          
+          <h3 id="policyChangesTitle">10. Changes to the Privacy Policy</h3>
+          <p id="policyChangesDescription">
+            We may update this policy from time to time. You will be notified of any changes via email or through our app.
+          </p>
+          
+          <h3 id="contactInfoTitle">11. Contact Information</h3>
+          <p id="contactInfoDescription">For questions or concerns regarding this Privacy Policy, please contact us at:</p>
+          <p id="contactEmail">
+            Email: <a href="mailto:support@wehealthify.org" id="emailLink">support@wehealthify.org</a>
+        </p>
+      
+      <p id="contactWebsite">
+          Website: <a href="http://localhost" id="websiteLink">app.wehealthify.org</a>
+      </p>
+      <p id="contactAddress">
+        Address: Suite 2 Parkway 5 Parkway Business Centre, 300 Princess Road, Manchester, M14 7HR
+      </p>
+</div>
+
+
+
+
+
+
+    </div>
+  </div>
+  
+</body>
+<script src="https://unpkg.com/air-datepicker@3.3.2/air-datepicker.js"></script>
+<script src="https://unpkg.com/air-datepicker@3.3.2/locale/en.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const dobInput = document.getElementById('dob-picker');
+
+
+
+    new AirDatepicker('#DOB', {
+      dateFormat: 'MM/dd/yyyy',
+      maxDate: new Date(),
+      autoClose: true,
+      locale: {
+        days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+        months: [
+          'January', 'February', 'March', 'April', 'May', 'June',
+          'July', 'August', 'September', 'October', 'November', 'December'
+        ],
+        monthsShort: [
+          'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        ],
+        today: 'Today',
+        clear: 'Clear',
+        dateFormat: 'MM/dd/yyyy',
+        timeFormat: 'HH:mm',
+        firstDay: 0
+      }
+    });
+    setTimeout(() => {
+          document.querySelectorAll('.success-message, .error-message,.flash-message').forEach(message => {
+              message.style.display = 'none';
+          });
+      }, 3000); // Hide the message after 3 seconds
+  });
+</script>
+
+    
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const dobInput = document.getElementById("DOB");
+    let previousValue = "";
+
+    // Save the previous value on keydown to help distinguish insertion vs. deletion
+    dobInput.addEventListener("keydown", function () {
+      previousValue = this.value;
+    });
+
+    dobInput.addEventListener("input", function () {
+      // Remove all non-digit characters
+      let numbers = this.value.replace(/\D/g, '');
+      const isDeleting = this.value.length < previousValue.length;
+      let formatted = '';
+
+      // Process the month portion
+      let monthStr = "";
+      if (numbers.length > 0) {
+        // If there is at least one digit, start with the available digits.
+        if (numbers.length >= 2) {
+          // When we have two digits, convert them to a number.
+          monthStr = numbers.substring(0, 2);
+          let monthInt = parseInt(monthStr, 10);
+          // If the month is greater than 12, correct it.
+          if (monthInt > 12) {
+            monthStr = "12";
+          }
+        } else {
+          // If only one digit is present, use it as is.
+          monthStr = numbers.substring(0, 1);
+        }
+      }
+
+      // Build the formatted value based on how many digits have been entered.
+      if (!isDeleting) {
+        if (numbers.length <= 2) {
+          // Only the month is entered.
+          formatted = monthStr;
+          if (monthStr.length === 2) {
+            formatted += '/';
+          }
+        } else if (numbers.length <= 4) {
+          // Month and day are being entered.
+          // The day digits come after the first two (which we treat as month).
+          let dayStr = numbers.substring(2, 4);
+          formatted = monthStr + '/' + dayStr;
+          if (numbers.length === 4) {
+            // When exactly four digits have been entered (MMDD), append a slash for the year.
+            formatted += '/';
+          }
+        } else {
+          // Month, day, and year are being entered.
+          let dayStr = numbers.substring(2, 4);
+          let yearStr = numbers.substring(4, 8);
+          formatted = monthStr + '/' + dayStr + '/' + yearStr;
+        }
+      } else {
+        // In deletion mode, avoid forcing a trailing slash.
+        if (numbers.length <= 2) {
+          formatted = monthStr;
+        } else if (numbers.length <= 4) {
+          let dayStr = numbers.substring(2, 4);
+          formatted = monthStr + '/' + dayStr;
+        } else {
+          let dayStr = numbers.substring(2, 4);
+          let yearStr = numbers.substring(4, 8);
+          formatted = monthStr + '/' + dayStr + '/' + yearStr;
+        }
+      }
+
+      // Update the input field with the new formatted value.
+      this.value = formatted;
+    });
+  });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // 1) language detection (unchanged)
+  const getCookie = name => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  };
+  const params = new URLSearchParams(window.location.search);
+  const currentLanguage = params.get('lng') || 'ar';
+  if (params.get('lng')) {
+    document.cookie = `lng=${currentLanguage}; path=/`;
+  }
+
+  // 2) apply lang+dir
+  document.documentElement.lang = currentLanguage;
+  document.documentElement.dir  = (currentLanguage === 'ar' ? 'rtl' : 'ltr');
+
+  // 3) toggle the “active” class on your anchors
+  document.querySelectorAll('.language-selector a').forEach(link => {
+    const url = new URL(link.getAttribute('href'), window.location.origin);
+    const urlLng = url.searchParams.get('lng') || 'ar';
+    link.classList.toggle('active', urlLng === currentLanguage);
+  });
+
+  // 4) now go load your JSON and translate…
+  const fetchUrl = `/patientpassword/locales/${currentLanguage}/translation.json`;
+  fetch(fetchUrl)
+    .then(res => {
+      if (!res.ok) {
+        console.warn(`Missing ${currentLanguage} → falling back to English`);
+        return fetch(`/patientpassword/locales/en/translation.json`);
+      }
+      return res.json();
+    })
+.then(translations => {
+  Object.entries(translations).forEach(([id, value]) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    // 1) If it’s an <input> or <textarea>, treat the value as a placeholder
+    if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+      el.placeholder = value;
+      return;
+    }
+
+    // 2) If the translation is a simple string, inject text
+    if (typeof value === "string") {
+      el.textContent = value;
+      return;
+    }
+
+    // 3) If it’s an object/array (e.g., a list), render <li> items
+    if (typeof value === "object") {
+      el.innerHTML = "";
+      Object.values(value).forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        el.appendChild(li);
+      });
+    }
+  });
+})
+.catch(err => console.error("Translation error:", err));
+});
+</script>
+
+<script>
+  function openModal() {
+  const modal = document.getElementById('termsModal');
+  const modalContent = document.querySelector('.modal-content');
+  const closeButton = document.querySelector('.close');
+
+  // Dynamically set the direction based on the current language
+  const currentDir = document.documentElement.dir || 'ltr';
+  modalContent.setAttribute('dir', currentDir); // Set the direction for modal content
+  closeButton.setAttribute('dir', currentDir); // Set the direction for close button styling
+
+  modal.style.display = 'block'; // Show the modal
+  }
+
+function closeModal() {
+    const modal = document.getElementById('termsModal');
+    modal.style.display = 'none'; // Hide the modal
+}
+
+// Close the modal when clicking outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('termsModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+};
+
+  document.addEventListener('DOMContentLoaded', function() {
+    flatpickr("#DOB", {
+  dateFormat: "m/d/Y",
+  maxDate: "today",
+  altInput: true,
+  disableMobile: true,
+    });
+
+    // Hide flash message after 3 seconds
+    const flashMessage = document.querySelector('.flash-message');
+    if (flashMessage) {
+      setTimeout(() => {
+        flashMessage.style.display = 'none';
+      }, 5000);
+    }
+  });
+</script>
+</html>

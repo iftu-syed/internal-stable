@@ -1,0 +1,137 @@
+
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Forms</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="parentrow">
+        <div class="parentcolumn left">
+            <div class="sidebar">
+                <hr class="spacer">
+                <img src="assets/images/logo.png">
+                <hr class="spacer">
+                <div class="sidebar-item-done">Custom Surveys</div>
+                <div class="sidebar-item-active">API Survey</div>
+                <div class="sidebar-item-inactive">Upcoming API Survey</div>
+            </div>
+        </div>
+
+
+        <div class="parentcolumn right">
+            <!-- <div class="infobox">
+                <h1 data-en="Mental Health Resilience post pregnancy Questionnaire (EPDS)" data-ar="استبيان مرونة الصحة العقلية بعد الحمل (EPDS)">PROMIS SF v1.0 - Depression-OA- Knee 4a</h1>
+                <p>Depression and anxiety are common comorbidities that may exacerbate osteoarthritis (OA)-related pain. We aim to evaluate the effect of pharmacologic treatment of depression/anxiety on hip and knee patient-reported outcome measures (PROMs).</p>
+                <hr class="spacer">
+
+        </div> -->
+
+        <!--Code after css update for mobile-->
+
+        <div class="infobox">
+            <div class="mobile-container">
+
+                <img src="/assets/images/logo.png">
+        
+                
+              </div>
+
+            <h1 data-en="Mental Health Resilience post pregnancy Questionnaire (EPDS)" data-ar="استبيان مرونة الصحة العقلية بعد الحمل (EPDS)">PROMIS SF v1.0 - Depression-OA- Knee 4a</h1>
+            <p id="text" class="info-text">Depression and anxiety are common comorbidities that may exacerbate osteoarthritis (OA)-related pain. We aim to evaluate the effect of pharmacologic treatment of depression/anxiety on hip and knee patient-reported outcome measures (PROMs).</p>
+            <span id="dots" style="display:none;">...</span>
+            <span id="more-text" style="display:none;"></span>
+            <hr class="spacer">
+
+    </div>
+        
+        <div id="main">
+        <div id="Content"></div>
+    </div>
+                    
+    <div id="footer" style="display: none;">
+            <input type="text" id="txtRegistration" class="hidden" value="B1138D93-56C0-4F91-A00F-B9EA28743028">
+            <input type="text" id="txtToken" class="hidden" value="F1EC46FD-7E7F-474B-868E-63EEF61C9104">
+            <input type="text" id="txtFormOID" class="hidden" value="572240E6-AA7D-4F45-BC20-E95422EBDB94">
+            <input type="text" id="UID" class="hidden" placeholder="User-defined ID">
+            <button onclick="listForms()" class="hidden-button">List Forms</button>
+            <button onclick="formDetails()" class="hidden-button">Get Form Details</button>
+        <button onclick="startAssessment()"><i class='bx bx-send'></i> Start Assessment</button>
+        <button onclick="getAssessmentQuestion()" class="hidden-button">Get Current Question</button>
+    </div>
+    
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/crypto-js.min.js"></script>
+    <script src="js/db-js.js"></script>
+    <script>
+        // Function to get the parameter value from URL
+        function getParameterByName(name) {
+            const url = new URL(window.location.href);
+            return url.searchParams.get(name);
+        }
+
+        // Set the UID field with mr_no from URL
+        document.addEventListener('DOMContentLoaded', () => {
+            const mr_no = getParameterByName('mr_no');
+            if (mr_no) {
+                document.getElementById('UID').value = mr_no;
+            }
+        });
+
+    
+    //code after css update for mobile
+    var charLimit = 80;
+        function toggleText() {
+    var dots = document.getElementById("dots");
+    var moreText = document.getElementById("more-text");
+    var toggleBtn = document.getElementById("toggle-btn");
+
+    if (moreText.style.display === "none") {
+      dots.style.display = "none"; // Hide the dots
+      moreText.style.display = "inline"; // Show the extra text
+      toggleBtn.innerHTML = " Show Less"; // Change text to "Show Less"
+    } else {
+      dots.style.display = "inline"; // Show the dots
+      moreText.style.display = "none"; // Hide the extra text
+      toggleBtn.innerHTML = " Show More"; // Change text back to "Show More"
+    }
+  }
+
+  // Function to handle truncation based on screen size (mobile vs desktop)
+  function setInitialText() {
+    var fullText = "Depression and anxiety are common comorbidities that may exacerbate osteoarthritis (OA)-related pain. We aim to evaluate the effect of pharmacologic treatment of depression/anxiety on hip and knee patient-reported outcome measures (PROMs)."; 
+    var truncatedText = fullText.substring(0, charLimit); // Truncate the text
+
+    if (window.innerWidth < 768) {
+      if (fullText.length > charLimit) {
+        document.getElementById("text").innerHTML =
+          truncatedText +
+          '<span id="dots">...</span>' +
+          '<span id="more-text" style="display:none;">' +
+          fullText.substring(charLimit) +
+          '</span>' +
+          '<span id="toggle-btn" style="color: blue; cursor: pointer;" onclick="toggleText()"> Show More</span>';
+      } else {
+        document.getElementById("text").innerHTML = fullText;
+      }
+    } else {
+      document.getElementById("text").innerHTML = fullText;
+    }
+  }
+
+  // Call setInitialText on page load and when the window is resized
+  window.onload = setInitialText;
+  window.onresize = setInitialText;
+
+
+
+    </script>
+</body>
+</html>

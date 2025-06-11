@@ -1,0 +1,311 @@
+/* public/style.css */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    /* margin: 0; */
+    /* padding: 0; */
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  .login-title {
+    margin-bottom: 20px;
+    text-align: center;
+    /* Add the following styles */
+    word-wrap: break-word; /* Allow long words to break and wrap onto the next line */
+    max-width: 100%; /* Limit the width of the h2 to the container width */
+  }
+  
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button.btn-login {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button.btn-login:hover {
+    background-color: #0056b3;
+  }
+  
+ /* public/style.css */
+
+/* Home page styles */
+.profile-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .profile-body {
+    text-align: left;
+  }
+  
+  .profile-body h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  .highlight {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 600px) {
+    .profile-card {
+      padding: 10px;
+      width: calc(100% - 40px);
+      left: 20px;
+    }
+  }
+  
+
+
+  /* /* Search form styles */
+/* .search-container {
+  text-align: center;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.btn-search {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-search:hover {
+  background-color: #0056b3;
+} */ */
+
+
+/* Search button styles */
+.search-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Adjust margin as needed */
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.btn-search {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-search:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .search-container {
+    flex-direction: column; /* Change flex direction for smaller screens */
+    align-items: stretch;
+  }
+}
+
+
+
+/* Table styles */
+.patient-details {
+  margin-top: 100px; /* Adjust margin as needed */
+  overflow-x: auto; /* Enable horizontal scroll for small screens */
+
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #0fa4df;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  table {
+    font-size: 12px; /* Reduce font size for smaller screens */
+  }
+  .patient-details {
+    overflow-x: scroll; /* Enable horizontal scroll for small screens */
+  }
+}
+
+
+/* CSS for highlighted row */
+.highlight-green {
+  background-color: rgb(200, 255, 200);
+}
+
+
+/* CSS for View Details button */
+form[action="/search"] {
+  display: inline-block;
+}
+
+form[action="/search"] button[type="submit"] {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+form[action="/search"] button[type="submit"]:hover {
+  background-color: #45a049; /* Darker green */
+}
+
+/* Responsive styling */
+@media screen and (max-width: 600px) {
+  form[action="/search"] {
+    display: block;
+    margin-bottom: 10px; /* Add spacing between each button on smaller screens */
+  }
+
+  form[action="/search"] button[type="submit"] {
+    width: 100%; /* Make button width 100% on smaller screens */
+  }
+}
+
+
+
+/* this the css for the Graph execute Button in the Patient_Detatils */
+
+/* CSS for Graph of the Patient button */
+form[action="/execute"] {
+  display: inline-block;
+}
+
+form[action="/execute"] button[type="submit"] {
+  background-color: #007bff; /* Blue */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+form[action="/execute"] button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue */
+}
+
+/* Responsive styling */
+@media screen and (max-width: 600px) {
+  form[action="/execute"] {
+    display: block;
+    margin-bottom: 10px; /* Add spacing between each button on smaller screens */
+  }
+
+  form[action="/execute"] button[type="submit"] {
+    width: 100%; /* Make button width 100% on smaller screens */
+  }
+}
+
+
+.patient-details header {
+  background-color: #f0f0f0;
+  padding: 20px;
+  margin-bottom: 20px; /* Add some space between header and search form */
+  text-align: center; /* Center the content horizontally */
+}
+
+.patient-details header h1 {
+  margin: 0;
+  color: #333;
+  font-size: 35px;
+}
+
+
+/* Logout Button Styling */
+.logout-button-container {
+  position: absolute;
+  top: 50px; /* Adjust this value to move the button down */
+  right: 20px;
+  /* Alternatively, you can use margin-top instead of top */
+  /* margin-top: 20px; */
+}
+
+.logout-button {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.logout-button:hover {
+  background-color: darkred;
+  cursor: pointer;
+}

@@ -1,0 +1,27 @@
+/* Bar styling */
+.total-patients-bar {
+    fill: #D3D8FF;
+    /* opacity: 0.8; */
+}
+
+.mcid-bar {
+    fill: #4B57F9;
+    /* opacity: 0.8; */
+}
+
+/* Legend styling */
+.legend-rect-total {
+    fill: #D3D8FF;
+}
+
+.legend-rect-mcid {
+    fill: #4B57F9;
+}
+
+/* No data message styling */
+.no-data-message {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}
+

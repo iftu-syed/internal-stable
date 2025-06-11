@@ -1,0 +1,8 @@
+Scale,Severity,Color,Chart_Range_Min,Chart_Range_Max,Actual_Range_Min,Actual_Range_Max
+WEXNER,Mild,#00ff00,0,5,0,4
+WEXNER,Moderate,#ffff00,5,9,5,8
+WEXNER,Severe,#ff0000,9,20,9,+
+ICIQ_UI SF,Slight,#7fff00,0,5,0,5
+ICIQ_UI SF,Moderate,#ffff00,5,12,6,12
+ICIQ_UI SF,Severe,#ff7f00,12,18,13,18
+ICIQ_UI SF,Very Severe,#ff0000,18,21,19,21

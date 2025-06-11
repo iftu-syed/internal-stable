@@ -1,0 +1,37 @@
+/* Individual number card styling */
+.number-card {
+    flex: 1;  /* Allow each card to grow/shrink equally */
+    min-width: 180px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the number (main value) */
+.number-card-value {
+    font-size: 32px;
+    font-weight: bold;
+    fill: #333;
+}
+
+/* Styling for the description text */
+.number-card-description {
+    font-size: 15px;
+    fill: #333;
+}
+
+
+@font-face {
+    font-family: 'Inter';
+    src: url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.number-card-value,
+.number-card-description {
+    font-family: 'Inter', sans-serif;
+}

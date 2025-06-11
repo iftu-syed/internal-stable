@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Admin</title>
+    <!-- Updated stylesheet link to include basePath -->
+    <link rel="stylesheet" href="<%= basePath %>/styles/styles.css">
+    <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <!-- Updated image source to include basePath -->
+                <img src="<%= basePath %>/assets/logo.png" alt="WeHealthify">
+            </div>
+            <i class="bx bx-menu" id="btn" style="color: #fff; font-size: 24px;"></i>
+        </div>
+
+        <div class="user">
+            <div>
+                <p class="bold">Super Admin</p>
+                <!-- <p class="bold">WeHealthify</p> -->
+            </div>
+        </div>
+        <ul>
+            <li>
+                <!-- Updated link to include basePath -->
+                <a href="<%= basePath %>/dashboard">
+                    <i class='bx bx-add-to-queue'></i>
+                    <span class="nav-item">Add Hospital Admin</span>
+                </a>
+                <span class="tooltip">Add</span>
+            </li>
+            <li>
+                <!-- Updated link to include basePath -->
+                <a href="<%= basePath %>/">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item">Logout</span>
+                </a>
+                <span class="tooltip">Logout</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar">
+            <h2 style="color: #333333;">Welcome, Super Admin</h2>
+            <!-- Updated form action to include basePath -->
+            <form action="<%= basePath %>/search" method="GET" class="searchtopbar">
+                <input type="text" name="mrNo" placeholder="Search Hospital">
+                <button type="submit" class="btn-search"><i class='bx bx-search-alt'></i></button>
+            </form>
+        </div>
+
+        <hr style="opacity: 0.5;">
+            <br><h2 style="color: #333333;">Edit Admin</h2><br>
+            <!-- Updated form action to include basePath -->
+            <form action="<%= basePath %>/editAdmin/<%= admin._id %>" method="POST" class="addAdmin">
+                <br><input type="text" id="firstName" name="firstName" value="<%= admin.firstName %>" placeholder="First Name" required>
+                <input type="text" id="lastName" name="lastName" value="<%= admin.lastName %>" placeholder="Last Name" required>
+                <input type="password" id="password" name="password" value="<%= admin.password %>" placeholder="Password" required>
+
+                <select id="hospitalName" name="hospitalName" required>
+                    <option value="" disabled>Select Hospital</option>
+                    <% hospitals.forEach(function(hospital) { %>
+                        <option value="<%= hospital.hospital_name %>" <%= admin.hospitalName === hospital.hospital_name ? 'selected' : '' %>><%= hospital.hospital_name %></option>
+                    <% }); %>
+                </select>
+
+                <input type="text" id="hospital" name="hospital_code" value="<%= admin.hospital_code %>" placeholder="Hospital Code" readonly required>
+
+                <select id="siteCode" name="siteCode" required>
+                    <option value="" disabled>Select Site</option>
+                    <% hospitals.forEach(hospital => { %>
+                        <% if (hospital.hospital_name === admin.hospitalName) { %>
+                            <% hospital.sites.forEach(site => { %>
+                                <option value="<%= site.site_code %>" <%= site.site_code === admin.siteCode ? 'selected' : '' %>><%= site.site_code %></option>
+                            <% }); %>
+                        <% } %>
+                    <% }); %>
+                </select>                
+
+                <select id="subscription" name="subscription">
+                    <option value="Active" <%= admin.subscription === 'Active' ? 'selected' : '' %>>Subscription Active</option>
+                    <option value="Inactive" <%= admin.subscription === 'Inactive' ? 'selected' : '' %>>Subscription Inactive</option>
+                </select>
+                
+                <button type="submit"><i class='bx bx-save'></i> Save</button><br>
+                <!-- Updated link to include basePath -->
+                <a href="<%= basePath %>/dashboard">Back to Dashboard</a>
+            </form>        
+
+    </div>
+
+    <!-- Updated script path to include basePath -->
+    <script src="<%= basePath %>/scripts/main.js"></script>
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+
+        btn.onclick = function() {
+            sidebar.classList.toggle('active');
+        };
+
+        // JavaScript code to dynamically update hospital code and site code
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch hospitals data from the view (passed by server-side)
+            const hospitalsRaw = <%- JSON.stringify(hospitals) %>;
+            const hospitals = hospitalsRaw.map(hospital => {
+                hospital.sites = JSON.parse(JSON.stringify(hospital.sites));
+                return hospital;
+            });
+
+            const hospitalNameSelect = document.getElementById('hospitalName');
+            const hospitalCodeInput = document.getElementById('hospital');
+            const siteCodeSelect = document.getElementById('siteCode');
+
+            hospitalNameSelect.addEventListener('change', function() {
+                const selectedHospitalName = hospitalNameSelect.value;
+
+                const selectedHospital = hospitals.find(function(hospital) {
+                    return hospital.hospital_name === selectedHospitalName;
+                });
+
+                if (selectedHospital) {
+                    hospitalCodeInput.value = selectedHospital.hospital_code;
+                    siteCodeSelect.innerHTML = '<option value="" disabled selected>Select Site</option>';
+                    selectedHospital.sites.forEach(function(site) {
+                        const option = document.createElement('option');
+                        option.value = site.site_code;
+                        option.textContent = site.site_code;
+                        siteCodeSelect.appendChild(option);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

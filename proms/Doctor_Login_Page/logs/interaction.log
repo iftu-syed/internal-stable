@@ -1,0 +1,220 @@
+2024-08-09T07:23:51.341Z - Doctor fds from ABCD added a note for patient Mr_no: 88 at 8/9/2024, 12:53:51 PM - Note: Good Health as of now
+2024-08-09T07:24:05.585Z - Doctor fds from ABCD added an event for patient Mr_no: 88 at 8/9/2024, 12:54:05 PM - Event: Injection-RE
+2024-08-09T07:24:11.181Z - Doctor fds from ABCD added ICD code 00051 for patient Mr_no: 88 on 2024-08-09
+2024-08-13T16:19:36.508Z - Doctor Ravi_2 from ABCD added an event for patient Mr_no: 66 at 8/13/2024, 9:49:36 PM - Event: Injection-Diabets
+2024-08-13T16:20:15.735Z - Doctor Ravi_2 from ABCD added an event for patient Mr_no: 66 at 8/13/2024, 9:50:15 PM - Event: Surgery
+2024-08-22T12:11:55.291Z - Doctor cre_lchong from CRE added an event for patient Mr_no: 344 at 8/22/2024, 5:41:55 PM - Event: Surgery
+2024-08-22T12:13:47.727Z - Doctor cre_lchong from CRE added a note for patient Mr_no: 344 at 8/22/2024, 5:43:47 PM - Note: Hello
+
+2024-08-23T17:24:20.332Z - Doctor wgh_mbrown from WGH added an event for patient Mr_no: 874 at 8/23/2024, 10:54:20 PM - Event:  GLP-1 receptor agonist.
+2024-08-23T17:25:48.194Z - Doctor wgh_mbrown from WGH added ICD code 79470 for patient Mr_no: 874 on 2024-08-23
+2024-08-23T17:31:13.106Z - Doctor wgh_mbrown from WGH added a note for patient Mr_no: 874 at 8/23/2024, 11:01:13 PM - Note: Continue Same Medicine as health is better now
+2024-08-23T17:31:31.983Z - Doctor wgh_mbrown from WGH added ICD code 00124 for patient Mr_no: 874 on 2024-08-23
+2024-08-26T10:17:49.806Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 454 at 8/26/2024, 3:47:49 PM - Event: Injection-Diabets
+2024-08-26T11:19:04.296Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 4:49:04 PM - Event: Injection-Diabets
+2024-08-26T11:21:30.715Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 4:51:30 PM - Event: Injection-Diabets
+2024-08-26T11:27:02.890Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 4:57:02 PM - Event: Injection-Diabets
+2024-08-26T11:35:33.237Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 5:05:33 PM - Event: Injection-Diabets
+2024-08-26T11:36:53.237Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 5:06:53 PM - Event: Injection-Diabets
+2024-08-26T11:52:57.208Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 5:22:57 PM - Event: Surgery
+2024-08-26T11:57:35.756Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 5:27:35 PM - Event: gtyut
+2024-08-26T12:07:34.077Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 5:37:34 PM - Event: Surgery
+2024-08-26T12:09:28.649Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 5:39:28 PM - Event: Surgery
+2024-08-26T12:12:31.615Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 5:42:31 PM - Event: Surgery
+2024-08-26T12:16:20.755Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 5:46:20 PM - Event: Injection-REjfhsdjfds
+2024-08-26T12:23:50.789Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 5:53:50 PM - Event: Surgery
+2024-08-26T12:24:51.207Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 5:54:51 PM - Event: Injection-Diabets
+2024-08-26T12:29:47.967Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 5:59:47 PM - Event: Injection-REjfhsdjfds
+2024-08-26T12:33:57.393Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 6:03:57 PM - Event: Surgery
+2024-08-26T12:34:05.323Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 6:04:05 PM - Event: Surgery
+2024-08-26T12:36:06.667Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 6:06:06 PM - Event: Surgerydfs
+2024-08-26T12:40:47.256Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 6:10:47 PM - Event: sfdsfds
+2024-08-26T12:53:15.525Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 6345 at 8/26/2024, 6:23:15 PM - Event: Surgery
+2024-09-01T15:01:51.934Z - Doctor wgh_mb_mdavis from WGH added a note for patient Mr_no: 23 at 9/1/2024, 8:31:51 PM - Note: same Med+
+
+2024-09-01T15:02:12.300Z - Doctor wgh_mb_mdavis from WGH added an event for patient Mr_no: 23 at 9/1/2024, 8:32:12 PM - Event: Injection-Diabets
+2024-09-01T15:03:06.362Z - Doctor wgh_mb_mdavis from WGH added ICD code 00114 for patient Mr_no: 23 on 2024-09-01
+2024-09-06T20:54:18.893Z - Doctor wgh_mb_vjhgghj from WGH added an event for patient Mr_no: 232 at 9/7/2024, 2:24:18 AM - Event: Injection-Diabets
+2024-09-24T11:05:23.819Z - Doctor wgh_mb_dsdf from WGH added ICD code 51676 for patient Mr_no: 990 on 2024-09-24
+2024-09-24T11:25:20.741Z - Doctor wgh_mb_dsdf from WGH added ICD code 71632 for patient Mr_no: 990 on 2024-09-24
+2024-09-25T04:55:05.401Z - Doctor wgh_mb_dsdf from WGH added ICD code 00114 with description "1 Bypass Spinal Canal to Atrium with Nonaut Sub, Open Approach Bypass Spinal Canal to Atrium with Nonautologous Tissue Substitute, Open Approach" for patient Mr_no: 990 on 2024-09-25
+2024-09-25T05:06:02.831Z - Doctor wgh_mb_dsdf from WGH added ICD code 05077 with description "    0 Heart and Great Vessels, Inspection                          Heart and Great Vessels, Inspection" for patient Mr_no: 990 on 2024-09-25
+2024-09-25T05:06:22.316Z - Doctor wgh_mb_dsdf from WGH added ICD code 18862 with description "1 Inspection of Lower Vein, Open Approach                      Inspection of Lower Vein, Open Approach" for patient Mr_no: 990 on 2024-09-25
+2024-09-25T05:11:04.220Z - Doctor wgh_mb_dsdf from WGH added ICD code 01617 with description "    0 Central Nervous System and Cranial Nerves, Revision          Central Nervous System and Cranial Nerves, Revision" for patient Mr_no: 990 on 2024-09-25
+2024-09-25T05:21:00.831Z - Doctor wgh_mb_dsdf from WGH added a note for patient Mr_no: 990 at 9/25/2024, 10:51:00 AM - Note: Hello
+2024-09-25T05:21:02.717Z - Doctor wgh_mb_dsdf from WGH added a note for patient Mr_no: 990 at 9/25/2024, 10:51:02 AM - Note: Hello
+2024-09-25T05:21:04.523Z - Doctor wgh_mb_dsdf from WGH added a note for patient Mr_no: 990 at 9/25/2024, 10:51:04 AM - Note: Hello
+2024-09-25T05:21:27.386Z - Doctor wgh_mb_dsdf from WGH added an event for patient Mr_no: 990 at 9/25/2024, 10:51:27 AM - Event: Injection-RE
+2024-09-25T05:23:41.448Z - Doctor wgh_mb_dsdf from WGH added a note for patient Mr_no: 990 at 9/25/2024, 10:53:41 AM - Note: fdfgfd
+2024-09-25T05:28:14.269Z - Doctor wgh_mb_dsdf from WGH added a note for patient Mr_no: 990 at 9/25/2024, 10:58:14 AM - Note: Hello you health status is okay now!
+2024-09-25T05:28:24.357Z - Doctor wgh_mb_dsdf from WGH added an event for patient Mr_no: 990 at 9/25/2024, 10:58:24 AM - Event: Injection-Diabets
+2024-09-25T05:28:38.089Z - Doctor wgh_mb_dsdf from WGH added ICD code 04880 with description "1 Insertion of Ext Heart Assist into Heart, Perc Approach      Insertion of Short-term External Heart Assist System into Heart, Percutaneous Approach" for patient Mr_no: 990 on 2024-09-25
+2024-09-25T05:30:35.647Z - Doctor wgh_mb_dsdf from WGH added a note for patient Mr_no: 990 at 9/25/2024, 11:00:35 AM - Note: fdsfsduh
+2024-09-25T05:30:49.663Z - Doctor wgh_mb_dsdf from WGH added an event for patient Mr_no: 990 at 9/25/2024, 11:00:49 AM - Event: Injection-REjfhsdjfds
+2024-09-25T05:32:06.511Z - Doctor wgh_mb_dsdf from WGH added ICD code 05079 with description "1 Inspection of Heart, Percutaneous Approach                   Inspection of Heart, Percutaneous Approach" for patient Mr_no: 990 on 2024-09-25
+2024-09-25T05:36:31.217Z - Doctor wgh_mb_dsdf from WGH added a note for patient Mr_no: 990 at 9/25/2024, 11:06:31 AM - Note: sdsfss
+2024-09-25T05:36:42.881Z - Doctor wgh_mb_dsdf from WGH added an event for patient Mr_no: 990 at 9/25/2024, 11:06:42 AM - Event: Injection-Diabets
+2024-09-25T05:37:22.380Z - Doctor wgh_mb_dsdf from WGH added ICD code 04047 with description "    0 Heart and Great Vessels, Destruction                         Heart and Great Vessels, Destruction" for patient Mr_no: 990 on 2024-09-25
+2024-09-25T05:40:55.536Z - Doctor wgh_mb_dsdf from WGH added a note for patient Mr_no: 990 at 9/25/2024, 11:10:55 AM - Note: fdsdsfsa sdff
+2024-09-25T05:41:04.691Z - Doctor wgh_mb_dsdf from WGH added an event for patient Mr_no: 990 at 9/25/2024, 11:11:04 AM - Event: Injection-Diabets
+2024-09-25T05:41:14.827Z - Doctor wgh_mb_dsdf from WGH added ICD code 04874 with description "1 Insert of Bivent Ext Heart Assist into Heart, Open Approach  Insertion of Biventricular Short-term External Heart Assist System into Heart, Open Approach" for patient Mr_no: 990 on 2024-09-25
+2024-09-25T05:41:57.712Z - Doctor wgh_mb_dsdf from WGH added ICD code 05264 with description "1 Removal of Intracardiac Pacemaker from Heart, Open Approach  Removal of Intracardiac Pacemaker from Heart, Open Approach" for patient Mr_no: 990 on 2024-09-25
+2024-09-25T05:45:05.392Z - Doctor wgh_mb_dsdf from WGH added a note for patient Mr_no: 990 at 9/25/2024, 11:15:05 AM - Note: sfsd sdfsd
+2024-09-25T05:45:11.995Z - Doctor wgh_mb_dsdf from WGH added an event for patient Mr_no: 990 at 9/25/2024, 11:15:11 AM - Event: Injection-Diabets
+2024-09-25T05:45:21.257Z - Doctor wgh_mb_dsdf from WGH added ICD code 02041 with description "    0 Peripheral Nervous System, Destruction                       Peripheral Nervous System, Destruction" for patient Mr_no: 990 on 2024-09-25
+2024-09-30T11:11:03.321Z - Doctor wgh_mb_mkumar from WGH added a note for patient Mr_no: 898 at 9/30/2024, 4:41:03 PM - Note: Hello
+2024-09-30T11:11:15.098Z - Doctor wgh_mb_mkumar from WGH added an event for patient Mr_no: 898 at 9/30/2024, 4:41:15 PM - Event: Injection-Diabets
+2024-09-30T11:11:25.888Z - Doctor wgh_mb_mkumar from WGH added ICD code 04880 with description "1 Insertion of Ext Heart Assist into Heart, Perc Approach      Insertion of Short-term External Heart Assist System into Heart, Percutaneous Approach" for patient Mr_no: 898 on 2024-09-30
+2024-10-01T08:29:39.841Z - Doctor wgh_mb_mkumar from WGH added ICD code 00032 with description "1 Bypass Cereb Vent to Bone Mar with Nonaut Sub, Open Approach Bypass Cerebral Ventricle to Bone Marrow with Nonautologous Tissue Substitute, Open Approach" for patient Mr_no: 898 on 2024-10-01
+2024-10-01T09:38:37.725Z - Doctor wgh_mb_mkumar from WGH added a note for patient Mr_no: 898 at 10/1/2024, 3:08:37 PM - Note: hjkewrhkjewhfkadjsfnkjsadhfkjsd.hfkj.sa,dnfjlawsfadjs,.nfj,.dasnfjads.,nfj,.adsnfj,asndfja,nsfj.,nwafj,nas,jdfn,jadsnf,jasdnf,jadsnf.,jadsnf.,asdnf.sd,anfjs
+2024-10-14T10:22:16.613Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 3:52:16 PM - Note: dvsvs
+2024-10-14T10:22:38.770Z - Doctor wgh_mb_vkumar from WGH added an event for patient Mr_no: 991 at 10/14/2024, 3:52:38 PM - Event: Injection-Diabets
+2024-10-14T10:36:42.287Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 4:06:42 PM - Note: hgjfhdhgdg
+2024-10-14T11:20:32.447Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 4:50:32 PM - Note: jshfsdf
+2024-10-14T11:21:18.524Z - Doctor wgh_mb_vkumar from WGH added ICD code 70303 with description "1 Introduction of Recomb Protein C into Heart, Open            Introduction of Recombinant Human-activated Protein C into Heart, Open" for patient Mr_no: 991 on 2024-10-14
+2024-10-14T12:01:23.710Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:31:23 PM - Note: vijay
+2024-10-14T12:01:23.713Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:31:23 PM - Note: vijay
+2024-10-14T12:01:41.603Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:31:41 PM - Note: Ram kumar is good
+2024-10-14T12:01:41.604Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:31:41 PM - Note: Ram kumar is good
+2024-10-14T12:05:28.083Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:35:28 PM - Note: djsndfjksd
+
+2024-10-14T12:05:28.086Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:35:28 PM - Note: djsndfjksd
+
+2024-10-14T12:05:28.086Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:35:28 PM - Note: djsndfjksd
+
+2024-10-14T12:09:01.802Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:39:01 PM - Note: uoiewrw89232
+2024-10-14T12:09:01.809Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:39:01 PM - Note: uoiewrw89232
+2024-10-14T12:09:01.810Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:39:01 PM - Note: uoiewrw89232
+2024-10-14T12:10:12.928Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:40:12 PM - Note: ldfjhasdkfj
+2024-10-14T12:10:12.932Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:40:12 PM - Note: ldfjhasdkfj
+2024-10-14T12:11:02.175Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:41:02 PM - Note: jsfdskdj
+2024-10-14T12:11:02.178Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:41:02 PM - Note: jsfdskdj
+2024-10-14T12:12:53.194Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:42:53 PM - Note: Mahesh Babu
+2024-10-14T12:12:53.198Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:42:53 PM - Note: Mahesh Babu
+2024-10-14T12:15:20.679Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:45:20 PM - Note: lkjajfasdk
+2024-10-14T12:15:20.684Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:45:20 PM - Note: lkjajfasdk
+2024-10-14T12:16:42.047Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:46:42 PM - Note: oautweiuortewute42423
+2024-10-14T12:16:42.051Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:46:42 PM - Note: oautweiuortewute42423
+2024-10-14T12:21:33.531Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:51:33 PM - Note: 9879789234
+2024-10-14T12:22:14.186Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:52:14 PM - Note: sfsdfsddsaf
+2024-10-14T12:22:14.188Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:52:14 PM - Note: sfsdfsddsaf
+2024-10-14T12:22:18.426Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:52:18 PM - Note: hjs;fhskdfkljsd
+2024-10-14T12:22:18.428Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 5:52:18 PM - Note: hjs;fhskdfkljsd
+2024-10-14T16:42:44.210Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 10:12:44 PM - Note: Hello
+2024-10-14T16:42:44.211Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 10:12:44 PM - Note: Hello
+2024-10-14T16:52:38.222Z - Doctor wgh_mb_vkumar from WGH added an event for patient Mr_no: 991 at 10/14/2024, 10:22:38 PM - Event: Injection-Diabets
+2024-10-14T16:54:23.207Z - Doctor wgh_mb_vkumar from WGH added an event for patient Mr_no: 991 at 10/14/2024, 10:24:23 PM - Event: Injection-Diabets
+2024-10-14T16:54:54.670Z - Doctor wgh_mb_vkumar from WGH added ICD code 00013 with description "1 Bypass Cereb Vent to Nasophar with Synth Sub, Open Approach  Bypass Cerebral Ventricle to Nasopharynx with Synthetic Substitute, Open Approach" for patient Mr_no: 991 on 2024-10-14
+2024-10-14T16:55:10.500Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 10:25:10 PM - Note: Helllo
+2024-10-14T16:55:10.509Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 10:25:10 PM - Note: Helllo
+2024-10-14T17:15:43.358Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 10:45:43 PM - Note: dsdfds
+2024-10-14T17:16:06.119Z - Doctor wgh_mb_vkumar from WGH added an event for patient Mr_no: 991 at 10/14/2024, 10:46:06 PM - Event: Injection-REjfhsdjfds
+2024-10-14T17:16:28.200Z - Doctor wgh_mb_vkumar from WGH added ICD code 64357 with description "1 Control Bleeding in Genitourinary Tract, Perc Endo Approach  Control Bleeding in Genitourinary Tract, Percutaneous Endoscopic Approach" for patient Mr_no: 991 on 2024-10-14
+2024-10-14T17:17:58.550Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 10:47:58 PM - Note: dfgfd
+2024-10-14T17:22:15.421Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 10:52:15 PM - Note: vijay
+2024-10-14T17:22:31.030Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 10:52:31 PM - Note: fjksdf
+2024-10-14T17:24:41.003Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 10:54:40 PM - Note: Bhany
+2024-10-14T17:24:54.711Z - Doctor wgh_mb_vkumar from WGH added an event for patient Mr_no: 991 at 10/14/2024, 10:54:54 PM - Event: gdfgdfgd
+2024-10-14T17:25:06.939Z - Doctor wgh_mb_vkumar from WGH added ICD code 01187 with description "1 Removal of Neuro Lead from Cranial Nrv, Perc Endo Approach   Removal of Neurostimulator Lead from Cranial Nerve, Percutaneous Endoscopic Approach" for patient Mr_no: 991 on 2024-10-14
+2024-10-14T17:26:15.619Z - Doctor wgh_mb_vkumar from WGH added an event for patient Mr_no: 991 at 10/14/2024, 10:56:15 PM - Event: Injection-Diabets
+2024-10-14T17:26:34.170Z - Doctor wgh_mb_vkumar from WGH added ICD code 61410 with description "1 Extirpation of Matter from Uterus, Percutaneous Approach     Extirpation of Matter from Uterus, Percutaneous Approach" for patient Mr_no: 991 on 2024-10-14
+2024-10-14T17:27:02.020Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 10:57:02 PM - Note: ,dmnfsdkjfndskfj
+2024-10-14T17:34:40.471Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 11:04:40 PM - Note: hgfjg
+2024-10-14T17:34:54.253Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 11:04:54 PM - Note: ghfdjgkg
+2024-10-14T17:35:14.511Z - Doctor wgh_mb_vkumar from WGH added an event for patient Mr_no: 991 at 10/14/2024, 11:05:14 PM - Event: Surgery
+2024-10-14T17:35:20.704Z - Doctor wgh_mb_vkumar from WGH added ICD code 45503 with description "1 Destruction of Right Humeral Head, Perc Endo Approach        Destruction of Right Humeral Head, Percutaneous Endoscopic Approach" for patient Mr_no: 991 on 2024-10-14
+2024-10-14T17:37:27.944Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 11:07:27 PM - Note: vijay
+2024-10-14T17:37:46.887Z - Doctor wgh_mb_vkumar from WGH added an event for patient Mr_no: 991 at 10/14/2024, 11:07:46 PM - Event: Injection-Diabetsvgfhg vjhg
+2024-10-14T17:37:55.952Z - Doctor wgh_mb_vkumar from WGH added ICD code 79453 with description "1 Introduce Axicab in Central Vein, Perc, New Tech 7           Introduction of Axicabtagene Ciloleucel Immunotherapy into Central Vein, Percutaneous Approach, New Technology Group 7" for patient Mr_no: 991 on 2024-10-14
+2024-10-14T17:39:07.663Z - Doctor wgh_mb_vkumar from WGH added a note for patient Mr_no: 991 at 10/14/2024, 11:09:07 PM - Note: kumar
+2024-10-14T17:39:22.111Z - Doctor wgh_mb_vkumar from WGH added an event for patient Mr_no: 991 at 10/14/2024, 11:09:22 PM - Event: Surgeryhjh
+2024-10-14T17:39:29.360Z - Doctor wgh_mb_vkumar from WGH added ICD code 06294 with description "1 Bypass Innom Art to L Low Leg Art w Autol Vn, Open           Bypass Innominate Artery to Left Lower Leg Artery with Autologous Venous Tissue, Open Approach" for patient Mr_no: 991 on 2024-10-14
+2024-11-25T11:50:45.671Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 5:20:45 PM - Event: Diabetes
+2024-11-25T14:04:58.666Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 7:34:58 PM - Event: Diabetes
+2024-11-25T14:27:40.371Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 7:57:40 PM - Event: Diabetes
+2024-11-25T14:27:40.375Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 7:57:40 PM - Event: Diabetes
+2024-11-25T14:29:47.279Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 7:59:47 PM - Event: Diabetes
+2024-11-25T14:29:47.281Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 7:59:47 PM - Event: Diabetes
+2024-11-25T14:32:31.406Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 8:02:31 PM - Event: Diabetes
+2024-11-25T14:33:55.072Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 8:03:55 PM - Event: Diabetes
+2024-11-25T14:40:30.215Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 8:10:30 PM - Event: Diabetes
+2024-11-25T14:45:36.780Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 8:15:36 PM - Event: Diabetes sda
+2024-11-25T14:54:05.439Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 8:24:05 PM - Event: Diabetes
+2024-11-25T14:54:29.683Z - Doctor wsc01_dsmith from WSC added a note for patient Mr_no: 001 at 11/25/2024, 8:24:29 PM - Note: Hello This vijay
+2024-11-25T14:58:46.076Z - Doctor wsc01_dsmith from WSC added a note for patient Mr_no: 001 at 11/25/2024, 8:28:46 PM - Note: This is vijay
+2024-11-25T14:58:54.085Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 8:28:54 PM - Event: Diabetes
+2024-11-25T14:59:09.992Z - Doctor wsc01_dsmith from WSC added ICD code 00151 with description "1 Change Other Device in Brain, External Approach              Change Other Device in Brain, External Approach" for patient Mr_no: 001 on 2024-11-25
+2024-11-25T15:02:08.478Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 8:32:08 PM - Event: Diabetes
+2024-11-25T15:02:42.603Z - Doctor wsc01_dsmith from WSC added a note for patient Mr_no: 001 at 11/25/2024, 8:32:42 PM - Note: This is vijay
+2024-11-25T15:02:53.952Z - Doctor wsc01_dsmith from WSC added ICD code 00316 with description "1 Drainage of Brain with Drainage Device, Perc Endo Approach   Drainage of Brain with Drainage Device, Percutaneous Endoscopic Approach" for patient Mr_no: 001 on 2024-11-25
+2024-11-25T15:05:39.118Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/25/2024, 8:35:39 PM - Event: Diabetes
+2024-11-28T09:33:01.945Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/28/2024, 3:03:01 PM - Event: Diabetes
+2024-11-28T10:05:35.626Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/28/2024, 3:35:35 PM - Event: Diabetes
+2024-11-28T10:10:09.638Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/28/2024, 3:40:09 PM - Event: Diabetes
+2024-11-28T10:32:39.434Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/28/2024, 4:02:39 PM - Event: Diabetes
+2024-11-28T10:35:28.754Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/28/2024, 4:05:28 PM - Event: Diabetes
+2024-11-28T10:37:19.743Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/28/2024, 4:07:19 PM - Event: Diabetes
+2024-11-28T10:39:26.151Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/28/2024, 4:09:26 PM - Event: Diabetes
+2024-11-28T10:44:43.882Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 001 at 11/28/2024, 4:14:43 PM - Event: Diabetes
+2024-12-02T13:18:57.260Z - Doctor wsc01_vkumar03 from WSC added an event for patient Mr_no: 10 at 12/2/2024, 6:48:57 PM - Event: Pain
+2024-12-02T17:34:40.707Z - Doctor wsc01_vkumar04 from WSC added an event for patient Mr_no: 11 at 12/2/2024, 11:04:40 PM - Event: Physical
+2024-12-10T08:39:49.751Z - Doctor wsc01_dsmith from WSC added ICD code 05079 with description "1 Inspection of Heart, Percutaneous Approach                   Inspection of Heart, Percutaneous Approach" for patient Mr_no: 001 on 2024-12-10
+2024-12-10T14:11:04.892Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 987 at 12/10/2024, 7:41:04 PM - Event: Diabetes
+2024-12-10T14:15:39.231Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 987 at 12/10/2024, 7:45:39 PM - Event: Diabetes
+2024-12-10T14:18:46.477Z - Doctor wsc01_dsmith from WSC added an event for patient Mr_no: 987 at 12/10/2024, 7:48:46 PM - Event: Diabetes
+2025-01-09T10:32:02.944Z - Doctor wsc01_vkumar13 from WSC added a note for patient Mr_no: 001 at 1/9/2025, 4:02:02 PM - Note: dskjf
+2025-01-09T10:32:57.870Z - Doctor wsc01_vkumar13 from WSC added a note for patient Mr_no: 001 at 1/9/2025, 4:02:57 PM - Note: kldgjelkg
+2025-01-20T07:43:41.105Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 1:13:41 PM - Event: Injection
+2025-01-20T08:05:15.601Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 1:35:15 PM - Event: Injection
+2025-01-20T08:06:19.866Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 1:36:19 PM - Event: Injection
+2025-01-20T08:07:12.597Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 1:37:12 PM - Event: Injection
+2025-01-20T08:08:25.092Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 1:38:25 PM - Event: Injection
+2025-01-20T08:10:26.495Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 1:40:26 PM - Event: Injection
+2025-01-20T08:12:42.620Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 1:42:42 PM - Event: Injection
+2025-01-20T08:13:09.844Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 1:43:09 PM - Event: fjkds
+2025-01-20T08:20:55.917Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 1:50:55 PM - Event: Injection
+2025-01-20T08:24:10.690Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 1:54:10 PM - Event: Injection
+2025-01-20T08:24:56.752Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 1:54:56 PM - Event: Injection
+2025-01-20T08:25:16.366Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 1:55:16 PM - Event: sjdhfdksf
+2025-01-20T08:27:00.813Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 1:57:00 PM - Event: Injection
+2025-01-20T08:35:53.741Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 2:05:53 PM - Event: Notesfsdjkfsd
+2025-01-20T08:36:18.802Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 2:06:18 PM - Event: Injection
+2025-01-20T08:39:15.350Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 2:09:15 PM - Event: Injection
+2025-01-20T08:40:19.185Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 2:10:19 PM - Event: Injection
+2025-01-20T08:41:46.357Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 2:11:46 PM - Event: sfsdjf
+2025-01-20T08:42:08.145Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 2:12:08 PM - Event: sjdhfdksf
+2025-01-20T08:44:20.863Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 2:14:20 PM - Event: Injection
+2025-01-20T08:45:38.525Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 2:15:38 PM - Event: Injection
+2025-01-20T08:51:07.524Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 2:21:07 PM - Event: Injection
+2025-01-20T08:52:40.824Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 2:22:40 PM - Event: sjdhfdksf
+2025-01-20T08:53:04.166Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 2:23:04 PM - Event: Notesfsdjkfsd
+2025-01-20T08:58:46.561Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 666 at 1/20/2025, 2:28:46 PM - Event: Pain
+2025-01-30T08:38:38.955Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 001 at 1/30/2025, 2:08:38 PM - Event: Hip
+2025-01-30T08:52:31.312Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 001 at 1/30/2025, 2:22:31 PM - Event: Knee
+2025-01-30T08:55:49.748Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 001 at 1/30/2025, 2:25:49 PM - Event: Exercise
+2025-01-31T07:46:12.709Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 002 at 1/31/2025, 1:16:12 PM - Event: Injection
+2025-01-31T09:07:22.861Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 003 at 1/31/2025, 2:37:22 PM - Event: Knee
+2025-02-19T05:03:20.647Z - Doctor wsc01_zuddin from WSC added an event for patient Mr_no: 989 at 2/19/2025, 10:33:20 AM - Event: Pelvic Floor
+2025-02-19T05:48:53.472Z - Doctor wsc01_fsymed from WSC added an event for patient Mr_no: 32 at 2/19/2025, 11:18:53 AM - Event: Pelvic Floor
+2025-02-19T05:49:35.379Z - Doctor wsc01_fsymed from WSC added an event for patient Mr_no: 32 at 2/19/2025, 11:19:35 AM - Event: sfasfa
+2025-03-05T20:26:40.113Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 600 at 3/6/2025, 1:56:40 AM - Event: sdgdf
+2025-03-05T20:29:18.592Z - Doctor wsc01_tsample from WSC added an event for patient Mr_no: 600 at 3/6/2025, 1:59:18 AM - Event: dssdf
+2025-03-27T05:26:49.493Z - Doctor abdullah.al-fayez.wsc01 from WSC added ICD code E10.42 with description "Type 1 diabetes mellitus with diabetic polyneuropathy" for patient Mr_no: 99 on 2025-03-27
+2025-03-27T05:40:09.509Z - Doctor abdullah.al-fayez.wsc01 from WSC added ICD code E11.33 with description "Type 2 diabetes mellitus with proliferative retinopathy" for patient Mr_no: 99 on 2025-03-27
+2025-03-27T06:48:26.419Z - Doctor vijay.kumar.wsc01 from WSC added an event for patient Mr_no: 200 at 3/27/2025, 12:18:26 PM - Event: Knee
+2025-03-27T06:51:59.259Z - Doctor abdullah.al-fayez.wsc01 from WSC added an event for patient Mr_no: 99 at 3/27/2025, 12:21:59 PM - Event: shoulder
+2025-03-27T06:52:23.589Z - Doctor abdullah.al-fayez.wsc01 from WSC added an event for patient Mr_no: 99 at 3/27/2025, 12:22:23 PM - Event: fevermedicine
+2025-03-28T07:21:46.877Z - Doctor vijay.kumar.wsc01 from WSC added ICD code E78.2 with description "Mixed hyperlipidaemia" for patient Mr_no: 200 on 2025-03-28
+2025-04-01T06:19:39.661Z - Doctor abdullah.al-fayez.wsc01 from WSC added an event for patient Mr_no: 300 at 4/1/2025, 11:49:39 AM - Event: metformin
+2025-04-01T06:20:01.553Z - Doctor abdullah.al-fayez.wsc01 from WSC added ICD code E11.64 with description "Type 2 diabetes mellitus with hypoglycaemia" for patient Mr_no: 300 on 2025-04-01
+2025-04-03T07:10:25.737Z - Doctor abdullah.al-fayez.wsc01 from WSC added an event for patient Mr_no: 300 at 4/3/2025, 12:40:25 PM - Event: Knee
+2025-04-03T17:05:35.914Z - Doctor mahesh.john.wsc01 from WSC added an event for patient Mr_no: 400 at 4/3/2025, 10:35:35 PM - Event: Injection
+2025-04-03T17:05:49.485Z - Doctor mahesh.john.wsc01 from WSC added an event for patient Mr_no: 400 at 4/3/2025, 10:35:49 PM - Event: Knee
+2025-04-03T17:06:21.578Z - Doctor mahesh.john.wsc01 from WSC added ICD code E11.9 with description "Type 2 diabetes mellitus without complication" for patient Mr_no: 400 on 2025-04-03
+2025-04-09T11:14:14.990Z - Doctor abdullah.al-fayez.wsc01 from WSC added a note for patient Mr_no: 300 at 4/9/2025, 4:44:14 PM - Note: Hello
+2025-04-17T05:04:33.508Z - Doctor mahesh.john.wsc01 from WSC added an event for patient Mr_no: 201 at 4/17/2025, 10:34:33 AM - Event: Injection
+2025-04-17T05:05:10.310Z - Doctor mahesh.john.wsc01 from WSC added ICD code E10.9 with description "Type 1 diabetes mellitus without complication" for patient Mr_no: 201 on 2025-04-17
+2025-04-20T08:36:49.581Z - Doctor bash.bose.fhh01 from FHH added an event for patient Mr_no: 9864 at 4/20/2025, 2:06:49 PM - Event: Injection
+2025-04-20T08:36:56.600Z - Doctor bash.bose.fhh01 from FHH added ICD code E10.65 with description "Type 1 diabetes mellitus with poor control" for patient Mr_no: 9864 on 2025-04-20
+2025-04-21T08:02:46.680Z - Doctor dhoni.mahi.fhh02 from FHH added an event for patient Mr_no: 88777 at 4/21/2025, 1:32:46 PM - Event: Injection
+2025-04-21T08:02:53.771Z - Doctor dhoni.mahi.fhh02 from FHH added ICD code E10.31 with description "Type 1 diabetes mellitus with background retinopathy" for patient Mr_no: 88777 on 2025-04-21

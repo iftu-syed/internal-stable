@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="<%= basePath %>/blankpage.css">
+  <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+  <link rel="stylesheet" href="<%= basePath %>/assets/icons/boxicons/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="<%= basePath %>/css/introjs.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+
+
+  .form-input {
+    width: auto;                /* or 100% if you prefer full-width */
+    padding: 10px;
+    border: 1px solid #5F677C;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-weight: normal;
+    box-sizing: border-box;
+  }
+  
+    .language-selector {
+      text-align: right;
+      /* margin: 10px; */
+    }
+
+    .language-selector a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: #007BFF;
+    }
+
+    .language-selector a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .language-selector img {
+      margin-right: 5px;
+      width: 20px;
+      margin-left: 5px;
+      height: auto;
+      vertical-align: bottom;
+    }
+
+   
+    
+    /* tool tip styles */
+
+.introjs-tooltipbuttons {
+text-align: right; /* Align buttons to the right */
+
+}
+
+.help-btn {
+background-color: #007BFF;
+color: white;
+border: none;
+border-radius: 5px;
+padding: 10px 15px;
+cursor: pointer;
+font-size: 16px;
+margin: 0px !important;
+transition: background-color 0.3s ease;
+}
+
+.help-btn:hover {
+background-color: #0056b3; /* Slightly darker blue on hover */
+}
+
+
+.help-button-container {
+position: fixed;
+bottom: 0;
+display: flex;
+align-items: center;
+justify-content: space-between;
+background: #12171e;
+padding: 12px 0;
+transition: all 0.5s ease;
+}
+
+/* Ensure the button aligns well with sidebar's active state */
+.sidebar.active .help-btn {
+color: #fff;
+display: flex;
+width: 100%;
+gap: 5px;
+align-items: center;
+text-decoration: none;
+border-radius: 0.8rem;
+}
+
+/* Container for the dropdown */
+#specialityDropdown {
+  position: absolute;
+  top: 100%; /* Position below the header */
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 10;
+width:fit-content;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 5px 0;
+  
+  /* Initially hidden */
+  opacity: 0;
+  visibility: hidden;
+  
+  /* Smooth transition */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Show the dropdown on hover */
+#specialityHeader:hover #specialityDropdown {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Style the links */
+#specialityDropdown a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+#specialityDropdown a:hover {
+  background-color: #f0f0f0; /* Light gray on hover */
+}
+
+.ltr-datetime {
+  direction: ltr;
+  unicode-bidi: bidi-override;
+  text-align: left;
+}
+
+#specialityHeader {
+  position: relative; /* So the absolutely-positioned dropdown anchors correctly */
+  white-space: nowrap; /* (Optional) Keep arrow + text in one line */
+  cursor: pointer;     /* (Optional) Makes it clear this is hoverable */
+}
+/* New Delete Dialog Styles with Unique Class Names */
+.delete-confirmation-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.delete-dialog-content {
+    background-color: #ffffff;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: deleteDialogFadeIn 0.3s ease-in-out;
+}
+
+@keyframes deleteDialogFadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.delete-warning-icon {
+    margin-bottom: 24px;
+}
+
+.delete-confirmation-title {
+    color: #ff4d4d;
+    margin-bottom: 16px;
+    font-size: 26px;
+    font-weight: 600;
+    font-family: 'Arial', sans-serif;
+}
+
+.delete-confirmation-message {
+    color: #555555;
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: 'Arial', sans-serif;
+}
+
+.delete-dialog-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.delete-confirm-button {
+    background-color: #dc3545;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(220, 53, 69, 0.2);
+}
+
+.delete-confirm-button:hover {
+    background-color: #b6323f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+.delete-cancel-button {
+    background-color: #CBFCC6;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);
+}
+
+.delete-cancel-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+    color: white;
+}
+.delete-icon {
+    color: #ff5c5c;
+    font-size: 24px;
+}
+
+.delete-button:hover .delete-icon {
+    color: #ff0000;
+}
+
+
+drop the absolute positioning
+.calendar-icon {
+  position: static;      /* normal flow */
+  margin-left: 6px;      /* space between text and icon */
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+}
+
+
+[dir="rtl"] #appointmentHeader .calendar-icon {
+  margin-left: 0;
+  margin-right: 6px;
+}
+/* Add these styles to your existing <style> section */
+
+/* Enhanced pagination styles */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pagination-button {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+  color: #495057;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  min-width: 40px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-button.active {
+  background-color: #CBFCC6;
+  color: black;
+  font-weight: 600;
+  border-color: #CBFCC6;
+}
+
+.pagination-button:hover:not(.active):not(.disabled) {
+  background-color: #e9ecef;
+}
+
+.pagination-button.disabled {
+  color: #adb5bd;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.pagination-info {
+  color: #6c757d;
+  margin: 0 10px;
+}
+
+/* For better date filter visibility */
+.filter-active {
+  background-color: #e3f2fd !important;
+  color: #0d6efd !important;
+}
+
+#clearDateIcon {
+  margin-left: 5px;
+  color: #6c757d;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.flatpickr-calendar {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+  border-radius: 8px !important; 
+}
+
+/* For RTL Support */
+[dir="rtl"] .pagination-container {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] #clearDateIcon {
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+/* This ensures pagination controls are responsive */
+@media (max-width: 576px) {
+  .pagination-container {
+    justify-content: center;
+  }
+  
+  .pagination-button {
+    min-width: 34px;
+    padding: 6px 10px;
+  }
+  
+  .pagination-info {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    order: -1;
+  }
+}
+
+
+/* Styles for date range filter display */
+.date-range-display {
+  font-size: 12px;
+  color: #0d6efd;
+  margin-left: 5px;
+  white-space: nowrap;
+  display: none;
+  background-color: #e3f2fd;
+  padding: 2px 6px;
+  border-radius: 4px;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[dir="rtl"] .date-range-display {
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+/* Make the flatpickr calendar wider to accommodate range selection */
+.flatpickr-calendar.range {
+  width: 325px !important;
+}
+
+/* Style for date range calendar day selection */
+.flatpickr-day.selected.startRange,
+.flatpickr-day.startRange.startRange,
+.flatpickr-day.endRange.startRange {
+  border-radius: 50px 0 0 50px;
+}
+
+.flatpickr-day.selected.endRange,
+.flatpickr-day.startRange.endRange,
+.flatpickr-day.endRange.endRange {
+  border-radius: 0 50px 50px 0;
+}
+
+.flatpickr-day.selected.startRange.endRange {
+  border-radius: 50px;
+}
+
+.flatpickr-day.inRange {
+  background-color: #e2f2ff !important;
+  border-color: #e2f2ff !important;
+}
+
+/* Filter badge styles */
+.filter-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e3f2fd;
+  color: #0d6efd;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  margin-left: 5px;
+  font-weight: 500;
+}
+
+.filter-badge i {
+  font-size: 14px;
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.filter-badge i:hover {
+  color: #0a58ca;
+}
+
+[dir="rtl"] .filter-badge {
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+[dir="rtl"] .filter-badge i {
+  margin-left: 0;
+  margin-right: 4px;
+}
+
+/* Active filter styles */
+th.has-filter {
+  position: relative;
+}
+
+th.has-filter::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #0d6efd;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+th.has-filter.filter-active::after {
+  opacity: 1;
+}
+
+/* Enhanced date filter styles */
+.date-filter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+
+.calendar-icon {
+  position: static;
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.date-range-badge {
+  display: none;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.date-filter.has-filter .date-range-badge {
+  display: flex;
+}
+
+.date-range-pill {
+  background-color: #e3f2fd;
+  border: 1px solid #90caf9;
+  color: #0d6efd;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 16px;
+  display: none;
+  white-space: nowrap;
+  max-width: 150px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+.flatpickr-wrapper {
+    position: relative;
+    display: block;
+}
+.date-range-pill .clear-btn {
+  margin-left: 4px;
+  color: #6c757d;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.date-range-pill .clear-btn:hover {
+  color: #dc3545;
+}
+
+.date-filter.has-filter .date-range-pill {
+  display: flex;
+  align-items: center;
+}
+
+[dir="rtl"] .date-range-badge {
+  left: -8px;
+  right: auto;
+}
+
+[dir="rtl"] .date-range-pill {
+  right: 0;
+  left: auto;
+}
+
+[dir="rtl"] .date-range-pill .clear-btn {
+  margin-left: 0;
+  margin-right: 4px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .date-range-pill {
+    max-width: 120px;
+  }
+}
+
+/* Style the flatpickr calendar */
+.flatpickr-calendar {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  border: none !important;
+}
+
+.flatpickr-day.selected {
+  background: #007bff !important;
+  border-color: #007bff !important;
+}
+
+.flatpickr-day.inRange {
+  background: #e3f2fd !important;
+  border-color: #e3f2fd !important;
+  box-shadow: -5px 0 0 #e3f2fd, 5px 0 0 #e3f2fd !important;
+}
+
+.flatpickr-day.selected.startRange, 
+.flatpickr-day.startRange.startRange, 
+.flatpickr-day.endRange.startRange {
+  border-radius: 50px 0 0 50px !important;
+}
+
+.flatpickr-day.selected.endRange, 
+.flatpickr-day.startRange.endRange, 
+.flatpickr-day.endRange.endRange {
+  border-radius: 0 50px 50px 0 !important;
+}
+
+.flatpickr-day.selected.startRange.endRange {
+  border-radius: 50px !important;
+}
+
+
+
+</style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="top">
+         <div class="logo">
+        <img src="<%= basePath %>/assets/images/logo_white.png" alt="WeHealthify">
+         </div>
+         <i class="bx bx-menu" id="btn"></i>
+    </div>
+
+    <br>
+    <div class="sidebar-footer">
+        <p id="staffLabel" class="bold">Staff</p>
+        <p class="bold"><%= doctor.hospitalName %></p><!-- Updated here -->
+        <p class="bold"><%= doctor.site_code %></p>   <!-- Updated here -->
+    </div>
+    <ul>
+        <li>
+            <a href="<%= basePath %>/home">
+                <i class="bx bxs-grid-alt"></i>
+                <span class="nav-item" id="dashboardLabel">Dashboard</span>
+            </a>
+            <span class="tooltip" id="dashboardTooltip">Dashboard</span>
+        </li>
+        <li>
+            <a href="<%= basePath %>/data-entry">
+                <i class='bx bx-plus-circle'></i>
+                <span class="nav-item" id="addAppointmentLabel">Add Appointment</span>
+            </a>
+            <span class="tooltip" id="addAppointmentTooltip">Add Appointment</span>
+        </li>            
+        <li>
+            <a href="<%= basePath %>/logout">
+                <i class="bx bx-log-out"></i>
+                <span class="nav-item" id="logoutLabel">Logout</span>
+            </a>
+            <span class="tooltip" id="logoutTooltip">Logout</span>
+        </li>        
+    </ul>
+
+    <div class="help-button-container">
+        <button id="helpButton" class="help-btn" >
+            <span class="nav-item" id="helpLabel">Help </span>
+            <i class='bx bx-help-circle'></i>
+        </button>
+        
+    
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="topbar" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+        <!-- <h1>Staff Dashboard</h1> -->
+        <h2 style="color: #333333;">
+          <%= lng === 'ar' 
+              ? `مرحباً, ${doctor.firstName} ${doctor.lastName}` 
+              : `Welcome, ${doctor.firstName} ${doctor.lastName}` 
+          %>
+        </h2>
+         <!-- Updated here -->
+        <a href="<%= basePath %>/data-entry" >
+            <button type="submit">
+                <i class='bx bx-plus-circle' data-title="Appointment" 
+                    data-intro="Create appointment for patient"></i>
+                <span id="newAppointmentLabel" class="nav-item">
+                    <%= lng === 'ar' ? 'موعد جديد' : 'New Appointment' %>
+                </span>
+            </button>
+          </a>
+        
+    </div>
+     <hr style="opacity: 0.5;">   
+     <div class="language-selector" style="text-align: right; padding: 10px; background-color: #f6f5fa;">
+        <a href="?lng=en" class="<%= lng === 'en' ? 'active' : '' %>">
+            <img src="<%= basePath %>/assets/usa.png" alt="English Flag">English
+        </a> |
+        <a href="?lng=ar" class="<%= lng === 'ar' ? 'active' : '' %>">
+            <img src="<%= basePath %>/assets/flag.png" alt="Arabic Flag">العربية
+        </a>
+      </div>
+        
+        <div class="patient-details" style="padding:50px ;">
+
+            <h2 id="patientsCompletionTitle" style="color: #333333;" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">Patients PROMs Completion Status</h2><br>
+            
+            <div class="table-container" dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>">
+            <table>
+              <input type="text" id="patientSearch" placeholder="Quick Search" style="margin-bottom: 30px;padding: 10px;border-radius: 30px;border: 1px solid;" data-title="Search" data-intro="Customizable search for your patients">
+              <thead data-title="Manage Patient Data" data-intro="View/Edit patient data">
+                <tr>
+                  <th style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">MR Number</th>
+                  <th id="fullNameHeader" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Full Name</th>
+                  <th id="specialityHeader">
+                    <span id="specialityHeaderText">Specialty</span>
+                    <span id="specialityArrow">&#x25BC;</span>
+                    <div id="specialityDropdown">
+                      <ul id="specialityList"></ul>
+                    </div>
+                  </th>          
+                  <th id="phoneNumberHeader" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Phone Number</th>
+
+<th id="appointmentHeader"
+    dir="<%= lng === 'ar' ? 'rtl' : 'ltr' %>"
+    class="has-filter"
+    style=" text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">
+  
+  <!-- Header content wrapper -->
+  <div style="display: flex; align-items: center; justify-content: <%= lng === 'ar' ? '' : 'flex-start' %>;">
+    <!-- Header label -->
+    <span id="appointmentHeaderLabel" class="appointment-label">
+      <%= lng === 'ar' ? 'الموعد' : 'Appointment' %>
+    </span>
+    
+    <!-- Date filter with badge -->
+    <div class="date-filter" id="dateFilter">
+      <!-- Filter badge indicator -->
+      <span class="date-range-badge">1</span>
+      
+      <!-- Calendar icon for date filtering -->
+      <i class="bx bx-calendar calendar-icon"
+         onclick="appointmentFlatpickr.open()"
+         title="<%= lng === 'ar' ? 'فلترة حسب التاريخ' : 'Filter by date' %>"></i>
+         
+      <!-- Date range pill - shows when filter is active -->
+      <div class="date-range-pill">
+        <span id="dateRangeDisplay"></span>
+        <i class="bx bx-x clear-btn" 
+           onclick="event.stopPropagation(); clearDateRangeFilter();"
+           title="<%= lng === 'ar' ? 'مسح الفلتر' : 'Clear filter' %>"></i>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Hidden input for flatpickr -->
+  <input type="text" id="appointmentDateFilter" style="position: absolute; opacity: 0; width: 0; height: 0; display: inline;">
+</th>
+
+
+                  <th id="statusHeader" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Status</th>
+                  <th id="actionHeader" data-title="Reminder" data-intro="Send reminder to patient to complete surveys" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Action</th>
+                  <th id="editHeader" data-title="Edit Patient" data-intro="Edit patient data" style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">Edit</th>
+                </tr>
+              </thead>
+              <tbody id="patientTableBody">
+                <% 
+                const today = new Date();
+                const todayAppointments = [];
+                const futureAppointments = [];
+                const pastAppointments = [];
+                patients.forEach(function(patient) {
+                    const appointmentDate = new Date(patient.datetime);                        
+                    if (appointmentDate.toDateString() === today.toDateString()) {
+                        todayAppointments.push(patient); // Today's appointment
+                    } else if (appointmentDate > today) {
+                        futureAppointments.push(patient); // Future appointment
+                    } else {
+                        pastAppointments.push(patient); // Past appointment
+                    }
+                });
+                todayAppointments.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
+                futureAppointments.sort((a, b) => new Date(b.datetime) - new Date(a.datetime));
+                pastAppointments.sort((a, b) => new Date(b.datetime) - new Date(a.datetime));
+                const sortedPatients = todayAppointments.concat(futureAppointments, pastAppointments);
+                sortedPatients.forEach(function(patient) {
+                    const appointmentDate = new Date(patient.datetime);
+                    const isToday = appointmentDate.toDateString() === today.toDateString();
+                    const isFuture = appointmentDate > today;  // Future appointments
+            %>
+                    <tr>
+                        <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;"><%= patient.Mr_no %></td>
+                        <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">
+                            <%= patient.firstName %>
+                            <%= patient.lastName %>
+                        </td>
+                        
+                        <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;"><%= patient.speciality %></td>
+                        <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;"><%= patient.phoneNumber %></td>
+                        <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">
+                          <span class="ltr-datetime" style="background-color: <%= isToday ? '#eed076' : '' %>; color: black; padding: 5px; border-radius: 5px;">
+                            <%= patient.datetime %>
+                          </span>
+                        </td>
+                        
+                        <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;"><span style="background-color: <%= patient.surveyStatus === 'Completed' ? '#CBFCC6' : '#FF7F7F' %>; color: black; padding: 5px; border-radius: 5px;">
+                            <%= patient.surveyStatus %>
+                        </span></td>
+                        <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">
+                            <form action="<%= basePath %>/send-reminder" method="POST">
+                              <input type="hidden" name="Mr_no" value="<%= patient.Mr_no %>"> 
+                              <button type="submit" id="sendReminderButton"
+                                <%= ['none', 'third_party_api'].includes(notificationPreference) ? 'disabled' : '' %>
+                                style="background-color: <%= ['none', 'third_party_api'].includes(notificationPreference) ? '#ccc' : '#b2f2bb' %>;
+                                       color: <%= ['none', 'third_party_api'].includes(notificationPreference) ? '#666' : 'black' %>;
+                                       border: none;
+                                       padding: 5px 10px;
+                                       border-radius: 5px;
+                                       cursor: <%= ['none', 'third_party_api'].includes(notificationPreference) ? 'not-allowed' : 'pointer' %>;">
+                                <i class='bx bxs-envelope' style='font-size:14px;'></i>
+                                <%= lng === 'ar' ? 'إرسال تذكير' : 'Send Reminder' %>
+                              </button>
+                            </form>
+                          </td>
+                        <td style="text-align: <%= lng === 'ar' ? 'right' : 'left' %>;">
+                          <!-- Edit icon -->
+                          <a href="<%= basePath %>/edit-appointment?Mr_no=<%= patient.hashedMrNo %>" title="Edit"><span class="material-symbols-outlined" style="color: #7079f8; margin-right: 8px;">edit</span></a>
+                          <form id="deleteForm-<%= patient.Mr_no %>" action="<%= basePath %>/delete-appointment" method="POST" style="display:inline;">
+                            <input type="hidden" name="Mr_no" value="<%= patient.Mr_no %>">
+                            <button type="button" style="border: none; display: none;" onclick="confirmDelete('<%= patient.Mr_no %>')" class="delete-button" title="Delete">
+                                <span class="material-symbols-outlined delete-icon">delete</span>
+                            </button>
+                        </form>                 
+                        </td>
+                        
+                    </tr>
+                <% }); %>
+              </tbody>
+            </table>
+            <div id="paginationControls" style="margin-top: 20px; text-align: center;"></div>
+
+           </div> 
+           <script>
+            // Toggle the dropdown visibility when the arrow is clicked
+            // document.getElementById('specialityArrow').addEventListener('click', function() {
+            //   var dropdown = document.getElementById('specialityDropdown');
+            //   dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+            // });
+          
+            // Function to extract unique specialities and populate the dropdown
+            function populateSpecialityDropdown() {
+  var specialitySet = new Set(); // To store unique specialities
+  var rows = document.querySelectorAll("table tbody tr");
+
+  // Loop through each row and add the speciality to the set
+  rows.forEach(function(row) {
+    var specialityCell = row.cells[2]; // Assuming speciality column is at index 2 (0-based)
+    var specialityText = specialityCell.textContent.trim();
+    if (specialityText) {
+      specialitySet.add(specialityText);
+    }
+  });
+
+  // Get the speciality dropdown list
+  var specialityList = document.getElementById("specialityList");
+
+  // Clear the existing list before adding new options
+  specialityList.innerHTML = '';
+
+  // Add "All" option
+  var allOption = document.createElement("li");
+  allOption.innerHTML = '<a href="#" onclick="filterSpeciality(\'\')">All</a>';
+  specialityList.appendChild(allOption);
+
+  // Loop through the set and create an option for each speciality
+  specialitySet.forEach(function(speciality) {
+    var listItem = document.createElement("li");
+    listItem.innerHTML = '<a href="#" onclick="filterSpeciality(\'' + speciality + '\')">' + speciality + '</a>';
+    specialityList.appendChild(listItem);
+  });
+}
+
+// Function to filter the table based on selected speciality
+function filterSpeciality(speciality) {
+  var rows = document.querySelectorAll("table tbody tr");
+
+  rows.forEach(function(row) {
+    // Assuming speciality column is at index 2 (0-based)
+    var specialityColumnIndex = 2;
+    var specialityCell = row.cells[specialityColumnIndex];
+    var specialityText = specialityCell.textContent.trim(); // Get the text and trim any extra spaces
+
+    // If the selected speciality is 'All', show all rows
+    if (speciality === '' || specialityText.toLowerCase() === speciality.toLowerCase()) {
+      row.style.display = ""; // Show row
+    } else {
+      row.style.display = "none"; // Hide row
+    }
+  });
+
+  // No need to manually hide the dropdown since it's handled by CSS hover
+}
+
+// Call the populateSpecialityDropdown function after the page loads to auto-populate the dropdown
+window.onload = function() {
+  populateSpecialityDropdown();
+};  
+          </script>
+          
+          
+          
+          
+</div>
+</div>
+
+<!-- Loading GIF -->
+<div class="loading-container" id="loadingContainer">
+
+</div>
+
+<div id="confirmDeleteDialog" class="delete-confirmation-dialog" style="display: none;">
+    <div class="delete-dialog-content">
+        <div class="delete-warning-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ff4d4d" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+        </div>  
+        <h2 class="delete-confirmation-title"><%= lng === 'ar' ? 'تأكيد الحذف' : 'Confirm Delete' %></h2>
+        <p id="confirmDeleteMessage" class="delete-confirmation-message"><%= lng === 'ar' ? 'هل أنت متأكد أنك تريد حذف سجل هذا المريض؟' : 'Are you sure you want to delete this patient record?' %></p>
+        <div class="delete-dialog-actions">
+          <button id="cancelDeleteBtn" class="delete-cancel-button"><%= lng === 'ar' ? 'إلغاء' : 'Cancel' %></button>
+          <button id="confirmDeleteBtn" class="delete-confirm-button"><%= lng === 'ar' ? 'حذف' : 'Delete' %></button>
+        </div>
+    </div>
+  </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  // Attach Flatpickr to the hidden input
+  const flatpickrAppointment = flatpickr("#appointmentDateFilter", {
+    dateFormat: "m/d/Y",
+    clickOpens: true,
+    onChange: (_, dateStr) => {
+      document.getElementById("clearDateIcon")
+              .style.display = dateStr ? "inline" : "none";
+      filterByDate(dateStr);
+    }
+  });
+
+  function clearDateFilter() {
+    flatpickrAppointment.clear();
+    document.getElementById("clearDateIcon").style.display = "none";
+    filterByDate("");
+  }
+
+  function filterByDate(dateStr) {
+    document.querySelectorAll("table tbody tr")
+      .forEach(row => {
+        if (!dateStr) {
+          row.style.display = "";
+        } else {
+          const cell = row.querySelector("td:nth-child(5) .ltr-datetime")
+                          .textContent.trim();
+          row.style.display =
+            (new Date(cell).toDateString() === new Date(dateStr).toDateString())
+              ? "" : "none";
+        }
+      });
+  }
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // helper to read cookies
+    const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+    };
+
+    // determine current language
+    const params = new URLSearchParams(window.location.search);
+    let currentLanguage = params.get('lng') || getCookie('lng') || 'en';
+    document.cookie = `lng=${currentLanguage}; path=/`;
+
+    const fetchUrl = `/staff/locales/${currentLanguage}/translation.json`;
+
+    fetch(fetchUrl)
+        .then(response => {
+            if (!response.ok) {
+                console.warn(
+                  `Translation file not found for "${currentLanguage}". Falling back to en.`
+                );
+                return fetch(`/staff/locales/en/translation.json`);
+            }
+            return response.json();
+        })
+        .then(translations => {
+            console.log("Loaded translations:", translations);
+
+            Object.entries(translations).forEach(([id, translationValue]) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+
+                // 1) Inputs/Textareas → placeholder
+                if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+                    if (typeof translationValue === "string") {
+                        el.placeholder = translationValue;
+                    }
+                    return;
+                }
+
+                // 2) If this container has a .appointment-label child, update *only* that
+                const nestedLabel = el.querySelector(".appointment-label");
+                if (nestedLabel) {
+                    nestedLabel.textContent = translationValue;
+                    return;
+                }
+
+                // 3) Otherwise, for plain strings update textContent
+                if (typeof translationValue === "string") {
+                    el.textContent = translationValue;
+                }
+                // 4) For objects (e.g. lists), rebuild children
+                else if (typeof translationValue === "object") {
+                    el.innerHTML = "";
+                    Object.values(translationValue).forEach(item => {
+                        const li = document.createElement("li");
+                        li.textContent = item;
+                        el.appendChild(li);
+                    });
+                } else {
+                    console.warn(
+                      `Unexpected translation type for "${id}":`,
+                      translationValue
+                    );
+                }
+            });
+        })
+        .catch(error => console.error("Error loading translations:", error));
+});
+</script>
+
+<script>
+let btn = document.querySelector('#btn');
+let sidebar = document.querySelector('.sidebar');
+
+btn.onclick = function() {
+    sidebar.classList.toggle('active');
+};
+
+// Show the loading GIF when the form is submitted
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function() {
+        document.getElementById('loadingContainer').style.display = 'flex';
+    });
+});
+
+const searchInput = document.getElementById('patientSearch');
+const tableBody = document.querySelector('tbody');
+searchInput.addEventListener('keyup', function() {
+    const filterQuery = searchInput.value.toLowerCase();
+    const tableRows = tableBody.querySelectorAll('tr');
+
+    for (const row of tableRows) {
+        const mrNumberCell = row.querySelector('td:nth-child(1)'); 
+        const nameCell = row.querySelector('td:nth-child(2)'); 
+        const phoneNumberCell = row.querySelector('td:nth-child(4)');
+
+        let textToMatch = mrNumberCell.textContent.toLowerCase() + " " + nameCell.textContent.toLowerCase() + " " + phoneNumberCell.textContent.toLowerCase();
+
+        if (textToMatch.indexOf(filterQuery) !== -1) {
+            row.style.display = ''; // Show row if it matches the filter
+        } else {
+            row.style.display = 'none'; // Hide row if it doesn't match
+        }
+    }
+});
+
+
+</script>
+
+<script src="<%= basePath %>/js/intro.min.js"></script>
+    <script>
+        document.getElementById('helpButton').addEventListener('click', function () {
+    // Determine the current language (default to English)
+    const lang = new URLSearchParams(window.location.search).get('lng') || getCookie('lng') || 'en';
+
+    // Define translations for the steps
+    const translations = {
+        en: {
+            step1: "Create an appointment for a patient.",
+            step2: "Customizable search for your patients.",
+            step3: "View and manage patient data.",
+            step4: "Send a reminder to the patient to complete surveys.",
+            step5: "Edit patient data."
+        },
+        ar: {
+            step1: "إنشاء موعد للمريض.",
+            step2: "بحث قابل للتخصيص عن مرضاك.",
+            step3: "عرض وإدارة بيانات المريض.",
+            step4: "إرسال تذكير للمريض لإكمال الاستبيانات.",
+            step5: "تحرير بيانات المريض."
+        }
+    };
+
+    // Define the steps for Intro.js
+    const introSteps = [
+        {
+            element: 'button[type="submit"]', // Button to create an appointment
+            intro: translations[lang].step1
+        },
+        {
+            element: '#patientSearch', // Patient search input field
+            intro: translations[lang].step2
+        },
+        {
+            element: 'thead', // Patient data table header
+            intro: translations[lang].step3
+        },
+        {
+            element: '#actionHeader', // Reminder action
+            intro: translations[lang].step4
+        },
+        {
+            element: '#editHeader', // Edit patient data action
+            intro: translations[lang].step5
+        }
+    ];
+
+    // Initialize and start Intro.js with dynamic labels for buttons
+    introJs()
+        .setOptions({
+            steps: introSteps,
+            rtl: lang === 'ar', // Enable RTL if the language is Arabic
+            nextLabel: lang === 'ar' ? 'التالي' : 'Next',
+            prevLabel: lang === 'ar' ? 'السابق' : 'Back',
+            doneLabel: lang === 'ar' ? 'تم' : 'Done'
+        })
+        .start();
+});
+
+// Helper function to retrieve a cookie value by name
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+        
+    </script>
+    <script>
+        document.getElementById('lastStepButton').addEventListener('click', function () {
+            introJs().setOptions({
+                steps: [
+                    {
+                        element: '#help-btn',
+                        intro: 'You can view the steps again you if wish you by clicking here.',
+                        title: 'View Steps Again'
+                    }
+                ]
+            }).start();
+        });
+    </script>
+    
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+  
+    function removeCurrentPageClasses() {
+        sidebarLinks.forEach(link => {
+            link.classList.remove('CurrentPage');
+        });
+    }
+  
+    function setCurrentPageLink(path) {
+        removeCurrentPageClasses();
+        console.log(`Setting CurrentPage link for path: ${path}`);
+        const currentPageLink = Array.from(sidebarLinks).find(link => {
+            const linkPath = new URL(link.href).pathname;
+            return linkPath === path;
+        });
+        if (currentPageLink) {
+            console.log(`CurrentPage link found: ${currentPageLink.href}`);
+            currentPageLink.classList.add('CurrentPage');
+        } else {
+            console.log(`No CurrentPage link found for path: ${path}`);
+        }
+    }
+  
+    // Check the URL path and set the current page link on page load
+    const currentPath = window.location.pathname;
+    console.log(`Current path: ${currentPath}`);
+    setCurrentPageLink(currentPath);
+  
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const targetPath = new URL(link.href).pathname;
+            console.log(`Navigating to: ${targetPath}`);
+            setCurrentPageLink(targetPath);
+        });
+    });
+  });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cooldownSeconds = 60;
+    
+        document.querySelectorAll("form[action$='/send-reminder']").forEach(form => {
+            const button = form.querySelector("button");
+            const mrNo = form.querySelector("input[name='Mr_no']").value;
+            const key = `sendReminderCooldown-${mrNo}`;
+    
+            const lastClick = localStorage.getItem(key);
+            if (lastClick) {
+                const elapsed = (Date.now() - parseInt(lastClick)) / 1000;
+                if (elapsed < cooldownSeconds) {
+                    disableButton(button, cooldownSeconds - elapsed);
+                }
+            }
+    
+            form.addEventListener("submit", function (e) {
+                if (button.disabled) {
+                    e.preventDefault(); // Prevent sending if still in cooldown
+                } else {
+                    localStorage.setItem(key, Date.now());
+                    disableButton(button, cooldownSeconds);
+                }
+            });
+    
+            function disableButton(btn, seconds) {
+                btn.disabled = true;
+                const originalHTML = btn.innerHTML;
+    
+                const interval = setInterval(() => {
+                    seconds = Math.ceil(seconds - 1);
+                    if (seconds <= 0) {
+                        btn.disabled = false;
+                        btn.innerHTML = originalHTML;
+                        clearInterval(interval);
+                    } else {
+                        btn.textContent = `Wait ${seconds}s`;
+                    }
+                }, 1000);
+            }
+        });
+    });
+    </script>
+
+<script>
+    let currentMrNoToDelete = null;
+    
+    function confirmDelete(mrNo) {
+        currentMrNoToDelete = mrNo;
+        const dialog = document.getElementById('confirmDeleteDialog');
+        const dialogTitle = document.querySelector('.delete-confirmation-title');
+        const message = document.getElementById('confirmDeleteMessage');
+        const confirmBtn = document.getElementById('confirmDeleteBtn');
+        const cancelBtn = document.getElementById('cancelDeleteBtn');
+        
+        // Get current language
+        const currentLang = document.cookie.split('; ').find(row => row.startsWith('lng='))?.split('=')[1] || 'en';
+        
+        // Set dialog title and buttons based on language
+        dialogTitle.textContent = currentLang === 'ar' ? 'تأكيد الحذف' : 'Confirm Delete';
+        confirmBtn.textContent = currentLang === 'ar' ? 'حذف' : 'Delete';
+        cancelBtn.textContent = currentLang === 'ar' ? 'إلغاء' : 'Cancel';
+        
+        // Set message with MR number
+        message.textContent = currentLang === 'ar'
+            ? `هل أنت متأكد أنك تريد حذف المريض برقم السجل الطبي ${mrNo}؟`
+            : `Are you sure you want to delete patient with MR No. ${mrNo}?`;
+        
+        dialog.style.display = 'flex';
+        
+        confirmBtn.onclick = () => {
+            dialog.style.display = 'none';
+            const form = document.getElementById(`deleteForm-${currentMrNoToDelete}`);
+            
+            // Ensure the form is submitted properly
+            form.submit();
+        };
+        
+        cancelBtn.onclick = () => {
+            dialog.style.display = 'none';
+            currentMrNoToDelete = null;
+        };
+        
+        // Close dialog when clicking outside
+        dialog.onclick = (event) => {
+            if (event.target === dialog) {
+                dialog.style.display = 'none';
+                currentMrNoToDelete = null;
+            }
+        };
+    }
+</script>
+
+<script>
+// Improved date range filtering
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize variables
+  let currentPage = 1;
+  const rowsPerPage = 10;
+  let allRows = [];
+  let activeFilters = {
+    search: '',
+    specialty: '',
+    dateRange: {
+      start: null,
+      end: null
+    }
+  };
+
+  // Format date for display (compact format)
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    
+    try {
+      // Parse date parts from ISO string (YYYY-MM-DD)
+      const [year, month, day] = dateStr.split('-').map(Number);
+      
+      // Get current language
+      const isArabic = document.documentElement.dir === 'rtl';
+      
+      if (isArabic) {
+        // Arabic short format
+        return `${day}/${month}/${year}`;
+      } else {
+        // US short format (MM/DD/YY)
+        return `${month}/${day}/${year.toString().substr(2, 2)}`;
+      }
+    } catch (e) {
+      console.error("Error formatting date:", dateStr);
+      return dateStr;
+    }
+  }
+
+  // Get all rows when page loads
+  function initializeTable() {
+    allRows = Array.from(document.querySelectorAll("#patientTableBody tr"));
+    refreshPagination();
+  }
+
+  // Update pagination based on current filters
+  function refreshPagination() {
+    const filteredRows = getFilteredRows();
+    renderRows(filteredRows);
+    renderPaginationControls(filteredRows);
+    updateFilterIndicators();
+  }
+
+  // Extract date only (no time) from date strings like "1/20/2025, 1:54 PM"
+  function extractDateParts(dateStr) {
+    try {
+      // Extract just the date part (before the comma)
+      const datePart = dateStr.split(',')[0].trim();
+      
+      // Split by slashes
+      const parts = datePart.split('/');
+      
+      // Extract month, day, year
+      if (parts.length === 3) {
+        return {
+          month: parseInt(parts[0], 10),  // Month is the first part (US format)
+          day: parseInt(parts[1], 10),    // Day is the second part
+          year: parseInt(parts[2], 10)    // Year is the third part
+        };
+      }
+    } catch (e) {
+      console.error("Error parsing date:", dateStr, e);
+    }
+    
+    return null;
+  }
+  
+  // Compare two dates (MM/DD/YYYY format) without timezone issues
+  function compareDates(dateStr1, dateStr2) {
+    // Parse the first date
+    const date1 = extractDateParts(dateStr1);
+    
+    // Parse the second date (ISO format YYYY-MM-DD)
+    const [year2, month2, day2] = dateStr2.split('-').map(Number);
+    
+    if (!date1) return 0; // Invalid date
+    
+    // Compare years
+    if (date1.year !== year2) {
+      return date1.year - year2;
+    }
+    
+    // Years are equal, compare months
+    if (date1.month !== month2) {
+      return date1.month - month2;
+    }
+    
+    // Years and months are equal, compare days
+    return date1.day - day2;
+  }
+  
+  // Check if a date is within a range (inclusive)
+  function isDateInRange(dateStr, startDateStr, endDateStr) {
+    return (
+      compareDates(dateStr, startDateStr) >= 0 && 
+      compareDates(dateStr, endDateStr) <= 0
+    );
+  }
+
+  // Apply all active filters and return matching rows
+  function getFilteredRows() {
+    return allRows.filter(row => {
+      // Search filter (MR number, name, phone)
+      const mrNumber = row.cells[0].textContent.toLowerCase();
+      const name = row.cells[1].textContent.toLowerCase();
+      const phone = row.cells[3].textContent.toLowerCase();
+      const matchesSearch = activeFilters.search === '' || 
+                          mrNumber.includes(activeFilters.search) || 
+                          name.includes(activeFilters.search) || 
+                          phone.includes(activeFilters.search);
+      
+      // Specialty filter
+      const specialty = row.cells[2].textContent.trim().toLowerCase();
+      const matchesSpecialty = activeFilters.specialty === '' || 
+                              specialty === activeFilters.specialty.toLowerCase();
+      
+      // Date range filter
+      let matchesDateRange = true;
+      if (activeFilters.dateRange.start && activeFilters.dateRange.end) {
+        const dateCell = row.cells[4].querySelector('.ltr-datetime').textContent.trim();
+        
+        // Custom date comparison for your specific format
+        matchesDateRange = isDateInRange(
+          dateCell, 
+          activeFilters.dateRange.start, 
+          activeFilters.dateRange.end
+        );
+      }
+      
+      return matchesSearch && matchesSpecialty && matchesDateRange;
+    });
+  }
+
+  // Show only current page rows
+  function renderRows(filteredRows) {
+    // Hide all rows first
+    allRows.forEach(row => row.style.display = "none");
+    
+    // Calculate pagination
+    const startIndex = (currentPage - 1) * rowsPerPage;
+    const endIndex = Math.min(startIndex + rowsPerPage, filteredRows.length);
+    
+    // Show only current page rows
+    for (let i = startIndex; i < endIndex; i++) {
+      if (filteredRows[i]) {
+        filteredRows[i].style.display = "";
+      }
+    }
+  }
+
+  // Create pagination controls
+  function renderPaginationControls(filteredRows) {
+    const totalRows = filteredRows.length;
+    const totalPages = Math.ceil(totalRows / rowsPerPage);
+    const paginationContainer = document.getElementById("paginationControls");
+    
+    // Clear previous pagination
+    paginationContainer.innerHTML = "";
+    
+    // Don't show pagination for 1 page or less
+    if (totalPages <= 1) {
+      if (totalRows === 0) {
+        const noResults = document.createElement("div");
+        noResults.textContent = "No matching records found";
+        noResults.style.padding = "10px";
+        noResults.style.color = "#6c757d";
+        paginationContainer.appendChild(noResults);
+      }
+      return;
+    }
+    
+    // Create pagination container
+    const pagination = document.createElement("div");
+    pagination.className = "pagination-container";
+    pagination.dir = document.documentElement.dir;
+    
+    // First page button
+    appendPaginationButton(pagination, "first_page", 1, currentPage > 1);
+    
+    // Previous page button
+    appendPaginationButton(pagination, "navigate_before", currentPage - 1, currentPage > 1);
+    
+    // Page number buttons
+    let startPage = Math.max(1, currentPage - 2);
+    let endPage = Math.min(startPage + 4, totalPages);
+    
+    if (endPage - startPage < 4 && startPage > 1) {
+      startPage = Math.max(1, endPage - 4);
+    }
+    
+    for (let i = startPage; i <= endPage; i++) {
+      const pageButton = document.createElement("button");
+      pageButton.textContent = i;
+      pageButton.className = `pagination-button ${i === currentPage ? 'active' : ''}`;
+      pageButton.addEventListener("click", () => {
+        currentPage = i;
+        refreshPagination();
+      });
+      pagination.appendChild(pageButton);
+    }
+    
+    // Next page button
+    appendPaginationButton(pagination, "navigate_next", currentPage + 1, currentPage < totalPages);
+    
+    // Last page button
+    appendPaginationButton(pagination, "last_page", totalPages, currentPage < totalPages);
+    
+    // Page info
+    const startIndex = Math.min((currentPage - 1) * rowsPerPage + 1, totalRows);
+    const endIndex = Math.min(startIndex + rowsPerPage - 1, totalRows);
+    
+    const paginationInfo = document.createElement("div");
+    paginationInfo.className = "pagination-info";
+    
+    // Get current language
+    const isArabic = document.documentElement.dir === 'rtl';
+    
+    paginationInfo.textContent = isArabic
+      ? `صفحة ${currentPage} من ${totalPages} (${startIndex}-${endIndex} من ${totalRows})`
+      : `Page ${currentPage} of ${totalPages} (${startIndex}-${endIndex} of ${totalRows})`;
+    
+    pagination.appendChild(paginationInfo);
+    
+    // Add pagination to container
+    paginationContainer.appendChild(pagination);
+  }
+
+  // Helper function to add pagination buttons
+  function appendPaginationButton(container, iconName, targetPage, enabled) {
+    const button = document.createElement("button");
+    button.className = `pagination-button ${!enabled ? 'disabled' : ''}`;
+    
+    // Use material icons
+    const icon = document.createElement("span");
+    icon.className = "material-symbols-outlined";
+    icon.style.fontSize = "18px";
+    icon.textContent = iconName;
+    
+    button.appendChild(icon);
+    
+    if (enabled) {
+      button.addEventListener("click", () => {
+        currentPage = targetPage;
+        refreshPagination();
+      });
+    }
+    
+    container.appendChild(button);
+  }
+
+  // Update visual indicators for active filters
+  function updateFilterIndicators() {
+    // Date filter indicator
+    const dateFilter = document.getElementById('dateFilter');
+    const dateRangeDisplay = document.getElementById('dateRangeDisplay');
+    
+    if (activeFilters.dateRange.start && activeFilters.dateRange.end) {
+      dateFilter.classList.add('has-filter');
+      
+      // Update date range display
+      const startFormatted = formatDate(activeFilters.dateRange.start);
+      const endFormatted = formatDate(activeFilters.dateRange.end);
+      
+      // Check if same day
+      if (activeFilters.dateRange.start === activeFilters.dateRange.end) {
+        dateRangeDisplay.textContent = startFormatted;
+      } else {
+        dateRangeDisplay.textContent = `${startFormatted} - ${endFormatted}`;
+      }
+    } else {
+      dateFilter.classList.remove('has-filter');
+    }
+  }
+
+  // Initialize flatpickr for date range filtering
+  function initializeDateFilter() {
+    // Get language for flatpickr localization
+    const isArabic = document.documentElement.dir === 'rtl';
+    const locale = isArabic ? 'ar' : 'en';
+    
+    const flatpickrInstance = flatpickr("#appointmentDateFilter", {
+      mode: "range",
+      dateFormat: "Y-m-d",
+      locale: locale,
+      showMonths: 1,
+      static: true,
+      onChange: function(selectedDates) {
+        if (selectedDates.length === 2) {
+          // Format dates as YYYY-MM-DD strings to avoid timezone issues
+          activeFilters.dateRange.start = selectedDates[0].toISOString().split('T')[0];
+          activeFilters.dateRange.end = selectedDates[1].toISOString().split('T')[0];
+          
+          currentPage = 1; // Reset to first page when filter changes
+          refreshPagination();
+        }
+      }
+    });
+    
+    // Store flatpickr instance globally for button access
+    window.appointmentFlatpickr = flatpickrInstance;
+    
+    // Clear filter function for global access
+    window.clearDateRangeFilter = function() {
+      flatpickrInstance.clear();
+      activeFilters.dateRange.start = null;
+      activeFilters.dateRange.end = null;
+      currentPage = 1;
+      refreshPagination();
+    };
+  }
+
+  // Initialize search filter
+  function initializeSearchFilter() {
+    const searchInput = document.getElementById('patientSearch');
+    
+    searchInput.addEventListener('input', function() {
+      activeFilters.search = this.value.toLowerCase();
+      currentPage = 1; // Reset to first page when filter changes
+      refreshPagination();
+    });
+  }
+
+  // Make speciality filter global
+  window.filterSpeciality = function(specialty) {
+    activeFilters.specialty = specialty;
+    currentPage = 1; // Reset to first page when filter changes
+    refreshPagination();
+  };
+
+  // Initialize specialty dropdown
+  function populateSpecialityDropdown() {
+    const specialitySet = new Set();
+    
+    allRows.forEach(row => {
+      const specialityText = row.cells[2].textContent.trim();
+      if (specialityText) {
+        specialitySet.add(specialityText);
+      }
+    });
+    
+    const specialityList = document.getElementById("specialityList");
+    specialityList.innerHTML = '';
+    
+    // Add "All" option
+    const allOption = document.createElement("li");
+    allOption.innerHTML = '<a href="#" onclick="filterSpeciality(\'\')">All</a>';
+    specialityList.appendChild(allOption);
+    
+    // Add each speciality
+    specialitySet.forEach(function(speciality) {
+      const listItem = document.createElement("li");
+      listItem.innerHTML = '<a href="#" onclick="filterSpeciality(\'' + speciality + '\')">' + speciality + '</a>';
+      specialityList.appendChild(listItem);
+    });
+  }
+
+  // Initialize all components
+  function initializeComponents() {
+    initializeTable();
+    initializeDateFilter();
+    initializeSearchFilter();
+    populateSpecialityDropdown();
+  }
+  
+  // Call initialization when DOM is loaded
+  initializeComponents();
+});
+</script>
+
+
+</html>

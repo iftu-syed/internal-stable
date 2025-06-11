@@ -1,0 +1,131 @@
+Error type: /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/userDetails.ejs:344
+    342|             <div class="ai-message-box" id="aiMessageBox">
+    343|                 <h3>AI Generated Message</h3>
+ >> 344|                 <p id="aiMessageContent"><%= aiMessage %></p>
+    345|             </div>
+    346|         </div>
+    347|         
+
+aiMessage is not defined, timestamp: 2024-08-11T07:08:09.313Z, Mr_no: 55
+Error type: /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/userDetails.ejs:341
+    339|             <div class="ai-message-box" id="aiMessageBox">
+    340|                 <h3>AI Generated Message</h3>
+ >> 341|                 <p id="aiMessageContent"><%= aiMessage %></p>
+    342|             </div>
+    343|         </div>
+    344|         
+
+aiMessage is not defined, timestamp: 2024-08-11T07:08:48.862Z, Mr_no: 55
+Error type: /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/userDetails.ejs:341
+    339|             <div class="ai-message-box" id="aiMessageBox">
+    340|                 <h3>AI Generated Message</h3>
+ >> 341|                 <p id="aiMessageContent"><%= aiMessage %></p>
+    342|             </div>
+    343|         </div>
+    344|         
+
+aiMessage is not defined, timestamp: 2024-08-11T07:08:52.482Z, Mr_no: 55
+Error type: /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/userDetails.ejs:341
+    339|             <div class="ai-message-box" id="aiMessageBox">
+    340|                 <h3>AI Generated Message</h3>
+ >> 341|                 <p id="aiMessageContent"><%= aiMessage %></p>
+    342|             </div>
+    343|         </div>
+    344|         
+
+aiMessage is not defined, timestamp: 2024-08-11T07:09:01.989Z, Mr_no: 55
+Error type: /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/userDetails.ejs:343
+    341|                     <div class="ai-message-box" id="aiMessageBox">
+    342|                         <h3>AI Generated Message</h3>
+ >> 343|                         <p id="aiMessageContent"><%= aiMessage %></p>
+    344|                     </div>
+    345|                 </div>
+    346|         <div id="charts-container" class="charts-grid">
+
+aiMessage is not defined, timestamp: 2024-08-11T07:28:35.935Z, Mr_no: 55
+Error type: /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/userDetails.ejs:343
+    341|                     <div class="ai-message-box" id="aiMessageBox">
+    342|                         <h3>AI Generated Message</h3>
+ >> 343|                         <p id="aiMessageContent"><%= aiMessage %></p>
+    344|                     </div>
+    345|                 </div>
+    346|         <div id="charts-container" class="charts-grid">
+
+aiMessage is not defined, timestamp: 2024-08-11T07:29:21.288Z, Mr_no: 55
+Error type: /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/userDetails.ejs:345
+    343|             <div class="ai-message-box" id="aiMessageBox">
+    344|                 <h3>Summary</h3>
+ >> 345|                 <p id="aiMessageContent"><%= aiMessage %></p>
+    346|             </div>
+    347|         </div>
+    348|         
+
+aiMessage is not defined, timestamp: 2024-08-14T10:12:37.470Z, Mr_no: 66
+Error type: /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/userDetails.ejs:351
+    349|         <div class="language-toggle-container">
+    350|             <button id="language-toggle" onclick="toggleLanguage()">
+ >> 351|                 <%= lang === 'ar' ? 'English' : 'Arabic' %>
+    352|             </button>
+    353|         </div>
+    354|         <!-- Add this in the top right corner of the userDetails page -->
+
+lang is not defined, timestamp: 2024-08-22T06:30:16.981Z, Mr_no: 8788
+Error type: /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/userDetails.ejs:351
+    349|         <div class="language-toggle-container">
+    350|             <button id="language-toggle" onclick="toggleLanguage()">
+ >> 351|                 <%= lang === 'ar' ? 'English' : 'Arabic' %>
+    352|             </button>
+    353|         </div>
+    354|         <!-- Add this in the top right corner of the userDetails page -->
+
+lang is not defined, timestamp: 2024-08-22T06:37:01.213Z, Mr_no: 8788
+Error type: Unexpected token ')' in /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/surveyDetails.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option., timestamp: 2024-08-22T07:43:49.251Z, Mr_no: 8788
+Error type: Unexpected token ')' in /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/surveyDetails.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option., timestamp: 2024-08-22T07:43:50.091Z, Mr_no: 8788
+Error type: Unexpected token ')' in /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/surveyDetails.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option., timestamp: 2024-08-22T07:43:50.406Z, Mr_no: 8788
+Error type: Could not find matching close tag for "<%"., timestamp: 2024-08-22T07:44:00.919Z, Mr_no: 8788
+Error type: Could not find matching close tag for "<%"., timestamp: 2024-08-22T07:44:01.031Z, Mr_no: 8788
+Error type: Could not find matching close tag for "<%"., timestamp: 2024-08-22T07:44:01.412Z, Mr_no: 8788
+Error type: Could not find matching close tag for "<%"., timestamp: 2024-08-22T07:44:01.649Z, Mr_no: 8788
+Error type: Could not find matching close tag for "<%"., timestamp: 2024-08-22T07:44:18.894Z, Mr_no: 8788
+Error type: missing ) after argument list in /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/surveyDetails.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option., timestamp: 2024-08-22T07:44:39.760Z, Mr_no: 8788
+Error type: missing ) after argument list in /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/surveyDetails.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option., timestamp: 2024-08-22T07:49:39.589Z, Mr_no: 8788
+Error type: missing ) after argument list in /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/surveyDetails.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option., timestamp: 2024-08-22T07:49:40.201Z, Mr_no: 8788
+Error type: missing ) after argument list in /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/surveyDetails.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option., timestamp: 2024-08-22T07:49:40.412Z, Mr_no: 8788
+Error type: Unexpected token ')' in /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/surveyDetails.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option., timestamp: 2024-08-22T07:52:14.807Z, Mr_no: 8788
+Error type: Unexpected token ')' in /Users/vijaychagantipati/Documents/Developer/node projects/proms/common_login/views/surveyDetails.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option., timestamp: 2024-08-22T07:52:36.633Z, Mr_no: 8788

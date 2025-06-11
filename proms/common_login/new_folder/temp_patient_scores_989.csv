@@ -1,0 +1,6 @@
+date,months_since_baseline,score,trace_name,title,ymin,ymax,event_date,event
+2024-02-19,1,11,WEXNER,Wexner Incontinence Score (Pregnancy),0,20,,
+2024-05-19,4,11,WEXNER,Wexner Incontinence Score (Pregnancy),0,20,,
+2024-07-19,6,11,WEXNER,Wexner Incontinence Score (Pregnancy),0,20,,
+2024-05-19,1,17,EPDS,Postnatal Depression Score (Pregnancy),0,30,,
+2024-08-19,4,16,EPDS,Postnatal Depression Score (Pregnancy),0,30,,

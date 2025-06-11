@@ -1,0 +1,19 @@
+/* Circle styling */
+circle.score-bubble {
+    fill: #2D9E69;
+    /* opacity: 0.7; */
+}
+
+/* Legend circle styling */
+circle.legend-bubble {
+    fill: #2D9E69;
+    /* opacity: 0.7; */
+}
+
+/* No data message styling */
+.no-data-message {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}
+
