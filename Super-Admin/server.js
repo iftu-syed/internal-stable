@@ -14,7 +14,7 @@ const path = require('path');
 const fs = require('fs');
 function writeLog(logFile, logData) {
     const logDir = path.join(__dirname, 'logs');
-
+// .
     // Check if the 'logs' folder exists, create it if it doesn't
     if (!fs.existsSync(logDir)) {
         fs.mkdirSync(logDir);
