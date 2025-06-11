@@ -1,0 +1,15 @@
+# Ignore all .log files inside logs directories
+logs/*.log
+**/logs/*.log
+
+# But keep the logs/ folder itself
+!logs/
+!**/logs/
+
+# Optional: ignore Python bytecode and virtual environment
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.vscode/
