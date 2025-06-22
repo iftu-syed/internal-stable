@@ -3,4 +3,4 @@ Super-Admin/logs/*
 
 # Keep the logs folder itself
 !Super-Admin/logs/.gitkeep
-**/nano.env
+
