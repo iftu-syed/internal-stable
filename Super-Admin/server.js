@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
-require('dotenv').config();  // Load environment variables
+require('dotenv').config({ path: 'nano.env' }); // Load environment variables
 const crypto = require('crypto');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -184,6 +184,8 @@ router.get('/logout', isAuthenticated, (req, res) => {
         //console.log("in here",req.session.user.username);
         writeLog('user_activity_logs.txt', `Severity: INFO | Event: Successful Logout | Action: User ${req.session.user ? req.session.user.username : 'Unknown'} logged out successfully`);
         res.redirect(basePath + '/');
+        console.log("🔐 Connected to DB: mongodb://localhost:27017/superadmin", process.env.MONGO_URI);
+
     });
 });
 
